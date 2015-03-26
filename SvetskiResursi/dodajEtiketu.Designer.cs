@@ -152,7 +152,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ColorDialog colorDialog2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
     }

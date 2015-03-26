@@ -20,20 +20,28 @@ namespace SvetskiResursi
         }
 
     class tipoviResursa { 
-        public Dictionary<String, tipResursa> tr = new Dictionary<String, tipResursa>();
-        private readonly string _datoteka;
-        public tipoviResursa()
+        private Dictionary<String, tipResursa> tr = new Dictionary<String, tipResursa>();
+       
+        
+        
+        public static tipoviResursa instanca=null;
+        private   tipoviResursa() { }
+        public static tipoviResursa getInstance()
         {
-            //_datoteka = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "tipovispomenika.podaci");
-            //UcitajDatoteku();
+            if (instanca == null)
+                instanca = new tipoviResursa();
+            return instanca;
+        } 
+       
+
+        public void Dodaj(tipResursa t){
+            tr.Add(t.oznaka, t);
         }
 
 
-        public void Dodaj(tipResursa TR)
-        {
-            if (!tr.ContainsKey(TR.oznaka))
-                tr.Add(TR.oznaka, TR);
+        public Dictionary<string, tipResursa> getAll(){
+        return tr;
         }
-    
+
     }
 }

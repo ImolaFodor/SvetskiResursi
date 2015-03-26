@@ -13,6 +13,7 @@ namespace SvetskiResursi
 
     {
         private OpenFileDialog ofd = new OpenFileDialog();
+
         public dodajTipResursa()
         {
             InitializeComponent();
@@ -58,16 +59,17 @@ namespace SvetskiResursi
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            //data
             tipResursa tipRes = new tipResursa();
+
             tipRes.oznaka = oznaka_tip.Text;
             tipRes.ime = ime_tip.Text;
             tipRes.opis = opis_tip.Text;
             tipRes.ikonica = (Image)pictureBox1.BackgroundImage;
 
-            tipoviResursa tr = new tipoviResursa();
-            tr.Dodaj(tipRes);
-
-            //FormV.comboTipResursa_SelectedIndexChanged((Object)tr, EventArgs e);
+       
+            SvetskiResursi.tipoviResursa.getInstance().Dodaj(tipRes);
             this.DialogResult = DialogResult.OK;
             this.Close();
 

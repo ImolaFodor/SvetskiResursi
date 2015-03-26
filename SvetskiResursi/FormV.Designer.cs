@@ -76,7 +76,6 @@
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Oznaka*:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox2
             // 
@@ -93,7 +92,6 @@
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Ime*:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -103,7 +101,6 @@
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Tip resursa*:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboTipResursa
             // 
@@ -136,7 +133,7 @@
             this.ikonica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ikonica.Location = new System.Drawing.Point(74, 275);
             this.ikonica.Name = "ikonica";
-            this.ikonica.Size = new System.Drawing.Size(100, 50);
+            this.ikonica.Size = new System.Drawing.Size(100, 100);
             this.ikonica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ikonica.TabIndex = 10;
             this.ikonica.TabStop = false;
@@ -159,7 +156,6 @@
             this.label6.Size = new System.Drawing.Size(63, 13);
             this.label6.TabIndex = 12;
             this.label6.Text = "Obnovljivo?";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -180,7 +176,6 @@
             this.cbEkpl.Name = "cbEkpl";
             this.cbEkpl.Size = new System.Drawing.Size(121, 21);
             this.cbEkpl.TabIndex = 14;
-            this.cbEkpl.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -190,7 +185,6 @@
             this.label8.Size = new System.Drawing.Size(115, 13);
             this.label8.TabIndex = 15;
             this.label8.Text = "Od strateske vaznosti?";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // cbVaznost
             // 
@@ -231,7 +225,6 @@
             this.label10.Size = new System.Drawing.Size(38, 13);
             this.label10.TabIndex = 19;
             this.label10.Text = "Cena: ";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -254,7 +247,6 @@
             this.cbMera.Name = "cbMera";
             this.cbMera.Size = new System.Drawing.Size(121, 21);
             this.cbMera.TabIndex = 21;
-            this.cbMera.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // textBox3
             // 
@@ -263,7 +255,6 @@
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 22;
             this.cena.SetToolTip(this.textBox3, "U dolarima");
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // dateTimePicker1
             // 
@@ -271,17 +262,15 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 23;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(85, 332);
+            this.button1.Location = new System.Drawing.Point(180, 352);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
             this.button1.Text = "Izaberi";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // label12
@@ -376,7 +365,6 @@
             this.Name = "FormV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodavanje resursa";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

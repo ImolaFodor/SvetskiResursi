@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SvetskiResursi;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,68 +18,33 @@ namespace HCI_projekat
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
             
-        }
+            //PUNIS COMBO SA SVIM NOVIM
+            Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
+                
 
-        private void label8_Click(object sender, EventArgs e)
-        {
+            foreach(tipResursa tip in privremeni.Values){
+                comboTipResursa.Items.Add(tip.oznaka+tip.ime);
+                
+            }
 
-        }
+        //    foreach(KeyValuePair<string, tipResursa> a in privremeni){
+        //        tipResursa novi = a.Value;
+        //          comboTipResursa.Items.Add(novi.oznaka + novi.ime);
+        //        }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
+            //PUNIS LISTU SA ETIKETAMA
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
 
         }
+   
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
-
+       
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
             DialogResult d = ofd.ShowDialog();
@@ -110,6 +76,8 @@ namespace HCI_projekat
         {
             comboTipResursa.Items.Add(sender);
         }
+
+
 
 
     }

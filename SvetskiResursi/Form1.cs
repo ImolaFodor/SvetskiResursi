@@ -15,6 +15,8 @@ namespace SvetskiResursi
         public Form1()
         {
             InitializeComponent();
+
+
         }
 
         private void dodavanjeTipaResursaToolStripMenuItem_Click(object sender, EventArgs e)
