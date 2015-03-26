@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Etiketa.cs" />
+    <Compile Include="Resurs.cs" />
     <Compile Include="tipResursa.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -80,11 +82,11 @@
     <Compile Include="dodajEtiketu.Designer.cs">
       <DependentUpon>dodajEtiketu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormV.cs">
+    <Compile Include="dodajResurs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormV.Designer.cs">
-      <DependentUpon>FormV.cs</DependentUpon>
+    <Compile Include="dodajResurs.Designer.cs">
+      <DependentUpon>dodajResurs.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,8 +99,8 @@
     <EmbeddedResource Include="dodajEtiketu.resx">
       <DependentUpon>dodajEtiketu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormV.resx">
-      <DependentUpon>FormV.cs</DependentUpon>
+    <EmbeddedResource Include="dodajResurs.resx">
+      <DependentUpon>dodajResurs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.oznaka = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboTipResursa = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.opis = new System.Windows.Forms.RichTextBox();
             this.ikonica = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,12 +61,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // oznaka
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.oznaka.Location = new System.Drawing.Point(74, 12);
+            this.oznaka.Name = "oznaka";
+            this.oznaka.Size = new System.Drawing.Size(100, 20);
+            this.oznaka.TabIndex = 0;
             // 
             // label1
             // 
@@ -77,12 +77,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Oznaka*:";
             // 
-            // textBox2
+            // ime
             // 
-            this.textBox2.Location = new System.Drawing.Point(74, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.ime.Location = new System.Drawing.Point(74, 61);
+            this.ime.Name = "ime";
+            this.ime.Size = new System.Drawing.Size(100, 20);
+            this.ime.TabIndex = 2;
             // 
             // label2
             // 
@@ -109,7 +109,6 @@
             this.comboTipResursa.Name = "comboTipResursa";
             this.comboTipResursa.Size = new System.Drawing.Size(121, 21);
             this.comboTipResursa.TabIndex = 6;
-            this.comboTipResursa.SelectedIndexChanged += new System.EventHandler(this.comboTipResursa_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -120,13 +119,13 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Opis:";
             // 
-            // richTextBox1
+            // opis
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(74, 158);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
-            this.richTextBox1.TabIndex = 9;
-            this.richTextBox1.Text = "";
+            this.opis.Location = new System.Drawing.Point(74, 158);
+            this.opis.Name = "opis";
+            this.opis.Size = new System.Drawing.Size(100, 96);
+            this.opis.TabIndex = 9;
+            this.opis.Text = "";
             // 
             // ikonica
             // 
@@ -304,6 +303,7 @@
             this.button2.TabIndex = 27;
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -354,14 +354,14 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ikonica);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.opis);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.comboTipResursa);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ime);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.oznaka);
             this.Name = "FormV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodavanje resursa";
@@ -373,14 +373,14 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox oznaka;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboTipResursa;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox opis;
         private System.Windows.Forms.PictureBox ikonica;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

@@ -72,13 +72,29 @@ namespace HCI_projekat
             this.Close();
         }
 
-        private void comboTipResursa_SelectedIndexChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            comboTipResursa.Items.Add(sender);
+            Resurs res = new Resurs();
+
+            res.oznaka = oznaka.Text;
+            res.ime = ime.Text;
+            res.opis = opis.Text;
+            res.ikonica = (Image)ikonica.BackgroundImage;
+            res.tipResursa = comboTipResursa.Text;
+            res.obnovljivo = cbObnovljivo.Text;
+            res.eksploatacija = cbEkpl.Text;
+            res.strateska_vaznost = cbVaznost.Text;
+            res.jedinica_mere = cbMera.Text;
+            res.cena = textBox3.Text;
+            //datum
+            res.pojavljivanje = comboBox6.Text;
+            
+
+
+            SvetskiResursi.Resursi.getInstance().Dodaj(res);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
-
-
-
 
     }
 }
