@@ -10,6 +10,9 @@ namespace SvetskiResursi
         /// <summary>
         /// The main entry point for the application. 
         /// </summary>
+        /// 
+
+
         [STAThread]
 
 
