@@ -28,5 +28,19 @@ namespace SvetskiResursi
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Etiketa et = new Etiketa();
+
+            et.oznaka = textBox1.Text;
+            et.opis = richTextBox1.Text;
+            et.boja = button1.BackColor; //vrv ne valja
+
+
+            SvetskiResursi.Etikete.getInstance().Dodaj(et);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }
