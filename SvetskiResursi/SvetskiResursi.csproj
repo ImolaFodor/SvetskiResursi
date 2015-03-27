@@ -121,6 +121,7 @@
     <EmbeddedResource Include="tabelaPrikaza.resx">
       <DependentUpon>tabelaPrikaza.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Resursi.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
