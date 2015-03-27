@@ -17,7 +17,7 @@ namespace SvetskiResursi
     {
         private Dictionary<String, Etiketa> tr = new Dictionary<String, Etiketa>();
 
-
+        //komentar
 
         public static Etikete instanca = null;
         private Etikete() { }

@@ -18,10 +18,10 @@ namespace SvetskiResursi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (colorDialog2.ShowDialog() == DialogResult.OK)
-            //{
-                //this.BackColor = colorDialog2.Color;
-            //}
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                label5.BackColor = colorDialog1.Color;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace SvetskiResursi
 
             et.oznaka = textBox1.Text;
             et.opis = richTextBox1.Text;
-            et.boja = button1.BackColor; //vrv ne valja
+            et.boja = label5.BackColor; //vrv ne valja
 
 
             SvetskiResursi.Etikete.getInstance().Dodaj(et);
