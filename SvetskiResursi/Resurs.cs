@@ -30,6 +30,8 @@ namespace SvetskiResursi
         public string pojavljivanje { get; set; }
 
         public string opis { get; set; }
+
+        public string oz_etiketa { get; set; }
     }
 
     class Resursi {

@@ -28,7 +28,7 @@ namespace SvetskiResursi
             foreach (Resurs resurs in privremeni.Values)
             {
                 dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
-                resurs.eksploatacija, resurs.obnovljivo, resurs.strateska_vaznost, resurs.jedinica_mere, resurs.cena, null, resurs.pojavljivanje});
+                resurs.eksploatacija, resurs.obnovljivo, resurs.strateska_vaznost, resurs.jedinica_mere, resurs.cena, null, resurs.pojavljivanje, resurs.oz_etiketa});
 
             }
         }

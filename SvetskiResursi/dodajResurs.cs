@@ -21,11 +21,18 @@ namespace HCI_projekat
             
             //PUNIS COMBO SA SVIM NOVIM
             Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
+            Dictionary<string, Etiketa> privremeni2 = SvetskiResursi.Etikete.getInstance().getAll();
                 
 
             foreach(tipResursa tip in privremeni.Values){
                 comboTipResursa.Items.Add(tip.oznaka+tip.ime);
                 
+            }
+
+            foreach (Etiketa tip in privremeni2.Values)
+            {
+                comboBox1.Items.Add(tip.oznaka);
+
             }
 
         //    foreach(KeyValuePair<string, tipResursa> a in privremeni){
@@ -88,6 +95,7 @@ namespace HCI_projekat
             res.cena = textBox3.Text;
             //datum
             res.pojavljivanje = comboBox6.Text;
+            res.oz_etiketa = comboBox1.Text;
             
 
 

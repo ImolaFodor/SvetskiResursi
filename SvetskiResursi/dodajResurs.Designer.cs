@@ -58,6 +58,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.cena = new System.Windows.Forms.ToolTip(this.components);
             this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,7 +212,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(226, 188);
+            this.label9.Location = new System.Drawing.Point(226, 161);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 18;
@@ -219,7 +221,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(226, 214);
+            this.label10.Location = new System.Drawing.Point(226, 198);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(38, 13);
             this.label10.TabIndex = 19;
@@ -228,7 +230,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(226, 241);
+            this.label11.Location = new System.Drawing.Point(226, 231);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(90, 13);
             this.label11.TabIndex = 20;
@@ -242,14 +244,14 @@
             "Barel",
             "Tona",
             "Kilogram"});
-            this.cbMera.Location = new System.Drawing.Point(372, 188);
+            this.cbMera.Location = new System.Drawing.Point(372, 161);
             this.cbMera.Name = "cbMera";
             this.cbMera.Size = new System.Drawing.Size(121, 21);
             this.cbMera.TabIndex = 21;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(372, 214);
+            this.textBox3.Location = new System.Drawing.Point(372, 198);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 22;
@@ -257,7 +259,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(372, 241);
+            this.dateTimePicker1.Location = new System.Drawing.Point(372, 231);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 23;
@@ -275,7 +277,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(226, 275);
+            this.label12.Location = new System.Drawing.Point(226, 264);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(122, 13);
             this.label12.TabIndex = 25;
@@ -289,7 +291,7 @@
             "Redak",
             "Cest",
             "Univerzalan"});
-            this.comboBox6.Location = new System.Drawing.Point(372, 275);
+            this.comboBox6.Location = new System.Drawing.Point(372, 267);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(121, 21);
             this.comboBox6.TabIndex = 26;
@@ -329,11 +331,30 @@
             this.label13.TabIndex = 29;
             this.label13.Text = "-* polja su obavezna za unos";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(372, 311);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 30;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(229, 311);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(40, 13);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Etiketa";
+            // 
             // FormV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 404);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -402,6 +423,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolTip cena;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label14;
     }
 }
 
