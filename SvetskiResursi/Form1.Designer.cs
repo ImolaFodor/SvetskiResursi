@@ -20,7 +20,7 @@ namespace SvetskiResursi
             }
             base.Dispose(disposing);
         }
-
+        //sad da vidimo 
         #region Windows Form Designer generated code
 
         /// <summary>
