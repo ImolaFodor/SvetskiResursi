@@ -49,6 +49,7 @@ namespace SvetskiResursi
             this.label3 = new System.Windows.Forms.Label();
             this.prikazIkonice = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabelaPrikazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -58,7 +59,7 @@ namespace SvetskiResursi
             // 
             this.pbMape.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMape.BackgroundImage")));
             this.pbMape.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbMape.Location = new System.Drawing.Point(259, 27);
+            this.pbMape.Location = new System.Drawing.Point(258, 54);
             this.pbMape.Name = "pbMape";
             this.pbMape.Size = new System.Drawing.Size(610, 396);
             this.pbMape.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -68,7 +69,7 @@ namespace SvetskiResursi
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(598, 447);
+            this.button1.Location = new System.Drawing.Point(583, 452);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(78, 32);
             this.button1.TabIndex = 2;
@@ -83,7 +84,7 @@ namespace SvetskiResursi
             this.Mape.Items.AddRange(new object[] {
             "Mapa1",
             "Mapa2"});
-            this.Mape.Location = new System.Drawing.Point(450, 451);
+            this.Mape.Location = new System.Drawing.Point(441, 456);
             this.Mape.Name = "Mape";
             this.Mape.Size = new System.Drawing.Size(121, 26);
             this.Mape.TabIndex = 3;
@@ -91,7 +92,7 @@ namespace SvetskiResursi
             // treeView1
             // 
             this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(12, 27);
+            this.treeView1.Location = new System.Drawing.Point(12, 54);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(227, 220);
             this.treeView1.TabIndex = 4;
@@ -102,56 +103,58 @@ namespace SvetskiResursi
             this.dodavanjeResursaToolStripMenuItem,
             this.dodavanjeTipaResursaToolStripMenuItem,
             this.dodavanjeToolStripMenuItem});
-            this.resursiToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.resursiToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resursiToolStripMenuItem.Name = "resursiToolStripMenuItem";
-            this.resursiToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.resursiToolStripMenuItem.Size = new System.Drawing.Size(102, 36);
             this.resursiToolStripMenuItem.Text = "Resursi";
             // 
             // dodavanjeResursaToolStripMenuItem
             // 
             this.dodavanjeResursaToolStripMenuItem.Name = "dodavanjeResursaToolStripMenuItem";
-            this.dodavanjeResursaToolStripMenuItem.Size = new System.Drawing.Size(230, 24);
+            this.dodavanjeResursaToolStripMenuItem.Size = new System.Drawing.Size(333, 36);
             this.dodavanjeResursaToolStripMenuItem.Text = "Dodavanje resursa";
             this.dodavanjeResursaToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeResursaToolStripMenuItem_Click);
             // 
             // dodavanjeTipaResursaToolStripMenuItem
             // 
             this.dodavanjeTipaResursaToolStripMenuItem.Name = "dodavanjeTipaResursaToolStripMenuItem";
-            this.dodavanjeTipaResursaToolStripMenuItem.Size = new System.Drawing.Size(230, 24);
+            this.dodavanjeTipaResursaToolStripMenuItem.Size = new System.Drawing.Size(333, 36);
             this.dodavanjeTipaResursaToolStripMenuItem.Text = "Dodavanje tipa resursa";
             this.dodavanjeTipaResursaToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeTipaResursaToolStripMenuItem_Click);
             // 
             // dodavanjeToolStripMenuItem
             // 
             this.dodavanjeToolStripMenuItem.Name = "dodavanjeToolStripMenuItem";
-            this.dodavanjeToolStripMenuItem.Size = new System.Drawing.Size(230, 24);
+            this.dodavanjeToolStripMenuItem.Size = new System.Drawing.Size(333, 36);
             this.dodavanjeToolStripMenuItem.Text = "Dodavanje etikete";
             this.dodavanjeToolStripMenuItem.Click += new System.EventHandler(this.dodavanjeToolStripMenuItem_Click);
             // 
             // pretragaToolStripMenuItem
             // 
-            this.pretragaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.pretragaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tabelaPrikazaToolStripMenuItem});
+            this.pretragaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pretragaToolStripMenuItem.Name = "pretragaToolStripMenuItem";
-            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(115, 36);
             this.pretragaToolStripMenuItem.Text = "Pretraga";
             // 
             // pomocToolStripMenuItem
             // 
-            this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(100, 36);
             this.pomocToolStripMenuItem.Text = "Pomoc";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resursiToolStripMenuItem,
             this.pretragaToolStripMenuItem,
             this.pomocToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(890, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(890, 40);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -204,6 +207,13 @@ namespace SvetskiResursi
             this.label4.TabIndex = 9;
             this.label4.Text = "Ikonica";
             // 
+            // tabelaPrikazaToolStripMenuItem
+            // 
+            this.tabelaPrikazaToolStripMenuItem.Name = "tabelaPrikazaToolStripMenuItem";
+            this.tabelaPrikazaToolStripMenuItem.Size = new System.Drawing.Size(242, 36);
+            this.tabelaPrikazaToolStripMenuItem.Text = "Tabela prikaza";
+            this.tabelaPrikazaToolStripMenuItem.Click += new System.EventHandler(this.tabelaPrikazaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,6 +262,7 @@ namespace SvetskiResursi
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox prikazIkonice;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripMenuItem tabelaPrikazaToolStripMenuItem;
         
     }
 }

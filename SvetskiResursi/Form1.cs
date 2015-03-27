@@ -66,6 +66,12 @@ namespace SvetskiResursi
             
         }
 
+        private void tabelaPrikazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabelaPrikaza tbl = new tabelaPrikaza();
+            tbl.ShowDialog();
+        }
+
 
     }
 }

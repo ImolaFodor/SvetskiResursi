@@ -63,6 +63,12 @@
   <ItemGroup>
     <Compile Include="Etiketa.cs" />
     <Compile Include="Resurs.cs" />
+    <Compile Include="tabelaPrikaza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tabelaPrikaza.Designer.cs">
+      <DependentUpon>tabelaPrikaza.cs</DependentUpon>
+    </Compile>
     <Compile Include="tipResursa.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="tabelaPrikaza.resx">
+      <DependentUpon>tabelaPrikaza.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
