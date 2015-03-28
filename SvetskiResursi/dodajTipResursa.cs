@@ -83,6 +83,7 @@ namespace SvetskiResursi
             elementi.Add(tipRes.ime);
             elementi.Add(tipRes.opis);
             elementi.Add(serialized);
+            elementi.Add(":");
 
             //Upis u file
             using (System.IO.StreamWriter file = new System.IO.StreamWriter("TipResursa.txt", true))
@@ -93,7 +94,7 @@ namespace SvetskiResursi
                     file.Write("\t"); 
                 }
             }
-           // File.WriteAllLines("TipResursa.txt",elementi);
+          
 
             this.DialogResult = DialogResult.OK;
             this.Close();

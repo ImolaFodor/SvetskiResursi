@@ -21,7 +21,7 @@ namespace HCI_projekat
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
             
             //PUNIS COMBO SA SVIM NOVIM
-            Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
+          /*  Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
             Dictionary<string, Etiketa> privremeni2 = SvetskiResursi.Etikete.getInstance().getAll();
                 
 
@@ -34,8 +34,31 @@ namespace HCI_projekat
             {
                 comboBox1.Items.Add(tip.oznaka);
 
-            }
+            }*/
 
+            string[] elem = File.ReadAllLines("TipResursa.txt");
+            string[] elemSpl = new string[100];
+            string[] elemSpl2 = new string[100];
+
+            foreach (string line in elem)
+            {
+                elemSpl2 = line.Split(':'); //prvo da razdvoji na osnovu :
+                for (int i = 0; i < elemSpl2.Count(); i++)
+                {
+                    if (elemSpl2[i].Equals("\t")) //uvek ce postojati "otpadak" jer nakon svakog upisa u fajl stavljam \t
+                        break;
+
+                    elemSpl = elemSpl2[i].Split('\t'); //svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
+                    if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
+                    {
+                        comboTipResursa.Items.Add(elemSpl[1] + elemSpl[2]);
+                    }
+                    else
+                    {
+                        comboTipResursa.Items.Add(elemSpl[0] + elemSpl[1]);
+                    }
+                }
+            }
         //    foreach(KeyValuePair<string, tipResursa> a in privremeni){
         //        tipResursa novi = a.Value;
         //          comboTipResursa.Items.Add(novi.oznaka + novi.ime);
