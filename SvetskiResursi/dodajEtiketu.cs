@@ -39,6 +39,23 @@ namespace SvetskiResursi
 
 
             SvetskiResursi.Etikete.getInstance().Dodaj(et);
+
+            List<string> elementi = new List<string>();
+            elementi.Add(et.oznaka);
+            elementi.Add(et.opis);
+            //elementi.Add(et.boja);
+            elementi.Add(":");
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Etiketa.txt", true))
+            {
+                foreach (string st in elementi)
+                {
+                    file.Write(st);
+                    file.Write("\t");
+                }
+            }
+
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

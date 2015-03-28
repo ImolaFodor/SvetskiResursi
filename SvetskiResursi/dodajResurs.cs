@@ -36,6 +36,7 @@ namespace HCI_projekat
 
             }*/
 
+            //Dodavanje tipa resursa iz fajla u combobox resursa
             string[] elem = File.ReadAllLines("TipResursa.txt");
             string[] elemSpl = new string[100];
             string[] elemSpl2 = new string[100];
@@ -51,14 +52,41 @@ namespace HCI_projekat
                     elemSpl = elemSpl2[i].Split('\t'); //svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
                     if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
                     {
-                        comboTipResursa.Items.Add(elemSpl[1] + elemSpl[2]);
+                        comboTipResursa.Items.Add(elemSpl[1]);
                     }
                     else
                     {
-                        comboTipResursa.Items.Add(elemSpl[0] + elemSpl[1]);
+                        comboTipResursa.Items.Add(elemSpl[0]);
                     }
                 }
             }
+
+            string[] etik = File.ReadAllLines("Etiketa.txt");
+           // string[] elemSpl = new string[100];
+           // string[] elemSpl2 = new string[100];
+
+            foreach (string line in etik)
+            {
+                elemSpl2 = line.Split(':'); //prvo da razdvoji na osnovu :
+                for (int i = 0; i < elemSpl2.Count(); i++)
+                {
+                    if (elemSpl2[i].Equals("\t")) //uvek ce postojati "otpadak" jer nakon svakog upisa u fajl stavljam \t
+                        break;
+
+                    elemSpl = elemSpl2[i].Split('\t'); //svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
+                    if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
+                    {
+                        comboBox1.Items.Add(elemSpl[1] + elemSpl[2]);
+                    }
+                    else
+                    {
+                        comboBox1.Items.Add(elemSpl[0] + elemSpl[1]);
+                    }
+                }
+            }
+
+
+
         //    foreach(KeyValuePair<string, tipResursa> a in privremeni){
         //        tipResursa novi = a.Value;
         //          comboTipResursa.Items.Add(novi.oznaka + novi.ime);
@@ -156,7 +184,7 @@ namespace HCI_projekat
                     file.Write("\t");
                 }
             }
-            // File.WriteAllLines("TipResursa.txt",elementi);
+            
 
 
 
