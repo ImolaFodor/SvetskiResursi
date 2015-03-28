@@ -52,19 +52,18 @@ namespace HCI_projekat
                     elemSpl = elemSpl2[i].Split('\t'); //svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
                     if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
                     {
-                        comboTipResursa.Items.Add(elemSpl[1]);
+                        comboTipResursa.Items.Add(elemSpl[1] + elemSpl[2]);
                     }
                     else
                     {
-                        comboTipResursa.Items.Add(elemSpl[0]);
+                        comboTipResursa.Items.Add(elemSpl[0] + elemSpl[1]);
                     }
                 }
             }
 
+            //Dodavanje etikete iz fajla u combobox resursa
             string[] etik = File.ReadAllLines("Etiketa.txt");
-           // string[] elemSpl = new string[100];
-           // string[] elemSpl2 = new string[100];
-
+      
             foreach (string line in etik)
             {
                 elemSpl2 = line.Split(':'); //prvo da razdvoji na osnovu :
@@ -76,11 +75,11 @@ namespace HCI_projekat
                     elemSpl = elemSpl2[i].Split('\t'); //svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
                     if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
                     {
-                        comboBox1.Items.Add(elemSpl[1] + elemSpl[2]);
+                        comboBox1.Items.Add(elemSpl[1]);
                     }
                     else
                     {
-                        comboBox1.Items.Add(elemSpl[0] + elemSpl[1]);
+                        comboBox1.Items.Add(elemSpl[0]);
                     }
                 }
             }
