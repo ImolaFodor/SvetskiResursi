@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -100,6 +101,42 @@ namespace HCI_projekat
 
 
             SvetskiResursi.Resursi.getInstance().Dodaj(res);
+
+            //konvertuje sliku u string, kako bih mogla upisati u file
+            MemoryStream ms = new MemoryStream();
+            res.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
+            byte[] buffer = ms.ToArray();
+            string serialized = Convert.ToBase64String(buffer);
+
+            List<string> elementi = new List<string>();
+            elementi.Add(res.oznaka);
+            elementi.Add(res.ime);
+            elementi.Add(res.tipResursa);
+            elementi.Add(res.opis);
+            elementi.Add(serialized);
+           
+            elementi.Add(res.eksploatacija);
+            elementi.Add(res.obnovljivo); 
+            elementi.Add(res.strateska_vaznost);
+            elementi.Add(res.jedinica_mere);
+            elementi.Add(res.cena);
+            elementi.Add(res.pojavljivanje);
+            elementi.Add(res.oz_etiketa);
+            elementi.Add(":");
+
+            //Upis u file
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Resursi.txt", true))
+            {
+                foreach (string st in elementi)
+                {
+                    file.Write(st);
+                    file.Write("\t");
+                }
+            }
+            // File.WriteAllLines("TipResursa.txt",elementi);
+
+
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

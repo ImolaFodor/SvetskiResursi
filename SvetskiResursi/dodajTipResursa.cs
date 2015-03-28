@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -70,6 +71,30 @@ namespace SvetskiResursi
 
        
             SvetskiResursi.tipoviResursa.getInstance().Dodaj(tipRes);
+
+             //konvertuje sliku u string, kako bih mogla upisati u file
+            MemoryStream ms = new MemoryStream();
+            tipRes.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
+            byte[] buffer = ms.ToArray();
+            string serialized = Convert.ToBase64String(buffer);
+
+            List<string> elementi = new List<string>();
+            elementi.Add(tipRes.oznaka);
+            elementi.Add(tipRes.ime);
+            elementi.Add(tipRes.opis);
+            elementi.Add(serialized);
+
+            //Upis u file
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("TipResursa.txt", true))
+            {
+                foreach (string st in elementi)
+                {
+                    file.Write(st);
+                    file.Write("\t"); 
+                }
+            }
+           // File.WriteAllLines("TipResursa.txt",elementi);
+
             this.DialogResult = DialogResult.OK;
             this.Close();
 
