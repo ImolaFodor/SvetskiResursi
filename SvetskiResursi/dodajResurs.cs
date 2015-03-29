@@ -133,7 +133,9 @@ namespace HCI_projekat
         private void button2_Click(object sender, EventArgs e)
         {
             Resurs res = new Resurs();
+            DialogObavestenja db = new DialogObavestenja();
 
+            //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
             res.oznaka = oznaka.Text;
             res.ime = ime.Text;
             res.opis = opis.Text;
@@ -147,48 +149,56 @@ namespace HCI_projekat
             //datum
             res.pojavljivanje = comboBox6.Text;
             res.oz_etiketa = comboBox1.Text;
-            
 
-
-            SvetskiResursi.Resursi.getInstance().Dodaj(res);
-
-            //konvertuje sliku u string, kako bih mogla upisati u file
-            MemoryStream ms = new MemoryStream();
-            res.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
-            byte[] buffer = ms.ToArray();
-            string serialized = Convert.ToBase64String(buffer);
-
-            List<string> elementi = new List<string>();
-            elementi.Add(res.oznaka);
-            elementi.Add(res.ime);
-            elementi.Add(res.tipResursa);
-            elementi.Add(res.opis);
-            elementi.Add(serialized);
-           
-            elementi.Add(res.eksploatacija);
-            elementi.Add(res.obnovljivo); 
-            elementi.Add(res.strateska_vaznost);
-            elementi.Add(res.jedinica_mere);
-            elementi.Add(res.cena);
-            elementi.Add(res.pojavljivanje);
-            elementi.Add(res.oz_etiketa);
-            elementi.Add(":");
-
-            //Upis u file
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Resursi.txt", true))
+            //Provera da li su obavezna polja popunjena 
+            if (res.oznaka.Equals("") || res.ime.Equals("") || res.tipResursa.Equals(""))
             {
-                foreach (string st in elementi)
-                {
-                    file.Write(st);
-                    file.Write("\t");
-                }
+                db.ShowDialog();
+
             }
-            
+            else
+            {
+
+                SvetskiResursi.Resursi.getInstance().Dodaj(res);
+
+                //konvertuje sliku u string, kako bih mogla upisati u file
+                MemoryStream ms = new MemoryStream();
+                res.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
+                byte[] buffer = ms.ToArray();
+                string serialized = Convert.ToBase64String(buffer);
+
+                List<string> elementi = new List<string>();
+                elementi.Add(res.oznaka);
+                elementi.Add(res.ime);
+                elementi.Add(res.tipResursa);
+                elementi.Add(res.opis);
+                elementi.Add(serialized);
+
+                elementi.Add(res.eksploatacija);
+                elementi.Add(res.obnovljivo);
+                elementi.Add(res.strateska_vaznost);
+                elementi.Add(res.jedinica_mere);
+                elementi.Add(res.cena);
+                elementi.Add(res.pojavljivanje);
+                elementi.Add(res.oz_etiketa);
+                elementi.Add(":");
+
+                //Upis u file
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter("Resursi.txt", true))
+                {
+                    foreach (string st in elementi)
+                    {
+                        file.Write(st);
+                        file.Write("\t");
+                    }
+                }
 
 
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
     }
