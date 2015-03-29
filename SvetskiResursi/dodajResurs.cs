@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace HCI_projekat
 {
     public partial class FormV : Form
@@ -75,11 +76,11 @@ namespace HCI_projekat
                     elemSpl = elemSpl2[i].Split('\t'); //svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
                     if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
                     {
-                        comboBox1.Items.Add(elemSpl[1]);
+                        checkedListBox1.Items.Add(elemSpl[1]);
                     }
                     else
                     {
-                        comboBox1.Items.Add(elemSpl[0]);
+                        checkedListBox1.Items.Add(elemSpl[0]);
                     }
                 }
             }
@@ -99,8 +100,6 @@ namespace HCI_projekat
 
 
         }
-   
-
 
        
         private void button1_MouseClick(object sender, MouseEventArgs e)
@@ -148,7 +147,8 @@ namespace HCI_projekat
             res.cena = textBox3.Text;
             //datum
             res.pojavljivanje = comboBox6.Text;
-            res.oz_etiketa = comboBox1.Text;
+            List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
+            res.oz_etiketa = cekirani;
 
             //Provera da li su obavezna polja popunjena 
             if (res.oznaka.Equals("") || res.ime.Equals("") || res.tipResursa.Equals(""))
@@ -180,7 +180,12 @@ namespace HCI_projekat
                 elementi.Add(res.jedinica_mere);
                 elementi.Add(res.cena);
                 elementi.Add(res.pojavljivanje);
-                elementi.Add(res.oz_etiketa);
+                elementi.Add(";");
+                foreach (string et in res.oz_etiketa)
+                {
+                    elementi.Add(et);
+
+                }
                 elementi.Add(":");
 
                 //Upis u file

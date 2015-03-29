@@ -58,8 +58,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.cena = new System.Windows.Forms.ToolTip(this.components);
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             this.SuspendLayout();
             // 
@@ -299,7 +300,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(397, 358);
+            this.button2.Location = new System.Drawing.Point(397, 369);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 27;
@@ -310,7 +311,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(497, 358);
+            this.button3.Location = new System.Drawing.Point(497, 369);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
@@ -331,14 +332,6 @@
             this.label13.TabIndex = 29;
             this.label13.Text = "-* polja su obavezna za unos";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(372, 311);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 30;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -348,13 +341,21 @@
             this.label14.TabIndex = 31;
             this.label14.Text = "Etiketa";
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(386, 294);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(107, 64);
+            this.checkedListBox1.TabIndex = 33;
+            // 
             // FormV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 404);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -423,8 +424,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolTip cena;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }
 

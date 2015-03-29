@@ -31,7 +31,7 @@ namespace SvetskiResursi
 
         public string opis { get; set; }
 
-        public string oz_etiketa { get; set; }
+        public List<string> oz_etiketa { get; set; }
     }
 
     class Resursi {
