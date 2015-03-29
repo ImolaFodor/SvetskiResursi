@@ -12,6 +12,7 @@ namespace SvetskiResursi
 {
     public partial class tabelaPrikaza : Form
     {
+        public string etikete;
         public tabelaPrikaza()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace SvetskiResursi
             string[] elemSplEtiketa = new string[100];
             List<string> lista_etiketa = new List<string>();
             int brojac_etiketa=0;
+            
             foreach (string line in elem)
             {
 
@@ -50,7 +52,6 @@ namespace SvetskiResursi
                     if (elemSpl2[i].Equals("\t")) //uvek ce postojati "otpadak" jer nakon svakog upisa u fajl stavljam \t
                         break;
 
-                   // elemSpl = elemSpl2[i].Split('\t');//svaki string koji predstavlja jedan resurs izdeliti na osnovu \t
                     elemSpl3= elemSpl2[i].Split(';');
                     elemSpl = elemSpl3[0].Split('\t');
                     elemSplEtiketa = elemSpl3[1].Split('\t');
@@ -76,7 +77,7 @@ namespace SvetskiResursi
 
                         }
 
-
+                        etikete = string.Join(",", lista_etiketa.ToArray());
 
 
                         //prvo konvertovati string u sliku
@@ -95,18 +96,18 @@ namespace SvetskiResursi
                         Image image = Image.FromStream(ms, true);
 
                         dataGridView1.Rows.Add(new object[] { elemSpl[1], elemSpl[2], elemSpl[3], elemSpl[4], image, elemSpl[6], elemSpl[7], elemSpl[8],
-                        elemSpl[9], elemSpl[10],null, elemSpl[11], elemSpl[12],lista_etiketa});
+                        elemSpl[9], elemSpl[10],null, elemSpl[11], elemSpl[12],"nesto"});
                     }
                     else
                     {
-                        
-                        /*for (int k = 0; k < brojac_etiketa; k++)
-                        {
-                           
-                            lista_etiketa[k] = elemSplEtiketa[k];
 
-                        }*/
-                
+                        for (int k = 1; k <= brojac_etiketa; k++)
+                        {
+                            lista_etiketa.Add(elemSplEtiketa[k]);
+                        }
+
+
+                        etikete = string.Join(",", lista_etiketa.ToArray());
 
                         //prvo konvertovati string u sliku
                         int mod4 = elemSpl[4].Length % 4;
@@ -124,15 +125,8 @@ namespace SvetskiResursi
                         Image image = Image.FromStream(ms, true);
 
                         dataGridView1.Rows.Add(new object[] { elemSpl[0], elemSpl[1], elemSpl[2], elemSpl[3], image, elemSpl[5], elemSpl[6], elemSpl[7], elemSpl[8],
-                        elemSpl[9],null, elemSpl[10], elemSpl[11], lista_etiketa});
+                        elemSpl[9],null, elemSpl[10], elemSpl[11], "nestoo"});
                     }
-
-
-
-                    
-
-
-
                 }
             }
 

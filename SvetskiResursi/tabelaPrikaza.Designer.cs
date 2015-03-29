@@ -44,12 +44,12 @@
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.frekvencija = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Oznaka,
@@ -63,7 +63,8 @@
             this.jednica_mere,
             this.Cena,
             this.datum,
-            this.frekvencija});
+            this.frekvencija,
+            this.Etiketa});
             this.dataGridView1.Location = new System.Drawing.Point(12, 23);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1279, 349);
@@ -161,6 +162,11 @@
             this.frekvencija.HeaderText = "Frekvencija ponavljanja";
             this.frekvencija.Name = "frekvencija";
             // 
+            // Etiketa
+            // 
+            this.Etiketa.HeaderText = "Etiketa";
+            this.Etiketa.Name = "Etiketa";
+            // 
             // tabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +202,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn frekvencija;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Etiketa;
 
     }
 }
