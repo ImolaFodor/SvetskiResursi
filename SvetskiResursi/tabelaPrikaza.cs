@@ -68,7 +68,7 @@ namespace SvetskiResursi
                     if (elemSpl[0].Equals(""))//posto nakon svakog : postoji \t
                     {
 
-
+                        lista_etiketa.Clear();
                         for (int k = 1; k <= brojac_etiketa; k++)
                         {
 
@@ -76,7 +76,7 @@ namespace SvetskiResursi
                             
 
                         }
-
+                        
                         etikete = string.Join(",", lista_etiketa.ToArray());
 
 
@@ -96,16 +96,15 @@ namespace SvetskiResursi
                         Image image = Image.FromStream(ms, true);
 
                         dataGridView1.Rows.Add(new object[] { elemSpl[1], elemSpl[2], elemSpl[3], elemSpl[4], image, elemSpl[6], elemSpl[7], elemSpl[8],
-                        elemSpl[9], elemSpl[10],null, elemSpl[11], elemSpl[12],"nesto"});
+                        elemSpl[9], elemSpl[10],null, elemSpl[11],etikete});
                     }
                     else
                     {
-
+                        lista_etiketa.Clear();
                         for (int k = 1; k <= brojac_etiketa; k++)
                         {
                             lista_etiketa.Add(elemSplEtiketa[k]);
                         }
-
 
                         etikete = string.Join(",", lista_etiketa.ToArray());
 
@@ -125,7 +124,7 @@ namespace SvetskiResursi
                         Image image = Image.FromStream(ms, true);
 
                         dataGridView1.Rows.Add(new object[] { elemSpl[0], elemSpl[1], elemSpl[2], elemSpl[3], image, elemSpl[5], elemSpl[6], elemSpl[7], elemSpl[8],
-                        elemSpl[9],null, elemSpl[10], elemSpl[11], "nestoo"});
+                        elemSpl[9],null, elemSpl[10], etikete});
                     }
                 }
             }
