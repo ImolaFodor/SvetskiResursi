@@ -21,5 +21,10 @@ namespace SvetskiResursi
             this.Close();
 
         }
+
+        private void DialogObavestenja_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -16,6 +16,9 @@ namespace HCI_projekat
     public partial class FormV : Form
     {
         private OpenFileDialog ofd = new OpenFileDialog();
+        private string text = System.IO.File.ReadAllText(@"Resursi.txt");
+        string[] lines = System.IO.File.ReadAllLines(@"Resursi.txt");
+        
         public FormV()
         {
             InitializeComponent();
@@ -133,6 +136,8 @@ namespace HCI_projekat
         {
             Resurs res = new Resurs();
             DialogObavestenja db = new DialogObavestenja();
+            ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
+            
 
             //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
             res.oznaka = oznaka.Text;
@@ -156,54 +161,67 @@ namespace HCI_projekat
                 db.ShowDialog();
 
             }
+            
             else
             {
-
-                SvetskiResursi.Resursi.getInstance().Dodaj(res);
-
-                //konvertuje sliku u string, kako bih mogla upisati u file
-                MemoryStream ms = new MemoryStream();
-                res.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
-                byte[] buffer = ms.ToArray();
-                string serialized = Convert.ToBase64String(buffer);
-
-                List<string> elementi = new List<string>();
-                elementi.Add(res.oznaka);
-                elementi.Add(res.ime);
-                elementi.Add(res.tipResursa);
-                elementi.Add(res.opis);
-                elementi.Add(serialized);
-
-                elementi.Add(res.eksploatacija);
-                elementi.Add(res.obnovljivo);
-                elementi.Add(res.strateska_vaznost);
-                elementi.Add(res.jedinica_mere);
-                elementi.Add(res.cena);
-                elementi.Add(res.pojavljivanje);
-                elementi.Add(";");
-                foreach (string et in res.oz_etiketa)
-                {
-                    elementi.Add(et);
-
-                }
-                elementi.Add(":");
-
-                //Upis u file
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter("Resursi.txt", true))
-                {
-                    foreach (string st in elementi)
+               if (text.Contains(res.oznaka))
                     {
-                        file.Write(st);
-                        file.Write("\t");
+                        ozo.ShowDialog();
+
                     }
+                    else
+                    {
+
+                        SvetskiResursi.Resursi.getInstance().Dodaj(res);
+
+                        //konvertuje sliku u string, kako bih mogla upisati u file
+                        MemoryStream ms = new MemoryStream();
+                        res.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
+                        byte[] buffer = ms.ToArray();
+                        string serialized = Convert.ToBase64String(buffer);
+
+                        List<string> elementi = new List<string>();
+                        elementi.Add(res.oznaka);
+                        elementi.Add(res.ime);
+                        elementi.Add(res.tipResursa);
+                        elementi.Add(res.opis);
+                        elementi.Add(serialized);
+
+                        elementi.Add(res.eksploatacija);
+                        elementi.Add(res.obnovljivo);
+                        elementi.Add(res.strateska_vaznost);
+                        elementi.Add(res.jedinica_mere);
+                        elementi.Add(res.cena);
+                        elementi.Add(res.pojavljivanje);
+                        elementi.Add(";");
+                        foreach (string et in res.oz_etiketa)
+                        {
+                            elementi.Add(et);
+
+                        }
+                        elementi.Add(":");
+
+                        //Upis u file
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter("Resursi.txt", true))
+                        {
+                            foreach (string st in elementi)
+                            {
+                                file.Write(st);
+                                file.Write("\t");
+                            }
+                        }
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+
+                } 
                 }
+            
 
+        }
 
+        private void FormV_Load(object sender, EventArgs e)
+        {
 
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
         }
 
     }
