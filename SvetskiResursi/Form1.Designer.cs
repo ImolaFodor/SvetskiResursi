@@ -42,6 +42,7 @@ namespace SvetskiResursi
             this.dodavanjeTipaResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretragaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaPrikazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@ namespace SvetskiResursi
             this.label3 = new System.Windows.Forms.Label();
             this.prikazIkonice = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.tabelaPrikazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -138,6 +138,13 @@ namespace SvetskiResursi
             this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(115, 36);
             this.pretragaToolStripMenuItem.Text = "Pretraga";
             // 
+            // tabelaPrikazaToolStripMenuItem
+            // 
+            this.tabelaPrikazaToolStripMenuItem.Name = "tabelaPrikazaToolStripMenuItem";
+            this.tabelaPrikazaToolStripMenuItem.Size = new System.Drawing.Size(242, 36);
+            this.tabelaPrikazaToolStripMenuItem.Text = "Tabela prikaza";
+            this.tabelaPrikazaToolStripMenuItem.Click += new System.EventHandler(this.tabelaPrikazaToolStripMenuItem_Click);
+            // 
             // pomocToolStripMenuItem
             // 
             this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -196,6 +203,7 @@ namespace SvetskiResursi
             this.prikazIkonice.Size = new System.Drawing.Size(100, 64);
             this.prikazIkonice.TabIndex = 8;
             this.prikazIkonice.TabStop = false;
+            this.prikazIkonice.Click += new System.EventHandler(this.prikazIkonice_Click);
             // 
             // label4
             // 
@@ -206,13 +214,6 @@ namespace SvetskiResursi
             this.label4.Size = new System.Drawing.Size(55, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Ikonica";
-            // 
-            // tabelaPrikazaToolStripMenuItem
-            // 
-            this.tabelaPrikazaToolStripMenuItem.Name = "tabelaPrikazaToolStripMenuItem";
-            this.tabelaPrikazaToolStripMenuItem.Size = new System.Drawing.Size(242, 36);
-            this.tabelaPrikazaToolStripMenuItem.Text = "Tabela prikaza";
-            this.tabelaPrikazaToolStripMenuItem.Click += new System.EventHandler(this.tabelaPrikazaToolStripMenuItem_Click);
             // 
             // Form1
             // 

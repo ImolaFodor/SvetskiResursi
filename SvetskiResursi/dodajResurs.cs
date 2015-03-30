@@ -20,6 +20,7 @@ namespace HCI_projekat
         private OpenFileDialog ofd = new OpenFileDialog();
         Dictionary<string, tipResursa> fajl1;
         Dictionary<string, Etiketa> fajl2;
+        Dictionary<string, Etiketa> fajl3;
 
         public FormV()
         {
@@ -35,6 +36,11 @@ namespace HCI_projekat
             Stream stream2 = new FileStream("Etikete.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
             fajl2 = (Dictionary<string, Etiketa>)formatter2.Deserialize(stream2);
             stream2.Close();
+
+            IFormatter formatter3 = new BinaryFormatter();
+            Stream stream3 = new FileStream("Resursi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+            fajl3 = (Dictionary<string, Etiketa>)formatter2.Deserialize(stream2);
+            stream3.Close();
             //PUNIS COMBO SA SVIM NOVIM
             //  Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
             //Dictionary<string, Etiketa> privremeni2 = SvetskiResursi.Etikete.getInstance().getAll();
@@ -113,7 +119,7 @@ namespace HCI_projekat
             res.strateska_vaznost = cbVaznost.Text;
             res.jedinica_mere = cbMera.Text;
             res.cena = textBox3.Text;
-            //datum
+            res.datum_kao = "Datum";//datum
             res.pojavljivanje = comboBox6.Text;
             List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
             res.oz_etiketa = cekirani;

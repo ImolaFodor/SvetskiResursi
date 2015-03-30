@@ -74,6 +74,11 @@ namespace SvetskiResursi
             
         }
 
+        private void prikazIkonice_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

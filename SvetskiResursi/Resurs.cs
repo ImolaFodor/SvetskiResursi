@@ -26,7 +26,7 @@ namespace SvetskiResursi
 
         public string cena { get; set; }
 
-        //treba za datum
+        public string datum_kao { get; set; }//treba za datum
 
         public string pojavljivanje { get; set; }
 
