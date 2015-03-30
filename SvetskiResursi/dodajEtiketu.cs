@@ -51,7 +51,7 @@ namespace SvetskiResursi
             {
 
                 SvetskiResursi.Etikete.getInstance().Dodaj(et);
-                Dictionary<string, tipResursa> privremeni = SvetskiResursi.tipoviResursa.getInstance().getAll();
+                Dictionary<string, Etiketa> privremeni = SvetskiResursi.Etikete.getInstance().getAll();
 
                 IFormatter formatter = new BinaryFormatter();
                 Stream stream = new FileStream("Etikete.txt", FileMode.Create, FileAccess.Write, FileShare.None);
