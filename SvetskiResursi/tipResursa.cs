@@ -7,6 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SvetskiResursi
 {
+    [Serializable]
     class tipResursa
     {
             public string  oznaka{get; set;}
@@ -19,6 +20,7 @@ namespace SvetskiResursi
          
         }
 
+    [Serializable]
     class tipoviResursa { 
         private Dictionary<String, tipResursa> tr = new Dictionary<String, tipResursa>();
        

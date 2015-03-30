@@ -5,8 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
+
+
 
 namespace SvetskiResursi
 {
@@ -20,6 +24,13 @@ namespace SvetskiResursi
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
         }
+
+
+
+        
+
+
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -58,6 +69,7 @@ namespace SvetskiResursi
 
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -69,8 +81,13 @@ namespace SvetskiResursi
             tipRes.opis = opis_tip.Text;
             tipRes.ikonica = (Image)pictureBox1.BackgroundImage;
 
-       
             SvetskiResursi.tipoviResursa.getInstance().Dodaj(tipRes);
+            Dictionary<string, tipResursa> privremeni = SvetskiResursi.tipoviResursa.getInstance().getAll();
+            
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("Tipovi.txt", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, privremeni);
+            stream.Close();
 
              //konvertuje sliku u string, kako bih mogla upisati u file
             MemoryStream ms = new MemoryStream();

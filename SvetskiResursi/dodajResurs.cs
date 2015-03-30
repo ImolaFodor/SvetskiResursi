@@ -6,6 +6,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -143,8 +145,26 @@ namespace HCI_projekat
             res.oznaka = oznaka.Text;
             res.ime = ime.Text;
             res.opis = opis.Text;
-            res.ikonica = (Image)ikonica.BackgroundImage;
             res.tipResursa = comboTipResursa.Text;
+            
+            //Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("Tipovi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+            Dictionary<string, tipResursa> privremeni = (Dictionary<string, tipResursa>)formatter.Deserialize(stream);
+            stream.Close();
+
+            foreach(KeyValuePair<string, tipResursa> tip in privremeni){
+                tipResursa t= tip.Value;
+                if ((Image)ikonica.BackgroundImage==null && res.tipResursa == tip.Key)
+                   res.ikonica = t.ikonica;
+               else
+                    res.ikonica = (Image)ikonica.BackgroundImage;
+            }
+
+
+
+            
             res.obnovljivo = cbObnovljivo.Text;
             res.eksploatacija = cbEkpl.Text;
             res.strateska_vaznost = cbVaznost.Text;
@@ -154,6 +174,8 @@ namespace HCI_projekat
             res.pojavljivanje = comboBox6.Text;
             List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
             res.oz_etiketa = cekirani;
+
+            
 
             //Provera da li su obavezna polja popunjena 
             if (res.oznaka.Equals("") || res.ime.Equals("") || res.tipResursa.Equals(""))
@@ -173,6 +195,7 @@ namespace HCI_projekat
                     {
 
                         SvetskiResursi.Resursi.getInstance().Dodaj(res);
+                        
 
                         //konvertuje sliku u string, kako bih mogla upisati u file
                         MemoryStream ms = new MemoryStream();
