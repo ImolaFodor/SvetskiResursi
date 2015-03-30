@@ -46,9 +46,9 @@ namespace HCI_projekat
 
             }
 
-             foreach (Etiketa tip in fajl2.Values)
+             foreach (Etiketa etiketa in fajl2.Values)
              {
-                 checkedListBox1.Items.Add(tip.oznaka);
+                 checkedListBox1.Items.Add(etiketa.oznaka);
 
              }
 

@@ -6,6 +6,7 @@ using System.Drawing;
 
 namespace SvetskiResursi
 {
+    [Serializable]
     class Etiketa
     {
         public string oznaka;
@@ -13,6 +14,7 @@ namespace SvetskiResursi
         public Color boja;
     }
 
+    [Serializable]
     class Etikete
     {
         private Dictionary<String, Etiketa> tr = new Dictionary<String, Etiketa>();

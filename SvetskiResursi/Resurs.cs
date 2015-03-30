@@ -5,6 +5,7 @@ using System.Text;
 
 namespace SvetskiResursi
 {
+    [Serializable]
     class Resurs
     {
         public string oznaka { get; set; }
@@ -34,6 +35,7 @@ namespace SvetskiResursi
         public List<string> oz_etiketa { get; set; }
     }
 
+    [Serializable]
     class Resursi {
         private Dictionary<String, Resurs> tr = new Dictionary<String, Resurs>();
        
