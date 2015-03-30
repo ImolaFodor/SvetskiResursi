@@ -40,6 +40,7 @@ namespace SvetskiResursi
                foreach (Resurs resurs in fajl1.Values)
                {
                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+
                    dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
                    resurs.eksploatacija, resurs.obnovljivo, resurs.strateska_vaznost, resurs.jedinica_mere, resurs.cena, resurs.datum_kao, resurs.pojavljivanje, etikete});
 
