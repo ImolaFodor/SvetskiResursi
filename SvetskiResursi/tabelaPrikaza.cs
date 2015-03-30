@@ -20,10 +20,7 @@ namespace SvetskiResursi
         public tabelaPrikaza()   
         {
             InitializeComponent();
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-            fajl1 = (Dictionary<string, Resurs>)formatter.Deserialize(stream);
-            stream.Close();
+            
             
         }
 
@@ -34,7 +31,10 @@ namespace SvetskiResursi
 
         private void tabelaPrikaza_Load(object sender, EventArgs e)
         {
-            
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("Resursi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+            fajl1 = (Dictionary<string, Resurs>)formatter.Deserialize(stream);
+            stream.Close();
 
             //Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
                foreach (Resurs resurs in fajl1.Values)

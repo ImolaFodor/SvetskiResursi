@@ -20,7 +20,7 @@ namespace HCI_projekat
         private OpenFileDialog ofd = new OpenFileDialog();
         Dictionary<string, tipResursa> fajl1;
         Dictionary<string, Etiketa> fajl2;
-        Dictionary<string, Etiketa> fajl3;
+        Dictionary<string, Resurs> fajl3;
 
         public FormV()
         {
@@ -39,7 +39,7 @@ namespace HCI_projekat
 
             IFormatter formatter3 = new BinaryFormatter();
             Stream stream3 = new FileStream("Resursi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-            fajl3 = (Dictionary<string, Etiketa>)formatter2.Deserialize(stream2);
+            fajl3 = (Dictionary<string, Resurs>)formatter3.Deserialize(stream3);
             stream3.Close();
             //PUNIS COMBO SA SVIM NOVIM
             //  Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
