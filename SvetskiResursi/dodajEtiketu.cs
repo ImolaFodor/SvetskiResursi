@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 
@@ -48,22 +51,13 @@ namespace SvetskiResursi
             {
 
                 SvetskiResursi.Etikete.getInstance().Dodaj(et);
+                Dictionary<string, tipResursa> privremeni = SvetskiResursi.tipoviResursa.getInstance().getAll();
 
-                List<string> elementi = new List<string>();
-                elementi.Add(et.oznaka);
-                elementi.Add(et.opis);
-                //elementi.Add(et.boja);
-                elementi.Add(":");
-
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter("Etiketa.txt", true))
-                {
-                    foreach (string st in elementi)
-                    {
-                        file.Write(st);
-                        file.Write("\t");
-                    }
-                }
-
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream("Etikete.txt", FileMode.Create, FileAccess.Write, FileShare.None);
+                formatter.Serialize(stream, privremeni);
+                stream.Close();
+                
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

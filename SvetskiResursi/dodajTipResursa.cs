@@ -15,7 +15,6 @@ using System.Windows.Forms;
 namespace SvetskiResursi
 {
     public partial class dodajTipResursa : Form
-
     {
         private OpenFileDialog ofd = new OpenFileDialog();
 
@@ -23,11 +22,12 @@ namespace SvetskiResursi
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
+
         }
 
 
 
-        
+
 
 
 
@@ -83,42 +83,19 @@ namespace SvetskiResursi
 
             SvetskiResursi.tipoviResursa.getInstance().Dodaj(tipRes);
             Dictionary<string, tipResursa> privremeni = SvetskiResursi.tipoviResursa.getInstance().getAll();
-            
+
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("Tipovi.txt", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, privremeni);
             stream.Close();
 
-             //konvertuje sliku u string, kako bih mogla upisati u file
-            MemoryStream ms = new MemoryStream();
-            tipRes.ikonica.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg); //if it is jpeg
-            byte[] buffer = ms.ToArray();
-            string serialized = Convert.ToBase64String(buffer);
-
-            List<string> elementi = new List<string>();
-            elementi.Add(tipRes.oznaka);
-            elementi.Add(tipRes.ime);
-            elementi.Add(tipRes.opis);
-            elementi.Add(serialized);
-            elementi.Add(":");
-
-            //Upis u file
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter("TipResursa.txt", true))
-            {
-                foreach (string st in elementi)
-                {
-                    file.Write(st);
-                    file.Write("\t"); 
-                }
-            }
-          
 
             this.DialogResult = DialogResult.OK;
             this.Close();
 
         }
 
-     
+
 
     }
 }
