@@ -175,10 +175,7 @@ namespace HCI_projekat
 
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
     }
 }
