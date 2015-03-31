@@ -174,8 +174,5 @@ namespace HCI_projekat
         {
 
         }
-
-       
-
     }
 }

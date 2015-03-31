@@ -118,6 +118,8 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(241, 219);
             this.label4.Name = "label4";
@@ -127,6 +129,8 @@
             // 
             // opis
             // 
+            this.opis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.opis.Location = new System.Drawing.Point(293, 219);
             this.opis.Name = "opis";
             this.opis.Size = new System.Drawing.Size(103, 100);
@@ -147,6 +151,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(0, 219);
             this.label5.Name = "label5";
@@ -156,6 +161,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(241, 166);
             this.label6.Name = "label6";
@@ -165,6 +171,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(0, 166);
             this.label7.Name = "label7";
@@ -174,6 +181,7 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(431, 166);
             this.label8.Name = "label8";
@@ -183,6 +191,7 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(241, 9);
             this.label9.Name = "label9";
@@ -192,6 +201,7 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(241, 36);
             this.label10.Name = "label10";
@@ -201,6 +211,7 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(241, 69);
             this.label11.Name = "label11";
@@ -211,20 +222,22 @@
             // cbMera
             // 
             this.cbMera.AccessibleName = "";
+            this.cbMera.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbMera.FormattingEnabled = true;
             this.cbMera.Items.AddRange(new object[] {
             "Merica",
             "Barel",
             "Tona",
             "Kilogram"});
-            this.cbMera.Location = new System.Drawing.Point(360, 6);
+            this.cbMera.Location = new System.Drawing.Point(337, 6);
             this.cbMera.Name = "cbMera";
             this.cbMera.Size = new System.Drawing.Size(200, 21);
             this.cbMera.TabIndex = 21;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(360, 36);
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox3.Location = new System.Drawing.Point(337, 36);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(200, 20);
             this.textBox3.TabIndex = 22;
@@ -232,7 +245,8 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(360, 69);
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dateTimePicker1.Location = new System.Drawing.Point(337, 69);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 23;
@@ -310,6 +324,7 @@
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(431, 219);
             this.label14.Name = "label14";
@@ -319,6 +334,7 @@
             // 
             // checkedListBox1
             // 
+            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(493, 219);
             this.checkedListBox1.Name = "checkedListBox1";
@@ -327,6 +343,7 @@
             // 
             // rbEkp1
             // 
+            this.rbEkp1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEkp1.AutoSize = true;
             this.rbEkp1.Location = new System.Drawing.Point(125, 166);
             this.rbEkp1.Name = "rbEkp1";
@@ -338,6 +355,7 @@
             // 
             // rbEksp2
             // 
+            this.rbEksp2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEksp2.AutoSize = true;
             this.rbEksp2.Location = new System.Drawing.Point(171, 166);
             this.rbEksp2.Name = "rbEksp2";
@@ -349,6 +367,7 @@
             // 
             // rbSV2
             // 
+            this.rbSV2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV2.AutoSize = true;
             this.rbSV2.Location = new System.Drawing.Point(598, 164);
             this.rbSV2.Name = "rbSV2";
@@ -360,6 +379,7 @@
             // 
             // rbSV1
             // 
+            this.rbSV1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV1.AutoSize = true;
             this.rbSV1.Location = new System.Drawing.Point(552, 164);
             this.rbSV1.Name = "rbSV1";
@@ -371,6 +391,7 @@
             // 
             // rbObn2
             // 
+            this.rbObn2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn2.AutoSize = true;
             this.rbObn2.Location = new System.Drawing.Point(356, 162);
             this.rbObn2.Name = "rbObn2";
@@ -382,6 +403,7 @@
             // 
             // rbObn1
             // 
+            this.rbObn1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn1.AutoSize = true;
             this.rbObn1.Location = new System.Drawing.Point(310, 162);
             this.rbObn1.Name = "rbObn1";
