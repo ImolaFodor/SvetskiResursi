@@ -16,7 +16,7 @@ namespace SvetskiResursi
     {
         public string etikete;
         //Dictionary<string, Resurs> fajl1;
-        Dictionary<string, Resurs> r = SvetskiResursi.Resursi.getInstance().getAll();
+        Dictionary<string, Resurs> r;
         public tabelaPrikaza()   
         {
             InitializeComponent();
