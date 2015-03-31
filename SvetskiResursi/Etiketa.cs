@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace SvetskiResursi
 {
@@ -32,6 +35,10 @@ namespace SvetskiResursi
         public void Dodaj(Etiketa t)
         {
             tr.Add(t.oznaka, t);
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("Etikete.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, tr);
+            stream.Close();
         }
 
 

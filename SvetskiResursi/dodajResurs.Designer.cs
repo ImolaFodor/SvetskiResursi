@@ -1,6 +1,6 @@
-﻿namespace HCI_projekat
+﻿namespace SvetskiResursi
 {
-    partial class FormV
+    partial class dodajResurs
     {
         /// <summary>
         /// Required designer variable.

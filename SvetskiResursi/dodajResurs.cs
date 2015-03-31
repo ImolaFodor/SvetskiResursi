@@ -13,46 +13,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace HCI_projekat
+namespace SvetskiResursi
 {
-    public partial class FormV : Form
+    public partial class dodajResurs : Form
     {
         private OpenFileDialog ofd = new OpenFileDialog();
-        Dictionary<string, tipResursa> fajl1;
-        Dictionary<string, Etiketa> fajl2;
-        Dictionary<string, Resurs> fajl3;
 
-        public FormV()
+        public dodajResurs()
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
-
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Tipovi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-            fajl1 = (Dictionary<string, tipResursa>)formatter.Deserialize(stream);
-            stream.Close();
-
-            IFormatter formatter2 = new BinaryFormatter();
-            Stream stream2 = new FileStream("Etikete.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-            fajl2 = (Dictionary<string, Etiketa>)formatter2.Deserialize(stream2);
-            stream2.Close();
-
-          /*  IFormatter formatter3 = new BinaryFormatter();
-            Stream stream3 = new FileStream("Resursi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
-            fajl3 = (Dictionary<string, Resurs>)formatter3.Deserialize(stream3);
-            stream3.Close();*/
-            //PUNIS COMBO SA SVIM NOVIM
-            //  Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
-            //Dictionary<string, Etiketa> privremeni2 = SvetskiResursi.Etikete.getInstance().getAll();
-
-
-            foreach (tipResursa tip in fajl1.Values)
+                 
+            
+            
+            foreach (tipResursa tip in SvetskiResursi.tipoviResursa.getInstance().getAll().Values)
             {
                 comboTipResursa.Items.Add(tip.oznaka);
 
             }
 
-             foreach (Etiketa etiketa in fajl2.Values)
+            foreach (Etiketa etiketa in SvetskiResursi.Etikete.getInstance().getAll().Values)
              {
                  checkedListBox1.Items.Add(etiketa.oznaka);
 
@@ -115,7 +95,7 @@ namespace HCI_projekat
 
             //Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
 
-            foreach (tipResursa tip in fajl1.Values)
+                  foreach (tipResursa tip in SvetskiResursi.tipoviResursa.getInstance().getAll().Values)
             {
 
                 if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
@@ -156,12 +136,6 @@ namespace HCI_projekat
                 else*/
                 {
                     SvetskiResursi.Resursi.getInstance().Dodaj(res);
-                    Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
-
-                    IFormatter formatter = new BinaryFormatter();
-                    Stream stream = new FileStream("Resursi.txt", FileMode.Create, FileAccess.Write, FileShare.None);
-                    formatter.Serialize(stream, privremeni);
-                    stream.Close();
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

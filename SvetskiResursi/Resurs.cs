@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace SvetskiResursi
@@ -53,6 +56,10 @@ namespace SvetskiResursi
 
         public void Dodaj(Resurs t){
             tr.Add(t.oznaka, t);
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("Resursi.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, tr);
+            stream.Close();
         }
 
 
