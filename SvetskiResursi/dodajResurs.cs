@@ -37,10 +37,10 @@ namespace HCI_projekat
             fajl2 = (Dictionary<string, Etiketa>)formatter2.Deserialize(stream2);
             stream2.Close();
 
-            IFormatter formatter3 = new BinaryFormatter();
+          /*  IFormatter formatter3 = new BinaryFormatter();
             Stream stream3 = new FileStream("Resursi.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
             fajl3 = (Dictionary<string, Resurs>)formatter3.Deserialize(stream3);
-            stream3.Close();
+            stream3.Close();*/
             //PUNIS COMBO SA SVIM NOVIM
             //  Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
             //Dictionary<string, Etiketa> privremeni2 = SvetskiResursi.Etikete.getInstance().getAll();
