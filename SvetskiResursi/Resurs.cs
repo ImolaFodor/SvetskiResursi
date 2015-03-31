@@ -57,7 +57,7 @@ namespace SvetskiResursi
         public void Dodaj(Resurs t){
             tr.Add(t.oznaka, t);
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("Resursi.bin", FileMode.Append, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, tr);
             stream.Close();
         }

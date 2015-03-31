@@ -48,7 +48,7 @@ namespace SvetskiResursi
 
         public void Dodaj(tipResursa t){
             tr.Add(t.oznaka, t);
-
+            memorisiDat();
         }
 
 
@@ -56,7 +56,7 @@ namespace SvetskiResursi
             IFormatter formatter = new BinaryFormatter();
 
 
-            Stream stream = new FileStream("Tipovi.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("Tipovi.bin", FileMode.Append, FileAccess.Write, FileShare.None);
             
             formatter.Serialize(stream, tr);
             stream.Close();

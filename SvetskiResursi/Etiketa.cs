@@ -36,7 +36,7 @@ namespace SvetskiResursi
         {
             tr.Add(t.oznaka, t);
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Etikete.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream = new FileStream("Etikete.bin", FileMode.Append, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, tr);
             stream.Close();
         }

@@ -21,6 +21,8 @@ namespace SvetskiResursi
         private Regex rx_oz = null;
         private Regex rx_ime = null;
         private bool formIsValid = true;
+        private System.Windows.Forms.ErrorProvider errorProviderOz;
+        private System.Windows.Forms.ErrorProvider errorProviderIm;
 
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 
@@ -71,13 +73,6 @@ namespace SvetskiResursi
             if (formIsValid)
             {
                 SvetskiResursi.tipoviResursa.getInstance().Dodaj(tipRes);
-                Dictionary<string, tipResursa> privremeni = SvetskiResursi.tipoviResursa.getInstance().getAll();
-
-                IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream("Tipovi.txt", FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, privremeni);
-                stream.Close();
-
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

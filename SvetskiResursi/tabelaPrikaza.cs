@@ -32,7 +32,7 @@ namespace SvetskiResursi
             stream.Close();
 
             //Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
-            foreach (Resurs resurs in SvetskiResursi.Resursi.getInstance().getAll().Values)
+            foreach (Resurs resurs in r.Values)
                {
                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
