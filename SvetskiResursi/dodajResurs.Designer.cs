@@ -41,10 +41,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.cbEkpl = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbVaznost = new System.Windows.Forms.ComboBox();
-            this.cbObnovljivo = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -61,6 +58,12 @@
             this.label14 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.rbEkp1 = new System.Windows.Forms.RadioButton();
+            this.rbEksp2 = new System.Windows.Forms.RadioButton();
+            this.rbSV2 = new System.Windows.Forms.RadioButton();
+            this.rbSV1 = new System.Windows.Forms.RadioButton();
+            this.rbObn2 = new System.Windows.Forms.RadioButton();
+            this.rbObn1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,6 +135,7 @@
             // 
             // ikonica
             // 
+            this.ikonica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ikonica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ikonica.Location = new System.Drawing.Point(74, 275);
             this.ikonica.Name = "ikonica";
@@ -168,17 +172,6 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Moguca eksploatacija?";
             // 
-            // cbEkpl
-            // 
-            this.cbEkpl.FormattingEnabled = true;
-            this.cbEkpl.Items.AddRange(new object[] {
-            "DA",
-            "NE"});
-            this.cbEkpl.Location = new System.Drawing.Point(372, 11);
-            this.cbEkpl.Name = "cbEkpl";
-            this.cbEkpl.Size = new System.Drawing.Size(121, 21);
-            this.cbEkpl.TabIndex = 14;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -187,28 +180,6 @@
             this.label8.Size = new System.Drawing.Size(115, 13);
             this.label8.TabIndex = 15;
             this.label8.Text = "Od strateske vaznosti?";
-            // 
-            // cbVaznost
-            // 
-            this.cbVaznost.FormattingEnabled = true;
-            this.cbVaznost.Items.AddRange(new object[] {
-            "DA",
-            "NE"});
-            this.cbVaznost.Location = new System.Drawing.Point(372, 117);
-            this.cbVaznost.Name = "cbVaznost";
-            this.cbVaznost.Size = new System.Drawing.Size(121, 21);
-            this.cbVaznost.TabIndex = 16;
-            // 
-            // cbObnovljivo
-            // 
-            this.cbObnovljivo.FormattingEnabled = true;
-            this.cbObnovljivo.Items.AddRange(new object[] {
-            "DA",
-            "NE"});
-            this.cbObnovljivo.Location = new System.Drawing.Point(372, 61);
-            this.cbObnovljivo.Name = "cbObnovljivo";
-            this.cbObnovljivo.Size = new System.Drawing.Size(121, 21);
-            this.cbObnovljivo.TabIndex = 17;
             // 
             // label9
             // 
@@ -239,6 +210,7 @@
             // 
             // cbMera
             // 
+            this.cbMera.AccessibleName = "";
             this.cbMera.FormattingEnabled = true;
             this.cbMera.Items.AddRange(new object[] {
             "Merica",
@@ -267,6 +239,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Location = new System.Drawing.Point(180, 352);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -299,23 +272,25 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(397, 369);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 27;
-            this.button2.Text = "OK";
+            this.button2.Text = "Potvrdi";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button3.Location = new System.Drawing.Point(497, 369);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 28;
-            this.button3.Text = "Cancel";
+            this.button3.Text = "Otkazi";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -325,6 +300,7 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(12, 382);
             this.label13.Name = "label13";
@@ -349,11 +325,84 @@
             this.checkedListBox1.Size = new System.Drawing.Size(107, 64);
             this.checkedListBox1.TabIndex = 33;
             // 
+            // rbEkp1
+            // 
+            this.rbEkp1.AutoSize = true;
+            this.rbEkp1.Location = new System.Drawing.Point(372, 15);
+            this.rbEkp1.Name = "rbEkp1";
+            this.rbEkp1.Size = new System.Drawing.Size(40, 17);
+            this.rbEkp1.TabIndex = 34;
+            this.rbEkp1.TabStop = true;
+            this.rbEkp1.Text = "DA";
+            this.rbEkp1.UseVisualStyleBackColor = true;
+            // 
+            // rbEksp2
+            // 
+            this.rbEksp2.AutoSize = true;
+            this.rbEksp2.Location = new System.Drawing.Point(453, 15);
+            this.rbEksp2.Name = "rbEksp2";
+            this.rbEksp2.Size = new System.Drawing.Size(40, 17);
+            this.rbEksp2.TabIndex = 35;
+            this.rbEksp2.TabStop = true;
+            this.rbEksp2.Text = "NE";
+            this.rbEksp2.UseVisualStyleBackColor = true;
+            // 
+            // rbSV2
+            // 
+            this.rbSV2.AutoSize = true;
+            this.rbSV2.Location = new System.Drawing.Point(453, 117);
+            this.rbSV2.Name = "rbSV2";
+            this.rbSV2.Size = new System.Drawing.Size(40, 17);
+            this.rbSV2.TabIndex = 38;
+            this.rbSV2.TabStop = true;
+            this.rbSV2.Text = "NE";
+            this.rbSV2.UseVisualStyleBackColor = true;
+            this.rbSV2.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            // 
+            // rbSV1
+            // 
+            this.rbSV1.AutoSize = true;
+            this.rbSV1.Location = new System.Drawing.Point(372, 115);
+            this.rbSV1.Name = "rbSV1";
+            this.rbSV1.Size = new System.Drawing.Size(40, 17);
+            this.rbSV1.TabIndex = 39;
+            this.rbSV1.TabStop = true;
+            this.rbSV1.Text = "DA";
+            this.rbSV1.UseVisualStyleBackColor = true;
+            // 
+            // rbObn2
+            // 
+            this.rbObn2.AutoSize = true;
+            this.rbObn2.Location = new System.Drawing.Point(453, 62);
+            this.rbObn2.Name = "rbObn2";
+            this.rbObn2.Size = new System.Drawing.Size(40, 17);
+            this.rbObn2.TabIndex = 40;
+            this.rbObn2.TabStop = true;
+            this.rbObn2.Text = "NE";
+            this.rbObn2.UseVisualStyleBackColor = true;
+            // 
+            // rbObn1
+            // 
+            this.rbObn1.AutoSize = true;
+            this.rbObn1.Location = new System.Drawing.Point(372, 61);
+            this.rbObn1.Name = "rbObn1";
+            this.rbObn1.Size = new System.Drawing.Size(40, 17);
+            this.rbObn1.TabIndex = 41;
+            this.rbObn1.TabStop = true;
+            this.rbObn1.Text = "DA";
+            this.rbObn1.UseVisualStyleBackColor = true;
+            // 
             // FormV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(589, 404);
+            this.Controls.Add(this.rbObn1);
+            this.Controls.Add(this.rbObn2);
+            this.Controls.Add(this.rbSV1);
+            this.Controls.Add(this.rbSV2);
+            this.Controls.Add(this.rbEksp2);
+            this.Controls.Add(this.rbEkp1);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -368,10 +417,7 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.cbObnovljivo);
-            this.Controls.Add(this.cbVaznost);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.cbEkpl);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -407,10 +453,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbEkpl;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbVaznost;
-        private System.Windows.Forms.ComboBox cbObnovljivo;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -427,6 +470,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.RadioButton rbEkp1;
+        private System.Windows.Forms.RadioButton rbEksp2;
+        private System.Windows.Forms.RadioButton rbSV2;
+        private System.Windows.Forms.RadioButton rbSV1;
+        private System.Windows.Forms.RadioButton rbObn2;
+        private System.Windows.Forms.RadioButton rbObn1;
     }
 }
 

@@ -37,13 +37,9 @@
             this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ikonica = new System.Windows.Forms.DataGridViewImageColumn();
-            this.eksploatacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obnovljivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.strateska_vaznost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.frekvencija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -57,26 +53,24 @@
             this.tip,
             this.opis,
             this.ikonica,
-            this.eksploatacija,
-            this.obnovljivo,
-            this.strateska_vaznost,
             this.jednica_mere,
             this.Cena,
             this.datum,
-            this.frekvencija,
             this.Etiketa});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 23);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1279, 349);
+            this.dataGridView1.Size = new System.Drawing.Size(943, 68);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // tblD
             // 
             this.tblD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblD.Location = new System.Drawing.Point(557, 283);
+            this.tblD.Location = new System.Drawing.Point(423, 381);
+            this.tblD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tblD.Name = "tblD";
-            this.tblD.Size = new System.Drawing.Size(75, 23);
+            this.tblD.Size = new System.Drawing.Size(112, 32);
             this.tblD.TabIndex = 1;
             this.tblD.Text = "Dodaj";
             this.tblD.UseVisualStyleBackColor = false;
@@ -85,19 +79,22 @@
             // tblI
             // 
             this.tblI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblI.Location = new System.Drawing.Point(687, 283);
+            this.tblI.Location = new System.Drawing.Point(592, 381);
+            this.tblI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tblI.Name = "tblI";
-            this.tblI.Size = new System.Drawing.Size(75, 23);
+            this.tblI.Size = new System.Drawing.Size(112, 32);
             this.tblI.TabIndex = 2;
             this.tblI.Text = "Izmeni";
             this.tblI.UseVisualStyleBackColor = false;
+            this.tblI.Click += new System.EventHandler(this.tblI_Click);
             // 
             // tblB
             // 
             this.tblB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblB.Location = new System.Drawing.Point(809, 283);
+            this.tblB.Location = new System.Drawing.Point(773, 381);
+            this.tblB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tblB.Name = "tblB";
-            this.tblB.Size = new System.Drawing.Size(75, 23);
+            this.tblB.Size = new System.Drawing.Size(112, 32);
             this.tblB.TabIndex = 3;
             this.tblB.Text = "Briši";
             this.tblB.UseVisualStyleBackColor = false;
@@ -127,21 +124,6 @@
             this.ikonica.HeaderText = "Slika";
             this.ikonica.Name = "ikonica";
             // 
-            // eksploatacija
-            // 
-            this.eksploatacija.HeaderText = "Eksploatacija";
-            this.eksploatacija.Name = "eksploatacija";
-            // 
-            // obnovljivo
-            // 
-            this.obnovljivo.HeaderText = "Obnovljivost";
-            this.obnovljivo.Name = "obnovljivo";
-            // 
-            // strateska_vaznost
-            // 
-            this.strateska_vaznost.HeaderText = "Strateska važnost";
-            this.strateska_vaznost.Name = "strateska_vaznost";
-            // 
             // jednica_mere
             // 
             this.jednica_mere.HeaderText = "Jedinica mere";
@@ -157,11 +139,6 @@
             this.datum.HeaderText = "Datum";
             this.datum.Name = "datum";
             // 
-            // frekvencija
-            // 
-            this.frekvencija.HeaderText = "Frekvencija ponavljanja";
-            this.frekvencija.Name = "frekvencija";
-            // 
             // Etiketa
             // 
             this.Etiketa.HeaderText = "Etiketa";
@@ -169,13 +146,15 @@
             // 
             // tabelaPrikaza
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1303, 426);
+            this.ClientSize = new System.Drawing.Size(973, 465);
             this.Controls.Add(this.tblB);
             this.Controls.Add(this.tblI);
             this.Controls.Add(this.tblD);
             this.Controls.Add(this.dataGridView1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "tabelaPrikaza";
             this.Text = "Tabela prikaza";
             this.Load += new System.EventHandler(this.tabelaPrikaza_Load);
@@ -195,13 +174,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tip;
         private System.Windows.Forms.DataGridViewTextBoxColumn opis;
         private System.Windows.Forms.DataGridViewImageColumn ikonica;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eksploatacija;
-        private System.Windows.Forms.DataGridViewTextBoxColumn obnovljivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn strateska_vaznost;
         private System.Windows.Forms.DataGridViewTextBoxColumn jednica_mere;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn frekvencija;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etiketa;
 
     }

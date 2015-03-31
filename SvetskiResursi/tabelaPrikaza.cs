@@ -42,13 +42,18 @@ namespace SvetskiResursi
                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
                    dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
-                   resurs.eksploatacija, resurs.obnovljivo, resurs.strateska_vaznost, resurs.jedinica_mere, resurs.cena, resurs.datum_kao, resurs.pojavljivanje, etikete});
+                    resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete});
 
                }
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tblI_Click(object sender, EventArgs e)
         {
 
         }

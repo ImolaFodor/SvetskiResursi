@@ -87,11 +87,24 @@ namespace HCI_projekat
             this.Close();
         }
 
+        //Metod za dodelu vrednosti radiobutton-a u promenjivu
+        public String oznaceno(String res, RadioButton rb1, RadioButton rb2)
+        {
+            bool oz = rb1.Checked;
+            if (oz)
+                res = rb1.Text;
+            else
+                res = rb2.Text;
+
+            return res;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             Resurs res = new Resurs();
             DialogObavestenja db = new DialogObavestenja();
             ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
+
 
 
             //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
@@ -114,9 +127,9 @@ namespace HCI_projekat
 
 
 
-            res.obnovljivo = cbObnovljivo.Text;
-            res.eksploatacija = cbEkpl.Text;
-            res.strateska_vaznost = cbVaznost.Text;
+            res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
+            res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
+            res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
             res.jedinica_mere = cbMera.Text;
             res.cena = textBox3.Text;
             res.datum_kao = "Datum";//datum
@@ -127,35 +140,42 @@ namespace HCI_projekat
 
 
             //Provera da li su obavezna polja popunjena 
-            /*if (res.oznaka.Equals("") || res.ime.Equals("") || res.tipResursa.Equals(""))
+            if (res.oznaka.Equals("") || res.ime.Equals("") || res.tipResursa.Equals(""))
             {
                 db.ShowDialog();
 
             }
-            
+
             else
-            {
-               if (text.Contains(res.oznaka))
-                    {
-                        ozo.ShowDialog();
+           /* {
+                if (text.Contains(res.oznaka))
+                {
+                    ozo.ShowDialog();
 
-                    }
-                    else
-                    {*/
-            SvetskiResursi.Resursi.getInstance().Dodaj(res);
-            Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
+                }
+                else*/
+                {
+                    SvetskiResursi.Resursi.getInstance().Dodaj(res);
+                    Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
 
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.txt", FileMode.Create, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, privremeni);
-            stream.Close();
+                    IFormatter formatter = new BinaryFormatter();
+                    Stream stream = new FileStream("Resursi.txt", FileMode.Create, FileAccess.Write, FileShare.None);
+                    formatter.Serialize(stream, privremeni);
+                    stream.Close();
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
 
+                }
+            //}
         }
 
         private void FormV_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
 
         }
