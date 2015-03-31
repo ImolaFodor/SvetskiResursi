@@ -488,7 +488,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dodavanje resursa";
+            this.Text = "DODAVANJE RESURSA";
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
