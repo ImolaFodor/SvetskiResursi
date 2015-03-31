@@ -24,11 +24,6 @@ namespace SvetskiResursi
             
         }
 
-        private void tblD_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void tabelaPrikaza_Load(object sender, EventArgs e)
         {
             IFormatter formatter = new BinaryFormatter();
@@ -47,16 +42,5 @@ namespace SvetskiResursi
                }
 
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void tblI_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
