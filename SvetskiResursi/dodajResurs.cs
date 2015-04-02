@@ -18,15 +18,19 @@ namespace SvetskiResursi
     public partial class dodajResurs : Form
     {
         private OpenFileDialog ofd = new OpenFileDialog();
+        Dictionary<string, tipResursa> tr;
 
         public dodajResurs()
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
-                 
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("Tipovi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+            tr = (Dictionary<string, tipResursa>)formatter.Deserialize(stream);
+            stream.Close();
             
-            
-            foreach (tipResursa tip in SvetskiResursi.tipoviResursa.getInstance().getAll().Values)
+            foreach (tipResursa tip in tr.Values)
             {
                 comboTipResursa.Items.Add(tip.oznaka);
 

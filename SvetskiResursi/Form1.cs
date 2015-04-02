@@ -35,12 +35,12 @@ namespace SvetskiResursi
 
 
             IFormatter formatter2 = new BinaryFormatter();
-            Stream stream2 = new FileStream("Tipovi.bin", FileMode.Open, FileAccess.Read, FileShare.None);
+            Stream stream2 = new FileStream("Tipovi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
             tr = (Dictionary<string, tipResursa>)formatter.Deserialize(stream2);
             stream2.Close();
 
             IFormatter formatter3 = new BinaryFormatter();
-            Stream stream3 = new FileStream("Etikete.bin", FileMode.Open, FileAccess.Read, FileShare.None);
+            Stream stream3 = new FileStream("Etikete.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
             e = (Dictionary<string, Etiketa>)formatter.Deserialize(stream3);
             stream3.Close();
 

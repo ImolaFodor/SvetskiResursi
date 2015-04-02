@@ -32,7 +32,7 @@ namespace SvetskiResursi
         /// //////////////////////////////////////
         /// </summary>
         public static tipoviResursa instanca=null;
-        private   tipoviResursa() { }
+        public   tipoviResursa() { }
         public static tipoviResursa getInstance()
         {
             if (instanca == null)
@@ -48,22 +48,12 @@ namespace SvetskiResursi
 
         public void Dodaj(tipResursa t){
             tr.Add(t.oznaka, t);
-            memorisiDat();
-        }
-
-
-        public void memorisiDat() {
             IFormatter formatter = new BinaryFormatter();
-
-
             Stream stream = new FileStream("Tipovi.bin", FileMode.Append, FileAccess.Write, FileShare.None);
-            
+
             formatter.Serialize(stream, tr);
             stream.Close();
-        
         }
-
-
 
         public Dictionary<string, tipResursa> getAll(){
                  return tr;

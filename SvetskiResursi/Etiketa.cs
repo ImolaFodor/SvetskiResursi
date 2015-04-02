@@ -23,7 +23,7 @@ namespace SvetskiResursi
         private Dictionary<String, Etiketa> tr = new Dictionary<String, Etiketa>();
 
         public static Etikete instanca = null;
-        private Etikete() { }
+        public Etikete() { }
         public static Etikete getInstance()
         {
             if (instanca == null)

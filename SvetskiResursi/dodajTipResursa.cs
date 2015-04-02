@@ -21,8 +21,8 @@ namespace SvetskiResursi
         private Regex rx_oz = null;
         private Regex rx_ime = null;
         private bool formIsValid = true;
-        private System.Windows.Forms.ErrorProvider errorProviderOz;
-        private System.Windows.Forms.ErrorProvider errorProviderIm;
+        /*private System.Windows.Forms.ErrorProvider errorProviderOz;
+        private System.Windows.Forms.ErrorProvider errorProviderIm;*/
 
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 

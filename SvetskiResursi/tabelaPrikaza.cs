@@ -26,13 +26,14 @@ namespace SvetskiResursi
 
         private void tabelaPrikaza_Load(object sender, EventArgs e)
         {
-            IFormatter formatter = new BinaryFormatter();
+            
+           /* IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream("Resursi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
             r = (Dictionary<string, Resurs>)formatter.Deserialize(stream);
-            stream.Close();
+            stream.Close();*/
 
             //Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
-            foreach (Resurs resurs in r.Values)
+            foreach (Resurs resurs in SvetskiResursi.Resursi.getInstance().getAll().Values)
                {
                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
