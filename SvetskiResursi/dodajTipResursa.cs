@@ -21,9 +21,7 @@ namespace SvetskiResursi
         private Regex rx_oz = null;
         private Regex rx_ime = null;
         private bool formIsValid = true;
-        /*private System.Windows.Forms.ErrorProvider errorProviderOz;
-        private System.Windows.Forms.ErrorProvider errorProviderIm;*/
-
+        
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 
 
@@ -117,7 +115,7 @@ namespace SvetskiResursi
             else
             {
                 //Ovim se podešava da se ispisuje greška.
-                errorProviderIm.SetError(ime_tip, "Ime je obavezna");
+                errorProviderIm.SetError(ime_tip, "Ime je obavezno");
                 formIsValid = false;
                 if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
                 {

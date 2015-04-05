@@ -64,6 +64,23 @@ namespace SvetskiResursi
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
+            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
+            if (rx_oz.Match(textBox1.Text).Success)
+            {
+                errorProviderEt.SetError(textBox1, ""); //Ovako se postavlja da se greška isključi
+                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
+            }
+            else
+            {
+                //Ovim se podešava da se ispisuje greška.
+                errorProviderEt.SetError(textBox1, "Oznaka je obavezna");
+                formIsValid = false;
+                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
+                {
+                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
+                }
+                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+            }
 
         }
 

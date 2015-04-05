@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.label5 = new System.Windows.Forms.Label();
+            this.errorProviderEt = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEt)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +63,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 18);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Boja:";
             // 
             // label3
@@ -71,7 +74,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 18);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Opis:";
             // 
             // label4
@@ -82,7 +85,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(227, 18);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 9;
             this.label4.Text = "-* polja su obavezna za unos";
             // 
             // richTextBox1
@@ -92,7 +95,7 @@
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(297, 131);
-            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
             // textBox1
@@ -102,7 +105,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(164, 24);
-            this.textBox1.TabIndex = 5;
+            this.textBox1.TabIndex = 1;
             this.textBox1.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // button1
@@ -112,7 +115,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 32);
-            this.button1.TabIndex = 6;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Biraj boju";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -153,8 +156,12 @@
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 15);
-            this.label5.TabIndex = 9;
+            this.label5.TabIndex = 4;
             this.label5.Text = "izabrana ";
+            // 
+            // errorProviderEt
+            // 
+            this.errorProviderEt.ContainerControl = this;
             // 
             // dodajEtiketu
             // 
@@ -176,6 +183,7 @@
             this.Name = "dodajEtiketu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj etiketu";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +202,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ErrorProvider errorProviderEt;
     }
 }

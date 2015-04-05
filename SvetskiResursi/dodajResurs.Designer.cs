@@ -64,16 +64,23 @@
             this.rbSV1 = new System.Windows.Forms.RadioButton();
             this.rbObn2 = new System.Windows.Forms.RadioButton();
             this.rbObn1 = new System.Windows.Forms.RadioButton();
+            this.errorProviderOz = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderIm = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderTp = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTp)).BeginInit();
             this.SuspendLayout();
             // 
             // oznaka
             // 
             this.oznaka.Location = new System.Drawing.Point(123, 17);
-            this.oznaka.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.oznaka.Margin = new System.Windows.Forms.Padding(4);
             this.oznaka.Name = "oznaka";
             this.oznaka.Size = new System.Drawing.Size(164, 24);
             this.oznaka.TabIndex = 0;
+            this.oznaka.Validating += new System.ComponentModel.CancelEventHandler(this.oznaka_Validating);
             // 
             // label1
             // 
@@ -88,10 +95,11 @@
             // ime
             // 
             this.ime.Location = new System.Drawing.Point(123, 60);
-            this.ime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ime.Margin = new System.Windows.Forms.Padding(4);
             this.ime.Name = "ime";
             this.ime.Size = new System.Drawing.Size(164, 24);
             this.ime.TabIndex = 2;
+            this.ime.Validating += new System.ComponentModel.CancelEventHandler(this.ime_Validating);
             // 
             // label2
             // 
@@ -117,10 +125,11 @@
             // 
             this.comboTipResursa.FormattingEnabled = true;
             this.comboTipResursa.Location = new System.Drawing.Point(123, 105);
-            this.comboTipResursa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboTipResursa.Margin = new System.Windows.Forms.Padding(4);
             this.comboTipResursa.Name = "comboTipResursa";
             this.comboTipResursa.Size = new System.Drawing.Size(164, 26);
             this.comboTipResursa.TabIndex = 6;
+            this.comboTipResursa.Validating += new System.ComponentModel.CancelEventHandler(this.comboTipResursa_Validating);
             // 
             // label4
             // 
@@ -139,7 +148,7 @@
             this.opis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.opis.Location = new System.Drawing.Point(489, 303);
-            this.opis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.opis.Margin = new System.Windows.Forms.Padding(4);
             this.opis.Name = "opis";
             this.opis.Size = new System.Drawing.Size(168, 137);
             this.opis.TabIndex = 9;
@@ -150,7 +159,7 @@
             this.ikonica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ikonica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ikonica.Location = new System.Drawing.Point(123, 303);
-            this.ikonica.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ikonica.Margin = new System.Windows.Forms.Padding(4);
             this.ikonica.Name = "ikonica";
             this.ikonica.Size = new System.Drawing.Size(100, 100);
             this.ikonica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -246,7 +255,7 @@
             "Tona",
             "Kilogram"});
             this.cbMera.Location = new System.Drawing.Point(562, 8);
-            this.cbMera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMera.Margin = new System.Windows.Forms.Padding(4);
             this.cbMera.Name = "cbMera";
             this.cbMera.Size = new System.Drawing.Size(331, 26);
             this.cbMera.TabIndex = 21;
@@ -255,7 +264,7 @@
             // 
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox3.Location = new System.Drawing.Point(562, 50);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(331, 24);
             this.textBox3.TabIndex = 22;
@@ -265,7 +274,7 @@
             // 
             this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dateTimePicker1.Location = new System.Drawing.Point(562, 96);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(331, 24);
             this.dateTimePicker1.TabIndex = 23;
@@ -274,7 +283,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Location = new System.Drawing.Point(150, 450);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 32);
             this.button1.TabIndex = 24;
@@ -301,7 +310,7 @@
             "Cest",
             "Univerzalan"});
             this.comboBox6.Location = new System.Drawing.Point(123, 155);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(164, 26);
             this.comboBox6.TabIndex = 26;
@@ -311,7 +320,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(727, 530);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 32);
             this.button2.TabIndex = 27;
@@ -324,7 +333,7 @@
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button3.Location = new System.Drawing.Point(882, 530);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(124, 32);
             this.button3.TabIndex = 28;
@@ -363,7 +372,7 @@
             this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBox1.FormattingEnabled = true;
             this.checkedListBox1.Location = new System.Drawing.Point(822, 303);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(180, 118);
             this.checkedListBox1.TabIndex = 33;
@@ -373,7 +382,7 @@
             this.rbEkp1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEkp1.AutoSize = true;
             this.rbEkp1.Location = new System.Drawing.Point(209, 230);
-            this.rbEkp1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbEkp1.Margin = new System.Windows.Forms.Padding(4);
             this.rbEkp1.Name = "rbEkp1";
             this.rbEkp1.Size = new System.Drawing.Size(48, 22);
             this.rbEkp1.TabIndex = 34;
@@ -386,7 +395,7 @@
             this.rbEksp2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEksp2.AutoSize = true;
             this.rbEksp2.Location = new System.Drawing.Point(284, 230);
-            this.rbEksp2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbEksp2.Margin = new System.Windows.Forms.Padding(4);
             this.rbEksp2.Name = "rbEksp2";
             this.rbEksp2.Size = new System.Drawing.Size(49, 22);
             this.rbEksp2.TabIndex = 35;
@@ -399,7 +408,7 @@
             this.rbSV2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV2.AutoSize = true;
             this.rbSV2.Location = new System.Drawing.Point(1014, 227);
-            this.rbSV2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbSV2.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV2.Name = "rbSV2";
             this.rbSV2.Size = new System.Drawing.Size(49, 22);
             this.rbSV2.TabIndex = 38;
@@ -412,7 +421,7 @@
             this.rbSV1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV1.AutoSize = true;
             this.rbSV1.Location = new System.Drawing.Point(939, 227);
-            this.rbSV1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbSV1.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV1.Name = "rbSV1";
             this.rbSV1.Size = new System.Drawing.Size(48, 22);
             this.rbSV1.TabIndex = 39;
@@ -425,7 +434,7 @@
             this.rbObn2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn2.AutoSize = true;
             this.rbObn2.Location = new System.Drawing.Point(593, 224);
-            this.rbObn2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbObn2.Margin = new System.Windows.Forms.Padding(4);
             this.rbObn2.Name = "rbObn2";
             this.rbObn2.Size = new System.Drawing.Size(49, 22);
             this.rbObn2.TabIndex = 40;
@@ -438,7 +447,7 @@
             this.rbObn1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn1.AutoSize = true;
             this.rbObn1.Location = new System.Drawing.Point(517, 224);
-            this.rbObn1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbObn1.Margin = new System.Windows.Forms.Padding(4);
             this.rbObn1.Name = "rbObn1";
             this.rbObn1.Size = new System.Drawing.Size(48, 22);
             this.rbObn1.TabIndex = 41;
@@ -446,7 +455,19 @@
             this.rbObn1.Text = "DA";
             this.rbObn1.UseVisualStyleBackColor = true;
             // 
-            // FormV
+            // errorProviderOz
+            // 
+            this.errorProviderOz.ContainerControl = this;
+            // 
+            // errorProviderIm
+            // 
+            this.errorProviderIm.ContainerControl = this;
+            // 
+            // errorProviderTp
+            // 
+            this.errorProviderTp.ContainerControl = this;
+            // 
+            // dodajResurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -485,11 +506,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.oznaka);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "FormV";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "dodajResurs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DODAVANJE RESURSA";
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,6 +556,9 @@
         private System.Windows.Forms.RadioButton rbSV1;
         private System.Windows.Forms.RadioButton rbObn2;
         private System.Windows.Forms.RadioButton rbObn1;
+        private System.Windows.Forms.ErrorProvider errorProviderOz;
+        private System.Windows.Forms.ErrorProvider errorProviderIm;
+        private System.Windows.Forms.ErrorProvider errorProviderTp;
     }
 }
 

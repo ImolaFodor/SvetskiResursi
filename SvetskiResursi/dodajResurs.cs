@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,10 +22,25 @@ namespace SvetskiResursi
         List<tipResursa> tr = new List<tipResursa>();
         List<Etiketa> et = new List<Etiketa>();
 
+        private Regex rx_oz = null;
+        private Regex rx_ime = null;
+        private Regex rx_tip = null;
+        private bool formIsValid = true;
+        Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
+
         public dodajResurs()
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
+
+            //za proveru upisa obaveznih polja
+            rx_oz = new Regex("^\\w+$");
+            rx_ime = new Regex("^\\w+$");
+            rx_tip = new Regex("^\\w+$");
+
+            errorRepeat.Add(oznaka, false);
+            errorRepeat.Add(ime, false);
+            errorRepeat.Add(comboTipResursa, false);
 
             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
@@ -101,8 +117,7 @@ namespace SvetskiResursi
             DialogObavestenja db = new DialogObavestenja();
             ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
 
-
-
+            
             //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
             res.oznaka = oznaka.Text;
             res.ime = ime.Text;
@@ -134,34 +149,86 @@ namespace SvetskiResursi
 
 
 
-            //Provera da li su obavezna polja popunjena 
-            if (res.oznaka.Equals("") || res.ime.Equals("") || res.tipResursa.Equals(""))
+            //provera da li su uneta obavezna polja
+            formIsValid = true;
+            this.ValidateChildren();
+            if (formIsValid)          
             {
-                db.ShowDialog();
-
-            }
-
-            else
-           /* {
-                if (text.Contains(res.oznaka))
-                {
-                    ozo.ShowDialog();
-
-                }
-                else*/
-                {
                     SvetskiResursi.Resursi.getInstance().Dodaj(res);
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
 
-                }
-            //}
+            }
         }
 
         private void FormV_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void oznaka_Validating(object sender, CancelEventArgs e)
+        {
+            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
+            if (rx_oz.Match(oznaka.Text).Success)
+            {
+                errorProviderOz.SetError(oznaka, ""); //Ovako se postavlja da se greška isključi
+                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
+            }
+            else
+            {
+                //Ovim se podešava da se ispisuje greška.
+                errorProviderOz.SetError(oznaka, "Oznaka je obavezna");
+                formIsValid = false;
+                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
+                {
+                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
+                }
+                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+            }
+
+        }
+
+        private void ime_Validating(object sender, CancelEventArgs e)
+        {
+            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
+            if (rx_oz.Match(ime.Text).Success)
+            {
+                errorProviderIm.SetError(ime, ""); //Ovako se postavlja da se greška isključi
+                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
+            }
+            else
+            {
+                //Ovim se podešava da se ispisuje greška.
+                errorProviderIm.SetError(ime, "Ime je obavezno");
+                formIsValid = false;
+                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
+                {
+                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
+                }
+                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+            }
+        }
+
+        private void comboTipResursa_Validating(object sender, CancelEventArgs e)
+        {
+            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
+            if (rx_oz.Match(comboTipResursa.Text).Success)
+            {
+                errorProviderTp.SetError(comboTipResursa, ""); //Ovako se postavlja da se greška isključi
+                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
+            }
+            else
+            {
+                //Ovim se podešava da se ispisuje greška.
+                errorProviderTp.SetError(comboTipResursa, "Tip je obavezan");
+                formIsValid = false;
+                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
+                {
+                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
+                }
+                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+            }
         }
     }
 }
