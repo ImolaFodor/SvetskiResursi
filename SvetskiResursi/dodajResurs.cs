@@ -18,25 +18,37 @@ namespace SvetskiResursi
     public partial class dodajResurs : Form
     {
         private OpenFileDialog ofd = new OpenFileDialog();
-        Dictionary<string, tipResursa> tr;
+        List<tipResursa> tr = new List<tipResursa>();
+        List<Etiketa> et = new List<Etiketa>();
 
         public dodajResurs()
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Tipovi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            tr = (Dictionary<string, tipResursa>)formatter.Deserialize(stream);
-            stream.Close();
-            
-            foreach (tipResursa tip in tr.Values)
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
-                comboTipResursa.Items.Add(tip.oznaka);
-
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while(stream.Position != stream.Length)
+                    tr.Add((tipResursa)formatter.Deserialize(stream));
+                stream.Close();
             }
 
-            foreach (Etiketa etiketa in SvetskiResursi.Etikete.getInstance().getAll().Values)
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+           
+            foreach (tipResursa tip in tr)
+             {
+                 comboTipResursa.Items.Add(tip.oznaka);
+
+             }
+
+            foreach (Etiketa etiketa in et)
              {
                  checkedListBox1.Items.Add(etiketa.oznaka);
 
@@ -97,16 +109,15 @@ namespace SvetskiResursi
             res.opis = opis.Text;
             res.tipResursa = comboTipResursa.Text;
 
-            //Dictionary<string, tipResursa> privremeni  =  SvetskiResursi.tipoviResursa.getInstance().getAll();
+                //ukoliko nismo uneli sliku resursku, iskoristicemo sliku iz tipa resursa
+                  foreach (tipResursa tip in tr)
+                  {
 
-                  foreach (tipResursa tip in SvetskiResursi.tipoviResursa.getInstance().getAll().Values)
-            {
-
-                if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
-                    res.ikonica = tip.ikonica;
-                else
-                    res.ikonica = (Image)ikonica.BackgroundImage;
-            }
+                        if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
+                            res.ikonica = tip.ikonica;
+                        else
+                            res.ikonica = (Image)ikonica.BackgroundImage;
+                  }
 
 
 

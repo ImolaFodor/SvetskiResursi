@@ -20,7 +20,6 @@ namespace SvetskiResursi
     [Serializable]
     class Etikete
     {
-        private Dictionary<String, Etiketa> tr = new Dictionary<String, Etiketa>();
 
         public static Etikete instanca = null;
         public Etikete() { }
@@ -34,18 +33,12 @@ namespace SvetskiResursi
 
         public void Dodaj(Etiketa t)
         {
-            tr.Add(t.oznaka, t);
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Etikete.bin", FileMode.Append, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, tr);
-            stream.Close();
+            using (Stream stream = new FileStream("Etikete.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, t);
+                stream.Close();
+            }
         }
-
-
-        public Dictionary<string, Etiketa> getAll()
-        {
-            return tr;
-        }
-
     }
 }

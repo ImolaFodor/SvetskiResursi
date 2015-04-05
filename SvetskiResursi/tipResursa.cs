@@ -22,15 +22,8 @@ namespace SvetskiResursi
         }
 
     [Serializable]
-    class tipoviResursa { 
-
-
-        private Dictionary<String, tipResursa> tr = new Dictionary<String, tipResursa>();
-       
-        
-        /// <summary>
-        /// //////////////////////////////////////
-        /// </summary>
+    class tipoviResursa {         
+ 
         public static tipoviResursa instanca=null;
         public   tipoviResursa() { }
         public static tipoviResursa getInstance()
@@ -39,25 +32,15 @@ namespace SvetskiResursi
                 instanca = new tipoviResursa();
             return instanca;
         } 
-       /// <summary>
-       /// /////////////////////////////////////////
-       /// </summary>
-       /// <param name="t"></param>
-
-
-
+       
         public void Dodaj(tipResursa t){
-            tr.Add(t.oznaka, t);
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Tipovi.bin", FileMode.Append, FileAccess.Write, FileShare.None);
 
-            formatter.Serialize(stream, tr);
-            stream.Close();
+            using (Stream stream = new FileStream("Tipovi.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, t);
+                stream.Close();
+            }
         }
-
-        public Dictionary<string, tipResursa> getAll(){
-                 return tr;
-        }
-
     }
 }

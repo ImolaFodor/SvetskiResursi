@@ -21,37 +21,11 @@ namespace SvetskiResursi
         {
             InitializeComponent();
 
-            Dictionary<string, Resurs> r = SvetskiResursi.Resursi.getInstance().getAll();
-            Dictionary<string, tipResursa> tr = SvetskiResursi.tipoviResursa.getInstance().getAll();
-            Dictionary<string, Etiketa> e = SvetskiResursi.Etikete.getInstance().getAll();
-
-            if (File.Exists("Resursi.bin") && File.Exists("Tipovi.bin") && File.Exists("Etikete.bin"))
+            if (!File.Exists("Resursi.bin") && !File.Exists("Tipovi.bin") && !File.Exists("Etikete.bin"))
             {
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            r = (Dictionary<string, Resurs>)formatter.Deserialize(stream);
-            stream.Close();
-
-
-
-            IFormatter formatter2 = new BinaryFormatter();
-            Stream stream2 = new FileStream("Tipovi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            tr = (Dictionary<string, tipResursa>)formatter.Deserialize(stream2);
-            stream2.Close();
-
-            IFormatter formatter3 = new BinaryFormatter();
-            Stream stream3 = new FileStream("Etikete.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            e = (Dictionary<string, Etiketa>)formatter.Deserialize(stream3);
-            stream3.Close();
-
-            }
-            else
-            {
-
                 File.Create("Resursi.bin");
                 File.Create("Tipovi.bin");
                 File.Create("Etikete.bin");
-
             }
             
 
@@ -117,36 +91,5 @@ namespace SvetskiResursi
         {
 
         }
-
-
-
-       /* public Dictionary<string, Resurs> getFajlResursi()
-        {
-            return fajl1;
-
-        }
-
-        public Dictionary<string, tipResursa> getFajlTipovi()
-        {
-            return fajl2;
-
-        }
-
-        public Dictionary<string, Etiketa> getFajlEtikete()
-        {
-            return fajl3;
-
-        }*/
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -40,7 +40,7 @@ namespace SvetskiResursi
 
     [Serializable]
     class Resursi {
-        private Dictionary<String, Resurs> r = new Dictionary<String, Resurs>();
+      //  private Dictionary<String, Resurs> r = new Dictionary<String, Resurs>();
         
         
         
@@ -55,21 +55,16 @@ namespace SvetskiResursi
        
 
         public void Dodaj(Resurs t){
-            r.Add(t.oznaka, t);
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.bin", FileMode.Append, FileAccess.Write, FileShare.None);
-            formatter.Serialize(stream, r);
-            stream.Close();
+          
+            using (Stream stream = new FileStream("Resursi.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                formatter.Serialize(stream, t);
+                stream.Close();
+            }
         }
 
-
-        public Dictionary<string, Resurs> getAll(){
-           /* IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            r = (Dictionary<string, Resurs>)formatter.Deserialize(stream);
-            stream.Close();*/
-        return r;
-        }
 
     }
 }
+

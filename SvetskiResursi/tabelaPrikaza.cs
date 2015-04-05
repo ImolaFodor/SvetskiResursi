@@ -15,8 +15,7 @@ namespace SvetskiResursi
     public partial class tabelaPrikaza : Form
     {
         public string etikete;
-        //Dictionary<string, Resurs> fajl1;
-        Dictionary<string, Resurs> r;
+        List<Resurs> r = new List<Resurs>();
         public tabelaPrikaza()   
         {
             InitializeComponent();
@@ -27,13 +26,16 @@ namespace SvetskiResursi
         private void tabelaPrikaza_Load(object sender, EventArgs e)
         {
             
-           /* IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("Resursi.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-            r = (Dictionary<string, Resurs>)formatter.Deserialize(stream);
-            stream.Close();*/
+            //Ucitavanje resursa iz fajla.
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while(stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    r.Add((Resurs)formatter.Deserialize(stream));
+                stream.Close();
+            }
 
-            //Dictionary<string, Resurs> privremeni = SvetskiResursi.Resursi.getInstance().getAll();
-            foreach (Resurs resurs in SvetskiResursi.Resursi.getInstance().getAll().Values)
+            foreach (Resurs resurs in r)
                {
                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
