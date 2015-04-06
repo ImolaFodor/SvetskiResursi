@@ -15,7 +15,8 @@ namespace SvetskiResursi
 {
     public partial class Form1 : Form
     {
-        
+        List<Resurs> r = new List<Resurs>();
+        public string etikete;
 
         public Form1()
         {
@@ -27,6 +28,8 @@ namespace SvetskiResursi
                 File.Create("Tipovi.bin");
                 File.Create("Etikete.bin");
             }
+
+            listView1_Fill();
             
 
         }
@@ -63,7 +66,7 @@ namespace SvetskiResursi
                 pbMape.BackgroundImage = mp2;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        /*private void Form1_Load(object sender, EventArgs e)
         {
           
             //kreiranje mogucih tipova i njihovo dodavanje na koren
@@ -77,7 +80,7 @@ namespace SvetskiResursi
             TreeNode root = new TreeNode("Resursi ",deca);
             treeView1.Nodes.Add(root);
             
-        }
+        }*/
 
         private void tabelaPrikazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -90,6 +93,36 @@ namespace SvetskiResursi
         private void prikazIkonice_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void listView1_Fill()
+        {
+            //Ucitavanje resursa iz fajla.
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    r.Add((Resurs)formatter.Deserialize(stream));
+                stream.Close();
+            }
+
+            foreach (Resurs re in r)
+            {
+                ListViewItem resurs = new ListViewItem();
+                resurs.Text = re.oznaka+" "+re.ime;
+                
+                resurs.Tag = re;
+
+                // Setup other things like SubItems, Font, ...
+
+                listView1.Items.Add(resurs);
+
+            }
         }
     }
 }

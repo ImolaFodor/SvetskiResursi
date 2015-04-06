@@ -36,7 +36,6 @@ namespace SvetskiResursi
             this.pbMape = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.Mape = new System.Windows.Forms.ComboBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
             this.resursiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeTipaResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +49,7 @@ namespace SvetskiResursi
             this.label3 = new System.Windows.Forms.Label();
             this.prikazIkonice = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -88,14 +88,6 @@ namespace SvetskiResursi
             this.Mape.Name = "Mape";
             this.Mape.Size = new System.Drawing.Size(121, 26);
             this.Mape.TabIndex = 3;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(12, 54);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(227, 220);
-            this.treeView1.TabIndex = 4;
             // 
             // resursiToolStripMenuItem
             // 
@@ -215,17 +207,27 @@ namespace SvetskiResursi
             this.label4.TabIndex = 9;
             this.label4.Text = "Ikonica";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(15, 54);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(224, 195);
+            this.listView1.TabIndex = 10;
+            this.listView1.Tag = "";
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 490);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.prikazIkonice);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.Mape);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pbMape);
@@ -235,7 +237,6 @@ namespace SvetskiResursi
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vođenje evidencije o mapi svetskih resursa";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -250,7 +251,6 @@ namespace SvetskiResursi
         private System.Windows.Forms.PictureBox pbMape;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox Mape;
-        private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ToolStripMenuItem resursiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeResursaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeTipaResursaToolStripMenuItem;
@@ -264,6 +264,7 @@ namespace SvetskiResursi
         private System.Windows.Forms.PictureBox prikazIkonice;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem tabelaPrikazaToolStripMenuItem;
+        private System.Windows.Forms.ListView listView1;
         
     }
 }
