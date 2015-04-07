@@ -233,5 +233,10 @@ namespace SvetskiResursi
                 errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
             }
         }
+
+        private void dodajResurs_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

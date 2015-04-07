@@ -510,6 +510,7 @@
             this.Name = "dodajResurs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DODAVANJE RESURSA";
+            this.Load += new System.EventHandler(this.dodajResurs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).EndInit();
