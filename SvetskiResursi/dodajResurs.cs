@@ -125,15 +125,17 @@ namespace SvetskiResursi
                              
                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 while (stream.Position != stream.Length)
+                {
                     resur = (Resurs)formatter.Deserialize(stream);
 
-                if (resur.oznaka != null)
-                    if (resur.oznaka.Equals(oznaka.Text))
-                    {
-                        Console.Write("Oznaka vec postoji.");
-                        oznaka.Text = "UNESITE NOVU OZNAKU";
-                        return;
-                    }
+                    if (resur.oznaka != null)
+                        if (resur.oznaka.Equals(oznaka.Text))
+                        {
+                            Console.Write("Oznaka vec postoji.");
+                            oznaka.Text = "UNESITE NOVU OZNAKU";
+                            return;
+                        }
+                }
 
                 stream.Close();
 
@@ -147,16 +149,13 @@ namespace SvetskiResursi
                 //ukoliko nismo uneli sliku resursku, iskoristicemo sliku iz tipa resursa
                 foreach (tipResursa tip in tr)
                 {
-
                     if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
                         res.ikonica = tip.ikonica;
                     else
                         res.ikonica = (Image)ikonica.BackgroundImage;
                 }
 
-
-
-
+                
                 res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
                 res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
                 res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
@@ -166,7 +165,6 @@ namespace SvetskiResursi
                 res.pojavljivanje = comboBox6.Text;
                 List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
                 res.oz_etiketa = cekirani;
-
 
 
                 //provera da li su uneta obavezna polja

@@ -387,7 +387,7 @@
             // 
             this.rbEkp1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEkp1.AutoSize = true;
-            this.rbEkp1.Location = new System.Drawing.Point(801, 118);
+            this.rbEkp1.Location = new System.Drawing.Point(801, 42);
             this.rbEkp1.Margin = new System.Windows.Forms.Padding(4);
             this.rbEkp1.Name = "rbEkp1";
             this.rbEkp1.Size = new System.Drawing.Size(48, 22);
@@ -400,7 +400,7 @@
             // 
             this.rbEksp2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEksp2.AutoSize = true;
-            this.rbEksp2.Location = new System.Drawing.Point(857, 118);
+            this.rbEksp2.Location = new System.Drawing.Point(857, 44);
             this.rbEksp2.Margin = new System.Windows.Forms.Padding(4);
             this.rbEksp2.Name = "rbEksp2";
             this.rbEksp2.Size = new System.Drawing.Size(49, 22);
@@ -413,7 +413,7 @@
             // 
             this.rbSV2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV2.AutoSize = true;
-            this.rbSV2.Location = new System.Drawing.Point(857, 78);
+            this.rbSV2.Location = new System.Drawing.Point(857, 120);
             this.rbSV2.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV2.Name = "rbSV2";
             this.rbSV2.Size = new System.Drawing.Size(49, 22);
@@ -426,7 +426,7 @@
             // 
             this.rbSV1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV1.AutoSize = true;
-            this.rbSV1.Location = new System.Drawing.Point(801, 78);
+            this.rbSV1.Location = new System.Drawing.Point(801, 120);
             this.rbSV1.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV1.Name = "rbSV1";
             this.rbSV1.Size = new System.Drawing.Size(48, 22);
@@ -439,7 +439,7 @@
             // 
             this.rbObn2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn2.AutoSize = true;
-            this.rbObn2.Location = new System.Drawing.Point(857, 42);
+            this.rbObn2.Location = new System.Drawing.Point(857, 80);
             this.rbObn2.Margin = new System.Windows.Forms.Padding(4);
             this.rbObn2.Name = "rbObn2";
             this.rbObn2.Size = new System.Drawing.Size(49, 22);
@@ -452,7 +452,7 @@
             // 
             this.rbObn1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn1.AutoSize = true;
-            this.rbObn1.Location = new System.Drawing.Point(801, 42);
+            this.rbObn1.Location = new System.Drawing.Point(801, 80);
             this.rbObn1.Margin = new System.Windows.Forms.Padding(4);
             this.rbObn1.Name = "rbObn1";
             this.rbObn1.Size = new System.Drawing.Size(48, 22);

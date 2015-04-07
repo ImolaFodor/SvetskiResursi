@@ -184,8 +184,6 @@ namespace SvetskiResursi
                 
                 //this.Controls.Add(listView1);
                     }
-                    
-
             }
                 
             }
