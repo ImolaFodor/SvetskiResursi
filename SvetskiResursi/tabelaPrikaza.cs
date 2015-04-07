@@ -110,5 +110,58 @@ namespace SvetskiResursi
         {
 
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            Resurs tr = new Resurs();
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                string TabOz = row.Cells[0].Value.ToString();
+
+                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+                {
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    while (stream.Position != stream.Length)
+                    {
+                        tr = ((Resurs)formatter.Deserialize(stream));
+                        if (tr.oznaka.Equals(TabOz))
+                        {
+                            ttOz.Text = tr.oznaka;
+                            ttIm.Text = tr.ime;
+                            ttTip.Text = tr.tipResursa;
+                            ttOp.Text = tr.opis;
+                            ttObn.Text = tr.obnovljivo;
+                            ttStv.Text = tr.strateska_vaznost;
+                            ttEkspl.Text = tr.eksploatacija;
+                            ttF.Text = tr.pojavljivanje;
+                            ttCen.Text = tr.cena;
+                            ttJm.Text = tr.jedinica_mere;
+                            ttEtik.Text = tr.oz_etiketa.ToString();
+                            tabIm.Image = tr.ikonica;
+                            
+                        }
+
+                    }
+                    stream.Close();
+                }
+            }
+
+        }
+
+        private void tbTip_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ttDatum_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ttObn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
