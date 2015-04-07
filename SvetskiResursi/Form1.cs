@@ -23,12 +23,21 @@ namespace SvetskiResursi
         {
             InitializeComponent();
 
-            if (!File.Exists("Resursi.bin") && !File.Exists("Tipovi.bin") && !File.Exists("Etikete.bin"))
+           /* if (!File.Exists("Resursi.bin") && !File.Exists("Tipovi.bin") && !File.Exists("Etikete.bin"))
             {
                 File.Create("Resursi.bin");
                 File.Create("Tipovi.bin");
                 File.Create("Etikete.bin");
-            }
+            }*/
+
+            if(!File.Exists("Resursi.bin"))
+                File.Create("Resursi.bin");
+
+            if(!File.Exists("Tipovi.bin"))
+                File.Create("Tipovi.bin");
+
+            if (!File.Exists("Etikete.bin"))
+                File.Create("Etikete.bin");
 
             if (!File.Equals("Resursi.bin", null) && !File.Equals("Tipovi.bin", null) && !File.Equals("Etikete.bin", null))
             listView1_Fill();
@@ -116,6 +125,8 @@ namespace SvetskiResursi
             //Ucitavanje resursa iz fajla.
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
+               // if (stream == null)
+                 //   Console.Write("Prvo pisanje");
                 var formatter = new BinaryFormatter();
                 while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
                     r.Add((Resurs)formatter.Deserialize(stream));

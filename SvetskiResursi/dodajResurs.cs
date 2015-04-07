@@ -21,6 +21,7 @@ namespace SvetskiResursi
         private OpenFileDialog ofd = new OpenFileDialog();
         List<tipResursa> tr = new List<tipResursa>();
         List<Etiketa> et = new List<Etiketa>();
+        Resurs resur;
 
         private Regex rx_oz = null;
         private Regex rx_ime = null;
@@ -114,54 +115,69 @@ namespace SvetskiResursi
         private void button2_Click(object sender, EventArgs e)
         {
             Resurs res = new Resurs();
+            resur = new Resurs();
             DialogObavestenja db = new DialogObavestenja();
             ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
 
-            
-            //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
-            res.oznaka = oznaka.Text;
-            res.ime = ime.Text;
-            res.opis = opis.Text;
-            res.tipResursa = comboTipResursa.Text;
+            //provera da li vec postoji resrs sa odredjenom oznakom
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                             
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    resur = (Resurs)formatter.Deserialize(stream);
+
+                if (resur.oznaka != null)
+                    if (resur.oznaka.Equals(oznaka.Text))
+                    {
+                        Console.Write("Oznaka vec postoji.");
+                        return;
+                    }
+
+                stream.Close();
+
+
+                //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
+                res.oznaka = oznaka.Text;
+                res.ime = ime.Text;
+                res.opis = opis.Text;
+                res.tipResursa = comboTipResursa.Text;
 
                 //ukoliko nismo uneli sliku resursku, iskoristicemo sliku iz tipa resursa
-                  foreach (tipResursa tip in tr)
-                  {
+                foreach (tipResursa tip in tr)
+                {
 
-                        if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
-                            res.ikonica = tip.ikonica;
-                        else
-                            res.ikonica = (Image)ikonica.BackgroundImage;
-                  }
-
-
-
-
-            res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
-            res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
-            res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
-            res.jedinica_mere = cbMera.Text;
-            res.cena = textBox3.Text;
-            res.datum_kao = dateTimePicker1.ToString().Split(' ')[2]; // "Datum";//datum
-            res.pojavljivanje = comboBox6.Text;
-            List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
-            res.oz_etiketa = cekirani;
+                    if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
+                        res.ikonica = tip.ikonica;
+                    else
+                        res.ikonica = (Image)ikonica.BackgroundImage;
+                }
 
 
 
-            //provera da li su uneta obavezna polja
-            formIsValid = true;
-            this.ValidateChildren();
-            if (formIsValid)          
-            {
+
+                res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
+                res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
+                res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
+                res.jedinica_mere = cbMera.Text;
+                res.cena = textBox3.Text;
+                res.datum_kao = dateTimePicker1.ToString().Split(' ')[2]; // "Datum";//datum
+                res.pojavljivanje = comboBox6.Text;
+                List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
+                res.oz_etiketa = cekirani;
+
+
+
+                //provera da li su uneta obavezna polja
+                formIsValid = true;
+                this.ValidateChildren();
+                if (formIsValid)
+                {
                     SvetskiResursi.Resursi.getInstance().Dodaj(res);
-                    //SvetskiResursi.Form1.listView1_Fill();
-                    
-
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                     SvetskiResursi.Form1.getInstance().Refresh();
-
+                }
             }
         }
 
