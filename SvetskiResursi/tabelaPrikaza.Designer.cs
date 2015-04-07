@@ -148,7 +148,6 @@
             this.tblD.TabIndex = 1;
             this.tblD.Text = "Dodaj";
             this.tblD.UseVisualStyleBackColor = false;
-            this.tblD.Click += new System.EventHandler(this.tblD_Click);
             // 
             // tblI
             // 
@@ -160,7 +159,6 @@
             this.tblI.TabIndex = 2;
             this.tblI.Text = "Izmeni";
             this.tblI.UseVisualStyleBackColor = false;
-            this.tblI.Click += new System.EventHandler(this.tblI_Click);
             // 
             // tblB
             // 
@@ -172,7 +170,6 @@
             this.tblB.TabIndex = 3;
             this.tblB.Text = "Briši";
             this.tblB.UseVisualStyleBackColor = false;
-            this.tblB.Click += new System.EventHandler(this.tblB_Click);
             // 
             // tabIm
             // 
@@ -196,7 +193,6 @@
             this.ttTip.Name = "ttTip";
             this.ttTip.Size = new System.Drawing.Size(100, 24);
             this.ttTip.TabIndex = 6;
-            this.ttTip.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // ttIm
             // 
@@ -219,7 +215,6 @@
             this.ttF.Name = "ttF";
             this.ttF.Size = new System.Drawing.Size(100, 24);
             this.ttF.TabIndex = 9;
-            this.ttF.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // ttJm
             // 
@@ -227,7 +222,6 @@
             this.ttJm.Name = "ttJm";
             this.ttJm.Size = new System.Drawing.Size(100, 24);
             this.ttJm.TabIndex = 10;
-            this.ttJm.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // ttCen
             // 
@@ -242,7 +236,6 @@
             this.ttDatum.Name = "ttDatum";
             this.ttDatum.Size = new System.Drawing.Size(100, 24);
             this.ttDatum.TabIndex = 12;
-            this.ttDatum.TextChanged += new System.EventHandler(this.ttDatum_TextChanged);
             // 
             // tabOz
             // 
@@ -252,7 +245,6 @@
             this.tabOz.Size = new System.Drawing.Size(64, 18);
             this.tabOz.TabIndex = 13;
             this.tabOz.Text = "Oznaka:";
-            this.tabOz.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbIme
             // 
@@ -271,7 +263,6 @@
             this.tbTip.Size = new System.Drawing.Size(32, 18);
             this.tbTip.TabIndex = 15;
             this.tbTip.Text = "Tip:";
-            this.tbTip.Click += new System.EventHandler(this.tbTip_Click);
             // 
             // label4
             // 
@@ -299,7 +290,6 @@
             this.label6.Size = new System.Drawing.Size(62, 18);
             this.label6.TabIndex = 18;
             this.label6.Text = "J. mere:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -309,7 +299,6 @@
             this.label7.Size = new System.Drawing.Size(47, 18);
             this.label7.TabIndex = 19;
             this.label7.Text = "Cena:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -319,7 +308,6 @@
             this.label8.Size = new System.Drawing.Size(56, 18);
             this.label8.TabIndex = 20;
             this.label8.Text = "Datum:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -347,7 +335,6 @@
             this.label11.Size = new System.Drawing.Size(57, 18);
             this.label11.TabIndex = 23;
             this.label11.Text = "St. vaz.";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // ttEkspl
             // 
@@ -355,7 +342,6 @@
             this.ttEkspl.Name = "ttEkspl";
             this.ttEkspl.Size = new System.Drawing.Size(100, 24);
             this.ttEkspl.TabIndex = 24;
-            this.ttEkspl.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
             // ttObn
             // 
@@ -363,7 +349,6 @@
             this.ttObn.Name = "ttObn";
             this.ttObn.Size = new System.Drawing.Size(100, 24);
             this.ttObn.TabIndex = 25;
-            this.ttObn.TextChanged += new System.EventHandler(this.ttObn_TextChanged);
             // 
             // ttStv
             // 
@@ -371,7 +356,6 @@
             this.ttStv.Name = "ttStv";
             this.ttStv.Size = new System.Drawing.Size(100, 24);
             this.ttStv.TabIndex = 26;
-            this.ttStv.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // ttEtik
             // 
@@ -391,6 +375,7 @@
             this.button1.TabIndex = 28;
             this.button1.Text = "Otkazi";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabelaPrikaza
             // 

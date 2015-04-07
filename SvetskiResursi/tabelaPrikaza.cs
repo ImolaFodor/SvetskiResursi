@@ -46,71 +46,8 @@ namespace SvetskiResursi
 
         }
 
-        private void tblI_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tblD_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tblB_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox10_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
+        // ispis selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             Resurs tr = new Resurs();
@@ -137,8 +74,9 @@ namespace SvetskiResursi
                             ttF.Text = tr.pojavljivanje;
                             ttCen.Text = tr.cena;
                             ttJm.Text = tr.jedinica_mere;
-                            ttEtik.Text = tr.oz_etiketa.ToString();
+                            ttEtik.Text = string.Join(",", tr.oz_etiketa.ToArray());
                             tabIm.Image = tr.ikonica;
+                            ttDatum.Text = tr.datum_kao;
                             
                         }
 
@@ -149,19 +87,9 @@ namespace SvetskiResursi
 
         }
 
-        private void tbTip_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void ttDatum_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ttObn_TextChanged(object sender, EventArgs e)
-        {
-
+            Close();
         }
     }
 }

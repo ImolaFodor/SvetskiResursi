@@ -142,7 +142,7 @@ namespace SvetskiResursi
             res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
             res.jedinica_mere = cbMera.Text;
             res.cena = textBox3.Text;
-            res.datum_kao = "Datum";//datum
+            res.datum_kao = dateTimePicker1.ToString().Split(' ')[2]; // "Datum";//datum
             res.pojavljivanje = comboBox6.Text;
             List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
             res.oz_etiketa = cekirani;
