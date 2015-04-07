@@ -55,7 +55,7 @@ namespace SvetskiResursi
             dlg3.ShowDialog();
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+      /*  private void button1_MouseClick(object sender, MouseEventArgs e)
         {
             //potrebno je preuzeti selektovano ime i na osnovu njega
             //videti koja mapa je u pitanju, a zatim je i prikazati
@@ -67,7 +67,7 @@ namespace SvetskiResursi
             else
                 pbMape.BackgroundImage = mp2;
         }
-
+        */
         /*private void Form1_Load(object sender, EventArgs e)
         {
           

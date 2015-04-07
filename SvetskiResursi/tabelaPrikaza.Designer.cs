@@ -173,6 +173,7 @@
             // 
             // tabIm
             // 
+            this.tabIm.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tabIm.BackColor = System.Drawing.SystemColors.ControlLight;
             this.tabIm.Location = new System.Drawing.Point(13, 319);
             this.tabIm.Name = "tabIm";
@@ -182,6 +183,7 @@
             // 
             // ttOz
             // 
+            this.ttOz.Enabled = false;
             this.ttOz.Location = new System.Drawing.Point(202, 319);
             this.ttOz.Name = "ttOz";
             this.ttOz.Size = new System.Drawing.Size(100, 24);

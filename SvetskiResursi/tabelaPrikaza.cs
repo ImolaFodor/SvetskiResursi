@@ -54,34 +54,37 @@ namespace SvetskiResursi
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                string TabOz = row.Cells[0].Value.ToString();
-
-                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+                if (row.Cells[0].Value != null)
                 {
-                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                    while (stream.Position != stream.Length)
-                    {
-                        tr = ((Resurs)formatter.Deserialize(stream));
-                        if (tr.oznaka.Equals(TabOz))
-                        {
-                            ttOz.Text = tr.oznaka;
-                            ttIm.Text = tr.ime;
-                            ttTip.Text = tr.tipResursa;
-                            ttOp.Text = tr.opis;
-                            ttObn.Text = tr.obnovljivo;
-                            ttStv.Text = tr.strateska_vaznost;
-                            ttEkspl.Text = tr.eksploatacija;
-                            ttF.Text = tr.pojavljivanje;
-                            ttCen.Text = tr.cena;
-                            ttJm.Text = tr.jedinica_mere;
-                            ttEtik.Text = string.Join(",", tr.oz_etiketa.ToArray());
-                            tabIm.Image = tr.ikonica;
-                            ttDatum.Text = tr.datum_kao;
-                            
-                        }
+                    string TabOz = row.Cells[0].Value.ToString();
 
+                    using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+                    {
+                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        while (stream.Position != stream.Length)
+                        {
+                            tr = ((Resurs)formatter.Deserialize(stream));
+                            if (tr.oznaka.Equals(TabOz))
+                            {
+                                ttOz.Text = tr.oznaka;
+                                ttIm.Text = tr.ime;
+                                ttTip.Text = tr.tipResursa;
+                                ttOp.Text = tr.opis;
+                                ttObn.Text = tr.obnovljivo;
+                                ttStv.Text = tr.strateska_vaznost;
+                                ttEkspl.Text = tr.eksploatacija;
+                                ttF.Text = tr.pojavljivanje;
+                                ttCen.Text = tr.cena;
+                                ttJm.Text = tr.jedinica_mere;
+                                ttEtik.Text = string.Join(",", tr.oz_etiketa.ToArray());
+                                tabIm.Image = tr.ikonica;
+                                ttDatum.Text = tr.datum_kao;
+
+                            }
+
+                        }
+                        stream.Close();
                     }
-                    stream.Close();
                 }
             }
 

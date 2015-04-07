@@ -34,8 +34,6 @@ namespace SvetskiResursi
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pbMape = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Mape = new System.Windows.Forms.ComboBox();
             this.resursiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeTipaResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,29 +64,6 @@ namespace SvetskiResursi
             this.pbMape.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMape.TabIndex = 1;
             this.pbMape.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(583, 452);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(78, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Izmeni";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
-            // 
-            // Mape
-            // 
-            this.Mape.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mape.FormattingEnabled = true;
-            this.Mape.Items.AddRange(new object[] {
-            "Mapa1",
-            "Mapa2"});
-            this.Mape.Location = new System.Drawing.Point(441, 456);
-            this.Mape.Name = "Mape";
-            this.Mape.Size = new System.Drawing.Size(121, 26);
-            this.Mape.TabIndex = 3;
             // 
             // resursiToolStripMenuItem
             // 
@@ -221,7 +196,7 @@ namespace SvetskiResursi
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(213, 163);
+            this.button2.Location = new System.Drawing.Point(164, 216);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -241,8 +216,6 @@ namespace SvetskiResursi
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.Mape);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.pbMape);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -261,9 +234,7 @@ namespace SvetskiResursi
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pbMape;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox Mape;
+         private System.Windows.Forms.PictureBox pbMape;
         private System.Windows.Forms.ToolStripMenuItem resursiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeResursaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeTipaResursaToolStripMenuItem;
