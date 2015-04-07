@@ -16,6 +16,7 @@ namespace SvetskiResursi
     public partial class Form1 : Form
     {
         List<Resurs> r = new List<Resurs>();
+        List<tipResursa> tr = new List<tipResursa>();
         public string etikete;
 
         public Form1()
@@ -29,6 +30,7 @@ namespace SvetskiResursi
                 File.Create("Etikete.bin");
             }
 
+            if (!File.Equals("Resursi.bin", null) && !File.Equals("Tipovi.bin", null) && !File.Equals("Etikete.bin", null))
             listView1_Fill();
             
 
@@ -100,8 +102,17 @@ namespace SvetskiResursi
 
         }
 
-        private void listView1_Fill()
+        public static Form1 instanca=null;
+        public static Form1 getInstance()
         {
+            if (instanca == null)
+                instanca = new Form1();
+            return instanca;
+        } 
+
+        public void listView1_Fill()
+        {
+            ImageList ListaSlika = new ImageList();
             //Ucitavanje resursa iz fajla.
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
@@ -111,18 +122,69 @@ namespace SvetskiResursi
                 stream.Close();
             }
 
-            foreach (Resurs re in r)
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
-                ListViewItem resurs = new ListViewItem();
-                resurs.Text = re.oznaka+" "+re.ime;
-                
-                resurs.Tag = re;
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    tr.Add((tipResursa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+
+            int i = -1;
+            foreach(tipResursa tre in tr){
+                listView1.View = View.List;
+                ListViewItem tresurs = new ListViewItem();
+                tresurs.Text = tre.oznaka + " " + tre.ime;
+
+                tresurs.Tag = tre;
 
                 // Setup other things like SubItems, Font, ...
 
+
+                listView1.Items.Add(tresurs);
+                
+                foreach (Resurs re in r)
+                 {
+
+                     if (re.ikonica == null)
+                     {
+                         ListaSlika.Images.Add(tre.ikonica);
+                         i++;
+                     }
+                     else
+                     {
+                         ListaSlika.Images.Add(re.ikonica);
+                         i++;
+                     }
+                    
+                     listView1.SmallImageList = ListaSlika;
+
+                     
+                    if(tre.oznaka==re.tipResursa){
+                listView1.View = View.List;
+                ListViewItem resurs = new ListViewItem();
+                resurs.Text = " "+re.oznaka+" "+re.ime;
+                resurs.ImageIndex =i;
+                resurs.Tag = re;
+                
+                // Setup other things like SubItems, Font, ...
+                
                 listView1.Items.Add(resurs);
+                
+                //this.Controls.Add(listView1);
+                    }
+                    
 
             }
+                
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            listView1_Fill();
+         
         }
     }
 }

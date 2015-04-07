@@ -156,9 +156,11 @@ namespace SvetskiResursi
             {
                     SvetskiResursi.Resursi.getInstance().Dodaj(res);
                     //SvetskiResursi.Form1.listView1_Fill();
+                    
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
+                    SvetskiResursi.Form1.getInstance().Refresh();
 
             }
         }
