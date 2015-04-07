@@ -119,7 +119,7 @@ namespace SvetskiResursi
             DialogObavestenja db = new DialogObavestenja();
             ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
 
-            //provera da li vec postoji resrs sa odredjenom oznakom
+            //provera da li vec postoji resurs sa odredjenom oznakom
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                              
@@ -131,6 +131,7 @@ namespace SvetskiResursi
                     if (resur.oznaka.Equals(oznaka.Text))
                     {
                         Console.Write("Oznaka vec postoji.");
+                        oznaka.Text = "UNESITE NOVU OZNAKU";
                         return;
                     }
 
