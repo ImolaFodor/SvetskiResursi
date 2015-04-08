@@ -17,7 +17,7 @@ namespace SvetskiResursi
     {
         List<Resurs> r = new List<Resurs>();
         List<tipResursa> tr = new List<tipResursa>();
-        Dictionary<string,ListViewItem> lista_tipova = new Dictionary<string, ListViewItem>();
+        Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         public string etikete;
 
@@ -149,7 +149,7 @@ namespace SvetskiResursi
 
                 listView1.View = View.List;
                 ListViewItem tresurs = new ListViewItem();
-                tresurs.Text = tre.oznaka + " " + tre.ime;
+                tresurs.Text = tre.oznaka;
 
                 tresurs.Tag = tre;
 
@@ -186,7 +186,7 @@ namespace SvetskiResursi
                 // Setup other things like SubItems, Font, ...
                 
                 listView1.Items.Add(resurs);
-                lista_tipova.Add(tre.oznaka, resurs);
+                lista_tipova.Add(resurs,tre.oznaka );
                 lista_resursa.Add(resurs);
                 
                 //this.Controls.Add(listView1);
@@ -223,12 +223,18 @@ namespace SvetskiResursi
                 if (listView1.Items[i].Text.StartsWith(trazeni))
                 {
                     listView1.Items.Clear();
-                    if (lista_tipova.ContainsKey(trazeni))
+                    foreach (KeyValuePair<ListViewItem,string> slvi in lista_tipova)
                     {
-                        foreach (ListViewItem lvi in lista_tipova.Values)
-                             listView1.Items.Add(lvi);
+
+                        if (slvi.Value==trazeni)
+                        {
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = slvi.Key.Text;
+                            lvi.ImageIndex = slvi.Key.ImageIndex;
+                            lvi.Tag = slvi.Key;
+                            listView1.Items.Add(lvi);
+                        }
                     }
-                    
                     
 
                 }
