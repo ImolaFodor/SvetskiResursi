@@ -17,6 +17,8 @@ namespace SvetskiResursi
     {
         List<Resurs> r = new List<Resurs>();
         List<tipResursa> tr = new List<tipResursa>();
+        List<ListViewItem> lista_tipova = new List<ListViewItem>();
+        List<ListViewItem> lista_resursa = new List<ListViewItem>();
         public string etikete;
 
         public Form1()
@@ -153,6 +155,7 @@ namespace SvetskiResursi
 
 
                 listView1.Items.Add(tresurs);
+                lista_tipova.Add(tresurs);
                 
                 foreach (Resurs re in r)
                  {
@@ -181,9 +184,12 @@ namespace SvetskiResursi
                 // Setup other things like SubItems, Font, ...
                 
                 listView1.Items.Add(resurs);
+                lista_resursa.Add(resurs);
                 
                 //this.Controls.Add(listView1);
                     }
+                    
+
             }
                 
             }
@@ -194,6 +200,36 @@ namespace SvetskiResursi
             listView1.Items.Clear();
             listView1_Fill();
          
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+           
+
+
+            }
+
+        private void button3_Click(object sender, EventArgs e)
+        {   
+            string trazeni = textBox2.Text;
+            for(int i=0; i<listView1.Items.Count;i++){
+                if (listView1.Items[i].Equals(trazeni))
+                {
+                    listView1.Select();
+                    listView1.Items[i].Selected = true;
+                    
+                }
+            }
         }
     }
 }
