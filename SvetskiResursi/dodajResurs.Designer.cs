@@ -70,6 +70,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
@@ -77,6 +80,9 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.Vizualizacija.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // oznaka
@@ -188,7 +194,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(589, 80);
+            this.label6.Location = new System.Drawing.Point(4, 2);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 18);
@@ -199,7 +205,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(589, 46);
+            this.label7.Location = new System.Drawing.Point(4, 12);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(181, 18);
@@ -210,7 +216,7 @@
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(589, 122);
+            this.label8.Location = new System.Drawing.Point(4, 2);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(182, 18);
@@ -387,7 +393,7 @@
             // 
             this.rbEkp1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEkp1.AutoSize = true;
-            this.rbEkp1.Location = new System.Drawing.Point(801, 42);
+            this.rbEkp1.Location = new System.Drawing.Point(215, 12);
             this.rbEkp1.Margin = new System.Windows.Forms.Padding(4);
             this.rbEkp1.Name = "rbEkp1";
             this.rbEkp1.Size = new System.Drawing.Size(48, 22);
@@ -399,7 +405,7 @@
             // 
             this.rbEksp2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.rbEksp2.AutoSize = true;
-            this.rbEksp2.Location = new System.Drawing.Point(857, 44);
+            this.rbEksp2.Location = new System.Drawing.Point(271, 12);
             this.rbEksp2.Margin = new System.Windows.Forms.Padding(4);
             this.rbEksp2.Name = "rbEksp2";
             this.rbEksp2.Size = new System.Drawing.Size(49, 22);
@@ -411,7 +417,7 @@
             // 
             this.rbSV2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV2.AutoSize = true;
-            this.rbSV2.Location = new System.Drawing.Point(857, 120);
+            this.rbSV2.Location = new System.Drawing.Point(271, -2);
             this.rbSV2.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV2.Name = "rbSV2";
             this.rbSV2.Size = new System.Drawing.Size(49, 22);
@@ -424,7 +430,7 @@
             // 
             this.rbSV1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.rbSV1.AutoSize = true;
-            this.rbSV1.Location = new System.Drawing.Point(801, 120);
+            this.rbSV1.Location = new System.Drawing.Point(215, 0);
             this.rbSV1.Margin = new System.Windows.Forms.Padding(4);
             this.rbSV1.Name = "rbSV1";
             this.rbSV1.Size = new System.Drawing.Size(48, 22);
@@ -437,7 +443,7 @@
             // 
             this.rbObn2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn2.AutoSize = true;
-            this.rbObn2.Location = new System.Drawing.Point(857, 80);
+            this.rbObn2.Location = new System.Drawing.Point(271, 0);
             this.rbObn2.Margin = new System.Windows.Forms.Padding(4);
             this.rbObn2.Name = "rbObn2";
             this.rbObn2.Size = new System.Drawing.Size(49, 22);
@@ -449,7 +455,7 @@
             // 
             this.rbObn1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbObn1.AutoSize = true;
-            this.rbObn1.Location = new System.Drawing.Point(801, 80);
+            this.rbObn1.Location = new System.Drawing.Point(215, 0);
             this.rbObn1.Margin = new System.Windows.Forms.Padding(4);
             this.rbObn1.Name = "rbObn1";
             this.rbObn1.Size = new System.Drawing.Size(48, 22);
@@ -489,23 +495,17 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panel3);
+            this.groupBox2.Controls.Add(this.panel2);
+            this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cbMera);
-            this.groupBox2.Controls.Add(this.rbEksp2);
-            this.groupBox2.Controls.Add(this.rbSV2);
-            this.groupBox2.Controls.Add(this.rbEkp1);
-            this.groupBox2.Controls.Add(this.rbSV1);
-            this.groupBox2.Controls.Add(this.rbObn2);
-            this.groupBox2.Controls.Add(this.rbObn1);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.comboBox6);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(12, 260);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1035, 196);
@@ -527,6 +527,36 @@
             this.Vizualizacija.TabIndex = 44;
             this.Vizualizacija.TabStop = false;
             this.Vizualizacija.Text = "Vizualizacija";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.rbEkp1);
+            this.panel1.Controls.Add(this.rbEksp2);
+            this.panel1.Location = new System.Drawing.Point(592, 39);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(337, 45);
+            this.panel1.TabIndex = 42;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.rbObn1);
+            this.panel2.Controls.Add(this.rbObn2);
+            this.panel2.Location = new System.Drawing.Point(592, 91);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(337, 38);
+            this.panel2.TabIndex = 43;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.rbSV1);
+            this.panel3.Controls.Add(this.rbSV2);
+            this.panel3.Location = new System.Drawing.Point(592, 135);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(337, 61);
+            this.panel3.TabIndex = 44;
             // 
             // dodajResurs
             // 
@@ -554,6 +584,12 @@
             this.groupBox2.PerformLayout();
             this.Vizualizacija.ResumeLayout(false);
             this.Vizualizacija.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -602,6 +638,9 @@
         private System.Windows.Forms.GroupBox Vizualizacija;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
