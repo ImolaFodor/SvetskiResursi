@@ -392,7 +392,6 @@
             this.rbEkp1.Name = "rbEkp1";
             this.rbEkp1.Size = new System.Drawing.Size(48, 22);
             this.rbEkp1.TabIndex = 34;
-            this.rbEkp1.TabStop = true;
             this.rbEkp1.Text = "DA";
             this.rbEkp1.UseVisualStyleBackColor = true;
             // 
@@ -405,7 +404,6 @@
             this.rbEksp2.Name = "rbEksp2";
             this.rbEksp2.Size = new System.Drawing.Size(49, 22);
             this.rbEksp2.TabIndex = 35;
-            this.rbEksp2.TabStop = true;
             this.rbEksp2.Text = "NE";
             this.rbEksp2.UseVisualStyleBackColor = true;
             // 
@@ -444,7 +442,6 @@
             this.rbObn2.Name = "rbObn2";
             this.rbObn2.Size = new System.Drawing.Size(49, 22);
             this.rbObn2.TabIndex = 40;
-            this.rbObn2.TabStop = true;
             this.rbObn2.Text = "NE";
             this.rbObn2.UseVisualStyleBackColor = true;
             // 
@@ -515,6 +512,7 @@
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalji";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // Vizualizacija
             // 
