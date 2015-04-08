@@ -17,7 +17,7 @@ namespace SvetskiResursi
     {
         List<Resurs> r = new List<Resurs>();
         List<tipResursa> tr = new List<tipResursa>();
-        List<ListViewItem> lista_tipova = new List<ListViewItem>();
+        Dictionary<string,ListViewItem> lista_tipova = new Dictionary<string, ListViewItem>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         public string etikete;
 
@@ -145,6 +145,8 @@ namespace SvetskiResursi
 
             int i = -1;
             foreach(tipResursa tre in tr){
+                
+
                 listView1.View = View.List;
                 ListViewItem tresurs = new ListViewItem();
                 tresurs.Text = tre.oznaka + " " + tre.ime;
@@ -155,7 +157,7 @@ namespace SvetskiResursi
 
 
                 listView1.Items.Add(tresurs);
-                lista_tipova.Add(tresurs);
+                
                 
                 foreach (Resurs re in r)
                  {
@@ -184,6 +186,7 @@ namespace SvetskiResursi
                 // Setup other things like SubItems, Font, ...
                 
                 listView1.Items.Add(resurs);
+                lista_tipova.Add(tre.oznaka, resurs);
                 lista_resursa.Add(resurs);
                 
                 //this.Controls.Add(listView1);
@@ -214,7 +217,22 @@ namespace SvetskiResursi
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            string trazeni = textBox1.Text;
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                if (listView1.Items[i].Text.StartsWith(trazeni))
+                {
+                    listView1.Items.Clear();
+                    if (lista_tipova.ContainsKey(trazeni))
+                    {
+                        foreach (ListViewItem lvi in lista_tipova.Values)
+                             listView1.Items.Add(lvi);
+                    }
+                    
+                    
+
+                }
+            }
 
 
             }
@@ -223,7 +241,7 @@ namespace SvetskiResursi
         {   
             string trazeni = textBox2.Text;
             for(int i=0; i<listView1.Items.Count;i++){
-                if (listView1.Items[i].Equals(trazeni))
+                if (listView1.Items[i].Text.StartsWith(trazeni))
                 {
                     listView1.Select();
                     listView1.Items[i].Selected = true;
