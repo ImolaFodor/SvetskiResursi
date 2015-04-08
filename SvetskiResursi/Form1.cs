@@ -20,6 +20,7 @@ namespace SvetskiResursi
         Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         public string etikete;
+        bool waterMarkActive=true;
 
         public Form1()
         {
@@ -43,6 +44,55 @@ namespace SvetskiResursi
 
             if (!File.Equals("Resursi.bin", null) && !File.Equals("Tipovi.bin", null) && !File.Equals("Etikete.bin", null))
             listView1_Fill();
+
+            this.waterMarkActive = true;
+this.textBox1.ForeColor = Color.Gray;
+this.textBox1.Text = "Unesite oznaku tipa...";
+
+this.textBox1.GotFocus += (source, e) =>
+  {
+    if (this.waterMarkActive)
+    {
+      this.waterMarkActive = false;
+      this.textBox1.Text = "";
+      this.textBox1.ForeColor = Color.Black;
+    }
+  };
+
+this.textBox1.LostFocus += (source, e) =>
+  {
+      if (!this.waterMarkActive && string.IsNullOrEmpty(this.textBox1.Text))
+      {
+          this.waterMarkActive = true;
+          this.textBox1.Text = "Unesite oznaku tipa...";
+          this.textBox1.ForeColor = Color.Gray;
+      }
+  };
+
+
+this.waterMarkActive = true;
+this.textBox2.ForeColor = Color.Gray;
+this.textBox2.Text = "Unesite tip ili resurs...";
+
+this.textBox2.GotFocus += (source, e) =>
+  {
+    if (this.waterMarkActive)
+    {
+      this.waterMarkActive = false;
+      this.textBox2.Text = "";
+      this.textBox2.ForeColor = Color.Black;
+    }
+  };
+
+this.textBox2.LostFocus += (source, e) =>
+  {
+      if (!this.waterMarkActive && string.IsNullOrEmpty(this.textBox2.Text))
+      {
+          this.waterMarkActive = true;
+          this.textBox2.Text = "Unesite tip ili resurs...";
+          this.textBox2.ForeColor = Color.Gray;
+      }
+  };
             
 
         }
