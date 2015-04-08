@@ -179,7 +179,7 @@ namespace SvetskiResursi
                     if(tre.oznaka==re.tipResursa){
                 listView1.View = View.List;
                 ListViewItem resurs = new ListViewItem();
-                resurs.Text = " "+re.oznaka+" "+re.ime;
+                resurs.Text = re.oznaka+" "+re.ime;
                 resurs.ImageIndex =i;
                 resurs.Tag = re;
                 
@@ -247,7 +247,7 @@ namespace SvetskiResursi
         {   
             string trazeni = textBox2.Text;
             for(int i=0; i<listView1.Items.Count;i++){
-                if (listView1.Items[i].Text.StartsWith(trazeni))
+                if (listView1.Items[i].Text==trazeni)
                 {
                     listView1.Select();
                     listView1.Items[i].Selected = true;
