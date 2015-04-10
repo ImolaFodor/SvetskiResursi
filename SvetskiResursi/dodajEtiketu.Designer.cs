@@ -124,10 +124,10 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(157, 349);
+            this.button2.Location = new System.Drawing.Point(225, 349);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 32);
+            this.button2.Size = new System.Drawing.Size(90, 32);
             this.button2.TabIndex = 7;
             this.button2.Text = "U redu";
             this.button2.UseVisualStyleBackColor = false;
@@ -137,12 +137,12 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(291, 349);
+            this.button3.Location = new System.Drawing.Point(323, 349);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 32);
+            this.button3.Size = new System.Drawing.Size(92, 32);
             this.button3.TabIndex = 8;
-            this.button3.Text = "Otkazi";
+            this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

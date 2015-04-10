@@ -73,6 +73,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
+            this.nTip = new System.Windows.Forms.Button();
+            this.nEtik = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
@@ -210,7 +212,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(181, 18);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Moguca eksploatacija?";
+            this.label7.Text = "Moguća eksploatacija?";
             // 
             // label8
             // 
@@ -221,7 +223,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(182, 18);
             this.label8.TabIndex = 15;
-            this.label8.Text = "Od strateske vaznosti?";
+            this.label8.Text = "Od strateske važnosti?";
             // 
             // label9
             // 
@@ -349,7 +351,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(124, 32);
             this.button3.TabIndex = 28;
-            this.button3.Text = "Otkazi";
+            this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -478,6 +480,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.nTip);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.oznaka);
             this.groupBox1.Controls.Add(this.label2);
@@ -546,6 +549,7 @@
             // 
             // Vizualizacija
             // 
+            this.Vizualizacija.Controls.Add(this.nEtik);
             this.Vizualizacija.Controls.Add(this.label5);
             this.Vizualizacija.Controls.Add(this.ikonica);
             this.Vizualizacija.Controls.Add(this.button1);
@@ -557,6 +561,30 @@
             this.Vizualizacija.TabIndex = 44;
             this.Vizualizacija.TabStop = false;
             this.Vizualizacija.Text = "Vizualizacija";
+            // 
+            // nTip
+            // 
+            this.nTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nTip.Location = new System.Drawing.Point(355, 116);
+            this.nTip.Margin = new System.Windows.Forms.Padding(4);
+            this.nTip.Name = "nTip";
+            this.nTip.Size = new System.Drawing.Size(74, 32);
+            this.nTip.TabIndex = 34;
+            this.nTip.Text = "Novi tip";
+            this.nTip.UseVisualStyleBackColor = true;
+            this.nTip.Click += new System.EventHandler(this.nTip_Click);
+            // 
+            // nEtik
+            // 
+            this.nEtik.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nEtik.Location = new System.Drawing.Point(345, 209);
+            this.nEtik.Margin = new System.Windows.Forms.Padding(4);
+            this.nEtik.Name = "nEtik";
+            this.nEtik.Size = new System.Drawing.Size(124, 32);
+            this.nEtik.TabIndex = 34;
+            this.nEtik.Text = "Nova etiketa";
+            this.nEtik.UseVisualStyleBackColor = true;
+            this.nEtik.Click += new System.EventHandler(this.nEtik_Click);
             // 
             // dodajResurs
             // 
@@ -642,6 +670,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button nEtik;
+        private System.Windows.Forms.Button nTip;
     }
 }
 

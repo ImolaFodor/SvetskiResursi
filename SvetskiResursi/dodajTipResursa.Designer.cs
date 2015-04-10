@@ -112,10 +112,10 @@
             // 
             this.opis_tip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.opis_tip.Location = new System.Drawing.Point(440, 8);
+            this.opis_tip.Location = new System.Drawing.Point(414, 8);
             this.opis_tip.Margin = new System.Windows.Forms.Padding(4);
             this.opis_tip.Name = "opis_tip";
-            this.opis_tip.Size = new System.Drawing.Size(153, 181);
+            this.opis_tip.Size = new System.Drawing.Size(179, 187);
             this.opis_tip.TabIndex = 6;
             this.opis_tip.Text = "";
             // 
@@ -156,10 +156,10 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(336, 263);
+            this.button2.Location = new System.Drawing.Point(412, 263);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 32);
+            this.button2.Size = new System.Drawing.Size(85, 32);
             this.button2.TabIndex = 10;
             this.button2.Text = "U redu";
             this.button2.UseVisualStyleBackColor = false;
@@ -169,12 +169,12 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(470, 263);
+            this.button3.Location = new System.Drawing.Point(505, 263);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 32);
+            this.button3.Size = new System.Drawing.Size(89, 32);
             this.button3.TabIndex = 11;
-            this.button3.Text = "Otkazi";
+            this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

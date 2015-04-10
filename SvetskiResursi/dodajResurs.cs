@@ -258,5 +258,17 @@ namespace SvetskiResursi
         {
 
         }
+
+        private void nTip_Click(object sender, EventArgs e)
+        {
+            dodajTipResursa trs = new dodajTipResursa();
+            trs.ShowDialog();
+        }
+
+        private void nEtik_Click(object sender, EventArgs e)
+        {
+            dodajEtiketu et = new dodajEtiketu();
+            et.ShowDialog();
+        }
     }
 }

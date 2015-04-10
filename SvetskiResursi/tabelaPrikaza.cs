@@ -94,5 +94,21 @@ namespace SvetskiResursi
         {
             Close();
         }
+
+        private void gbDet_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ttTip_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tblD_Click(object sender, EventArgs e)
+        {
+            dodajResurs dr = new dodajResurs();
+            dr.ShowDialog();
+        }
     }
 }
