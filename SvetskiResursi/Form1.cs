@@ -21,6 +21,9 @@ namespace SvetskiResursi
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         public string etikete;
         bool waterMarkActive=true;
+        public override bool AllowDrop { get; set; }
+        private Point pictureLocation;
+        ImageList ListaSlika = new ImageList();
 
         public Form1()
         {
@@ -93,9 +96,112 @@ this.textBox2.LostFocus += (source, e) =>
           this.textBox2.ForeColor = Color.Gray;
       }
   };
-            
 
+            listView1.MouseDown += listView1_MouseDown;
+            pbMape.AllowDrop = true;
+            pbMape.DragDrop += new DragEventHandler(this.pictureBox1_DragDrop);
+            pbMape.DragEnter += new DragEventHandler(this.pictureBox1_DragEnter);
         }
+
+
+
+
+        //DRAG&DROP
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            // If there is an image and it has a location, 
+            // paint it when the Form is repainted.
+            base.OnPaint(e);
+            if (pbMape != null && this.pictureLocation != Point.Empty)
+            {
+                e.Graphics.DrawImage(pbMape.Image, this.pictureLocation);
+            }
+        }
+
+        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            /*// Handle FileDrop data.
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // Assign the file names to a string array, in 
+                // case the user has selected multiple files.
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                try
+                {
+                    // Assign the first image to the picture variable.
+                    //pbMape = Image.FromFile(files[0]);
+                    // Set the picture location equal to the drop point.
+                    this.pictureLocation = this.PointToClient(new Point(e.X, e.Y));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
+
+            // Handle Bitmap data.
+            if (e.Data.GetDataPresent(DataFormats.Bitmap))
+            {
+                try
+                {
+                    // Create an Image and assign it to the picture variable.
+                    pbMape = (PictureBox)e.Data.GetData(DataFormats.Bitmap);
+                    // Set the picture location equal to the drop point.
+                    this.pictureLocation = this.PointToClient(new Point(e.X, e.Y));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
+            // Force the form to be redrawn with the image.
+            this.Invalidate();
+            ListViewItem selection = listView1.GetItemAt(e.X, e.Y);
+            var bmp = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
+            pbMape.Image = (Image)selection;*/
+
+            if(listView1.SelectedItems.Count==0)
+{
+return;
+}
+ListViewItem dragitem=listView1.SelectedItems[0];
+pbMape.Image=ListaSlika.Images[dragitem.ImageIndex];
+listView1.Items.Remove(dragitem);
+}
+        
+
+        private void pictureBox1_DragEnter(object sender, DragEventArgs e)
+        {
+            /*// If the data is a file or a bitmap, display the copy cursor.
+            if (e.Data.GetDataPresent(DataFormats.Bitmap) ||
+               e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+            if (e.Data.GetDataPresent(DataFormats.Bitmap))
+                e.Effect = DragDropEffects.Move;*/
+
+            int len = e.Data.GetFormats().Length - 1;
+            int i;
+            for (i = 0; i <= len; i++)
+            {
+                if (e.Data.GetFormats()[i].Equals("System.Windows.Forms.ListView+SelectedLis tViewItemCollection"))
+                {
+                    //The data from the drag source is moved to the target.	
+                    e.Effect = DragDropEffects.Move;
+                }
+            }
+
+}
+
+        //DRAG&DROP
 
 
         private void dodavanjeTipaResursaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,7 +266,10 @@ this.textBox2.LostFocus += (source, e) =>
 
         private void listView1_MouseDown(object sender, MouseEventArgs e)
         {
-
+            //ListViewItem selection = listView1.GetItemAt(e.X, e.Y);
+            
+            listView1.DoDragDrop(listView1.SelectedItems , DragDropEffects.Copy |
+      DragDropEffects.Move);
         }
 
         public static Form1 instanca=null;
@@ -173,7 +282,7 @@ this.textBox2.LostFocus += (source, e) =>
 
         public void listView1_Fill()
         {
-            ImageList ListaSlika = new ImageList();
+            
             //Ucitavanje resursa iz fajla.
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
@@ -304,6 +413,11 @@ this.textBox2.LostFocus += (source, e) =>
                     
                 }
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
