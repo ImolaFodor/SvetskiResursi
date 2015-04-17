@@ -64,6 +64,12 @@ namespace SvetskiResursi
             }
         }
 
+        public List<Etiketa> tags
+        {
+            get;
+            set;
+        }
+
 
     }
 }

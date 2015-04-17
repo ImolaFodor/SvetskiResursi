@@ -122,11 +122,26 @@ this.textBox2.LostFocus += (source, e) =>
             PictureBox pb = new PictureBox();
             pb.Parent = pbMape;
             Point po = PointToClient(new Point(e.X - 315, e.Y - 55));
-            pb.Location = po;
+            pb.Location = po; 
+
             ListViewItem dragitem= listView1.SelectedItems[0];
 
             pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
             pb.BackgroundImageLayout = ImageLayout.Center;
+            pb.Tag = dragitem;
+            ListViewItem lvi = (ListViewItem)pb.Tag;
+            Resurs r = (Resurs)lvi.Tag;
+            String etikete = string.Join(",", r.oz_etiketa.ToArray());
+
+            String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
+                               "Naziv:   " + r.ime + Environment.NewLine +
+                             "Tip:      " + r.tipResursa + Environment.NewLine +
+                             "Datum otkrivanja:   " + r.datum_kao.ToString() + Environment.NewLine +
+
+                             "Tagovi:   " + etikete + Environment.NewLine +
+                             "Opis:    " + r.opis;
+
+            new ToolTip().SetToolTip(pb, detalji);
 
             pb.Height = pb.Width = 75;
 
