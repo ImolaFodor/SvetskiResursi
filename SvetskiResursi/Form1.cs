@@ -187,7 +187,7 @@ this.textBox2.LostFocus += (source, e) =>
 
         private void dodavanjeResursaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dodajResurs dlg3 = new dodajResurs();
+            dodajResurs dlg3 = new dodajResurs(this);
             dlg3.ShowDialog();
         }
 
@@ -245,7 +245,9 @@ this.textBox2.LostFocus += (source, e) =>
 
         public void listView1_Fill()
         {
-            
+
+            tr.Clear();
+            r.Clear();
             //Ucitavanje resursa iz fajla.
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
@@ -319,9 +321,15 @@ this.textBox2.LostFocus += (source, e) =>
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void RefreshButtonClick(object sender, EventArgs e)
         {
-            foreach(ListViewItem item in listView1.Items)
+            RefreshList();
+        }
+
+
+        public void RefreshList()
+        {
+            foreach (ListViewItem item in listView1.Items)
                 listView1.Items.Remove(item);
 
             lista_tipova.Clear();
@@ -329,7 +337,6 @@ this.textBox2.LostFocus += (source, e) =>
 
 
             listView1_Fill();
-         
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -371,7 +378,8 @@ this.textBox2.LostFocus += (source, e) =>
             }
 
         private void button3_Click(object sender, EventArgs e)
-        {   
+        {
+            listView1.SelectedItems.Clear();
             string trazeni = textBox2.Text;
             for(int i=0; i<listView1.Items.Count;i++){
                 if (listView1.Items[i].Text==trazeni)

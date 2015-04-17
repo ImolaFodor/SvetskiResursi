@@ -113,7 +113,7 @@ namespace SvetskiResursi
 
         private void tblD_Click(object sender, EventArgs e)
         {
-            dodajResurs dr = new dodajResurs();
+            dodajResurs dr = new dodajResurs(null);
             dr.ShowDialog();
         }
 

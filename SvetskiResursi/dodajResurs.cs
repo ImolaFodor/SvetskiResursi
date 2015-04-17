@@ -29,9 +29,12 @@ namespace SvetskiResursi
         private bool formIsValid = true;
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 
-        public dodajResurs()
+        Form1 form = null;
+
+        public dodajResurs(Form1 form1)
         {
             InitializeComponent();
+            form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
             //za proveru upisa obaveznih polja
@@ -83,6 +86,7 @@ namespace SvetskiResursi
 
                 ikonica.BackgroundImage = image1;
             }
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -178,6 +182,8 @@ namespace SvetskiResursi
                     SvetskiResursi.Form1.getInstance().Refresh();
                 }
             }
+
+            form.RefreshList();
         }
 
         private void FormV_Load(object sender, EventArgs e)
