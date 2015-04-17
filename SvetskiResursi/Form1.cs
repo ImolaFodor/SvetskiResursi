@@ -19,6 +19,7 @@ namespace SvetskiResursi
         List<tipResursa> tr = new List<tipResursa>();
         Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
+        
         public string etikete;
         bool waterMarkActive=true;
         public override bool AllowDrop { get; set; }
@@ -28,6 +29,7 @@ namespace SvetskiResursi
         public Form1()
         {
             InitializeComponent();
+            
 
            /* if (!File.Exists("Resursi.bin") && !File.Exists("Tipovi.bin") && !File.Exists("Etikete.bin"))
             {
@@ -99,104 +101,53 @@ this.textBox2.LostFocus += (source, e) =>
 
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
-            pbMape.DragDrop += new DragEventHandler(this.pictureBox1_DragDrop);
-            pbMape.DragEnter += new DragEventHandler(this.pictureBox1_DragEnter);
         }
 
 
 
 
         //DRAG&DROP
-
-        protected override void OnPaint(PaintEventArgs e)
+        private void listView1_MouseDown(object sender, MouseEventArgs e)
         {
-            // If there is an image and it has a location, 
-            // paint it when the Form is repainted.
-            base.OnPaint(e);
-            if (pbMape != null && this.pictureLocation != Point.Empty)
-            {
-                e.Graphics.DrawImage(pbMape.Image, this.pictureLocation);
-            }
+
+            ListViewItem selection = listView1.GetItemAt(e.X, e.Y);
+            Bitmap img = (Bitmap)ListaSlika.Images[selection.ImageIndex];
+            listView1.DoDragDrop(img, DragDropEffects.Copy);
+
         }
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
         {
-            /*// Handle FileDrop data.
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                // Assign the file names to a string array, in 
-                // case the user has selected multiple files.
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                try
-                {
-                    // Assign the first image to the picture variable.
-                    //pbMape = Image.FromFile(files[0]);
-                    // Set the picture location equal to the drop point.
-                    this.pictureLocation = this.PointToClient(new Point(e.X, e.Y));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-            }
 
-            // Handle Bitmap data.
-            if (e.Data.GetDataPresent(DataFormats.Bitmap))
-            {
-                try
-                {
-                    // Create an Image and assign it to the picture variable.
-                    pbMape = (PictureBox)e.Data.GetData(DataFormats.Bitmap);
-                    // Set the picture location equal to the drop point.
-                    this.pictureLocation = this.PointToClient(new Point(e.X, e.Y));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-            }
-            // Force the form to be redrawn with the image.
-            this.Invalidate();
-            ListViewItem selection = listView1.GetItemAt(e.X, e.Y);
-            var bmp = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
-            pbMape.Image = (Image)selection;*/
+            PictureBox pb = new PictureBox();
+            pb.Parent = pbMape;
+            Point po = PointToClient(new Point(e.X - 315, e.Y - 55));
+            pb.Location = po;
+            ListViewItem dragitem= listView1.SelectedItems[0];
 
-            if(listView1.SelectedItems.Count==0)
-{
-return;
-}
-ListViewItem dragitem=listView1.SelectedItems[0];
-pbMape.Image=ListaSlika.Images[dragitem.ImageIndex];
-listView1.Items.Remove(dragitem);
-}
+            pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
+            pb.BackgroundImageLayout = ImageLayout.Center;
+
+            pb.Height = pb.Width = 75;
+
+            pb.BringToFront();
+            }
+           
+
         
 
         private void pictureBox1_DragEnter(object sender, DragEventArgs e)
         {
-            /*// If the data is a file or a bitmap, display the copy cursor.
-            if (e.Data.GetDataPresent(DataFormats.Bitmap) ||
-               e.Data.GetDataPresent(DataFormats.FileDrop))
+            // If the data is a file or a bitmap, display the copy cursor.
+            if (e.Data.GetDataPresent(DataFormats.Bitmap))
             {
                 e.Effect = DragDropEffects.Copy;
+                //label23.Text = "draaag";
             }
             else
             {
                 e.Effect = DragDropEffects.None;
-            }
-            if (e.Data.GetDataPresent(DataFormats.Bitmap))
-                e.Effect = DragDropEffects.Move;*/
-
-            int len = e.Data.GetFormats().Length - 1;
-            int i;
-            for (i = 0; i <= len; i++)
-            {
-                if (e.Data.GetFormats()[i].Equals("System.Windows.Forms.ListView+SelectedLis tViewItemCollection"))
-                {
-                    //The data from the drag source is moved to the target.	
-                    e.Effect = DragDropEffects.Move;
-                }
+                //label23.Text = "no drag";
             }
 
 }
@@ -264,13 +215,7 @@ listView1.Items.Remove(dragitem);
 
         }
 
-        private void listView1_MouseDown(object sender, MouseEventArgs e)
-        {
-            //ListViewItem selection = listView1.GetItemAt(e.X, e.Y);
-            
-            listView1.DoDragDrop(listView1.SelectedItems , DragDropEffects.Copy |
-      DragDropEffects.Move);
-        }
+        
 
         public static Form1 instanca=null;
         public static Form1 getInstance()
@@ -341,8 +286,7 @@ listView1.Items.Remove(dragitem);
                 resurs.Text = re.oznaka+" "+re.ime;
                 resurs.ImageIndex =i;
                 resurs.Tag = re;
-                
-                // Setup other things like SubItems, Font, ...
+             
                 
                 listView1.Items.Add(resurs);
                 lista_tipova.Add(resurs,tre.oznaka );
@@ -359,7 +303,13 @@ listView1.Items.Remove(dragitem);
 
         private void button2_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
+            foreach(ListViewItem item in listView1.Items)
+                listView1.Items.Remove(item);
+
+            lista_tipova.Clear();
+            lista_resursa.Clear();
+
+
             listView1_Fill();
          
         }
@@ -419,5 +369,7 @@ listView1.Items.Remove(dragitem);
         {
 
         }
+
+       
     }
 }
