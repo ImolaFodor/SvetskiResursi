@@ -162,6 +162,7 @@
             this.tblI.TabIndex = 2;
             this.tblI.Text = "Izmeni";
             this.tblI.UseVisualStyleBackColor = false;
+            this.tblI.Click += new System.EventHandler(this.tblI_Click);
             // 
             // tblB
             // 

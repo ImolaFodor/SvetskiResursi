@@ -23,26 +23,32 @@ namespace SvetskiResursi
             
         }
 
-        private void tabelaPrikaza_Load(object sender, EventArgs e)
+        private void prikazUtabeli()
         {
-            
             //Ucitavanje resursa iz fajla.
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 var formatter = new BinaryFormatter();
-                while(stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
                     r.Add((Resurs)formatter.Deserialize(stream));
                 stream.Close();
             }
 
             foreach (Resurs resurs in r)
-               {
-                   etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+            {
+                etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
-                   dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
                     resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete});
 
-               }
+            }
+        }
+
+        private void tabelaPrikaza_Load(object sender, EventArgs e)
+        {
+
+            prikazUtabeli();
 
         }
 
@@ -110,5 +116,67 @@ namespace SvetskiResursi
             dodajResurs dr = new dodajResurs();
             dr.ShowDialog();
         }
+
+        private void tblI_Click(object sender, EventArgs e)
+        {
+             List<Resurs> Lr = new List<Resurs>();
+
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                
+                while (stream.Position != stream.Length)
+                {
+                    Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
+                }
+
+                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+
+                //sada u LISTI trazim zeljeni resurs i menjam ga.
+                foreach(Resurs tr in Lr){
+                    if (tr.oznaka.Equals(ttOz.Text))
+                    {
+                        try
+                        {
+                            tr.ime = ttIm.Text;
+                            tr.opis = ttOp.Text;
+                            // Ikonica se ne moze menjati
+                            // tr.oz_etiketa = string.Join(",", tr.oz_etiketa.ToArray());
+                            tr.pojavljivanje = ttF.Text;
+                            tr.strateska_vaznost = ttStv.Text;
+                            tr.tipResursa = ttTip.Text;
+                            tr.jedinica_mere = ttJm.Text;
+                            tr.obnovljivo = ttObn.Text;
+                            tr.cena = ttCen.Text;
+                   
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Write("Greska");
+                        }
+                    }
+                }
+
+                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                foreach (Resurs resurs in Lr)
+                {
+                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+
+                    dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                        resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
+
+                }
+
+                foreach (Resurs tr in Lr)
+                {
+                    formatter.Serialize(stream, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                }
+
+                stream.Close();
+            }   
+
+        }
+        }
     }
-}
+
