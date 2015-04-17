@@ -104,16 +104,18 @@ this.textBox2.LostFocus += (source, e) =>
         }
 
 
-
+        ListViewItem selection;
 
         //DRAG&DROP
         private void listView1_MouseDown(object sender, MouseEventArgs e)
         {
 
-            ListViewItem selection = listView1.GetItemAt(e.X, e.Y);
-            Bitmap img = (Bitmap)ListaSlika.Images[selection.ImageIndex];
-            listView1.DoDragDrop(img, DragDropEffects.Copy);
-
+            selection = listView1.GetItemAt(e.X, e.Y);
+            if(selection != null)
+            {
+                Bitmap img = (Bitmap)ListaSlika.Images[selection.ImageIndex];
+                listView1.DoDragDrop(img, DragDropEffects.Copy);
+            }
         }
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
@@ -121,13 +123,14 @@ this.textBox2.LostFocus += (source, e) =>
 
             PictureBox pb = new PictureBox();
             pb.Parent = pbMape;
-            Point po = PointToClient(new Point(e.X - 315, e.Y - 55));
-            pb.Location = po; 
+            Point po = PointToClient(new Point(e.X - 450, e.Y - 75));
 
-            ListViewItem dragitem= listView1.SelectedItems[0];
+            pb.Location = po;
+
+            ListViewItem dragitem = selection;
 
             pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
-            pb.BackgroundImageLayout = ImageLayout.Center;
+            pb.BackgroundImageLayout = ImageLayout.Stretch;
             pb.Tag = dragitem;
             ListViewItem lvi = (ListViewItem)pb.Tag;
             Resurs r = (Resurs)lvi.Tag;
@@ -143,7 +146,7 @@ this.textBox2.LostFocus += (source, e) =>
 
             new ToolTip().SetToolTip(pb, detalji);
 
-            pb.Height = pb.Width = 75;
+            pb.Height = pb.Width = 45;
 
             pb.BringToFront();
             }
