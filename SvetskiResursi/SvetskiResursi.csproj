@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Simbol.cs" />
     <Compile Include="DialogObavestenja.cs">
       <SubType>Form</SubType>
     </Compile>

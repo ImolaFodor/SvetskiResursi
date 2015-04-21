@@ -48,11 +48,11 @@ namespace SvetskiResursi
             this.prikazIkonice = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -62,9 +62,9 @@ namespace SvetskiResursi
             // 
             this.pbMape.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMape.BackgroundImage")));
             this.pbMape.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbMape.Location = new System.Drawing.Point(414, 71);
+            this.pbMape.Location = new System.Drawing.Point(333, 71);
             this.pbMape.Name = "pbMape";
-            this.pbMape.Size = new System.Drawing.Size(915, 628);
+            this.pbMape.Size = new System.Drawing.Size(996, 628);
             this.pbMape.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMape.TabIndex = 1;
             this.pbMape.TabStop = false;
@@ -200,18 +200,7 @@ namespace SvetskiResursi
             this.listView1.Tag = "";
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
-            
             this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDown);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(306, 315);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
             // textBox1
             // 
@@ -230,7 +219,7 @@ namespace SvetskiResursi
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(190, 375);
+            this.button1.Location = new System.Drawing.Point(171, 376);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 16;
@@ -240,13 +229,23 @@ namespace SvetskiResursi
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(190, 420);
+            this.button3.Location = new System.Drawing.Point(171, 420);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 17;
             this.button3.Text = "Traži";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(252, 375);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Nazad";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
             // Form1
             // 
@@ -298,11 +297,11 @@ namespace SvetskiResursi
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolStripMenuItem tabelaPrikazaToolStripMenuItem;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
         
     }
 }

@@ -19,11 +19,11 @@ namespace SvetskiResursi
         List<tipResursa> tr = new List<tipResursa>();
         Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
+        List<Simbol> s = new List<Simbol>();
         
         public string etikete;
         bool waterMarkActive=true;
         public override bool AllowDrop { get; set; }
-        private Point pictureLocation;
         ImageList ListaSlika = new ImageList();
 
         public Form1()
@@ -47,8 +47,14 @@ namespace SvetskiResursi
             if (!File.Exists("Etikete.bin"))
                 File.Create("Etikete.bin");
 
+            if (!File.Exists("Simboli.bin"))
+                File.Create("Simboli.bin");
+
             if (!File.Equals("Resursi.bin", null) && !File.Equals("Tipovi.bin", null) && !File.Equals("Etikete.bin", null))
-            listView1_Fill();
+            {
+                listView1_Fill();
+                pbMapa_Fill();
+            }
 
             this.waterMarkActive = true;
 this.textBox1.ForeColor = Color.Gray;
@@ -126,6 +132,17 @@ this.textBox2.LostFocus += (source, e) =>
             Point po = PointToClient(new Point(e.X - 450, e.Y - 75));
 
             pb.Location = po;
+            Simbol simbol = new Simbol();
+            simbol.lokacija = pb.Location;
+            simbol.slika = ListaSlika.Images[selection.ImageIndex];
+            
+
+            using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, simbol);
+                stream.Close();
+            }
 
             ListViewItem dragitem = selection;
 
@@ -318,6 +335,35 @@ this.textBox2.LostFocus += (source, e) =>
 
             }
                 
+            }
+        }
+
+        public void pbMapa_Fill()
+        {
+            using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
+            {
+                
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    s.Add((Simbol)formatter.Deserialize(stream));
+                stream.Close();
+
+                pbMape.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMapa_Paint);
+                
+            }
+
+
+
+        }
+
+        private void pbMapa_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            // Create a local version of the graphics object for the PictureBox.
+            Graphics g = e.Graphics;
+            foreach (Simbol sim in s)
+            {
+                
+                g.DrawImage(sim.slika, sim.lokacija.X, sim.lokacija.Y, 45, 45);
             }
         }
 
