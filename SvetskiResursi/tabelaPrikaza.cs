@@ -262,6 +262,7 @@ namespace SvetskiResursi
                  if (Lr.ElementAt(i).oznaka.Equals(tbTrazi.Text))
                  {
                      dataGridView1.Rows[i].Selected = true;
+                     dataGridView1.CurrentCell = dataGridView1[0,i];
                  }
                  else
                      if (tbTrazi.Text.Equals(""))
