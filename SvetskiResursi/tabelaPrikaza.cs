@@ -58,6 +58,23 @@ namespace SvetskiResursi
         {
             Resurs tr = new Resurs();
 
+            if (!dataGridView1.AreAllCellsSelected(true))
+            {
+                ttOz.Text = "";
+                ttIm.Text = "";
+                ttTip.Text = "";
+                ttOp.Text = "";
+                ttObn.Text = "";
+                ttStv.Text = "";
+                ttEkspl.Text = "";
+                ttF.Text = "";
+                ttCen.Text = "";
+                ttJm.Text = "";
+                ttEtik.Text = "";
+                tabIm.Image = null;
+                ttDatum.Text = "";
+            }
+
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 if (row.Cells[0].Value != null)
@@ -177,6 +194,86 @@ namespace SvetskiResursi
             }   
 
         }
+
+        private void tblB_Click(object sender, EventArgs e)
+        {
+            List<Resurs> Lr = new List<Resurs>();
+
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                while (stream.Position != stream.Length)
+                {
+                    Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
+                }
+
+                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+
+                //sada u LISTI trazim zeljeni resurs i menjam ga.
+                foreach (Resurs tr in Lr)
+                {
+                    if (tr.oznaka.Equals(ttOz.Text))
+                    {
+                        Lr.Remove(tr);
+                        break;
+                    }
+                }
+
+                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                foreach (Resurs resurs in Lr)
+                {
+                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+
+                    dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                        resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
+
+                }
+
+                foreach (Resurs tr in Lr)
+                {
+                    formatter.Serialize(stream, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                }
+
+                stream.Close();
+            }   
+        }
+
+        private void tbTrazi_TextChanged(object sender, EventArgs e)
+        {
+             List<Resurs> Lr = new List<Resurs>();
+
+             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+             {
+                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                 while (stream.Position != stream.Length)
+                 {
+                     Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
+                 }
+                 stream.Close();
+             }
+
+             dataGridView1.ClearSelection();
+
+             for (int i = 0; i < Lr.Count(); i++)
+                 if (Lr.ElementAt(i).oznaka.Equals(tbTrazi.Text))
+                 {
+                     dataGridView1.Rows[i].Selected = true;
+                 }
+                 else
+                     if (tbTrazi.Text.Equals(""))
+                         dataGridView1.ClearSelection();
+        }
+
+        private void tbTrazi_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbTrazi.Text.Equals(""))
+                dataGridView1.ClearSelection();
+        }
+
         }
     }
 

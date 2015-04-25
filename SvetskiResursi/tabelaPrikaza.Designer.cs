@@ -67,6 +67,7 @@
             this.ttEtik = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.gbDet = new System.Windows.Forms.GroupBox();
+            this.tbTrazi = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -174,6 +175,7 @@
             this.tblB.TabIndex = 3;
             this.tblB.Text = "Briši";
             this.tblB.UseVisualStyleBackColor = false;
+            this.tblB.Click += new System.EventHandler(this.tblB_Click);
             // 
             // tabIm
             // 
@@ -418,11 +420,21 @@
             this.gbDet.Text = "Detalji";
             this.gbDet.Enter += new System.EventHandler(this.gbDet_Enter);
             // 
+            // tbTrazi
+            // 
+            this.tbTrazi.Location = new System.Drawing.Point(203, 245);
+            this.tbTrazi.Name = "tbTrazi";
+            this.tbTrazi.Size = new System.Drawing.Size(100, 24);
+            this.tbTrazi.TabIndex = 31;
+            this.tbTrazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbTrazi_MouseClick);
+            this.tbTrazi.TextChanged += new System.EventHandler(this.tbTrazi_TextChanged);
+            // 
             // tabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 494);
+            this.Controls.Add(this.tbTrazi);
             this.Controls.Add(this.gbDet);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tblB);
@@ -440,6 +452,7 @@
             this.gbDet.ResumeLayout(false);
             this.gbDet.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -484,6 +497,7 @@
         private System.Windows.Forms.RichTextBox ttEtik;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox gbDet;
+        private System.Windows.Forms.TextBox tbTrazi;
 
     }
 }
