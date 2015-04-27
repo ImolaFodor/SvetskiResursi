@@ -20,6 +20,7 @@ namespace SvetskiResursi
         Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         List<Simbol> s = new List<Simbol>();
+        Dictionary<PictureBox,string> lPB = new Dictionary<PictureBox,string>();
         Point lokacija;
         
         public string etikete;
@@ -163,6 +164,8 @@ this.textBox2.LostFocus += (source, e) =>
 
             pb.Height = pb.Width = 45;
 
+            lPB.Add(pb, r.oznaka);
+
             pb.BringToFront();
             using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
             {
@@ -290,9 +293,14 @@ this.textBox2.LostFocus += (source, e) =>
 
             int i = -1;
             foreach(tipResursa tre in tr){
-                
 
-                listView1.View = View.List;
+
+                listView1.View = View.Details;
+                ColumnHeader header = new ColumnHeader();
+                header.Text = "";
+                header.Name = "col1";
+                listView1.Columns.Add(header);
+                listView1.HeaderStyle = ColumnHeaderStyle.None;
                 ListViewItem tresurs = new ListViewItem();
                 tresurs.Text = tre.oznaka;
 
@@ -324,7 +332,7 @@ this.textBox2.LostFocus += (source, e) =>
                     if(tre.oznaka==re.tipResursa){
                 listView1.View = View.List;
                 ListViewItem resurs = new ListViewItem();
-                resurs.Text = re.oznaka+" "+re.ime;
+                resurs.Text = re.oznaka;
                 resurs.ImageIndex =i;
                 resurs.Tag = re;
              
@@ -362,8 +370,10 @@ this.textBox2.LostFocus += (source, e) =>
                 pb.Height = pb.Width = 45;
                 String detalji = "Oznaka: " + sim.oznaka + Environment.NewLine;
                 new ToolTip().SetToolTip(pb, detalji);
-                }
                 
+                lPB.Add(pb, sim.oznaka);
+                }
+                               
                 
             }
 
@@ -435,20 +445,41 @@ this.textBox2.LostFocus += (source, e) =>
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listView1.SelectedItems.Clear();
-            string trazeni = textBox2.Text;
-            for(int i=0; i<listView1.Items.Count;i++){
-                if (listView1.Items[i].Text==trazeni)
-                {
-                    listView1.Select();
-                    listView1.Items[i].Selected = true;
-                    
-                }
-            }
+            
+
+                
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void trazenje_TextChanged(object sender, EventArgs e)
+        {
+            listView1.SelectedItems.Clear();
+            string trazeni = textBox2.Text;
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].Selected = false;
+                if (listView1.Items[i].Text == trazeni)
+                {
+                    listView1.Select();
+                    listView1.Items[i].Selected = true;
+                }
+            }
+
+            foreach (KeyValuePair<PictureBox, string> spb in lPB)
+            {
+                spb.Key.BorderStyle = BorderStyle.None;
+                if (spb.Value == trazeni)
+                {
+                    spb.Key.BorderStyle = BorderStyle.Fixed3D;
+
+                }
+
+            }
+
 
         }
 

@@ -16,6 +16,7 @@ namespace SvetskiResursi
     {
         public string etikete;
         List<Resurs> r = new List<Resurs>();
+        List<Resurs> r2 = new List<Resurs>();
         public tabelaPrikaza()   
         {
             InitializeComponent();
@@ -130,8 +131,29 @@ namespace SvetskiResursi
 
         private void tblD_Click(object sender, EventArgs e)
         {
-            dodajResurs dr = new dodajResurs(null);
+            dodajResurs dr = new dodajResurs(Form1.getInstance());
             dr.ShowDialog();
+            
+            //Ucitavanje resursa iz fajla.
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    r2.Add((Resurs)formatter.Deserialize(stream));
+                stream.Close();
+            }
+
+            dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+            foreach (Resurs resurs in r2)
+            {
+                etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+
+                dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                    resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
+
+            }
+            
         }
 
         private void tblI_Click(object sender, EventArgs e)
@@ -273,6 +295,20 @@ namespace SvetskiResursi
         {
             if (tbTrazi.Text.Equals(""))
                 dataGridView1.ClearSelection();
+        }
+
+        public void OsveziTabelu()
+        {
+
+            dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+            foreach (Resurs resurs in r)
+            {
+                etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+
+                dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                    resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
+
+            }
         }
 
         }

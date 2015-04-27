@@ -53,6 +53,7 @@ namespace SvetskiResursi
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -195,7 +196,7 @@ namespace SvetskiResursi
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(15, 71);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(250, 267);
+            this.listView1.Size = new System.Drawing.Size(154, 267);
             this.listView1.TabIndex = 10;
             this.listView1.Tag = "";
             this.listView1.UseCompatibleStateImageBehavior = false;
@@ -216,6 +217,7 @@ namespace SvetskiResursi
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(129, 20);
             this.textBox2.TabIndex = 15;
+            this.textBox2.TextChanged += new System.EventHandler(this.trazenje_TextChanged);
             // 
             // button1
             // 
@@ -247,11 +249,22 @@ namespace SvetskiResursi
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(230, 71);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.RefreshButtonClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
@@ -302,6 +315,7 @@ namespace SvetskiResursi
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
         
     }
 }

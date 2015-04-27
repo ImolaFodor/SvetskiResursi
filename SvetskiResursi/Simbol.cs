@@ -10,6 +10,7 @@ namespace SvetskiResursi
     class Simbol
     {
         public Point lokacija { get; set; }
-        public Image slika { get; set; }
+        public Bitmap slika { get; set; }
+        public string oznaka { get; set; }
     }
 }

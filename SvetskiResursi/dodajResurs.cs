@@ -184,6 +184,8 @@ namespace SvetskiResursi
             }
 
             form.RefreshList();
+            
+
         }
 
         private void FormV_Load(object sender, EventArgs e)
