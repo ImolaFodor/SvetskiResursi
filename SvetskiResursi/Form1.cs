@@ -20,6 +20,7 @@ namespace SvetskiResursi
         Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         List<Simbol> s = new List<Simbol>();
+        Point lokacija;
         
         public string etikete;
         bool waterMarkActive=true;
@@ -134,15 +135,11 @@ this.textBox2.LostFocus += (source, e) =>
             pb.Location = po;
             Simbol simbol = new Simbol();
             simbol.lokacija = pb.Location;
-            simbol.slika = ListaSlika.Images[selection.ImageIndex];
+            simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
+            
             
 
-            using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, simbol);
-                stream.Close();
-            }
+            
 
             ListViewItem dragitem = selection;
 
@@ -151,6 +148,7 @@ this.textBox2.LostFocus += (source, e) =>
             pb.Tag = dragitem;
             ListViewItem lvi = (ListViewItem)pb.Tag;
             Resurs r = (Resurs)lvi.Tag;
+            simbol.oznaka = r.oznaka;
             String etikete = string.Join(",", r.oz_etiketa.ToArray());
 
             String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
@@ -166,6 +164,12 @@ this.textBox2.LostFocus += (source, e) =>
             pb.Height = pb.Width = 45;
 
             pb.BringToFront();
+            using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+            {
+                var formatter = new BinaryFormatter();
+                formatter.Serialize(stream, simbol);
+                stream.Close();
+            }
             }
            
 
@@ -348,23 +352,29 @@ this.textBox2.LostFocus += (source, e) =>
                     s.Add((Simbol)formatter.Deserialize(stream));
                 stream.Close();
 
-                pbMape.Paint += new System.Windows.Forms.PaintEventHandler(this.pbMapa_Paint);
+                foreach(Simbol sim in s){
+                PictureBox pb = new PictureBox();
+                pb.Parent = pbMape;
+                Point po = sim.lokacija;
+                pb.Location = po;
+                pb.BackgroundImage = sim.slika;
+                pb.BackgroundImageLayout = ImageLayout.Stretch;
+                pb.Height = pb.Width = 45;
+                String detalji = "Oznaka: " + sim.oznaka + Environment.NewLine;
+                new ToolTip().SetToolTip(pb, detalji);
+                }
+                
                 
             }
-
-
 
         }
 
-        private void pbMapa_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+    
+        private string CalculateMsgAt(Point pt)
         {
-            // Create a local version of the graphics object for the PictureBox.
-            Graphics g = e.Graphics;
-            foreach (Simbol sim in s)
-            {
-                
-                g.DrawImage(sim.slika, sim.lokacija.X, sim.lokacija.Y, 45, 45);
-            }
+            // Calculate the message that should be shown 
+            // when the mouse is at thegiven point
+            return "This is a tooltip";
         }
 
         private void RefreshButtonClick(object sender, EventArgs e)
@@ -441,6 +451,27 @@ this.textBox2.LostFocus += (source, e) =>
         {
 
         }
+
+       /* private void pbMape_MouseHover(object sender, EventArgs e)
+        {
+            
+
+            Point pt = lokacija;
+            String msg = this.CalculateMsgAt(pt);
+            if (String.IsNullOrEmpty(msg))
+                return;
+
+            //pt.Y += 20;
+            this.ToolTip.Show(msg, this, pt);
+            if (this.ToolTip == null)
+                return;
+        }
+
+        private void pbMape_MouseLeave(object sender, EventArgs e)
+        {
+            if (this.ToolTip != null)
+                this.ToolTip.Hide(this);
+        }*/
 
        
     }
