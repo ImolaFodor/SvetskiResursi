@@ -116,6 +116,7 @@ namespace SvetskiResursi
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             Close();
         }
 
@@ -153,6 +154,7 @@ namespace SvetskiResursi
                     resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
 
             }
+
             
         }
 

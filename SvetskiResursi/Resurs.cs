@@ -36,6 +36,17 @@ namespace SvetskiResursi
         public string opis { get; set; }
 
         public List<string> oz_etiketa { get; set; }
+
+        public Resurs() {
+            ime = " ";
+            oznaka = " ";
+            tipResursa = " ";
+            opis = " ";
+           // oz_etiketa = "nema tagova";
+
+        
+        
+        }
     }
 
     [Serializable]
