@@ -95,6 +95,7 @@
     <Compile Include="tabelaTipova.Designer.cs">
       <DependentUpon>tabelaTipova.cs</DependentUpon>
     </Compile>
+    <Compile Include="TipResurs.cs" />
     <Compile Include="tipResursa.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -152,6 +153,9 @@
     </Compile>
     <EmbeddedResource Include="tabelaPrikaza.resx">
       <DependentUpon>tabelaPrikaza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tabelaTipova.resx">
+      <DependentUpon>tabelaTipova.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Resursi.datasource" />
     <None Include="Properties\Settings.settings">
