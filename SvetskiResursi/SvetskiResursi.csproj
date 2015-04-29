@@ -77,11 +77,23 @@
       <DependentUpon>ObavestenjeZaOznaku.cs</DependentUpon>
     </Compile>
     <Compile Include="Resurs.cs" />
+    <Compile Include="tabelaEtiketa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tabelaEtiketa.Designer.cs">
+      <DependentUpon>tabelaEtiketa.cs</DependentUpon>
+    </Compile>
     <Compile Include="tabelaPrikaza.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="tabelaPrikaza.Designer.cs">
       <DependentUpon>tabelaPrikaza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tabelaTipova.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tabelaTipova.Designer.cs">
+      <DependentUpon>tabelaTipova.cs</DependentUpon>
     </Compile>
     <Compile Include="tipResursa.cs" />
     <Compile Include="Form1.cs">

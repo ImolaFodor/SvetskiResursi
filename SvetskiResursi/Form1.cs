@@ -425,6 +425,24 @@ namespace SvetskiResursi
 
 
         }
+
+        private void pretragaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabelaTipovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabelaTipova tbl = new tabelaTipova();
+            tbl.ShowDialog();
+
+        }
+
+        private void tabelaEtiketaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabelaEtiketa tbl = new tabelaEtiketa();
+            tbl.ShowDialog();
+        }
        
     }
 }

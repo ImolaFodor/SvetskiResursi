@@ -52,6 +52,8 @@ namespace SvetskiResursi
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.tabelaTipovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabelaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -105,17 +107,20 @@ namespace SvetskiResursi
             // pretragaToolStripMenuItem
             // 
             this.pretragaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tabelaPrikazaToolStripMenuItem});
+            this.tabelaPrikazaToolStripMenuItem,
+            this.tabelaTipovaToolStripMenuItem,
+            this.tabelaEtiketaToolStripMenuItem});
             this.pretragaToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pretragaToolStripMenuItem.Name = "pretragaToolStripMenuItem";
-            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(115, 36);
-            this.pretragaToolStripMenuItem.Text = "Pretraga";
+            this.pretragaToolStripMenuItem.Size = new System.Drawing.Size(89, 36);
+            this.pretragaToolStripMenuItem.Text = "Prikaz";
+            this.pretragaToolStripMenuItem.Click += new System.EventHandler(this.pretragaToolStripMenuItem_Click);
             // 
             // tabelaPrikazaToolStripMenuItem
             // 
             this.tabelaPrikazaToolStripMenuItem.Name = "tabelaPrikazaToolStripMenuItem";
             this.tabelaPrikazaToolStripMenuItem.Size = new System.Drawing.Size(242, 36);
-            this.tabelaPrikazaToolStripMenuItem.Text = "Tabela prikaza";
+            this.tabelaPrikazaToolStripMenuItem.Text = "Tabela resursa";
             this.tabelaPrikazaToolStripMenuItem.Click += new System.EventHandler(this.tabelaPrikazaToolStripMenuItem_Click);
             // 
             // pomocToolStripMenuItem
@@ -236,6 +241,20 @@ namespace SvetskiResursi
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.RefreshButtonClick);
             // 
+            // tabelaTipovaToolStripMenuItem
+            // 
+            this.tabelaTipovaToolStripMenuItem.Name = "tabelaTipovaToolStripMenuItem";
+            this.tabelaTipovaToolStripMenuItem.Size = new System.Drawing.Size(242, 36);
+            this.tabelaTipovaToolStripMenuItem.Text = "Tabela tipova";
+            this.tabelaTipovaToolStripMenuItem.Click += new System.EventHandler(this.tabelaTipovaToolStripMenuItem_Click);
+            // 
+            // tabelaEtiketaToolStripMenuItem
+            // 
+            this.tabelaEtiketaToolStripMenuItem.Name = "tabelaEtiketaToolStripMenuItem";
+            this.tabelaEtiketaToolStripMenuItem.Size = new System.Drawing.Size(242, 36);
+            this.tabelaEtiketaToolStripMenuItem.Text = "Tabela etiketa";
+            this.tabelaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.tabelaEtiketaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,6 +307,8 @@ namespace SvetskiResursi
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ToolStripMenuItem tabelaTipovaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tabelaEtiketaToolStripMenuItem;
         
     }
 }
