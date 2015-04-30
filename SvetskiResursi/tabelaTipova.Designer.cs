@@ -130,6 +130,7 @@
             this.Dodaj.TabIndex = 3;
             this.Dodaj.Text = "Dodaj";
             this.Dodaj.UseVisualStyleBackColor = true;
+            this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 
             // otkazi
             // 
@@ -152,6 +153,7 @@
             this.Izmeni.TabIndex = 5;
             this.Izmeni.Text = "Izmeni";
             this.Izmeni.UseVisualStyleBackColor = true;
+            this.Izmeni.Click += new System.EventHandler(this.Izmeni_Click);
             // 
             // imDT
             // 
@@ -233,6 +235,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
             this.Name = "tabelaTipova";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "tabelaTipova";

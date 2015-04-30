@@ -14,6 +14,7 @@ namespace SvetskiResursi
     public partial class tabelaTipova : Form
     {
         List<tipResursa> tp = new List<tipResursa>();
+        List<tipResursa> tp2 = new List<tipResursa>();
         
         public tabelaTipova()
         {
@@ -57,6 +58,44 @@ namespace SvetskiResursi
 
         private void Brisi_Click(object sender, EventArgs e)
         {
+            List<tipResursa> Lr = new List<tipResursa>();
+
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                while (stream.Position != stream.Length)
+                {
+                    Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+
+                }
+
+                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+
+                //sada u LISTI trazim zeljeni resurs i menjam ga.
+                foreach (tipResursa tip in Lr)
+                {
+                    if (tip.oznaka.Equals(ozDT.Text))
+                    {
+                        Lr.Remove(tip);
+                        break;
+                    }
+                }
+
+                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                foreach (tipResursa tip in Lr)
+                {
+                    dataGridView1.Rows.Add(new object[] { tip.oznaka, tip.ime, tip.ikonica, tip.opis, });
+
+                }
+
+                foreach (tipResursa tp in Lr)
+                {
+                    formatter.Serialize(stream, tp); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                }
+
+                stream.Close();
+            }   
 
         }
 
@@ -103,6 +142,83 @@ namespace SvetskiResursi
                     }
                 }
             }
+        }
+
+        private void Dodaj_Click(object sender, EventArgs e)
+        {
+            dodajTipResursa dr = new dodajTipResursa();//Form1.getInstance());
+            dr.ShowDialog();
+
+            //Ucitavanje resursa iz fajla.
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    tp2.Add((tipResursa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+
+            dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+            foreach (tipResursa tip in tp2)
+            {
+
+                dataGridView1.Rows.Add( tip.oznaka, tip.ime, tip.ikonica, tip.opis );
+
+            }
+        }
+
+        private void Izmeni_Click(object sender, EventArgs e)
+        {
+             List<tipResursa> Lr = new List<tipResursa>();
+
+             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+             {
+                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                 while (stream.Position != stream.Length)
+                 {
+                     Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+
+                 }
+
+                 stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+
+                 //sada u LISTI trazim zeljeni resurs i menjam ga.
+                 foreach (tipResursa tr in Lr)
+                 {
+                     if (tr.oznaka.Equals(ozDT.Text))
+                     {
+                         try
+                         {
+                             tr.ime = imeDT.Text;
+                             tr.opis = opDT.Text;
+                             // Ikonica se ne moze menjati
+                             // tr.oz_etiketa = string.Join(",", tr.oz_etiketa.ToArray());
+
+                         }
+                         catch (Exception ex)
+                         {
+                             Console.Write("Greska");
+                         }
+                     }
+                 }
+
+                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                 foreach (tipResursa tip in Lr)
+                 {
+                     dataGridView1.Rows.Add( tip.oznaka, tip.ime, tip.ikonica, tip.opis );
+
+                 }
+
+                 foreach (tipResursa tip in Lr)
+                 {
+                     formatter.Serialize(stream, tip); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+
+                 }
+
+                 stream.Close();
+             }
         }
     }
 }

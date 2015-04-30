@@ -162,17 +162,17 @@ namespace SvetskiResursi
         {
              List<Resurs> Lr = new List<Resurs>();
 
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
             {
                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 
-                while (stream.Position != stream.Length)
+                while (stream1.Position != stream1.Length)
                 {
-                    Lr.Add(((Resurs)formatter.Deserialize(stream)));
+                    Lr.Add(((Resurs)formatter.Deserialize(stream1)));
 
                 }
 
-                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+                stream1.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
 
                 //sada u LISTI trazim zeljeni resurs i menjam ga.
                 foreach(Resurs tr in Lr){
@@ -211,10 +211,10 @@ namespace SvetskiResursi
 
                 foreach (Resurs tr in Lr)
                 {
-                    formatter.Serialize(stream, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                    formatter.Serialize(stream1, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
                 }
 
-                stream.Close();
+                stream1.Close();
             }   
 
         }
