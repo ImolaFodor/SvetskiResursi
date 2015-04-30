@@ -123,7 +123,6 @@
             this.op.Size = new System.Drawing.Size(100, 67);
             this.op.TabIndex = 4;
             this.op.Text = "";
-            this.op.SelectionChanged += new System.EventHandler(this.richTextBox1_SelectionChanged);
             // 
             // boja
             // 

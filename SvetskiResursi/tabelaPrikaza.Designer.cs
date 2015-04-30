@@ -202,7 +202,6 @@
             this.ttTip.Name = "ttTip";
             this.ttTip.Size = new System.Drawing.Size(100, 24);
             this.ttTip.TabIndex = 6;
-            this.ttTip.TextChanged += new System.EventHandler(this.ttTip_TextChanged);
             // 
             // ttIm
             // 
@@ -419,7 +418,6 @@
             this.gbDet.TabIndex = 29;
             this.gbDet.TabStop = false;
             this.gbDet.Text = "Detalji";
-            this.gbDet.Enter += new System.EventHandler(this.gbDet_Enter);
             // 
             // tbTrazi
             // 

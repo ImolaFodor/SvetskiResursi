@@ -79,11 +79,6 @@ namespace SvetskiResursi
 
         }
 
-        private void dodajTipResursa_Validating(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void oznaka_tip_Validating(object sender, CancelEventArgs e)
         {
             tipResursa tip = new tipResursa();
@@ -155,11 +150,6 @@ namespace SvetskiResursi
                 }
                 errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
             }
-        }
-
-        private void dodajTipResursa_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

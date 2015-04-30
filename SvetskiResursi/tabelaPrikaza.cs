@@ -22,7 +22,6 @@ namespace SvetskiResursi
         {
             InitializeComponent();
             
-            
         }
 
         private void prikazUtabeli()
@@ -46,6 +45,7 @@ namespace SvetskiResursi
 
             }
         }
+
 
         private void tabelaPrikaza_Load(object sender, EventArgs e)
         {
@@ -121,16 +121,7 @@ namespace SvetskiResursi
             Close();
         }
 
-        private void gbDet_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ttTip_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //Dodavanje novog resursa
         private void tblD_Click(object sender, EventArgs e)
         {
             dodajResurs dr = new dodajResurs(Form1.getInstance());
@@ -155,10 +146,9 @@ namespace SvetskiResursi
                     resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
 
             }
-
-            
         }
 
+        //Izmena sadrzaja
         private void tblI_Click(object sender, EventArgs e)
         {
              List<Resurs> Lr = new List<Resurs>();
@@ -173,7 +163,7 @@ namespace SvetskiResursi
 
                 }
 
-                stream1.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+                stream1.SetLength(0); //brise se postojeci sadrzaj u datoteci
 
                 //sada u LISTI trazim zeljeni resurs i menjam ga.
                 foreach(Resurs tr in Lr){
@@ -184,7 +174,6 @@ namespace SvetskiResursi
                             tr.ime = ttIm.Text;
                             tr.opis = ttOp.Text;
                             tr.ikonica = tabIm.Image;
-                            // tr.oz_etiketa = string.Join(",", tr.oz_etiketa.ToArray());
                             tr.pojavljivanje = ttF.Text;
                             tr.strateska_vaznost = ttStv.Text;
                             tr.tipResursa = ttTip.Text;
@@ -217,9 +206,9 @@ namespace SvetskiResursi
 
                 stream1.Close();
             }   
-
         }
 
+        //Brisanje resursa
         private void tblB_Click(object sender, EventArgs e)
         {
             List<Resurs> Lr = new List<Resurs>();
@@ -234,9 +223,9 @@ namespace SvetskiResursi
 
                 }
 
-                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+                stream.SetLength(0);
 
-                //sada u LISTI trazim zeljeni resurs i menjam ga.
+                //sada u LISTI trazim zeljeni resurs i brise ga.
                 foreach (Resurs tr in Lr)
                 {
                     if (tr.oznaka.Equals(ttOz.Text))
@@ -258,13 +247,14 @@ namespace SvetskiResursi
 
                 foreach (Resurs tr in Lr)
                 {
-                    formatter.Serialize(stream, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                    formatter.Serialize(stream, tr); 
                 }
 
                 stream.Close();
             }   
         }
 
+        //Pretraga
         private void tbTrazi_TextChanged(object sender, EventArgs e)
         {
              List<Resurs> Lr = new List<Resurs>();
@@ -295,11 +285,13 @@ namespace SvetskiResursi
 
         }
 
+        //Deselektovanje
         private void tbTrazi_MouseClick(object sender, MouseEventArgs e)
         {
             if (tbTrazi.Text.Equals(""))
                 dataGridView1.ClearSelection();
         }
+
 
         public void OsveziTabelu()
         {

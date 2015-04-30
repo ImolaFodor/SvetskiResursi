@@ -40,15 +40,9 @@ namespace SvetskiResursi
             }
         }
 
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void tabelaTipova_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
+            prikazUtabeli();
         }
 
         //izmena slike
@@ -63,6 +57,7 @@ namespace SvetskiResursi
             }
         }
 
+        //Brisanje tipa
         private void Brisi_Click(object sender, EventArgs e)
         {
             List<tipResursa> Lr = new List<tipResursa>();
@@ -77,9 +72,9 @@ namespace SvetskiResursi
 
                 }
 
-                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+                stream.SetLength(0); 
 
-                //sada u LISTI trazim zeljeni resurs i menjam ga.
+                //sada u LISTI trazim zeljeni tip i brisemo ga.
                 foreach (tipResursa tip in Lr)
                 {
                     if (tip.oznaka.Equals(ozDT.Text))
@@ -98,19 +93,14 @@ namespace SvetskiResursi
 
                 foreach (tipResursa tp in Lr)
                 {
-                    formatter.Serialize(stream, tp); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                    formatter.Serialize(stream, tp); 
                 }
 
                 stream.Close();
             }   
-
         }
-
-        private void tabelaTipova_Load(object sender, EventArgs e)
-        {
-            prikazUtabeli();
-        }
-
+    
+        //Prikaz selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             tipResursa tr = new tipResursa();
@@ -151,11 +141,12 @@ namespace SvetskiResursi
             }
         }
 
+        //Dodavanje novog tipa
         private void Dodaj_Click(object sender, EventArgs e)
         {
             List<tipResursa> tp2 = new List<tipResursa>();
 
-            dodajTipResursa dr = new dodajTipResursa();//Form1.getInstance());
+            dodajTipResursa dr = new dodajTipResursa();
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
@@ -177,6 +168,7 @@ namespace SvetskiResursi
             }
         }
 
+        //Izmena tipa
         private void Izmeni_Click(object sender, EventArgs e)
         {
              List<tipResursa> Lr = new List<tipResursa>();
@@ -191,9 +183,9 @@ namespace SvetskiResursi
 
                  }
 
-                 stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+                 stream.SetLength(0);
 
-                 //sada u LISTI trazim zeljeni resurs i menjam ga.
+                 //sada u LISTI trazim zeljeni tip i menjam ga.
                  foreach (tipResursa tr in Lr)
                  {
                      if (tr.oznaka.Equals(ozDT.Text))
@@ -203,9 +195,7 @@ namespace SvetskiResursi
                              tr.ime = imeDT.Text;
                              tr.opis = opDT.Text;
                              tr.ikonica = imDT.Image;
-                             // Ikonica se ne moze menjati
-                             // tr.oz_etiketa = string.Join(",", tr.oz_etiketa.ToArray());
-
+                            
                          }
                          catch (Exception ex)
                          {
@@ -223,14 +213,14 @@ namespace SvetskiResursi
 
                  foreach (tipResursa tip in Lr)
                  {
-                     formatter.Serialize(stream, tip); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
-
+                     formatter.Serialize(stream, tip); 
                  }
 
                  stream.Close();
              }
         }
 
+        //Pretraga
         private void trazi_TextChanged(object sender, EventArgs e)
         {
             List<tipResursa> Lr = new List<tipResursa>();

@@ -73,7 +73,6 @@ namespace SvetskiResursi
                  checkedListBox1.Items.Add(etiketa.oznaka);
 
              }
-
         }
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
@@ -86,16 +85,6 @@ namespace SvetskiResursi
 
                 ikonica.BackgroundImage = image1;
             }
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -188,11 +177,6 @@ namespace SvetskiResursi
 
         }
 
-        private void FormV_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void oznaka_Validating(object sender, CancelEventArgs e)
         {
             //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
@@ -255,16 +239,6 @@ namespace SvetskiResursi
                 }
                 errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
             }
-        }
-
-        private void dodajResurs_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void nTip_Click(object sender, EventArgs e)

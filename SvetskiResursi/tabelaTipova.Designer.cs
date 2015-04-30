@@ -109,7 +109,6 @@
             this.detalji.TabIndex = 1;
             this.detalji.TabStop = false;
             this.detalji.Text = "Detalji";
-            this.detalji.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label3
             // 
@@ -210,7 +209,6 @@
             this.otkazi.TabIndex = 4;
             this.otkazi.Text = "Otkazi";
             this.otkazi.UseVisualStyleBackColor = true;
-            this.otkazi.Click += new System.EventHandler(this.button3_Click);
             // 
             // Izmeni
             // 

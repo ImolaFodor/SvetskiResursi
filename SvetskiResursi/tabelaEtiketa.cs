@@ -41,17 +41,14 @@ namespace SvetskiResursi
             }
         }
 
+
         private void tabelaEtiketa_Load(object sender, EventArgs e)
         {
             prikazUtabeli();
         }
 
 
-        private void richTextBox1_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //prikaz selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             Etiketa et1 = new Etiketa();
@@ -91,6 +88,7 @@ namespace SvetskiResursi
             }
         }
 
+        //Izmena sadrzaja
         private void Izmeni_Click(object sender, EventArgs e)
         {
             List<Etiketa> et = new List<Etiketa>();
@@ -105,9 +103,9 @@ namespace SvetskiResursi
 
                 }
 
-               stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+               stream.SetLength(0); //na ovaj nacin se sve brise iz liste
 
-                //sada u LISTI trazim zeljeni resurs i menjam ga.
+                //sada u LISTI trazim zeljenu etiektu i menjamo je.
                 foreach (Etiketa tr in et)
                 {
                     if (tr.oznaka.Equals(oz.Text))
@@ -143,6 +141,7 @@ namespace SvetskiResursi
             }
         }
 
+        //Dodavanje nove etikete
         private void Dodaj_Click(object sender, EventArgs e)
         {
             List<Etiketa> et2 = new List<Etiketa>();
@@ -169,6 +168,7 @@ namespace SvetskiResursi
             }
         }
 
+        //Brisanje etikete
         private void Brisi_Click(object sender, EventArgs e)
         {
             List<Etiketa> ee = new List<Etiketa>();
@@ -205,13 +205,14 @@ namespace SvetskiResursi
 
                 foreach (Etiketa tr in ee)
                 {
-                    formatter.Serialize(stream, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+                    formatter.Serialize(stream, tr); //Ponovni upis u datoteku
                 }
 
                 stream.Close();
             }   
         }
 
+        //Menjanje boje
         private void boja_MouseClick(object sender, MouseEventArgs e)
         {
             ColorDialog clc = new ColorDialog();
@@ -219,6 +220,7 @@ namespace SvetskiResursi
                 boja.BackColor = clc.Color;
         }
 
+        //Pretraga
         private void trazi_TextChanged(object sender, EventArgs e)
         {
             List<Etiketa> et = new List<Etiketa>();

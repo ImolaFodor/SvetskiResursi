@@ -84,10 +84,5 @@ namespace SvetskiResursi
             }
 
         }
-
-        private void dodajEtiketu_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

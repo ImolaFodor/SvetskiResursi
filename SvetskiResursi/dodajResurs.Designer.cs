@@ -179,7 +179,6 @@
             this.ikonica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.ikonica.TabIndex = 10;
             this.ikonica.TabStop = false;
-            this.ikonica.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label5
             // 
@@ -314,7 +313,6 @@
             this.label12.Size = new System.Drawing.Size(97, 36);
             this.label12.TabIndex = 25;
             this.label12.Text = "Frekvencija\r\nponaljvanja:";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // comboBox6
             // 
@@ -515,7 +513,6 @@
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalji";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // panel3
             // 
