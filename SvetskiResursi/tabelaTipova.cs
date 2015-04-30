@@ -220,5 +220,35 @@ namespace SvetskiResursi
                  stream.Close();
              }
         }
+
+        private void trazi_TextChanged(object sender, EventArgs e)
+        {
+            List<tipResursa> Lr = new List<tipResursa>();
+
+             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+             {
+                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                 while (stream.Position != stream.Length)
+                 {
+                     Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+
+                 }
+                 stream.Close();
+             }
+
+             dataGridView1.ClearSelection();
+
+             for (int i = 0; i < Lr.Count(); i++)
+                 if (Lr.ElementAt(i).oznaka.Equals(trazi.Text))
+                 {
+                     dataGridView1.Rows[i].Selected = true;
+                     dataGridView1.CurrentCell = dataGridView1[0,i];
+                 }
+                 else
+                     if (trazi.Text.Equals(""))
+                         dataGridView1.ClearSelection();
+        
+        }
     }
 }

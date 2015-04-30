@@ -85,7 +85,8 @@ namespace SvetskiResursi
 
         private void oznaka_tip_Validating(object sender, CancelEventArgs e)
         {
-            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
+            tipResursa tip = new tipResursa();
+
             if (rx_oz.Match(oznaka_tip.Text).Success)
             {
                 errorProviderOz.SetError(oznaka_tip, ""); //Ovako se postavlja da se greška isključi
@@ -101,6 +102,36 @@ namespace SvetskiResursi
                     e.Cancel = true; //Prelazak iz kontrole je zabranjen
                 }
                 errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+            }
+
+
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                {
+                    tip = (tipResursa)formatter.Deserialize(stream);
+
+                    //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
+                    if (!tip.oznaka.Equals(oznaka_tip.Text))
+                    {
+                        errorProviderOz.SetError(oznaka_tip, ""); //Ovako se postavlja da se greška isključi
+                        errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
+                    }
+                    else
+                    {
+                        //Ovim se podešava da se ispisuje greška.
+                        errorProviderOz.SetError(oznaka_tip, "Upisite novu");
+                        formIsValid = false;
+                        if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
+                        {
+                            e.Cancel = true; //Prelazak iz kontrole je zabranjen
+                        }
+                        errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+                    }
+                }
+                stream.Close();
             }
         }
 
