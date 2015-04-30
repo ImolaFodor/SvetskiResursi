@@ -186,6 +186,7 @@
             this.tabIm.Size = new System.Drawing.Size(113, 108);
             this.tabIm.TabIndex = 4;
             this.tabIm.TabStop = false;
+            this.tabIm.Click += new System.EventHandler(this.tabIm_Click);
             // 
             // ttOz
             // 

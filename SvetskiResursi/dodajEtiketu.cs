@@ -48,7 +48,7 @@ namespace SvetskiResursi
 
             et.oznaka = textBox1.Text;
             et.opis = richTextBox1.Text;
-            et.boja = label5.BackColor; //vrv ne valja
+            et.boja = label5.BackColor; 
 
             //provera da li su uneta obavezna polja
             formIsValid = true;
@@ -59,6 +59,7 @@ namespace SvetskiResursi
              
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+                SvetskiResursi.Form1.getInstance().Refresh();
             }
         }
 

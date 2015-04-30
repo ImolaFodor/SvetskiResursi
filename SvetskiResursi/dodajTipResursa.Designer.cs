@@ -92,9 +92,9 @@
             this.label3.Location = new System.Drawing.Point(9, 104);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 18);
+            this.label3.Size = new System.Drawing.Size(74, 18);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Ikonica:";
+            this.label3.Text = "Ikonica*:";
             // 
             // label4
             // 
@@ -120,10 +120,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pictureBox1.Location = new System.Drawing.Point(170, 104);
+            this.pictureBox1.Location = new System.Drawing.Point(127, 104);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(87, 91);
+            this.pictureBox1.Size = new System.Drawing.Size(164, 92);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;

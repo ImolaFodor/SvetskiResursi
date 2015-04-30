@@ -74,6 +74,7 @@ namespace SvetskiResursi
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+                SvetskiResursi.Form1.getInstance().Refresh();
             }
 
         }
@@ -105,14 +106,14 @@ namespace SvetskiResursi
             }
 
 
-            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+         using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
 
                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 while (stream.Position != stream.Length)
                 {
                     tip = (tipResursa)formatter.Deserialize(stream);
-
+            
                     //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
                     if (!tip.oznaka.Equals(oznaka_tip.Text))
                     {

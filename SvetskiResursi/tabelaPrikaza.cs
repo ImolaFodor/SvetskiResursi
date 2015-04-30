@@ -17,6 +17,7 @@ namespace SvetskiResursi
         public string etikete;
         List<Resurs> r = new List<Resurs>();
         List<Resurs> r2 = new List<Resurs>();
+
         public tabelaPrikaza()   
         {
             InitializeComponent();
@@ -182,7 +183,7 @@ namespace SvetskiResursi
                         {
                             tr.ime = ttIm.Text;
                             tr.opis = ttOp.Text;
-                            // Ikonica se ne moze menjati
+                            tr.ikonica = tabIm.Image;
                             // tr.oz_etiketa = string.Join(",", tr.oz_etiketa.ToArray());
                             tr.pojavljivanje = ttF.Text;
                             tr.strateska_vaznost = ttStv.Text;
@@ -291,6 +292,7 @@ namespace SvetskiResursi
                  else
                      if (tbTrazi.Text.Equals(""))
                          dataGridView1.ClearSelection();
+
         }
 
         private void tbTrazi_MouseClick(object sender, MouseEventArgs e)
@@ -310,6 +312,18 @@ namespace SvetskiResursi
                 dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
                     resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
 
+            }
+        }
+
+        //izmena slike
+        private void tabIm_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string fname = ofd.FileName;
+                Image img = new Bitmap(fname);
+                tabIm.Image = img;
             }
         }
 

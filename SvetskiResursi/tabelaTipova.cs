@@ -13,9 +13,7 @@ namespace SvetskiResursi
 {
     public partial class tabelaTipova : Form
     {
-        List<tipResursa> tp = new List<tipResursa>();
-        List<tipResursa> tp2 = new List<tipResursa>();
-        
+               
         public tabelaTipova()
         {
             InitializeComponent();
@@ -23,6 +21,8 @@ namespace SvetskiResursi
 
         private void prikazUtabeli()
         {
+            List<tipResursa> tp = new List<tipResursa>();
+
             //Ucitavanje resursa iz fajla.
             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
@@ -51,9 +51,16 @@ namespace SvetskiResursi
 
         }
 
+        //izmena slike
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string fname = ofd.FileName;
+                Image img = new Bitmap(fname);
+                imDT.Image = img;
+            }
         }
 
         private void Brisi_Click(object sender, EventArgs e)
@@ -146,6 +153,8 @@ namespace SvetskiResursi
 
         private void Dodaj_Click(object sender, EventArgs e)
         {
+            List<tipResursa> tp2 = new List<tipResursa>();
+
             dodajTipResursa dr = new dodajTipResursa();//Form1.getInstance());
             dr.ShowDialog();
 
@@ -193,6 +202,7 @@ namespace SvetskiResursi
                          {
                              tr.ime = imeDT.Text;
                              tr.opis = opDT.Text;
+                             tr.ikonica = imDT.Image;
                              // Ikonica se ne moze menjati
                              // tr.oz_etiketa = string.Join(",", tr.oz_etiketa.ToArray());
 

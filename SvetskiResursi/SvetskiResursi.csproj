@@ -95,7 +95,6 @@
     <Compile Include="tabelaTipova.Designer.cs">
       <DependentUpon>tabelaTipova.cs</DependentUpon>
     </Compile>
-    <Compile Include="TipResurs.cs" />
     <Compile Include="tipResursa.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
