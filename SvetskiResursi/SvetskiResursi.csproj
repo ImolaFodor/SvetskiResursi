@@ -151,6 +151,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="tabelaEtiketa.resx">
+      <DependentUpon>tabelaEtiketa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="tabelaPrikaza.resx">
       <DependentUpon>tabelaPrikaza.cs</DependentUpon>
     </EmbeddedResource>
