@@ -30,10 +30,20 @@ namespace SvetskiResursi
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 
         Form1 form = null;
-
+        /*
+         * //za menjanje boje naslova
+        private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
+        {
+            GroupBox box = (GroupBox)sender;
+            p.Graphics.Clear(SystemColors.Control);
+            p.Graphics.DrawString(box.Text, box.Font, Brushes.Blue, 0, 0);
+        }
+        */
         public dodajResurs(Form1 form1)
         {
             InitializeComponent();
+
+           // groupBox1.Paint += PaintBorderlessGroupBox;
             form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
@@ -251,6 +261,11 @@ namespace SvetskiResursi
         {
             dodajEtiketu et = new dodajEtiketu();
             et.ShowDialog();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+            
         }
     }
 }

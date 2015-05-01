@@ -54,6 +54,31 @@ namespace SvetskiResursi
 
         }
 
+        private void iscitavanje(List<Resurs> Lr){
+
+             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                while (stream.Position != stream.Length)
+                {
+                    Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
+                }
+                stream.Close();
+            }
+        }
+
+        private void upis(Resurs resurs)
+        {
+            etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+
+            dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
+
+
+        }
+
        
         // ispis selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -140,11 +165,7 @@ namespace SvetskiResursi
             dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach (Resurs resurs in r2)
             {
-                etikete = string.Join(",", resurs.oz_etiketa.ToArray());
-
-                dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
-                    resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
-
+                upis(resurs);
             }
         }
 
@@ -192,11 +213,7 @@ namespace SvetskiResursi
                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
                 foreach (Resurs resurs in Lr)
                 {
-                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
-
-                    dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
-                        resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
-
+                    upis(resurs);
                 }
 
                 foreach (Resurs tr in Lr)
@@ -238,11 +255,7 @@ namespace SvetskiResursi
                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
                 foreach (Resurs resurs in Lr)
                 {
-                    etikete = string.Join(",", resurs.oz_etiketa.ToArray());
-
-                    dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
-                        resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
-
+                    upis(resurs);
                 }
 
                 foreach (Resurs tr in Lr)
@@ -299,11 +312,7 @@ namespace SvetskiResursi
             dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach (Resurs resurs in r)
             {
-                etikete = string.Join(",", resurs.oz_etiketa.ToArray());
-
-                dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
-                    resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
-
+                upis(resurs);
             }
         }
 
@@ -317,6 +326,47 @@ namespace SvetskiResursi
                 Image img = new Bitmap(fname);
                 tabIm.Image = img;
             }
+        }
+
+        //Filtriranje
+        private void cbFilter_TextChanged(object sender, EventArgs e)
+        {
+            List<Resurs> Lr = new List<Resurs>();
+
+            iscitavanje(Lr); //napravila gore funkciju
+
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows.Clear();
+
+            for (int i = 0; i < Lr.Count(); i++)
+                if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text))
+                {
+
+                    upis(Lr.ElementAt(i));
+                   
+                    if(!cbFilter.Items.Contains(Lr.ElementAt(i).oznaka))
+                        cbFilter.Items.Add(Lr.ElementAt(i).oznaka);
+                    dataGridView1.Rows[0].Selected = true;
+                    dataGridView1.CurrentCell = dataGridView1[0, 0];
+                    /*   if (tbTrazi.Text.Equals(""))
+                             dataGridView1.ClearSelection(); */
+                }
+                else
+                    if (cbFilter.Text.Equals(""))
+                    {
+                        dataGridView1.Rows.Clear();
+                        
+                        foreach (Resurs resurs in Lr)
+                        {
+                            upis(resurs);
+                            cbFilter.Items.Remove(resurs.oznaka);
+                        }
+                    }
+        }
+
+        private void cbFilter_Leave(object sender, EventArgs e)
+        {
+            cbFilter.Text = "";
         }
 
         }

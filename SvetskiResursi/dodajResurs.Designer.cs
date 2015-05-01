@@ -68,12 +68,12 @@
             this.errorProviderIm = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderTp = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nTip = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
-            this.nTip = new System.Windows.Forms.Button();
             this.nEtik = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
@@ -493,6 +493,19 @@
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // nTip
+            // 
+            this.nTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.nTip.Location = new System.Drawing.Point(355, 116);
+            this.nTip.Margin = new System.Windows.Forms.Padding(4);
+            this.nTip.Name = "nTip";
+            this.nTip.Size = new System.Drawing.Size(74, 32);
+            this.nTip.TabIndex = 34;
+            this.nTip.Text = "Novi tip";
+            this.nTip.UseVisualStyleBackColor = true;
+            this.nTip.Click += new System.EventHandler(this.nTip_Click);
             // 
             // groupBox2
             // 
@@ -558,18 +571,6 @@
             this.Vizualizacija.TabIndex = 44;
             this.Vizualizacija.TabStop = false;
             this.Vizualizacija.Text = "Vizualizacija";
-            // 
-            // nTip
-            // 
-            this.nTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nTip.Location = new System.Drawing.Point(355, 116);
-            this.nTip.Margin = new System.Windows.Forms.Padding(4);
-            this.nTip.Name = "nTip";
-            this.nTip.Size = new System.Drawing.Size(74, 32);
-            this.nTip.TabIndex = 34;
-            this.nTip.Text = "Novi tip";
-            this.nTip.UseVisualStyleBackColor = true;
-            this.nTip.Click += new System.EventHandler(this.nTip_Click);
             // 
             // nEtik
             // 

@@ -68,6 +68,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.gbDet = new System.Windows.Forms.GroupBox();
             this.tbTrazi = new System.Windows.Forms.TextBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -428,11 +429,22 @@
             this.tbTrazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbTrazi_MouseClick);
             this.tbTrazi.TextChanged += new System.EventHandler(this.tbTrazi_TextChanged);
             // 
+            // cbFilter
+            // 
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Location = new System.Drawing.Point(368, 245);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(121, 26);
+            this.cbFilter.TabIndex = 33;
+            this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
+            this.cbFilter.Leave += new System.EventHandler(this.cbFilter_Leave);
+            // 
             // tabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 494);
+            this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.tbTrazi);
             this.Controls.Add(this.gbDet);
             this.Controls.Add(this.button1);
@@ -497,6 +509,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox gbDet;
         private System.Windows.Forms.TextBox tbTrazi;
+        private System.Windows.Forms.ComboBox cbFilter;
 
     }
 }
