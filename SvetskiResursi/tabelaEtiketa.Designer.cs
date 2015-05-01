@@ -43,6 +43,7 @@
             this.otkazi = new System.Windows.Forms.Button();
             this.Izmeni = new System.Windows.Forms.Button();
             this.trazi = new System.Windows.Forms.TextBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.detalji.SuspendLayout();
             this.SuspendLayout();
@@ -142,10 +143,10 @@
             // 
             // Brisi
             // 
-            this.Brisi.Location = new System.Drawing.Point(259, 183);
+            this.Brisi.Location = new System.Drawing.Point(278, 183);
             this.Brisi.Margin = new System.Windows.Forms.Padding(4);
             this.Brisi.Name = "Brisi";
-            this.Brisi.Size = new System.Drawing.Size(112, 32);
+            this.Brisi.Size = new System.Drawing.Size(93, 32);
             this.Brisi.TabIndex = 3;
             this.Brisi.Text = "Brisi";
             this.Brisi.UseVisualStyleBackColor = true;
@@ -153,10 +154,10 @@
             // 
             // Dodaj
             // 
-            this.Dodaj.Location = new System.Drawing.Point(129, 183);
+            this.Dodaj.Location = new System.Drawing.Point(185, 183);
             this.Dodaj.Margin = new System.Windows.Forms.Padding(4);
             this.Dodaj.Name = "Dodaj";
-            this.Dodaj.Size = new System.Drawing.Size(112, 32);
+            this.Dodaj.Size = new System.Drawing.Size(85, 32);
             this.Dodaj.TabIndex = 4;
             this.Dodaj.Text = "Dodaj";
             this.Dodaj.UseVisualStyleBackColor = true;
@@ -189,15 +190,27 @@
             this.trazi.Location = new System.Drawing.Point(24, 187);
             this.trazi.Margin = new System.Windows.Forms.Padding(4);
             this.trazi.Name = "trazi";
-            this.trazi.Size = new System.Drawing.Size(79, 24);
+            this.trazi.Size = new System.Drawing.Size(70, 24);
             this.trazi.TabIndex = 7;
+            this.trazi.Click += new System.EventHandler(this.trazi_Click);
             this.trazi.TextChanged += new System.EventHandler(this.trazi_TextChanged);
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Location = new System.Drawing.Point(102, 185);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(76, 26);
+            this.cbFilter.TabIndex = 35;
+            this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
+            this.cbFilter.Leave += new System.EventHandler(this.cbFilter_Leave);
             // 
             // tabelaEtiketa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(394, 418);
+            this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.trazi);
             this.Controls.Add(this.Izmeni);
             this.Controls.Add(this.otkazi);
@@ -236,5 +249,6 @@
         private System.Windows.Forms.Button otkazi;
         private System.Windows.Forms.Button Izmeni;
         private System.Windows.Forms.TextBox trazi;
+        private System.Windows.Forms.ComboBox cbFilter;
     }
 }

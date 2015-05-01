@@ -54,6 +54,12 @@ namespace SvetskiResursi
 
         }
 
+        private void ocisti_filter()
+        {
+            if (!cbFilter.Text.Equals(""))
+                cbFilter.Text = "";
+        }
+
         private void iscitavanje(List<Resurs> Lr){
 
              using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
@@ -167,6 +173,8 @@ namespace SvetskiResursi
             {
                 upis(resurs);
             }
+
+            ocisti_filter();
         }
 
         //Izmena sadrzaja
@@ -222,7 +230,9 @@ namespace SvetskiResursi
                 }
 
                 stream1.Close();
-            }   
+            }
+
+            ocisti_filter();
         }
 
         //Brisanje resursa
@@ -264,7 +274,9 @@ namespace SvetskiResursi
                 }
 
                 stream.Close();
-            }   
+            }
+
+            ocisti_filter();
         }
 
         //Pretraga
@@ -272,17 +284,7 @@ namespace SvetskiResursi
         {
              List<Resurs> Lr = new List<Resurs>();
 
-             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-             {
-                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                 while (stream.Position != stream.Length)
-                 {
-                     Lr.Add(((Resurs)formatter.Deserialize(stream)));
-
-                 }
-                 stream.Close();
-             }
+             iscitavanje(Lr);
 
              dataGridView1.ClearSelection();
 
@@ -296,6 +298,7 @@ namespace SvetskiResursi
                      if (tbTrazi.Text.Equals(""))
                          dataGridView1.ClearSelection();
 
+             
         }
 
         //Deselektovanje
@@ -303,6 +306,8 @@ namespace SvetskiResursi
         {
             if (tbTrazi.Text.Equals(""))
                 dataGridView1.ClearSelection();
+
+            ocisti_filter();
         }
 
 
@@ -348,8 +353,7 @@ namespace SvetskiResursi
                         cbFilter.Items.Add(Lr.ElementAt(i).oznaka);
                     dataGridView1.Rows[0].Selected = true;
                     dataGridView1.CurrentCell = dataGridView1[0, 0];
-                    /*   if (tbTrazi.Text.Equals(""))
-                             dataGridView1.ClearSelection(); */
+                   
                 }
                 else
                     if (cbFilter.Text.Equals(""))
@@ -364,9 +368,10 @@ namespace SvetskiResursi
                     }
         }
 
+        //Da kad izadjem iz polja ne ostane nista upisano
         private void cbFilter_Leave(object sender, EventArgs e)
         {
-            cbFilter.Text = "";
+            //cbFilter.Text = "";
         }
 
         }

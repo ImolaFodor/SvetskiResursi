@@ -46,6 +46,7 @@
             this.otkazi = new System.Windows.Forms.Button();
             this.Izmeni = new System.Windows.Forms.Button();
             this.trazi = new System.Windows.Forms.TextBox();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.detalji.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imDT)).BeginInit();
@@ -228,7 +229,17 @@
             this.trazi.Name = "trazi";
             this.trazi.Size = new System.Drawing.Size(79, 24);
             this.trazi.TabIndex = 6;
+            this.trazi.Click += new System.EventHandler(this.trazi_Click);
             this.trazi.TextChanged += new System.EventHandler(this.trazi_TextChanged);
+            // 
+            // cbFilter
+            // 
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Location = new System.Drawing.Point(119, 201);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(82, 26);
+            this.cbFilter.TabIndex = 34;
+            this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
             // tabelaTipova
             // 
@@ -236,6 +247,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.otkazi;
             this.ClientSize = new System.Drawing.Size(500, 451);
+            this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.trazi);
             this.Controls.Add(this.Izmeni);
             this.Controls.Add(this.otkazi);
@@ -279,5 +291,6 @@
         private System.Windows.Forms.Label imeD;
         private System.Windows.Forms.Label ozD;
         private System.Windows.Forms.TextBox trazi;
+        private System.Windows.Forms.ComboBox cbFilter;
     }
 }

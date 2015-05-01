@@ -41,12 +41,34 @@ namespace SvetskiResursi
             }
         }
 
+        private void ocisti_filter()
+        {
+            if (!cbFilter.Text.Equals(""))
+                cbFilter.Text = "";
+        }
 
         private void tabelaEtiketa_Load(object sender, EventArgs e)
         {
             prikazUtabeli();
         }
 
+        private void iscitavanje(List<Etiketa> et2){
+
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    et2.Add((Etiketa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
+        private void upis(Etiketa etiketa)
+        {                              
+           dataGridView1.Rows.Add(etiketa.oznaka, etiketa.opis );
+
+        }
 
         //prikaz selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -127,7 +149,7 @@ namespace SvetskiResursi
                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
                 foreach (Etiketa etiketa in et)
                 {
-                    dataGridView1.Rows.Add(etiketa.oznaka, etiketa.opis);
+                    upis(etiketa);
 
                 }
 
@@ -139,6 +161,8 @@ namespace SvetskiResursi
 
                 stream.Close();
             }
+
+            ocisti_filter();
         }
 
         //Dodavanje nove etikete
@@ -150,22 +174,17 @@ namespace SvetskiResursi
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
-            {
-                var formatter = new BinaryFormatter();
-                stream.Position = 0;
-                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    et2.Add((Etiketa)formatter.Deserialize(stream));
-                stream.Close();
-            }
+            iscitavanje(et2);
 
             dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach(Etiketa etiketa in et2)
             {
 
-                dataGridView1.Rows.Add(etiketa.oznaka, etiketa.opis);
+                upis(etiketa);
 
             }
+
+            ocisti_filter();
         }
 
         //Brisanje etikete
@@ -196,11 +215,10 @@ namespace SvetskiResursi
                 }
 
                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+
                 foreach (Etiketa etiketa in ee)
                 {
-                    
-                    dataGridView1.Rows.Add(etiketa.oznaka, etiketa.opis );
-
+                    upis(etiketa);
                 }
 
                 foreach (Etiketa tr in ee)
@@ -209,7 +227,9 @@ namespace SvetskiResursi
                 }
 
                 stream.Close();
-            }   
+            }
+
+            ocisti_filter();
         }
 
         //Menjanje boje
@@ -225,17 +245,7 @@ namespace SvetskiResursi
         {
             List<Etiketa> et = new List<Etiketa>();
 
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
-            {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                while (stream.Position != stream.Length)
-                {
-                    et.Add(((Etiketa)formatter.Deserialize(stream)));
-
-                }
-                stream.Close();
-            }
+           iscitavanje(et);
 
             dataGridView1.ClearSelection();
 
@@ -249,6 +259,55 @@ namespace SvetskiResursi
                     if (trazi.Text.Equals(""))
                         dataGridView1.ClearSelection();
         
+        }
+
+        private void cbFilter_TextChanged(object sender, EventArgs e)
+        {
+            List<Etiketa> Lr = new List<Etiketa>();
+
+            iscitavanje(Lr); //napravila gore funkciju
+
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows.Clear();
+
+            for (int i = 0; i < Lr.Count(); i++)
+                if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text))
+                {
+                    
+                    upis(Lr.ElementAt(i));
+                    
+
+                    if (!cbFilter.Items.Contains(Lr.ElementAt(i).oznaka))
+                        cbFilter.Items.Add(Lr.ElementAt(i).oznaka);
+
+                    dataGridView1.Rows[0].Selected = true;
+                    dataGridView1.CurrentCell = dataGridView1[0, 0];
+
+                }
+                else
+                    if (cbFilter.Text.Equals(""))
+                    {
+                        dataGridView1.Rows.Clear();
+
+                        foreach (Etiketa etik in Lr)
+                        {
+                            upis(etik);
+                            cbFilter.Items.Remove(etik.oznaka);
+                        }
+                    }
+        }
+
+        private void cbFilter_Leave(object sender, EventArgs e)
+        {
+           // cbFilter.Text = "";
+        }
+
+        private void trazi_Click(object sender, EventArgs e)
+        {
+            if (trazi.Text.Equals(""))
+                dataGridView1.ClearSelection();
+
+            ocisti_filter();
         }
     }
 }

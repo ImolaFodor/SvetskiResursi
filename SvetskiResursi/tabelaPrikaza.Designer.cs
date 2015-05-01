@@ -422,7 +422,7 @@
             // 
             // tbTrazi
             // 
-            this.tbTrazi.Location = new System.Drawing.Point(203, 245);
+            this.tbTrazi.Location = new System.Drawing.Point(20, 240);
             this.tbTrazi.Name = "tbTrazi";
             this.tbTrazi.Size = new System.Drawing.Size(100, 24);
             this.tbTrazi.TabIndex = 31;
@@ -432,9 +432,9 @@
             // cbFilter
             // 
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(368, 245);
+            this.cbFilter.Location = new System.Drawing.Point(142, 240);
             this.cbFilter.Name = "cbFilter";
-            this.cbFilter.Size = new System.Drawing.Size(121, 26);
+            this.cbFilter.Size = new System.Drawing.Size(105, 26);
             this.cbFilter.TabIndex = 33;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             this.cbFilter.Leave += new System.EventHandler(this.cbFilter_Leave);
