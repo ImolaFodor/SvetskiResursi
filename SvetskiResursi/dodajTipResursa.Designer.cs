@@ -50,10 +50,11 @@
             // 
             // oznaka_tip
             // 
+            this.oznaka_tip.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oznaka_tip.Location = new System.Drawing.Point(127, 12);
             this.oznaka_tip.Margin = new System.Windows.Forms.Padding(4);
             this.oznaka_tip.Name = "oznaka_tip";
-            this.oznaka_tip.Size = new System.Drawing.Size(164, 24);
+            this.oznaka_tip.Size = new System.Drawing.Size(164, 23);
             this.oznaka_tip.TabIndex = 0;
             this.oznaka_tip.Validating += new System.ComponentModel.CancelEventHandler(this.oznaka_tip_Validating);
             // 

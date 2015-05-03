@@ -19,8 +19,6 @@ namespace SvetskiResursi
     public partial class dodajResurs : Form
     {
         private OpenFileDialog ofd = new OpenFileDialog();
-        List<tipResursa> tr = new List<tipResursa>();
-        List<Etiketa> et = new List<Etiketa>();
         Resurs resur;
 
         private Regex rx_oz = null;
@@ -39,9 +37,34 @@ namespace SvetskiResursi
             p.Graphics.DrawString(box.Text, box.Font, Brushes.Blue, 0, 0);
         }
         */
+        private void ucitajTip(List<tipResursa> tr)
+        {
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while(stream.Position != stream.Length)
+                    tr.Add((tipResursa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
+        private void ucitajEt(List<Etiketa> et)
+        {
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
         public dodajResurs(Form1 form1)
         {
             InitializeComponent();
+            List<tipResursa> tr = new List<tipResursa>();
+            List<Etiketa> et = new List<Etiketa>();
+        
 
            // groupBox1.Paint += PaintBorderlessGroupBox;
             form = form1;
@@ -56,21 +79,9 @@ namespace SvetskiResursi
             errorRepeat.Add(ime, false);
             errorRepeat.Add(comboTipResursa, false);
 
-            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
-            {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while(stream.Position != stream.Length)
-                    tr.Add((tipResursa)formatter.Deserialize(stream));
-                stream.Close();
-            }
+            ucitajTip(tr);
 
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
-            {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while (stream.Position != stream.Length)
-                    et.Add((Etiketa)formatter.Deserialize(stream));
-                stream.Close();
-            }
+            ucitajEt(et);
            
             foreach (tipResursa tip in tr)
              {
@@ -121,27 +132,8 @@ namespace SvetskiResursi
             resur = new Resurs();
             DialogObavestenja db = new DialogObavestenja();
             ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
-
-            //provera da li vec postoji resurs sa odredjenom oznakom
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-            {
-                             
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while (stream.Position != stream.Length)
-                {
-                    resur = (Resurs)formatter.Deserialize(stream);
-
-                    if (resur.oznaka != null)
-                        if (resur.oznaka.Equals(oznaka.Text))
-                        {
-                            Console.Write("Oznaka vec postoji.");
-                            oznaka.Text = "UNESITE NOVU OZNAKU";
-                            return;
-                        }
-                }
-
-                stream.Close();
-
+            List<tipResursa> tr = new List<tipResursa>();
+            
 
                 //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
                 res.oznaka = oznaka.Text;
@@ -149,6 +141,7 @@ namespace SvetskiResursi
                 res.opis = opis.Text;
                 res.tipResursa = comboTipResursa.Text;
 
+                ucitajTip(tr);
                 //ukoliko nismo uneli sliku resursku, iskoristicemo sliku iz tipa resursa
                 foreach (tipResursa tip in tr)
                 {
@@ -180,7 +173,7 @@ namespace SvetskiResursi
                     this.Close();
                     SvetskiResursi.Form1.getInstance().Refresh();
                 }
-            }
+            
 
             form.RefreshList();
             
@@ -205,6 +198,27 @@ namespace SvetskiResursi
                     e.Cancel = true; //Prelazak iz kontrole je zabranjen
                 }
                 errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
+            }
+
+            //provera da li vec postoji resurs sa odredjenom oznakom
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                {
+                    resur = (Resurs)formatter.Deserialize(stream);
+
+                    if (resur.oznaka != null)
+                        if (resur.oznaka.Equals(oznaka.Text))
+                        {
+                            oznaka.Text = "OZNAKA VEC POSTOJI!";
+                            oznaka.ForeColor = Color.Red;
+                            return;
+                        }
+                }
+
+                stream.Close();
             }
 
         }
@@ -253,14 +267,38 @@ namespace SvetskiResursi
 
         private void nTip_Click(object sender, EventArgs e)
         {
+            List<tipResursa> tp = new List<tipResursa>();
+
             dodajTipResursa trs = new dodajTipResursa();
-            trs.ShowDialog();
+           
+            if (trs.ShowDialog() == DialogResult.OK)
+            {
+                comboTipResursa.Items.Clear();
+                ucitajTip(tp);
+                foreach (tipResursa tip in tp)
+                {
+                    comboTipResursa.Items.Add(tip.oznaka);
+
+                }
+            }
         }
 
         private void nEtik_Click(object sender, EventArgs e)
         {
+            List<Etiketa> ek = new List<Etiketa>();
+
             dodajEtiketu et = new dodajEtiketu();
-            et.ShowDialog();
+           
+            if (et.ShowDialog() == DialogResult.OK)
+            {
+                checkedListBox1.Items.Clear();
+                ucitajEt(ek);
+                foreach (Etiketa etiketa in ek)
+                {
+                    checkedListBox1.Items.Add(etiketa.oznaka);
+
+                }
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

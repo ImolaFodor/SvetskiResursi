@@ -108,9 +108,16 @@ namespace SvetskiResursi
                 while (stream.Position != stream.Length)
                 {
                     tip = (tipResursa)formatter.Deserialize(stream);
-            
+
+                    if (tip.oznaka != null)
+                        if (tip.oznaka.Equals(oznaka_tip.Text))
+                        {
+                            oznaka_tip.Text = "OZNAKA VEC POSTOJI!";
+                            oznaka_tip.ForeColor = Color.Red;
+                            return;
+                        }
                     //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
-                    if (!tip.oznaka.Equals(oznaka_tip.Text))
+                  /*  if (!tip.oznaka.Equals(oznaka_tip.Text))
                     {
                         errorProviderOz.SetError(oznaka_tip, ""); //Ovako se postavlja da se greška isključi
                         errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
@@ -125,7 +132,7 @@ namespace SvetskiResursi
                             e.Cancel = true; //Prelazak iz kontrole je zabranjen
                         }
                         errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
-                    }
+                    }*/
                 }
                 stream.Close();
             }

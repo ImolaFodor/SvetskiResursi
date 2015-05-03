@@ -289,7 +289,7 @@ namespace SvetskiResursi
              dataGridView1.ClearSelection();
 
              for (int i = 0; i < Lr.Count(); i++)
-                 if (Lr.ElementAt(i).oznaka.Equals(tbTrazi.Text))
+                 if (Lr.ElementAt(i).oznaka.Equals(tbTrazi.Text) || Lr.ElementAt(i).ime.Equals(tbTrazi.Text))
                  {
                      dataGridView1.Rows[i].Selected = true;
                      dataGridView1.CurrentCell = dataGridView1[0,i];
@@ -344,7 +344,8 @@ namespace SvetskiResursi
             dataGridView1.Rows.Clear();
 
             for (int i = 0; i < Lr.Count(); i++)
-                if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text))
+                if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text)) // ||
+                   // Lr.ElementAt(i).ime.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).ime.Equals(cbFilter.Text))
                 {
 
                     upis(Lr.ElementAt(i));

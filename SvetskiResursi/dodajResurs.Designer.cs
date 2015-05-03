@@ -89,10 +89,11 @@
             // 
             // oznaka
             // 
+            this.oznaka.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oznaka.Location = new System.Drawing.Point(172, 40);
             this.oznaka.Margin = new System.Windows.Forms.Padding(4);
             this.oznaka.Name = "oznaka";
-            this.oznaka.Size = new System.Drawing.Size(164, 24);
+            this.oznaka.Size = new System.Drawing.Size(175, 23);
             this.oznaka.TabIndex = 0;
             this.oznaka.Validating += new System.ComponentModel.CancelEventHandler(this.oznaka_Validating);
             // 
@@ -111,7 +112,7 @@
             this.ime.Location = new System.Drawing.Point(172, 81);
             this.ime.Margin = new System.Windows.Forms.Padding(4);
             this.ime.Name = "ime";
-            this.ime.Size = new System.Drawing.Size(164, 24);
+            this.ime.Size = new System.Drawing.Size(175, 24);
             this.ime.TabIndex = 2;
             this.ime.Validating += new System.ComponentModel.CancelEventHandler(this.ime_Validating);
             // 
@@ -141,7 +142,7 @@
             this.comboTipResursa.Location = new System.Drawing.Point(172, 118);
             this.comboTipResursa.Margin = new System.Windows.Forms.Padding(4);
             this.comboTipResursa.Name = "comboTipResursa";
-            this.comboTipResursa.Size = new System.Drawing.Size(164, 26);
+            this.comboTipResursa.Size = new System.Drawing.Size(175, 26);
             this.comboTipResursa.TabIndex = 6;
             this.comboTipResursa.Validating += new System.ComponentModel.CancelEventHandler(this.comboTipResursa_Validating);
             // 
@@ -172,11 +173,11 @@
             // 
             this.ikonica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ikonica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ikonica.Location = new System.Drawing.Point(117, 44);
+            this.ikonica.Location = new System.Drawing.Point(91, 45);
             this.ikonica.Margin = new System.Windows.Forms.Padding(4);
             this.ikonica.Name = "ikonica";
-            this.ikonica.Size = new System.Drawing.Size(100, 100);
-            this.ikonica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ikonica.Size = new System.Drawing.Size(155, 155);
+            this.ikonica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.ikonica.TabIndex = 10;
             this.ikonica.TabStop = false;
             // 
@@ -184,7 +185,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 40);
+            this.label5.Location = new System.Drawing.Point(16, 40);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 18);
@@ -295,7 +296,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(132, 152);
+            this.button1.Location = new System.Drawing.Point(132, 208);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 32);
