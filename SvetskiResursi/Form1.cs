@@ -235,6 +235,7 @@ namespace SvetskiResursi
 
             tr.Clear();
             r.Clear();
+            ListaSlika.Dispose();
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 var formatter = new BinaryFormatter();
