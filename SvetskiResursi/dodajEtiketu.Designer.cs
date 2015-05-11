@@ -156,9 +156,9 @@
             this.label5.Location = new System.Drawing.Point(320, 89);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 15);
+            this.label5.Size = new System.Drawing.Size(55, 15);
             this.label5.TabIndex = 4;
-            this.label5.Text = "izabrana ";
+            this.label5.Text = "                ";
             // 
             // errorProviderEt
             // 

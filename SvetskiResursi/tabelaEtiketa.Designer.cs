@@ -32,12 +32,13 @@
             this.oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detalji = new System.Windows.Forms.GroupBox();
+            this.op = new System.Windows.Forms.Label();
+            this.boja = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.oz = new System.Windows.Forms.Label();
             this.opE = new System.Windows.Forms.Label();
             this.bojaE = new System.Windows.Forms.Label();
             this.ozE = new System.Windows.Forms.Label();
-            this.op = new System.Windows.Forms.RichTextBox();
-            this.boja = new System.Windows.Forms.TextBox();
-            this.oz = new System.Windows.Forms.TextBox();
             this.Brisi = new System.Windows.Forms.Button();
             this.Dodaj = new System.Windows.Forms.Button();
             this.otkazi = new System.Windows.Forms.Button();
@@ -77,18 +78,59 @@
             // 
             // detalji
             // 
+            this.detalji.Controls.Add(this.op);
+            this.detalji.Controls.Add(this.boja);
+            this.detalji.Controls.Add(this.label1);
+            this.detalji.Controls.Add(this.oz);
             this.detalji.Controls.Add(this.opE);
             this.detalji.Controls.Add(this.bojaE);
             this.detalji.Controls.Add(this.ozE);
-            this.detalji.Controls.Add(this.op);
-            this.detalji.Controls.Add(this.boja);
-            this.detalji.Controls.Add(this.oz);
             this.detalji.Location = new System.Drawing.Point(24, 235);
             this.detalji.Name = "detalji";
-            this.detalji.Size = new System.Drawing.Size(347, 105);
+            this.detalji.Size = new System.Drawing.Size(347, 100);
             this.detalji.TabIndex = 1;
             this.detalji.TabStop = false;
             this.detalji.Text = "Detalji";
+            this.detalji.Enter += new System.EventHandler(this.detalji_Enter);
+            // 
+            // op
+            // 
+            this.op.AutoSize = true;
+            this.op.Location = new System.Drawing.Point(237, 23);
+            this.op.MaximumSize = new System.Drawing.Size(100, 100);
+            this.op.Name = "op";
+            this.op.Size = new System.Drawing.Size(48, 18);
+            this.op.TabIndex = 39;
+            this.op.Text = "          ";
+            this.op.Click += new System.EventHandler(this.op_Click);
+            this.op.MouseHover += new System.EventHandler(this.op_MouseHover);
+            // 
+            // boja
+            // 
+            this.boja.AutoSize = true;
+            this.boja.Location = new System.Drawing.Point(85, 63);
+            this.boja.Name = "boja";
+            this.boja.Size = new System.Drawing.Size(68, 18);
+            this.boja.TabIndex = 38;
+            this.boja.Text = "               ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(118, -16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 18);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "\"          \"";
+            // 
+            // oz
+            // 
+            this.oz.AutoSize = true;
+            this.oz.Location = new System.Drawing.Point(85, 23);
+            this.oz.Name = "oz";
+            this.oz.Size = new System.Drawing.Size(58, 18);
+            this.oz.TabIndex = 36;
+            this.oz.Text = "\"          \"";
             // 
             // opE
             // 
@@ -102,7 +144,7 @@
             // bojaE
             // 
             this.bojaE.AutoSize = true;
-            this.bojaE.Location = new System.Drawing.Point(6, 63);
+            this.bojaE.Location = new System.Drawing.Point(15, 63);
             this.bojaE.Name = "bojaE";
             this.bojaE.Size = new System.Drawing.Size(42, 18);
             this.bojaE.TabIndex = 6;
@@ -111,35 +153,11 @@
             // ozE
             // 
             this.ozE.AutoSize = true;
-            this.ozE.Location = new System.Drawing.Point(6, 23);
+            this.ozE.Location = new System.Drawing.Point(15, 23);
             this.ozE.Name = "ozE";
             this.ozE.Size = new System.Drawing.Size(64, 18);
             this.ozE.TabIndex = 5;
             this.ozE.Text = "Oznaka:";
-            // 
-            // op
-            // 
-            this.op.Location = new System.Drawing.Point(237, 20);
-            this.op.Name = "op";
-            this.op.Size = new System.Drawing.Size(100, 67);
-            this.op.TabIndex = 4;
-            this.op.Text = "";
-            // 
-            // boja
-            // 
-            this.boja.Location = new System.Drawing.Point(76, 63);
-            this.boja.Name = "boja";
-            this.boja.Size = new System.Drawing.Size(100, 24);
-            this.boja.TabIndex = 3;
-            this.boja.MouseClick += new System.Windows.Forms.MouseEventHandler(this.boja_MouseClick);
-            // 
-            // oz
-            // 
-            this.oz.Enabled = false;
-            this.oz.Location = new System.Drawing.Point(76, 23);
-            this.oz.Name = "oz";
-            this.oz.Size = new System.Drawing.Size(100, 24);
-            this.oz.TabIndex = 2;
             // 
             // Brisi
             // 
@@ -198,7 +216,7 @@
             // cbFilter
             // 
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(102, 185);
+            this.cbFilter.Location = new System.Drawing.Point(102, 187);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(76, 26);
             this.cbFilter.TabIndex = 35;
@@ -241,14 +259,15 @@
         private System.Windows.Forms.Label opE;
         private System.Windows.Forms.Label bojaE;
         private System.Windows.Forms.Label ozE;
-        private System.Windows.Forms.RichTextBox op;
-        private System.Windows.Forms.TextBox boja;
-        private System.Windows.Forms.TextBox oz;
         private System.Windows.Forms.Button Brisi;
         private System.Windows.Forms.Button Dodaj;
         private System.Windows.Forms.Button otkazi;
         private System.Windows.Forms.Button Izmeni;
         private System.Windows.Forms.TextBox trazi;
         private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.Label oz;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label boja;
+        private System.Windows.Forms.Label op;
     }
 }

@@ -74,13 +74,7 @@ namespace SvetskiResursi
         //izmena slike
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string fname = ofd.FileName;
-                Image img = new Bitmap(fname);
-                imDT.Image = img;
-            }
+          
         }
 
         //Brisanje tipa
@@ -303,6 +297,18 @@ namespace SvetskiResursi
                 dataGridView1.ClearSelection();
 
             ocisti_filter();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void opDT_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(opDT, opDT.Text);
+
         }
     }
 }

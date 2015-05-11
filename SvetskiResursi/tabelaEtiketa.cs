@@ -309,5 +309,21 @@ namespace SvetskiResursi
 
             ocisti_filter();
         }
+
+        private void detalji_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void op_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void op_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(op, op.Text);
+        }
     }
 }

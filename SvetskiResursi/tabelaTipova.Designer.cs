@@ -34,12 +34,12 @@
             this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
             this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detalji = new System.Windows.Forms.GroupBox();
+            this.imeDT = new System.Windows.Forms.Label();
+            this.ozDT = new System.Windows.Forms.Label();
+            this.opDT = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.imeD = new System.Windows.Forms.Label();
             this.ozD = new System.Windows.Forms.Label();
-            this.imeDT = new System.Windows.Forms.TextBox();
-            this.ozDT = new System.Windows.Forms.TextBox();
-            this.opDT = new System.Windows.Forms.RichTextBox();
             this.imDT = new System.Windows.Forms.PictureBox();
             this.Brisi = new System.Windows.Forms.Button();
             this.Dodaj = new System.Windows.Forms.Button();
@@ -95,12 +95,12 @@
             // 
             // detalji
             // 
-            this.detalji.Controls.Add(this.label3);
-            this.detalji.Controls.Add(this.imeD);
-            this.detalji.Controls.Add(this.ozD);
             this.detalji.Controls.Add(this.imeDT);
             this.detalji.Controls.Add(this.ozDT);
             this.detalji.Controls.Add(this.opDT);
+            this.detalji.Controls.Add(this.label3);
+            this.detalji.Controls.Add(this.imeD);
+            this.detalji.Controls.Add(this.ozD);
             this.detalji.Controls.Add(this.imDT);
             this.detalji.Location = new System.Drawing.Point(13, 249);
             this.detalji.Margin = new System.Windows.Forms.Padding(4);
@@ -111,10 +111,42 @@
             this.detalji.TabStop = false;
             this.detalji.Text = "Detalji";
             // 
+            // imeDT
+            // 
+            this.imeDT.AutoSize = true;
+            this.imeDT.Location = new System.Drawing.Point(370, 75);
+            this.imeDT.MaximumSize = new System.Drawing.Size(100, 100);
+            this.imeDT.Name = "imeDT";
+            this.imeDT.Size = new System.Drawing.Size(48, 18);
+            this.imeDT.TabIndex = 9;
+            this.imeDT.Text = "          ";
+            this.imeDT.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // ozDT
+            // 
+            this.ozDT.AutoSize = true;
+            this.ozDT.Location = new System.Drawing.Point(370, 24);
+            this.ozDT.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ozDT.Name = "ozDT";
+            this.ozDT.Size = new System.Drawing.Size(48, 18);
+            this.ozDT.TabIndex = 8;
+            this.ozDT.Text = "          ";
+            // 
+            // opDT
+            // 
+            this.opDT.AutoSize = true;
+            this.opDT.Location = new System.Drawing.Point(195, 21);
+            this.opDT.MaximumSize = new System.Drawing.Size(100, 100);
+            this.opDT.Name = "opDT";
+            this.opDT.Size = new System.Drawing.Size(48, 18);
+            this.opDT.TabIndex = 7;
+            this.opDT.Text = "          ";
+            this.opDT.MouseHover += new System.EventHandler(this.opDT_MouseHover);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(121, 26);
+            this.label3.Location = new System.Drawing.Point(145, 21);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 18);
@@ -124,7 +156,7 @@
             // imeD
             // 
             this.imeD.AutoSize = true;
-            this.imeD.Location = new System.Drawing.Point(302, 80);
+            this.imeD.Location = new System.Drawing.Point(302, 75);
             this.imeD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.imeD.Name = "imeD";
             this.imeD.Size = new System.Drawing.Size(36, 18);
@@ -134,43 +166,17 @@
             // ozD
             // 
             this.ozD.AutoSize = true;
-            this.ozD.Location = new System.Drawing.Point(301, 26);
+            this.ozD.Location = new System.Drawing.Point(301, 21);
             this.ozD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ozD.Name = "ozD";
             this.ozD.Size = new System.Drawing.Size(64, 18);
             this.ozD.TabIndex = 4;
             this.ozD.Text = "Oznaka:";
             // 
-            // imeDT
-            // 
-            this.imeDT.Location = new System.Drawing.Point(373, 77);
-            this.imeDT.Margin = new System.Windows.Forms.Padding(4);
-            this.imeDT.Name = "imeDT";
-            this.imeDT.Size = new System.Drawing.Size(96, 24);
-            this.imeDT.TabIndex = 3;
-            // 
-            // ozDT
-            // 
-            this.ozDT.Enabled = false;
-            this.ozDT.Location = new System.Drawing.Point(373, 26);
-            this.ozDT.Margin = new System.Windows.Forms.Padding(4);
-            this.ozDT.Name = "ozDT";
-            this.ozDT.Size = new System.Drawing.Size(96, 24);
-            this.ozDT.TabIndex = 2;
-            // 
-            // opDT
-            // 
-            this.opDT.Location = new System.Drawing.Point(172, 26);
-            this.opDT.Margin = new System.Windows.Forms.Padding(4);
-            this.opDT.Name = "opDT";
-            this.opDT.Size = new System.Drawing.Size(121, 104);
-            this.opDT.TabIndex = 1;
-            this.opDT.Text = "";
-            // 
             // imDT
             // 
             this.imDT.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.imDT.Location = new System.Drawing.Point(8, 26);
+            this.imDT.Location = new System.Drawing.Point(20, 21);
             this.imDT.Margin = new System.Windows.Forms.Padding(4);
             this.imDT.Name = "imDT";
             this.imDT.Size = new System.Drawing.Size(105, 104);
@@ -283,14 +289,14 @@
         private System.Windows.Forms.Button Dodaj;
         private System.Windows.Forms.Button otkazi;
         private System.Windows.Forms.Button Izmeni;
-        private System.Windows.Forms.TextBox imeDT;
-        private System.Windows.Forms.TextBox ozDT;
-        private System.Windows.Forms.RichTextBox opDT;
         private System.Windows.Forms.PictureBox imDT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label imeD;
         private System.Windows.Forms.Label ozD;
         private System.Windows.Forms.TextBox trazi;
         private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.Label opDT;
+        private System.Windows.Forms.Label ozDT;
+        private System.Windows.Forms.Label imeDT;
     }
 }

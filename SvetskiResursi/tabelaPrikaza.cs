@@ -100,7 +100,7 @@ namespace SvetskiResursi
                 ttObn.Text = "";
                 ttStv.Text = "";
                 ttEkspl.Text = "";
-                ttF.Text = "";
+                ttFv.Text = "";
                 ttCen.Text = "";
                 ttJm.Text = "";
                 ttEtik.Text = "";
@@ -129,7 +129,7 @@ namespace SvetskiResursi
                                 ttObn.Text = tr.obnovljivo;
                                 ttStv.Text = tr.strateska_vaznost;
                                 ttEkspl.Text = tr.eksploatacija;
-                                ttF.Text = tr.pojavljivanje;
+                                ttFv.Text = tr.pojavljivanje;
                                 ttCen.Text = tr.cena;
                                 ttJm.Text = tr.jedinica_mere;
                                 ttEtik.Text = string.Join(",", tr.oz_etiketa.ToArray());
@@ -203,7 +203,7 @@ namespace SvetskiResursi
                             tr.ime = ttIm.Text;
                             tr.opis = ttOp.Text;
                             tr.ikonica = tabIm.Image;
-                            tr.pojavljivanje = ttF.Text;
+                            tr.pojavljivanje = ttFv.Text;
                             tr.strateska_vaznost = ttStv.Text;
                             tr.tipResursa = ttTip.Text;
                             tr.jedinica_mere = ttJm.Text;
@@ -324,13 +324,7 @@ namespace SvetskiResursi
         //izmena slike
         private void tabIm_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string fname = ofd.FileName;
-                Image img = new Bitmap(fname);
-                tabIm.Image = img;
-            }
+          
         }
 
         //Filtriranje
@@ -373,6 +367,12 @@ namespace SvetskiResursi
         private void cbFilter_Leave(object sender, EventArgs e)
         {
             //cbFilter.Text = "";
+        }
+
+        private void ttOp_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(ttOp, ttOp.Text);
         }
 
         }

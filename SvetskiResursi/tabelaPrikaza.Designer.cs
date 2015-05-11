@@ -42,14 +42,6 @@
             this.tblI = new System.Windows.Forms.Button();
             this.tblB = new System.Windows.Forms.Button();
             this.tabIm = new System.Windows.Forms.PictureBox();
-            this.ttOz = new System.Windows.Forms.TextBox();
-            this.ttTip = new System.Windows.Forms.TextBox();
-            this.ttIm = new System.Windows.Forms.TextBox();
-            this.ttOp = new System.Windows.Forms.RichTextBox();
-            this.ttF = new System.Windows.Forms.TextBox();
-            this.ttJm = new System.Windows.Forms.TextBox();
-            this.ttCen = new System.Windows.Forms.TextBox();
-            this.ttDatum = new System.Windows.Forms.TextBox();
             this.tabOz = new System.Windows.Forms.Label();
             this.tbIme = new System.Windows.Forms.Label();
             this.tbTip = new System.Windows.Forms.Label();
@@ -61,14 +53,23 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.ttEkspl = new System.Windows.Forms.TextBox();
-            this.ttObn = new System.Windows.Forms.TextBox();
-            this.ttStv = new System.Windows.Forms.TextBox();
-            this.ttEtik = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.gbDet = new System.Windows.Forms.GroupBox();
             this.tbTrazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.ttOz = new System.Windows.Forms.Label();
+            this.ttIm = new System.Windows.Forms.Label();
+            this.ttTip = new System.Windows.Forms.Label();
+            this.ttOp = new System.Windows.Forms.Label();
+            this.ttFv = new System.Windows.Forms.Label();
+            this.ttJm = new System.Windows.Forms.Label();
+            this.ttCen = new System.Windows.Forms.Label();
+            this.ttDatum = new System.Windows.Forms.Label();
+            this.ttEkspl = new System.Windows.Forms.Label();
+            this.ttObn = new System.Windows.Forms.Label();
+            this.ttStv = new System.Windows.Forms.Label();
+            this.ttEtik = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -182,75 +183,17 @@
             // 
             this.tabIm.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tabIm.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.tabIm.Location = new System.Drawing.Point(6, 40);
+            this.tabIm.Location = new System.Drawing.Point(26, 40);
             this.tabIm.Name = "tabIm";
             this.tabIm.Size = new System.Drawing.Size(113, 108);
             this.tabIm.TabIndex = 4;
             this.tabIm.TabStop = false;
             this.tabIm.Click += new System.EventHandler(this.tabIm_Click);
             // 
-            // ttOz
-            // 
-            this.ttOz.Enabled = false;
-            this.ttOz.Location = new System.Drawing.Point(189, 40);
-            this.ttOz.Name = "ttOz";
-            this.ttOz.Size = new System.Drawing.Size(100, 24);
-            this.ttOz.TabIndex = 5;
-            // 
-            // ttTip
-            // 
-            this.ttTip.Location = new System.Drawing.Point(189, 124);
-            this.ttTip.Name = "ttTip";
-            this.ttTip.Size = new System.Drawing.Size(100, 24);
-            this.ttTip.TabIndex = 6;
-            // 
-            // ttIm
-            // 
-            this.ttIm.Location = new System.Drawing.Point(189, 82);
-            this.ttIm.Name = "ttIm";
-            this.ttIm.Size = new System.Drawing.Size(100, 24);
-            this.ttIm.TabIndex = 7;
-            // 
-            // ttOp
-            // 
-            this.ttOp.Location = new System.Drawing.Point(354, 44);
-            this.ttOp.Name = "ttOp";
-            this.ttOp.Size = new System.Drawing.Size(120, 104);
-            this.ttOp.TabIndex = 8;
-            this.ttOp.Text = "";
-            // 
-            // ttF
-            // 
-            this.ttF.Location = new System.Drawing.Point(553, 43);
-            this.ttF.Name = "ttF";
-            this.ttF.Size = new System.Drawing.Size(100, 24);
-            this.ttF.TabIndex = 9;
-            // 
-            // ttJm
-            // 
-            this.ttJm.Location = new System.Drawing.Point(553, 73);
-            this.ttJm.Name = "ttJm";
-            this.ttJm.Size = new System.Drawing.Size(100, 24);
-            this.ttJm.TabIndex = 10;
-            // 
-            // ttCen
-            // 
-            this.ttCen.Location = new System.Drawing.Point(553, 105);
-            this.ttCen.Name = "ttCen";
-            this.ttCen.Size = new System.Drawing.Size(100, 24);
-            this.ttCen.TabIndex = 11;
-            // 
-            // ttDatum
-            // 
-            this.ttDatum.Location = new System.Drawing.Point(553, 135);
-            this.ttDatum.Name = "ttDatum";
-            this.ttDatum.Size = new System.Drawing.Size(100, 24);
-            this.ttDatum.TabIndex = 12;
-            // 
             // tabOz
             // 
             this.tabOz.AutoSize = true;
-            this.tabOz.Location = new System.Drawing.Point(125, 40);
+            this.tabOz.Location = new System.Drawing.Point(165, 40);
             this.tabOz.Name = "tabOz";
             this.tabOz.Size = new System.Drawing.Size(64, 18);
             this.tabOz.TabIndex = 13;
@@ -259,7 +202,7 @@
             // tbIme
             // 
             this.tbIme.AutoSize = true;
-            this.tbIme.Location = new System.Drawing.Point(125, 82);
+            this.tbIme.Location = new System.Drawing.Point(165, 82);
             this.tbIme.Name = "tbIme";
             this.tbIme.Size = new System.Drawing.Size(36, 18);
             this.tbIme.TabIndex = 14;
@@ -268,7 +211,7 @@
             // tbTip
             // 
             this.tbTip.AutoSize = true;
-            this.tbTip.Location = new System.Drawing.Point(125, 124);
+            this.tbTip.Location = new System.Drawing.Point(165, 124);
             this.tbTip.Name = "tbTip";
             this.tbTip.Size = new System.Drawing.Size(32, 18);
             this.tbTip.TabIndex = 15;
@@ -286,7 +229,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(480, 44);
+            this.label5.Location = new System.Drawing.Point(466, 44);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 18);
             this.label5.TabIndex = 17;
@@ -295,7 +238,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(480, 73);
+            this.label6.Location = new System.Drawing.Point(466, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 18);
             this.label6.TabIndex = 18;
@@ -304,7 +247,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(480, 103);
+            this.label7.Location = new System.Drawing.Point(466, 103);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 18);
             this.label7.TabIndex = 19;
@@ -313,7 +256,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(480, 135);
+            this.label8.Location = new System.Drawing.Point(466, 135);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 18);
             this.label8.TabIndex = 20;
@@ -346,35 +289,6 @@
             this.label11.TabIndex = 23;
             this.label11.Text = "St. vaz.";
             // 
-            // ttEkspl
-            // 
-            this.ttEkspl.Location = new System.Drawing.Point(714, 43);
-            this.ttEkspl.Name = "ttEkspl";
-            this.ttEkspl.Size = new System.Drawing.Size(100, 24);
-            this.ttEkspl.TabIndex = 24;
-            // 
-            // ttObn
-            // 
-            this.ttObn.Location = new System.Drawing.Point(714, 85);
-            this.ttObn.Name = "ttObn";
-            this.ttObn.Size = new System.Drawing.Size(100, 24);
-            this.ttObn.TabIndex = 25;
-            // 
-            // ttStv
-            // 
-            this.ttStv.Location = new System.Drawing.Point(714, 124);
-            this.ttStv.Name = "ttStv";
-            this.ttStv.Size = new System.Drawing.Size(100, 24);
-            this.ttStv.TabIndex = 26;
-            // 
-            // ttEtik
-            // 
-            this.ttEtik.Location = new System.Drawing.Point(827, 37);
-            this.ttEtik.Name = "ttEtik";
-            this.ttEtik.Size = new System.Drawing.Size(113, 111);
-            this.ttEtik.TabIndex = 27;
-            this.ttEtik.Text = "";
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -389,30 +303,31 @@
             // 
             // gbDet
             // 
-            this.gbDet.Controls.Add(this.tabIm);
+            this.gbDet.Controls.Add(this.label1);
             this.gbDet.Controls.Add(this.ttEtik);
             this.gbDet.Controls.Add(this.ttStv);
-            this.gbDet.Controls.Add(this.tabOz);
             this.gbDet.Controls.Add(this.ttObn);
+            this.gbDet.Controls.Add(this.ttEkspl);
+            this.gbDet.Controls.Add(this.ttDatum);
+            this.gbDet.Controls.Add(this.ttCen);
+            this.gbDet.Controls.Add(this.ttJm);
+            this.gbDet.Controls.Add(this.ttFv);
+            this.gbDet.Controls.Add(this.ttOp);
+            this.gbDet.Controls.Add(this.ttTip);
+            this.gbDet.Controls.Add(this.ttIm);
+            this.gbDet.Controls.Add(this.ttOz);
+            this.gbDet.Controls.Add(this.tabIm);
+            this.gbDet.Controls.Add(this.tabOz);
             this.gbDet.Controls.Add(this.tbIme);
             this.gbDet.Controls.Add(this.label11);
-            this.gbDet.Controls.Add(this.ttEkspl);
             this.gbDet.Controls.Add(this.label10);
             this.gbDet.Controls.Add(this.tbTip);
-            this.gbDet.Controls.Add(this.ttOz);
-            this.gbDet.Controls.Add(this.ttIm);
             this.gbDet.Controls.Add(this.label9);
-            this.gbDet.Controls.Add(this.ttTip);
             this.gbDet.Controls.Add(this.label8);
             this.gbDet.Controls.Add(this.label4);
             this.gbDet.Controls.Add(this.label7);
-            this.gbDet.Controls.Add(this.ttOp);
             this.gbDet.Controls.Add(this.label6);
             this.gbDet.Controls.Add(this.label5);
-            this.gbDet.Controls.Add(this.ttDatum);
-            this.gbDet.Controls.Add(this.ttF);
-            this.gbDet.Controls.Add(this.ttCen);
-            this.gbDet.Controls.Add(this.ttJm);
             this.gbDet.Location = new System.Drawing.Point(14, 275);
             this.gbDet.Name = "gbDet";
             this.gbDet.Size = new System.Drawing.Size(946, 165);
@@ -438,6 +353,127 @@
             this.cbFilter.TabIndex = 33;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             this.cbFilter.Leave += new System.EventHandler(this.cbFilter_Leave);
+            // 
+            // ttOz
+            // 
+            this.ttOz.AutoSize = true;
+            this.ttOz.Location = new System.Drawing.Point(235, 40);
+            this.ttOz.Name = "ttOz";
+            this.ttOz.Size = new System.Drawing.Size(48, 18);
+            this.ttOz.TabIndex = 34;
+            this.ttOz.Text = "          ";
+            // 
+            // ttIm
+            // 
+            this.ttIm.AutoSize = true;
+            this.ttIm.Location = new System.Drawing.Point(235, 82);
+            this.ttIm.Name = "ttIm";
+            this.ttIm.Size = new System.Drawing.Size(48, 18);
+            this.ttIm.TabIndex = 35;
+            this.ttIm.Text = "          ";
+            // 
+            // ttTip
+            // 
+            this.ttTip.AutoSize = true;
+            this.ttTip.Location = new System.Drawing.Point(235, 124);
+            this.ttTip.Name = "ttTip";
+            this.ttTip.Size = new System.Drawing.Size(48, 18);
+            this.ttTip.TabIndex = 36;
+            this.ttTip.Text = "          ";
+            // 
+            // ttOp
+            // 
+            this.ttOp.AutoSize = true;
+            this.ttOp.Location = new System.Drawing.Point(354, 43);
+            this.ttOp.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ttOp.Name = "ttOp";
+            this.ttOp.Size = new System.Drawing.Size(48, 18);
+            this.ttOp.TabIndex = 37;
+            this.ttOp.Text = "          ";
+            this.ttOp.MouseHover += new System.EventHandler(this.ttOp_MouseHover);
+            // 
+            // ttFv
+            // 
+            this.ttFv.AutoSize = true;
+            this.ttFv.Location = new System.Drawing.Point(537, 43);
+            this.ttFv.Name = "ttFv";
+            this.ttFv.Size = new System.Drawing.Size(48, 18);
+            this.ttFv.TabIndex = 38;
+            this.ttFv.Text = "          ";
+            // 
+            // ttJm
+            // 
+            this.ttJm.AutoSize = true;
+            this.ttJm.Location = new System.Drawing.Point(537, 73);
+            this.ttJm.Name = "ttJm";
+            this.ttJm.Size = new System.Drawing.Size(48, 18);
+            this.ttJm.TabIndex = 39;
+            this.ttJm.Text = "          ";
+            // 
+            // ttCen
+            // 
+            this.ttCen.AutoSize = true;
+            this.ttCen.Location = new System.Drawing.Point(537, 103);
+            this.ttCen.Name = "ttCen";
+            this.ttCen.Size = new System.Drawing.Size(48, 18);
+            this.ttCen.TabIndex = 40;
+            this.ttCen.Text = "          ";
+            // 
+            // ttDatum
+            // 
+            this.ttDatum.AutoSize = true;
+            this.ttDatum.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ttDatum.Location = new System.Drawing.Point(537, 135);
+            this.ttDatum.Name = "ttDatum";
+            this.ttDatum.Size = new System.Drawing.Size(48, 18);
+            this.ttDatum.TabIndex = 41;
+            this.ttDatum.Text = "          ";
+            // 
+            // ttEkspl
+            // 
+            this.ttEkspl.AutoSize = true;
+            this.ttEkspl.Location = new System.Drawing.Point(714, 43);
+            this.ttEkspl.Name = "ttEkspl";
+            this.ttEkspl.Size = new System.Drawing.Size(48, 18);
+            this.ttEkspl.TabIndex = 42;
+            this.ttEkspl.Text = "          ";
+            // 
+            // ttObn
+            // 
+            this.ttObn.AutoSize = true;
+            this.ttObn.Location = new System.Drawing.Point(714, 82);
+            this.ttObn.Name = "ttObn";
+            this.ttObn.Size = new System.Drawing.Size(48, 18);
+            this.ttObn.TabIndex = 43;
+            this.ttObn.Text = "          ";
+            // 
+            // ttStv
+            // 
+            this.ttStv.AutoSize = true;
+            this.ttStv.Location = new System.Drawing.Point(714, 124);
+            this.ttStv.Name = "ttStv";
+            this.ttStv.Size = new System.Drawing.Size(48, 18);
+            this.ttStv.TabIndex = 44;
+            this.ttStv.Text = "          ";
+            // 
+            // ttEtik
+            // 
+            this.ttEtik.AutoSize = true;
+            this.ttEtik.Location = new System.Drawing.Point(839, 44);
+            this.ttEtik.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ttEtik.Name = "ttEtik";
+            this.ttEtik.Size = new System.Drawing.Size(48, 18);
+            this.ttEtik.TabIndex = 45;
+            this.ttEtik.Text = "          ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(780, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 18);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Etikete:";
             // 
             // tabelaPrikaza
             // 
@@ -483,14 +519,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etiketa;
         private System.Windows.Forms.PictureBox tabIm;
-        private System.Windows.Forms.TextBox ttOz;
-        private System.Windows.Forms.TextBox ttTip;
-        private System.Windows.Forms.TextBox ttIm;
-        private System.Windows.Forms.RichTextBox ttOp;
-        private System.Windows.Forms.TextBox ttF;
-        private System.Windows.Forms.TextBox ttJm;
-        private System.Windows.Forms.TextBox ttCen;
-        private System.Windows.Forms.TextBox ttDatum;
         private System.Windows.Forms.Label tabOz;
         private System.Windows.Forms.Label tbIme;
         private System.Windows.Forms.Label tbTip;
@@ -502,14 +530,23 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox ttEkspl;
-        private System.Windows.Forms.TextBox ttObn;
-        private System.Windows.Forms.TextBox ttStv;
-        private System.Windows.Forms.RichTextBox ttEtik;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox gbDet;
         private System.Windows.Forms.TextBox tbTrazi;
         private System.Windows.Forms.ComboBox cbFilter;
+        private System.Windows.Forms.Label ttOp;
+        private System.Windows.Forms.Label ttTip;
+        private System.Windows.Forms.Label ttIm;
+        private System.Windows.Forms.Label ttOz;
+        private System.Windows.Forms.Label ttEtik;
+        private System.Windows.Forms.Label ttStv;
+        private System.Windows.Forms.Label ttObn;
+        private System.Windows.Forms.Label ttEkspl;
+        private System.Windows.Forms.Label ttDatum;
+        private System.Windows.Forms.Label ttCen;
+        private System.Windows.Forms.Label ttJm;
+        private System.Windows.Forms.Label ttFv;
+        private System.Windows.Forms.Label label1;
 
     }
 }
