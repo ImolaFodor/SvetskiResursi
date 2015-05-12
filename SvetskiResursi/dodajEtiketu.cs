@@ -26,17 +26,17 @@ namespace SvetskiResursi
             InitializeComponent();
             tbEtiketa = ebet;
 
-            rx_oz = new Regex("^\\w+$");
+          //  rx_oz = new Regex("^\\w+$");
 
-            errorRepeat.Add(oznaka, false);
+          //  errorRepeat.Add(oznaka, false);
         }
 
         public dodajEtiketu()
         {
             InitializeComponent();
-            rx_oz = new Regex("^\\w+$");
+          //  rx_oz = new Regex("^\\w+$");
 
-            errorRepeat.Add(oznaka,false);
+          //  errorRepeat.Add(oznaka,false);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace SvetskiResursi
                 et.boja = lBoja.BackColor;
 
                 //provera da li su uneta obavezna polja
-                formIsValid = true;
+               // formIsValid = true;
                 this.ValidateChildren();
                 if (formIsValid)
                 {
@@ -132,7 +132,7 @@ namespace SvetskiResursi
 
         private void textBox1_Validating(object sender, CancelEventArgs e)
         {
-            Etiketa ek = new Etiketa();
+          /*  Etiketa ek = new Etiketa();
 
             //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
             if (rx_oz.Match(oznaka.Text).Success)
@@ -153,6 +153,17 @@ namespace SvetskiResursi
             }
 
             //provera da li vec postoji resurs sa odredjenom oznakom
+            */
+
+        }
+
+        private void oznaka_TextChanged(object sender, EventArgs e)
+        {
+            Etiketa ek = new Etiketa();
+
+            obavE.Text = "";
+            formIsValid = true;
+
             using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
             {
 
@@ -164,15 +175,15 @@ namespace SvetskiResursi
                     if (ek.oznaka != null)
                         if (ek.oznaka.Equals(oznaka.Text))
                         {
-                            oznaka.Text = "OZNAKA VEC POSTOJI!";
-                            oznaka.ForeColor = Color.Red;
-                            return;
+                            obavE.Text = "Oznaka vec postoji, unesite novu.";
+                            obavE.ForeColor = Color.Red;
+                            formIsValid = false;
+                            //return;
                         }
                 }
-
+                
                 stream.Close();
             }
-
         }
     }
 }

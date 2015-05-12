@@ -41,6 +41,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.lBoja = new System.Windows.Forms.Label();
             this.errorProviderEt = new System.Windows.Forms.ErrorProvider(this.components);
+            this.obavE = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEt)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 82);
+            this.label2.Location = new System.Drawing.Point(4, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 18);
@@ -107,12 +108,13 @@
             this.oznaka.Name = "oznaka";
             this.oznaka.Size = new System.Drawing.Size(164, 23);
             this.oznaka.TabIndex = 1;
+            this.oznaka.TextChanged += new System.EventHandler(this.oznaka_TextChanged);
             this.oznaka.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.Location = new System.Drawing.Point(117, 82);
+            this.button1.Location = new System.Drawing.Point(117, 89);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 32);
@@ -164,11 +166,25 @@
             // 
             this.errorProviderEt.ContainerControl = this;
             // 
+            // obavE
+            // 
+            this.obavE.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.obavE.AutoSize = true;
+            this.obavE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obavE.ForeColor = System.Drawing.SystemColors.Control;
+            this.obavE.Location = new System.Drawing.Point(114, 60);
+            this.obavE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.obavE.Name = "obavE";
+            this.obavE.Size = new System.Drawing.Size(55, 15);
+            this.obavE.TabIndex = 10;
+            this.obavE.Text = "                ";
+            // 
             // dodajEtiketu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 431);
+            this.Controls.Add(this.obavE);
             this.Controls.Add(this.lBoja);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -205,5 +221,6 @@
         public System.Windows.Forms.RichTextBox opis;
         public System.Windows.Forms.TextBox oznaka;
         public System.Windows.Forms.Label lBoja;
+        public System.Windows.Forms.Label obavE;
     }
 }
