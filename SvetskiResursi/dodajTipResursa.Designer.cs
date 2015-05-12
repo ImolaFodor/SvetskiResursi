@@ -36,14 +36,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.opis_tip = new System.Windows.Forms.RichTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ikonica = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.errorProviderIm = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderOz = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             this.SuspendLayout();
@@ -118,16 +118,16 @@
             this.opis_tip.TabIndex = 6;
             this.opis_tip.Text = "";
             // 
-            // pictureBox1
+            // ikonica
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pictureBox1.Location = new System.Drawing.Point(127, 104);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 92);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.ikonica.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ikonica.Location = new System.Drawing.Point(127, 104);
+            this.ikonica.Margin = new System.Windows.Forms.Padding(4);
+            this.ikonica.Name = "ikonica";
+            this.ikonica.Size = new System.Drawing.Size(164, 92);
+            this.ikonica.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.ikonica.TabIndex = 7;
+            this.ikonica.TabStop = false;
             // 
             // button1
             // 
@@ -162,7 +162,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "U redu";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.potvrdi_Click);
             // 
             // button3
             // 
@@ -194,7 +194,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.ikonica);
             this.Controls.Add(this.opis_tip);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -208,7 +208,7 @@
             this.Name = "dodajTipResursa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj tip resursa";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).EndInit();
             this.ResumeLayout(false);
@@ -218,19 +218,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox oznaka_tip;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox ime_tip;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox opis_tip;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ErrorProvider errorProviderIm;
         private System.Windows.Forms.ErrorProvider errorProviderOz;
+        public System.Windows.Forms.TextBox oznaka_tip;
+        public System.Windows.Forms.TextBox ime_tip;
+        public System.Windows.Forms.RichTextBox opis_tip;
+        public System.Windows.Forms.PictureBox ikonica;
     }
 }

@@ -13,7 +13,8 @@ namespace SvetskiResursi
 {
     public partial class tabelaTipova : Form
     {
-               
+        public static bool pritisnutoIzmeni = false;
+
         public tabelaTipova()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace SvetskiResursi
 
             foreach (tipResursa tip in tp)
             {
-                upis(tip);
+                upis(tip, dataGridView1);
             }
         }
 
@@ -44,7 +45,7 @@ namespace SvetskiResursi
             prikazUtabeli();
         }
 
-        private void ocisti_filter()
+        public void ocisti_filter()
         {
             if (!cbFilter.Text.Equals(""))
                 cbFilter.Text = "";
@@ -65,16 +66,17 @@ namespace SvetskiResursi
             }
         }
 
-        private void upis(tipResursa tip) {
+        public static void upis(tipResursa tip, DataGridView dgv)
+        {
 
-            dataGridView1.Rows.Add( tip.oznaka, tip.ime, tip.ikonica, tip.opis );
+            dgv.Rows.Add(tip.oznaka, tip.ime, tip.ikonica, tip.opis);
 
         }
 
         //izmena slike
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         //Brisanje tipa
@@ -92,7 +94,7 @@ namespace SvetskiResursi
 
                 }
 
-                stream.SetLength(0); 
+                stream.SetLength(0);
 
                 //sada u LISTI trazim zeljeni tip i brisemo ga.
                 foreach (tipResursa tip in Lr)
@@ -107,12 +109,12 @@ namespace SvetskiResursi
                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
                 foreach (tipResursa tip in Lr)
                 {
-                    upis(tip);
+                    upis(tip, dataGridView1);
                 }
 
                 foreach (tipResursa tp in Lr)
                 {
-                    formatter.Serialize(stream, tp); 
+                    formatter.Serialize(stream, tp);
                 }
 
                 stream.Close();
@@ -120,7 +122,7 @@ namespace SvetskiResursi
 
             ocisti_filter();
         }
-    
+
         //Prikaz selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
@@ -167,17 +169,17 @@ namespace SvetskiResursi
         {
             List<tipResursa> tp2 = new List<tipResursa>();
 
-            dodajTipResursa dr = new dodajTipResursa();
+            dodajTipResursa dr = new dodajTipResursa(this);
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
             iscitavanje(tp2);
 
-            dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+            this.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach (tipResursa tip in tp2)
             {
 
-                upis(tip);
+                upis(tip, dataGridView1);
             }
 
             ocisti_filter();
@@ -186,54 +188,37 @@ namespace SvetskiResursi
         //Izmena tipa
         private void Izmeni_Click(object sender, EventArgs e)
         {
-             List<tipResursa> Lr = new List<tipResursa>();
+            pritisnutoIzmeni = true;
+            tipResursa tr = new tipResursa();
 
-             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
-             {
-                 var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            dodajTipResursa dtr = new dodajTipResursa(this);
+            dtr.oznaka_tip.Enabled = false;
 
-                 while (stream.Position != stream.Length)
-                 {
-                     Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    string TabOz = row.Cells[0].Value.ToString();
 
-                 }
-
-                 stream.SetLength(0);
-
-                 //sada u LISTI trazim zeljeni tip i menjam ga.
-                 foreach (tipResursa tr in Lr)
-                 {
-                     if (tr.oznaka.Equals(ozDT.Text))
-                     {
-                         try
-                         {
-                             tr.ime = imeDT.Text;
-                             tr.opis = opDT.Text;
-                             tr.ikonica = imDT.Image;
-                            
-                         }
-                         catch (Exception ex)
-                         {
-                             Console.Write("Greska");
-                         }
-                     }
-                 }
-
-                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-                 foreach (tipResursa tip in Lr)
-                 {
-                     upis(tip);
-                 }
-
-                 foreach (tipResursa tip in Lr)
-                 {
-                     formatter.Serialize(stream, tip); 
-                 }
-
-                 stream.Close();
-             }
-
-             ocisti_filter();
+                    using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+                    {
+                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        while (stream.Position != stream.Length)
+                        {
+                            tr = ((tipResursa)formatter.Deserialize(stream));
+                            if (tr.oznaka.Equals(TabOz))
+                            {
+                                dtr.oznaka_tip.Text = tr.oznaka;
+                                dtr.ime_tip.Text = tr.ime;
+                                dtr.opis_tip.Text = tr.opis;
+                                dtr.ikonica.Image = tr.ikonica;
+                            }
+                        }
+                        stream.Close();
+                    }
+                }
+            }
+            dtr.ShowDialog();
         }
 
         //Pretraga
@@ -243,18 +228,18 @@ namespace SvetskiResursi
 
             iscitavanje(Lr);
 
-             dataGridView1.ClearSelection();
+            dataGridView1.ClearSelection();
 
-             for (int i = 0; i < Lr.Count(); i++)
-                 if (Lr.ElementAt(i).oznaka.Equals(trazi.Text))
-                 {
-                     dataGridView1.Rows[i].Selected = true;
-                     dataGridView1.CurrentCell = dataGridView1[0,i];
-                 }
-                 else
-                     if (trazi.Text.Equals(""))
-                         dataGridView1.ClearSelection();
-        
+            for (int i = 0; i < Lr.Count(); i++)
+                if (Lr.ElementAt(i).oznaka.Equals(trazi.Text))
+                {
+                    dataGridView1.Rows[i].Selected = true;
+                    dataGridView1.CurrentCell = dataGridView1[0, i];
+                }
+                else
+                    if (trazi.Text.Equals(""))
+                        dataGridView1.ClearSelection();
+
         }
 
         private void cbFilter_TextChanged(object sender, EventArgs e)
@@ -270,7 +255,7 @@ namespace SvetskiResursi
                 if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text))
                 {
 
-                    upis(Lr.ElementAt(i));
+                    upis(Lr.ElementAt(i), dataGridView1);
 
                     if (!cbFilter.Items.Contains(Lr.ElementAt(i).oznaka))
                         cbFilter.Items.Add(Lr.ElementAt(i).oznaka);
@@ -285,7 +270,7 @@ namespace SvetskiResursi
 
                         foreach (tipResursa resurs in Lr)
                         {
-                            upis(resurs);
+                            upis(resurs, dataGridView1);
                             cbFilter.Items.Remove(resurs.oznaka);
                         }
                     }

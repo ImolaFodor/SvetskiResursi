@@ -279,7 +279,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oznaka;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewImageColumn Slika;
@@ -289,14 +288,15 @@
         private System.Windows.Forms.Button Dodaj;
         private System.Windows.Forms.Button otkazi;
         private System.Windows.Forms.Button Izmeni;
-        private System.Windows.Forms.PictureBox imDT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label imeD;
         private System.Windows.Forms.Label ozD;
         private System.Windows.Forms.TextBox trazi;
         private System.Windows.Forms.ComboBox cbFilter;
-        private System.Windows.Forms.Label opDT;
-        private System.Windows.Forms.Label ozDT;
-        private System.Windows.Forms.Label imeDT;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.PictureBox imDT;
+        public System.Windows.Forms.Label opDT;
+        public System.Windows.Forms.Label ozDT;
+        public System.Windows.Forms.Label imeDT;
     }
 }
