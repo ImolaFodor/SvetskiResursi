@@ -252,7 +252,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn oznaka;
         private System.Windows.Forms.DataGridViewTextBoxColumn opis;
         private System.Windows.Forms.GroupBox detalji;
@@ -265,9 +264,10 @@
         private System.Windows.Forms.Button Izmeni;
         private System.Windows.Forms.TextBox trazi;
         private System.Windows.Forms.ComboBox cbFilter;
-        private System.Windows.Forms.Label oz;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label boja;
-        private System.Windows.Forms.Label op;
+        public System.Windows.Forms.Label oz;
+        public System.Windows.Forms.Label boja;
+        public System.Windows.Forms.Label op;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }

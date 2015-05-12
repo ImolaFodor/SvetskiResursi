@@ -15,10 +15,21 @@ namespace SvetskiResursi
 {
     public partial class dodajEtiketu : Form
     {
+        private tabelaEtiketa tbEtiketa;
         private Regex rx_oz = null;
         private bool formIsValid = true;
 
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
+
+        public dodajEtiketu(tabelaEtiketa ebet)
+        {
+            InitializeComponent();
+            tbEtiketa = ebet;
+
+            rx_oz = new Regex("^\\w+$");
+
+            errorRepeat.Add(oznaka, false);
+        }
 
         public dodajEtiketu()
         {
@@ -32,7 +43,7 @@ namespace SvetskiResursi
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                label5.BackColor = colorDialog1.Color;
+                lBoja.BackColor = colorDialog1.Color;
             }
         }
 
@@ -41,25 +52,81 @@ namespace SvetskiResursi
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void potvrdi_Click(object sender, EventArgs e)
         {
-            Etiketa et = new Etiketa();
-            DialogObavestenja db = new DialogObavestenja();
+            tabelaEtiketa tbE = new tabelaEtiketa();
 
-            et.oznaka = oznaka.Text;
-            et.opis = richTextBox1.Text;
-            et.boja = label5.BackColor; 
+            if (!tabelaEtiketa.pritisnutoIzmena)
+            {
+                Etiketa et = new Etiketa();
+                DialogObavestenja db = new DialogObavestenja();
 
-            //provera da li su uneta obavezna polja
-            formIsValid = true;
-            this.ValidateChildren();
-            if (formIsValid) { 
+                et.oznaka = oznaka.Text;
+                et.opis = opis.Text;
+                et.boja = lBoja.BackColor;
 
-                SvetskiResursi.Etikete.getInstance().Dodaj(et);
-             
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-                SvetskiResursi.Form1.getInstance().Refresh();
+                //provera da li su uneta obavezna polja
+                formIsValid = true;
+                this.ValidateChildren();
+                if (formIsValid)
+                {
+
+                    SvetskiResursi.Etikete.getInstance().Dodaj(et);
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    SvetskiResursi.Form1.getInstance().Refresh();
+                }
+            }
+            else
+            {
+                 tabelaEtiketa.pritisnutoIzmena = false;   
+                 List<Etiketa> et = new List<Etiketa>();
+
+
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                
+                while (stream.Position != stream.Length)
+                {
+                    et.Add(((Etiketa)formatter.Deserialize(stream)));
+
+                }
+
+               stream.SetLength(0); //na ovaj nacin se sve brise iz liste
+
+                //sada u LISTI trazim zeljenu etiektu i menjamo je.
+                foreach (Etiketa tr in et)
+                {
+                    if (tr.oznaka.Equals(oznaka.Text))
+                    {
+     
+                         tr.opis = opis.Text;
+                         tr.boja = lBoja.BackColor;
+                      
+                    }
+                }
+
+                tbEtiketa.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+
+                foreach (Etiketa etiketa in et)
+                {
+                    tabelaEtiketa.upis(etiketa,tbEtiketa.dataGridView1);
+
+                }
+
+                foreach (Etiketa etiketa in et)
+                {
+                    formatter.Serialize(stream, etiketa); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
+
+                }
+
+                stream.Close();
+            }
+
+            tbE.ocisti_filter();
+            Close();
             }
         }
 

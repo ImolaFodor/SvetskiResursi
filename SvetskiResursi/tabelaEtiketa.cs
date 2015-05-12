@@ -13,7 +13,8 @@ namespace SvetskiResursi
 {
     public partial class tabelaEtiketa : Form
     {
-        
+        public static bool pritisnutoIzmena = false;
+
         public tabelaEtiketa()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace SvetskiResursi
             }
         }
 
-        private void ocisti_filter()
+        public void ocisti_filter()
         {
             if (!cbFilter.Text.Equals(""))
                 cbFilter.Text = "";
@@ -64,9 +65,9 @@ namespace SvetskiResursi
             }
         }
 
-        private void upis(Etiketa etiketa)
+        public static void upis(Etiketa etiketa, DataGridView dgv)
         {                              
-           dataGridView1.Rows.Add(etiketa.oznaka, etiketa.opis );
+           dgv.Rows.Add(etiketa.oznaka, etiketa.opis );
 
         }
 
@@ -113,56 +114,37 @@ namespace SvetskiResursi
         //Izmena sadrzaja
         private void Izmeni_Click(object sender, EventArgs e)
         {
-            List<Etiketa> et = new List<Etiketa>();
+            pritisnutoIzmena = true;
+            Etiketa et = new Etiketa();
 
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            dodajEtiketu de = new dodajEtiketu(this);
+            de.oznaka.Enabled = false;
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                
-                while (stream.Position != stream.Length)
+                if (row.Cells[0].Value != null)
                 {
-                    et.Add(((Etiketa)formatter.Deserialize(stream)));
+                    string TabOz = row.Cells[0].Value.ToString();
 
-                }
-
-               stream.SetLength(0); //na ovaj nacin se sve brise iz liste
-
-                //sada u LISTI trazim zeljenu etiektu i menjamo je.
-                foreach (Etiketa tr in et)
-                {
-                    if (tr.oznaka.Equals(oz.Text))
+                    using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
                     {
-                        try
+                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        while (stream.Position != stream.Length)
                         {
-                            
-                         tr.opis = op.Text;
-                         tr.boja = boja.BackColor;
-                            
+                            et = ((Etiketa)formatter.Deserialize(stream));
+                            if (et.oznaka.Equals(TabOz))
+                            {
+                                de.oznaka.Text = et.oznaka;
+                                de.opis.Text = et.opis;
+                                de.lBoja.BackColor = et.boja;
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            Console.Write("Greska");
-                        }
+                        stream.Close();
                     }
                 }
-
-                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-                foreach (Etiketa etiketa in et)
-                {
-                    upis(etiketa);
-
-                }
-
-                foreach (Etiketa etiketa in et)
-                {
-                    formatter.Serialize(stream, etiketa); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
-
-                }
-
-                stream.Close();
             }
-
-            ocisti_filter();
+            de.ShowDialog();
+           
         }
 
         //Dodavanje nove etikete
@@ -170,7 +152,7 @@ namespace SvetskiResursi
         {
             List<Etiketa> et2 = new List<Etiketa>();
 
-            dodajEtiketu dr = new dodajEtiketu();//Form1.getInstance());
+            dodajEtiketu dr = new dodajEtiketu(this);//Form1.getInstance());
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
@@ -180,7 +162,7 @@ namespace SvetskiResursi
             foreach(Etiketa etiketa in et2)
             {
 
-                upis(etiketa);
+                upis(etiketa,dataGridView1);
 
             }
 
@@ -218,7 +200,7 @@ namespace SvetskiResursi
 
                 foreach (Etiketa etiketa in ee)
                 {
-                    upis(etiketa);
+                    upis(etiketa,dataGridView1);
                 }
 
                 foreach (Etiketa tr in ee)
@@ -274,7 +256,7 @@ namespace SvetskiResursi
                 if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text))
                 {
                     
-                    upis(Lr.ElementAt(i));
+                    upis(Lr.ElementAt(i),dataGridView1);
                     
 
                     if (!cbFilter.Items.Contains(Lr.ElementAt(i).oznaka))
@@ -291,7 +273,7 @@ namespace SvetskiResursi
 
                         foreach (Etiketa etik in Lr)
                         {
-                            upis(etik);
+                            upis(etik,dataGridView1);
                             cbFilter.Items.Remove(etik.oznaka);
                         }
                     }

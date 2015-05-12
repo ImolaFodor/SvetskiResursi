@@ -33,13 +33,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.opis = new System.Windows.Forms.RichTextBox();
             this.oznaka = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lBoja = new System.Windows.Forms.Label();
             this.errorProviderEt = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEt)).BeginInit();
             this.SuspendLayout();
@@ -88,15 +88,15 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "-* polja su obavezna za unos";
             // 
-            // richTextBox1
+            // opis
             // 
-            this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.richTextBox1.Location = new System.Drawing.Point(117, 141);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(297, 131);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
+            this.opis.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.opis.Location = new System.Drawing.Point(117, 141);
+            this.opis.Margin = new System.Windows.Forms.Padding(4);
+            this.opis.Name = "opis";
+            this.opis.Size = new System.Drawing.Size(297, 131);
+            this.opis.TabIndex = 6;
+            this.opis.Text = "";
             // 
             // oznaka
             // 
@@ -132,7 +132,7 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "U redu";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.potvrdi_Click);
             // 
             // button3
             // 
@@ -147,18 +147,18 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label5
+            // lBoja
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(320, 89);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "                ";
+            this.lBoja.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lBoja.AutoSize = true;
+            this.lBoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lBoja.ForeColor = System.Drawing.SystemColors.Control;
+            this.lBoja.Location = new System.Drawing.Point(320, 89);
+            this.lBoja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lBoja.Name = "lBoja";
+            this.lBoja.Size = new System.Drawing.Size(55, 15);
+            this.lBoja.TabIndex = 4;
+            this.lBoja.Text = "                ";
             // 
             // errorProviderEt
             // 
@@ -169,12 +169,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 431);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lBoja);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.oznaka);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.opis);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -197,13 +197,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox oznaka;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ErrorProvider errorProviderEt;
+        public System.Windows.Forms.RichTextBox opis;
+        public System.Windows.Forms.TextBox oznaka;
+        public System.Windows.Forms.Label lBoja;
     }
 }
