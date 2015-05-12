@@ -134,12 +134,13 @@ namespace SvetskiResursi
                             et = ((Etiketa)formatter.Deserialize(stream));
                             if (et.oznaka.Equals(TabOz))
                             {
-                                de.oznaka.Text = et.oznaka;
-                                de.opis.Text = et.opis;
-                                de.lBoja.BackColor = et.boja;
+                                break;
                             }
                         }
                         stream.Close();
+                        de.oznaka.Text = et.oznaka;
+                        de.opis.Text = et.opis;
+                        de.lBoja.BackColor = et.boja;
                     }
                 }
             }

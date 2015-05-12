@@ -170,12 +170,12 @@
             // 
             this.obavE.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.obavE.AutoSize = true;
-            this.obavE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obavE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.obavE.ForeColor = System.Drawing.SystemColors.Control;
             this.obavE.Location = new System.Drawing.Point(114, 60);
             this.obavE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.obavE.Name = "obavE";
-            this.obavE.Size = new System.Drawing.Size(55, 15);
+            this.obavE.Size = new System.Drawing.Size(56, 16);
             this.obavE.TabIndex = 10;
             this.obavE.Text = "                ";
             // 

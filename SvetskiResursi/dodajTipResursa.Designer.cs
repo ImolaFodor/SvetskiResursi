@@ -43,6 +43,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.errorProviderIm = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderOz = new System.Windows.Forms.ErrorProvider(this.components);
+            this.obavOz = new System.Windows.Forms.Label();
+            this.obavIm = new System.Windows.Forms.Label();
+            this.obavSl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
@@ -56,6 +59,7 @@
             this.oznaka_tip.Name = "oznaka_tip";
             this.oznaka_tip.Size = new System.Drawing.Size(164, 23);
             this.oznaka_tip.TabIndex = 0;
+            this.oznaka_tip.TextChanged += new System.EventHandler(this.oznaka_tip_TextChanged);
             this.oznaka_tip.Validating += new System.ComponentModel.CancelEventHandler(this.oznaka_tip_Validating);
             // 
             // label1
@@ -71,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 61);
+            this.label2.Location = new System.Drawing.Point(13, 72);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 18);
@@ -80,17 +84,18 @@
             // 
             // ime_tip
             // 
-            this.ime_tip.Location = new System.Drawing.Point(127, 61);
+            this.ime_tip.Location = new System.Drawing.Point(127, 72);
             this.ime_tip.Margin = new System.Windows.Forms.Padding(4);
             this.ime_tip.Name = "ime_tip";
             this.ime_tip.Size = new System.Drawing.Size(164, 24);
             this.ime_tip.TabIndex = 3;
+            this.ime_tip.TextChanged += new System.EventHandler(this.ime_tip_TextChanged);
             this.ime_tip.Validating += new System.ComponentModel.CancelEventHandler(this.ime_tip_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 104);
+            this.label3.Location = new System.Drawing.Point(9, 133);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 18);
@@ -102,7 +107,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 262);
+            this.label4.Location = new System.Drawing.Point(9, 307);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 18);
@@ -111,7 +116,7 @@
             // 
             // opis_tip
             // 
-            this.opis_tip.Location = new System.Drawing.Point(126, 262);
+            this.opis_tip.Location = new System.Drawing.Point(126, 307);
             this.opis_tip.Margin = new System.Windows.Forms.Padding(4);
             this.opis_tip.Name = "opis_tip";
             this.opis_tip.Size = new System.Drawing.Size(264, 104);
@@ -121,7 +126,7 @@
             // ikonica
             // 
             this.ikonica.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ikonica.Location = new System.Drawing.Point(127, 104);
+            this.ikonica.Location = new System.Drawing.Point(126, 133);
             this.ikonica.Margin = new System.Windows.Forms.Padding(4);
             this.ikonica.Name = "ikonica";
             this.ikonica.Size = new System.Drawing.Size(164, 92);
@@ -131,14 +136,14 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(149, 204);
+            this.button1.Location = new System.Drawing.Point(147, 258);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 32);
             this.button1.TabIndex = 8;
             this.button1.Text = "Učitaj sliku";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.izborSlike_Click);
             // 
             // label5
             // 
@@ -155,7 +160,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(208, 394);
+            this.button2.Location = new System.Drawing.Point(208, 419);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 32);
@@ -168,7 +173,7 @@
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(301, 394);
+            this.button3.Location = new System.Drawing.Point(301, 419);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 32);
@@ -185,11 +190,45 @@
             // 
             this.errorProviderOz.ContainerControl = this;
             // 
+            // obavOz
+            // 
+            this.obavOz.AutoSize = true;
+            this.obavOz.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obavOz.Location = new System.Drawing.Point(124, 39);
+            this.obavOz.Name = "obavOz";
+            this.obavOz.Size = new System.Drawing.Size(48, 16);
+            this.obavOz.TabIndex = 12;
+            this.obavOz.Text = "          ";
+            this.obavOz.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // obavIm
+            // 
+            this.obavIm.AutoSize = true;
+            this.obavIm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obavIm.Location = new System.Drawing.Point(124, 100);
+            this.obavIm.Name = "obavIm";
+            this.obavIm.Size = new System.Drawing.Size(48, 16);
+            this.obavIm.TabIndex = 13;
+            this.obavIm.Text = "          ";
+            // 
+            // obavSl
+            // 
+            this.obavSl.AutoSize = true;
+            this.obavSl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.obavSl.Location = new System.Drawing.Point(124, 229);
+            this.obavSl.Name = "obavSl";
+            this.obavSl.Size = new System.Drawing.Size(48, 16);
+            this.obavSl.TabIndex = 14;
+            this.obavSl.Text = "          ";
+            // 
             // dodajTipResursa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 497);
+            this.Controls.Add(this.obavSl);
+            this.Controls.Add(this.obavIm);
+            this.Controls.Add(this.obavOz);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
@@ -232,5 +271,8 @@
         public System.Windows.Forms.TextBox ime_tip;
         public System.Windows.Forms.RichTextBox opis_tip;
         public System.Windows.Forms.PictureBox ikonica;
+        private System.Windows.Forms.Label obavSl;
+        private System.Windows.Forms.Label obavIm;
+        private System.Windows.Forms.Label obavOz;
     }
 }

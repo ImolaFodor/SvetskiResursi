@@ -61,6 +61,18 @@ namespace SvetskiResursi
                 Etiketa et = new Etiketa();
                 DialogObavestenja db = new DialogObavestenja();
 
+                //Provera da li je uneta oznaka
+                if (oznaka.Text.Equals(""))
+                {
+                    obavE.Text = "Oznaka je obavezna!";
+                    obavE.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else if(!oznaka.Text.Equals("") && formIsValid == true)
+                {
+                    obavE.Text = "";
+                }
+
                 et.oznaka = oznaka.Text;
                 et.opis = opis.Text;
                 et.boja = lBoja.BackColor;
@@ -163,6 +175,7 @@ namespace SvetskiResursi
 
             obavE.Text = "";
             formIsValid = true;
+            oznaka.Text = Regex.Replace(oznaka.Text, @"\s+", "");//da bi se izbacili razmaci
 
             using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
             {
@@ -173,7 +186,7 @@ namespace SvetskiResursi
                     ek = (Etiketa)formatter.Deserialize(stream);
 
                     if (ek.oznaka != null)
-                        if (ek.oznaka.Equals(oznaka.Text))
+                        if (ek.oznaka.Equals(oznaka.Text) && oznaka.Enabled == true)
                         {
                             obavE.Text = "Oznaka vec postoji, unesite novu.";
                             obavE.ForeColor = Color.Red;

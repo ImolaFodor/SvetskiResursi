@@ -208,13 +208,15 @@ namespace SvetskiResursi
                             tr = ((tipResursa)formatter.Deserialize(stream));
                             if (tr.oznaka.Equals(TabOz))
                             {
-                                dtr.oznaka_tip.Text = tr.oznaka;
-                                dtr.ime_tip.Text = tr.ime;
-                                dtr.opis_tip.Text = tr.opis;
-                                dtr.ikonica.Image = tr.ikonica;
+                                break;
                             }
                         }
                         stream.Close();
+
+                        dtr.oznaka_tip.Text = tr.oznaka;
+                        dtr.ime_tip.Text = tr.ime;
+                        dtr.opis_tip.Text = tr.opis;
+                        dtr.ikonica.Image = tr.ikonica;
                     }
                 }
             }
