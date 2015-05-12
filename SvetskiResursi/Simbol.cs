@@ -7,7 +7,7 @@ using System.Drawing;
 namespace SvetskiResursi
 {
     [Serializable]
-    class Simbol
+   public class Simbol
     {
         public Point lokacija { get; set; }
         public Bitmap slika { get; set; }

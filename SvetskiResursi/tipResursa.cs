@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 namespace SvetskiResursi
 {
     [Serializable]
-    class tipResursa
+   public class tipResursa
     {
             public string  oznaka{get; set;}
          
@@ -22,7 +22,7 @@ namespace SvetskiResursi
         }
 
     [Serializable]
-    class tipoviResursa {         
+   public class tipoviResursa {         
  
         public static tipoviResursa instanca=null;
         public   tipoviResursa() { }

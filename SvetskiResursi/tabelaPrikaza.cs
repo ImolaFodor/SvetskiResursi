@@ -12,13 +12,16 @@ using System.Windows.Forms;
 
 namespace SvetskiResursi
 {
-    public partial class tabelaPrikaza : Form
+    public partial class TabelaPrikaza : Form
     {
         public string etikete;
         List<Resurs> r = new List<Resurs>();
-        List<Resurs> r2 = new List<Resurs>();
+        
 
-        public tabelaPrikaza()   
+        public static bool pritusnutoIzmeni = false;
+        
+
+        public TabelaPrikaza()   
         {
             InitializeComponent();
             
@@ -54,7 +57,7 @@ namespace SvetskiResursi
 
         }
 
-        private void ocisti_filter()
+        public void ocisti_filter()
         {
             if (!cbFilter.Text.Equals(""))
                 cbFilter.Text = "";
@@ -75,13 +78,12 @@ namespace SvetskiResursi
             }
         }
 
-        private void upis(Resurs resurs)
+        public static void upis(Resurs resurs, DataGridView dgw)
         {
-            etikete = string.Join(",", resurs.oz_etiketa.ToArray());
+            String etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
-            dataGridView1.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+            dgw.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
                 resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
-
 
         }
 
@@ -148,91 +150,94 @@ namespace SvetskiResursi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Form1.getInstance().RefreshList();
             Close();
         }
 
         //Dodavanje novog resursa
         private void tblD_Click(object sender, EventArgs e)
         {
-            dodajResurs dr = new dodajResurs(Form1.getInstance());
+            List<Resurs> r2 = new List<Resurs>();
+            DodajResurs dr = new DodajResurs(Form1.getInstance(),this);
             dr.ShowDialog();
+
             
-            //Ucitavanje resursa iz fajla.
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-            {
-                var formatter = new BinaryFormatter();
-                stream.Position = 0;
-                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    r2.Add((Resurs)formatter.Deserialize(stream));
-                stream.Close();
-            }
+                //Ucitavanje resursa iz fajla.
+                iscitavanje(r2);
 
-            dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-            foreach (Resurs resurs in r2)
-            {
-                upis(resurs);
-            }
+                this.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                foreach (Resurs resurs in r2)
+                {
+                    upis(resurs,dataGridView1);
+                }
 
-            ocisti_filter();
+                ocisti_filter();
+            
         }
 
         //Izmena sadrzaja
         private void tblI_Click(object sender, EventArgs e)
         {
-             List<Resurs> Lr = new List<Resurs>();
+            pritusnutoIzmeni = true;
+            Resurs tr = new Resurs();
 
-            using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
+            DodajResurs dr = new DodajResurs(Form1.getInstance(), this);
+            dr.oznaka.Enabled = false;
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                
-                while (stream1.Position != stream1.Length)
+                if (row.Cells[0].Value != null)
                 {
-                    Lr.Add(((Resurs)formatter.Deserialize(stream1)));
+                    string TabOz = row.Cells[0].Value.ToString();
 
-                }
-
-                stream1.SetLength(0); //brise se postojeci sadrzaj u datoteci
-
-                //sada u LISTI trazim zeljeni resurs i menjam ga.
-                foreach(Resurs tr in Lr){
-                    if (tr.oznaka.Equals(ttOz.Text))
+                    using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
                     {
-                        try
+                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        while (stream.Position != stream.Length)
                         {
-                            tr.ime = ttIm.Text;
-                            tr.opis = ttOp.Text;
-                            tr.ikonica = tabIm.Image;
-                            tr.pojavljivanje = ttFv.Text;
-                            tr.strateska_vaznost = ttStv.Text;
-                            tr.tipResursa = ttTip.Text;
-                            tr.jedinica_mere = ttJm.Text;
-                            tr.obnovljivo = ttObn.Text;
-                            tr.cena = ttCen.Text;
-                   
+                            tr = ((Resurs)formatter.Deserialize(stream));
+                            if (tr.oznaka.Equals(TabOz))
+                            {
+
+                                dr.oznaka.Text = tr.oznaka;
+                                dr.ime.Text = tr.ime;
+                                dr.comboTipResursa.Text = tr.tipResursa;
+                                dr.opis.Text = tr.opis;
+                                dr.frPon.Text = tr.pojavljivanje;
+                                dr.cen.Text = tr.cena;
+                                dr.cbMera.Text = tr.jedinica_mere;
+                                dr.ikonica.Image = tr.ikonica;
+                                dr.vreme.Text = tr.datum_kao;
+
+                                if (tr.eksploatacija.Equals("DA"))
+                                    dr.rbEkp1.Checked = true;
+                                else
+                                    dr.rbEksp2.Checked = false;
+
+                                if (tr.strateska_vaznost.Equals("DA"))
+                                    dr.rbSV1.Checked = true;
+                                else
+                                    dr.rbSV2.Checked = false;
+
+                                if (tr.obnovljivo.Equals("DA"))
+                                    dr.rbObn1.Checked = true;
+                                else
+                                    dr.rbObn2.Checked = false;
+
+                                for (int j = 0; j < dr.etik.Items.Count; j++)
+                                    for (int i = 0; i < tr.oz_etiketa.Count; i++)
+                                        if (dr.etik.Items[j].Equals(tr.oz_etiketa[i]))
+                                            dr.etik.SetItemChecked(i, true);
+
+                            }
+
                         }
-                        catch (Exception ex)
-                        {
-                            Console.Write("Greska");
-                        }
+                        stream.Close();
                     }
                 }
-
-                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-                foreach (Resurs resurs in Lr)
-                {
-                    upis(resurs);
-                }
-
-                foreach (Resurs tr in Lr)
-                {
-                    formatter.Serialize(stream1, tr); //nadam se da ga upisuje na isto mesto, a ne na kraj :O
-                }
-
-                stream1.Close();
             }
+            dr.ShowDialog();
 
-            ocisti_filter();
         }
 
         //Brisanje resursa
@@ -265,7 +270,7 @@ namespace SvetskiResursi
                 dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
                 foreach (Resurs resurs in Lr)
                 {
-                    upis(resurs);
+                    upis(resurs,dataGridView1);
                 }
 
                 foreach (Resurs tr in Lr)
@@ -317,7 +322,7 @@ namespace SvetskiResursi
             dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach (Resurs resurs in r)
             {
-                upis(resurs);
+                upis(resurs,dataGridView1);
             }
         }
 
@@ -342,7 +347,7 @@ namespace SvetskiResursi
                    // Lr.ElementAt(i).ime.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).ime.Equals(cbFilter.Text))
                 {
 
-                    upis(Lr.ElementAt(i));
+                    upis(Lr.ElementAt(i),dataGridView1);
                    
                     if(!cbFilter.Items.Contains(Lr.ElementAt(i).oznaka))
                         cbFilter.Items.Add(Lr.ElementAt(i).oznaka);
@@ -357,7 +362,7 @@ namespace SvetskiResursi
                         
                         foreach (Resurs resurs in Lr)
                         {
-                            upis(resurs);
+                            upis(resurs,dataGridView1);
                             cbFilter.Items.Remove(resurs.oznaka);
                         }
                     }

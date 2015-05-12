@@ -9,7 +9,7 @@ using System.Text;
 namespace SvetskiResursi
 {
     [Serializable]
-    class Resurs
+    public class Resurs
     {
         public string oznaka { get; set; }
 
@@ -50,7 +50,7 @@ namespace SvetskiResursi
     }
 
     [Serializable]
-    class Resursi {
+    public class Resursi {
       //  private Dictionary<String, Resurs> r = new Dictionary<String, Resurs>();
         
         

@@ -10,7 +10,7 @@ using System.IO;
 namespace SvetskiResursi
 {
     [Serializable]
-    class Etiketa
+   public class Etiketa
     {
         public string oznaka;
         public string opis;
@@ -18,7 +18,7 @@ namespace SvetskiResursi
     }
 
     [Serializable]
-    class Etikete
+    public class Etikete
     {
 
         public static Etikete instanca = null;

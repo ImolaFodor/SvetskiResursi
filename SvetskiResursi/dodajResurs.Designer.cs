@@ -1,6 +1,6 @@
 ﻿namespace SvetskiResursi
 {
-    partial class dodajResurs
+    partial class DodajResurs
     {
         /// <summary>
         /// Required designer variable.
@@ -46,18 +46,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbMera = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cen = new System.Windows.Forms.TextBox();
+            this.vreme = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.frPon = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.cena = new System.Windows.Forms.ToolTip(this.components);
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.etik = new System.Windows.Forms.CheckedListBox();
             this.rbEkp1 = new System.Windows.Forms.RadioButton();
             this.rbEksp2 = new System.Windows.Forms.RadioButton();
             this.rbSV2 = new System.Windows.Forms.RadioButton();
@@ -274,24 +274,24 @@
             this.cbMera.Size = new System.Drawing.Size(164, 26);
             this.cbMera.TabIndex = 21;
             // 
-            // textBox3
+            // cen
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox3.Location = new System.Drawing.Point(279, 82);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 24);
-            this.textBox3.TabIndex = 22;
-            this.cena.SetToolTip(this.textBox3, "U dolarima");
+            this.cen.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cen.Location = new System.Drawing.Point(279, 82);
+            this.cen.Margin = new System.Windows.Forms.Padding(4);
+            this.cen.Name = "cen";
+            this.cen.Size = new System.Drawing.Size(164, 24);
+            this.cen.TabIndex = 22;
+            this.cena.SetToolTip(this.cen, "U dolarima");
             // 
-            // dateTimePicker1
+            // vreme
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker1.Location = new System.Drawing.Point(279, 151);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(269, 24);
-            this.dateTimePicker1.TabIndex = 23;
+            this.vreme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.vreme.Location = new System.Drawing.Point(279, 151);
+            this.vreme.Margin = new System.Windows.Forms.Padding(4);
+            this.vreme.Name = "vreme";
+            this.vreme.Size = new System.Drawing.Size(269, 24);
+            this.vreme.TabIndex = 23;
             // 
             // button1
             // 
@@ -315,18 +315,18 @@
             this.label12.TabIndex = 25;
             this.label12.Text = "Frekvencija\r\nponaljvanja:";
             // 
-            // comboBox6
+            // frPon
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
+            this.frPon.FormattingEnabled = true;
+            this.frPon.Items.AddRange(new object[] {
             "Redak",
             "Cest",
             "Univerzalan"});
-            this.comboBox6.Location = new System.Drawing.Point(279, 114);
-            this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(164, 26);
-            this.comboBox6.TabIndex = 26;
+            this.frPon.Location = new System.Drawing.Point(279, 114);
+            this.frPon.Margin = new System.Windows.Forms.Padding(4);
+            this.frPon.Name = "frPon";
+            this.frPon.Size = new System.Drawing.Size(164, 26);
+            this.frPon.TabIndex = 26;
             // 
             // button2
             // 
@@ -339,7 +339,7 @@
             this.button2.TabIndex = 27;
             this.button2.Text = "Potvrdi";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.PotvrdiClick);
             // 
             // button3
             // 
@@ -380,15 +380,15 @@
             this.label14.TabIndex = 31;
             this.label14.Text = "Etiketa:";
             // 
-            // checkedListBox1
+            // etik
             // 
-            this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(327, 45);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(156, 156);
-            this.checkedListBox1.TabIndex = 33;
+            this.etik.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.etik.FormattingEnabled = true;
+            this.etik.Location = new System.Drawing.Point(327, 45);
+            this.etik.Margin = new System.Windows.Forms.Padding(4);
+            this.etik.Name = "etik";
+            this.etik.Size = new System.Drawing.Size(156, 156);
+            this.etik.TabIndex = 33;
             // 
             // rbEkp1
             // 
@@ -516,11 +516,11 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cbMera);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.cen);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.comboBox6);
+            this.groupBox2.Controls.Add(this.frPon);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.vreme);
             this.groupBox2.Location = new System.Drawing.Point(12, 260);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1035, 196);
@@ -565,7 +565,7 @@
             this.Vizualizacija.Controls.Add(this.ikonica);
             this.Vizualizacija.Controls.Add(this.button1);
             this.Vizualizacija.Controls.Add(this.label14);
-            this.Vizualizacija.Controls.Add(this.checkedListBox1);
+            this.Vizualizacija.Controls.Add(this.etik);
             this.Vizualizacija.Location = new System.Drawing.Point(513, 13);
             this.Vizualizacija.Name = "Vizualizacija";
             this.Vizualizacija.Size = new System.Drawing.Size(534, 241);
@@ -585,7 +585,7 @@
             this.nEtik.UseVisualStyleBackColor = true;
             this.nEtik.Click += new System.EventHandler(this.nEtik_Click);
             // 
-            // dodajResurs
+            // DodajResurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -599,7 +599,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "dodajResurs";
+            this.Name = "DodajResurs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DODAVANJE RESURSA";
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
@@ -625,15 +625,10 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox oznaka;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboTipResursa;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox opis;
-        private System.Windows.Forms.PictureBox ikonica;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -641,25 +636,14 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cbMera;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolTip cena;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.RadioButton rbEkp1;
-        private System.Windows.Forms.RadioButton rbEksp2;
-        private System.Windows.Forms.RadioButton rbSV2;
-        private System.Windows.Forms.RadioButton rbSV1;
-        private System.Windows.Forms.RadioButton rbObn2;
-        private System.Windows.Forms.RadioButton rbObn1;
         private System.Windows.Forms.ErrorProvider errorProviderOz;
         private System.Windows.Forms.ErrorProvider errorProviderIm;
         private System.Windows.Forms.ErrorProvider errorProviderTp;
@@ -671,6 +655,22 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button nEtik;
         private System.Windows.Forms.Button nTip;
+        public System.Windows.Forms.TextBox oznaka;
+        public System.Windows.Forms.TextBox ime;
+        public System.Windows.Forms.ComboBox comboTipResursa;
+        public System.Windows.Forms.RichTextBox opis;
+        public System.Windows.Forms.PictureBox ikonica;
+        public System.Windows.Forms.ComboBox cbMera;
+        public System.Windows.Forms.TextBox cen;
+        public System.Windows.Forms.DateTimePicker vreme;
+        public System.Windows.Forms.ComboBox frPon;
+        public System.Windows.Forms.CheckedListBox etik;
+        public System.Windows.Forms.RadioButton rbEkp1;
+        public System.Windows.Forms.RadioButton rbEksp2;
+        public System.Windows.Forms.RadioButton rbSV2;
+        public System.Windows.Forms.RadioButton rbSV1;
+        public System.Windows.Forms.RadioButton rbObn2;
+        public System.Windows.Forms.RadioButton rbObn1;
     }
 }
 

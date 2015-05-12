@@ -1,6 +1,6 @@
 ﻿namespace SvetskiResursi
 {
-    partial class tabelaPrikaza
+    partial class TabelaPrikaza
     {
         /// <summary>
         /// Required designer variable.
@@ -55,21 +55,21 @@
             this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.gbDet = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ttEtik = new System.Windows.Forms.Label();
+            this.ttStv = new System.Windows.Forms.Label();
+            this.ttObn = new System.Windows.Forms.Label();
+            this.ttEkspl = new System.Windows.Forms.Label();
+            this.ttDatum = new System.Windows.Forms.Label();
+            this.ttCen = new System.Windows.Forms.Label();
+            this.ttJm = new System.Windows.Forms.Label();
+            this.ttFv = new System.Windows.Forms.Label();
+            this.ttOp = new System.Windows.Forms.Label();
+            this.ttTip = new System.Windows.Forms.Label();
+            this.ttIm = new System.Windows.Forms.Label();
+            this.ttOz = new System.Windows.Forms.Label();
             this.tbTrazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.ttOz = new System.Windows.Forms.Label();
-            this.ttIm = new System.Windows.Forms.Label();
-            this.ttTip = new System.Windows.Forms.Label();
-            this.ttOp = new System.Windows.Forms.Label();
-            this.ttFv = new System.Windows.Forms.Label();
-            this.ttJm = new System.Windows.Forms.Label();
-            this.ttCen = new System.Windows.Forms.Label();
-            this.ttDatum = new System.Windows.Forms.Label();
-            this.ttEkspl = new System.Windows.Forms.Label();
-            this.ttObn = new System.Windows.Forms.Label();
-            this.ttStv = new System.Windows.Forms.Label();
-            this.ttEtik = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -335,6 +335,127 @@
             this.gbDet.TabStop = false;
             this.gbDet.Text = "Detalji";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(780, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 18);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Etikete:";
+            // 
+            // ttEtik
+            // 
+            this.ttEtik.AutoSize = true;
+            this.ttEtik.Location = new System.Drawing.Point(839, 44);
+            this.ttEtik.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ttEtik.Name = "ttEtik";
+            this.ttEtik.Size = new System.Drawing.Size(48, 18);
+            this.ttEtik.TabIndex = 45;
+            this.ttEtik.Text = "          ";
+            // 
+            // ttStv
+            // 
+            this.ttStv.AutoSize = true;
+            this.ttStv.Location = new System.Drawing.Point(714, 124);
+            this.ttStv.Name = "ttStv";
+            this.ttStv.Size = new System.Drawing.Size(48, 18);
+            this.ttStv.TabIndex = 44;
+            this.ttStv.Text = "          ";
+            // 
+            // ttObn
+            // 
+            this.ttObn.AutoSize = true;
+            this.ttObn.Location = new System.Drawing.Point(714, 82);
+            this.ttObn.Name = "ttObn";
+            this.ttObn.Size = new System.Drawing.Size(48, 18);
+            this.ttObn.TabIndex = 43;
+            this.ttObn.Text = "          ";
+            // 
+            // ttEkspl
+            // 
+            this.ttEkspl.AutoSize = true;
+            this.ttEkspl.Location = new System.Drawing.Point(714, 43);
+            this.ttEkspl.Name = "ttEkspl";
+            this.ttEkspl.Size = new System.Drawing.Size(48, 18);
+            this.ttEkspl.TabIndex = 42;
+            this.ttEkspl.Text = "          ";
+            // 
+            // ttDatum
+            // 
+            this.ttDatum.AutoSize = true;
+            this.ttDatum.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ttDatum.Location = new System.Drawing.Point(537, 135);
+            this.ttDatum.Name = "ttDatum";
+            this.ttDatum.Size = new System.Drawing.Size(48, 18);
+            this.ttDatum.TabIndex = 41;
+            this.ttDatum.Text = "          ";
+            // 
+            // ttCen
+            // 
+            this.ttCen.AutoSize = true;
+            this.ttCen.Location = new System.Drawing.Point(537, 103);
+            this.ttCen.Name = "ttCen";
+            this.ttCen.Size = new System.Drawing.Size(48, 18);
+            this.ttCen.TabIndex = 40;
+            this.ttCen.Text = "          ";
+            // 
+            // ttJm
+            // 
+            this.ttJm.AutoSize = true;
+            this.ttJm.Location = new System.Drawing.Point(537, 73);
+            this.ttJm.Name = "ttJm";
+            this.ttJm.Size = new System.Drawing.Size(48, 18);
+            this.ttJm.TabIndex = 39;
+            this.ttJm.Text = "          ";
+            // 
+            // ttFv
+            // 
+            this.ttFv.AutoSize = true;
+            this.ttFv.Location = new System.Drawing.Point(537, 43);
+            this.ttFv.Name = "ttFv";
+            this.ttFv.Size = new System.Drawing.Size(48, 18);
+            this.ttFv.TabIndex = 38;
+            this.ttFv.Text = "          ";
+            // 
+            // ttOp
+            // 
+            this.ttOp.AutoSize = true;
+            this.ttOp.Location = new System.Drawing.Point(354, 43);
+            this.ttOp.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ttOp.Name = "ttOp";
+            this.ttOp.Size = new System.Drawing.Size(48, 18);
+            this.ttOp.TabIndex = 37;
+            this.ttOp.Text = "          ";
+            this.ttOp.MouseHover += new System.EventHandler(this.ttOp_MouseHover);
+            // 
+            // ttTip
+            // 
+            this.ttTip.AutoSize = true;
+            this.ttTip.Location = new System.Drawing.Point(235, 124);
+            this.ttTip.Name = "ttTip";
+            this.ttTip.Size = new System.Drawing.Size(48, 18);
+            this.ttTip.TabIndex = 36;
+            this.ttTip.Text = "          ";
+            // 
+            // ttIm
+            // 
+            this.ttIm.AutoSize = true;
+            this.ttIm.Location = new System.Drawing.Point(235, 82);
+            this.ttIm.Name = "ttIm";
+            this.ttIm.Size = new System.Drawing.Size(48, 18);
+            this.ttIm.TabIndex = 35;
+            this.ttIm.Text = "          ";
+            // 
+            // ttOz
+            // 
+            this.ttOz.AutoSize = true;
+            this.ttOz.Location = new System.Drawing.Point(235, 40);
+            this.ttOz.Name = "ttOz";
+            this.ttOz.Size = new System.Drawing.Size(48, 18);
+            this.ttOz.TabIndex = 34;
+            this.ttOz.Text = "          ";
+            // 
             // tbTrazi
             // 
             this.tbTrazi.Location = new System.Drawing.Point(20, 240);
@@ -354,128 +475,7 @@
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             this.cbFilter.Leave += new System.EventHandler(this.cbFilter_Leave);
             // 
-            // ttOz
-            // 
-            this.ttOz.AutoSize = true;
-            this.ttOz.Location = new System.Drawing.Point(235, 40);
-            this.ttOz.Name = "ttOz";
-            this.ttOz.Size = new System.Drawing.Size(48, 18);
-            this.ttOz.TabIndex = 34;
-            this.ttOz.Text = "          ";
-            // 
-            // ttIm
-            // 
-            this.ttIm.AutoSize = true;
-            this.ttIm.Location = new System.Drawing.Point(235, 82);
-            this.ttIm.Name = "ttIm";
-            this.ttIm.Size = new System.Drawing.Size(48, 18);
-            this.ttIm.TabIndex = 35;
-            this.ttIm.Text = "          ";
-            // 
-            // ttTip
-            // 
-            this.ttTip.AutoSize = true;
-            this.ttTip.Location = new System.Drawing.Point(235, 124);
-            this.ttTip.Name = "ttTip";
-            this.ttTip.Size = new System.Drawing.Size(48, 18);
-            this.ttTip.TabIndex = 36;
-            this.ttTip.Text = "          ";
-            // 
-            // ttOp
-            // 
-            this.ttOp.AutoSize = true;
-            this.ttOp.Location = new System.Drawing.Point(354, 43);
-            this.ttOp.MaximumSize = new System.Drawing.Size(100, 100);
-            this.ttOp.Name = "ttOp";
-            this.ttOp.Size = new System.Drawing.Size(48, 18);
-            this.ttOp.TabIndex = 37;
-            this.ttOp.Text = "          ";
-            this.ttOp.MouseHover += new System.EventHandler(this.ttOp_MouseHover);
-            // 
-            // ttFv
-            // 
-            this.ttFv.AutoSize = true;
-            this.ttFv.Location = new System.Drawing.Point(537, 43);
-            this.ttFv.Name = "ttFv";
-            this.ttFv.Size = new System.Drawing.Size(48, 18);
-            this.ttFv.TabIndex = 38;
-            this.ttFv.Text = "          ";
-            // 
-            // ttJm
-            // 
-            this.ttJm.AutoSize = true;
-            this.ttJm.Location = new System.Drawing.Point(537, 73);
-            this.ttJm.Name = "ttJm";
-            this.ttJm.Size = new System.Drawing.Size(48, 18);
-            this.ttJm.TabIndex = 39;
-            this.ttJm.Text = "          ";
-            // 
-            // ttCen
-            // 
-            this.ttCen.AutoSize = true;
-            this.ttCen.Location = new System.Drawing.Point(537, 103);
-            this.ttCen.Name = "ttCen";
-            this.ttCen.Size = new System.Drawing.Size(48, 18);
-            this.ttCen.TabIndex = 40;
-            this.ttCen.Text = "          ";
-            // 
-            // ttDatum
-            // 
-            this.ttDatum.AutoSize = true;
-            this.ttDatum.Cursor = System.Windows.Forms.Cursors.Default;
-            this.ttDatum.Location = new System.Drawing.Point(537, 135);
-            this.ttDatum.Name = "ttDatum";
-            this.ttDatum.Size = new System.Drawing.Size(48, 18);
-            this.ttDatum.TabIndex = 41;
-            this.ttDatum.Text = "          ";
-            // 
-            // ttEkspl
-            // 
-            this.ttEkspl.AutoSize = true;
-            this.ttEkspl.Location = new System.Drawing.Point(714, 43);
-            this.ttEkspl.Name = "ttEkspl";
-            this.ttEkspl.Size = new System.Drawing.Size(48, 18);
-            this.ttEkspl.TabIndex = 42;
-            this.ttEkspl.Text = "          ";
-            // 
-            // ttObn
-            // 
-            this.ttObn.AutoSize = true;
-            this.ttObn.Location = new System.Drawing.Point(714, 82);
-            this.ttObn.Name = "ttObn";
-            this.ttObn.Size = new System.Drawing.Size(48, 18);
-            this.ttObn.TabIndex = 43;
-            this.ttObn.Text = "          ";
-            // 
-            // ttStv
-            // 
-            this.ttStv.AutoSize = true;
-            this.ttStv.Location = new System.Drawing.Point(714, 124);
-            this.ttStv.Name = "ttStv";
-            this.ttStv.Size = new System.Drawing.Size(48, 18);
-            this.ttStv.TabIndex = 44;
-            this.ttStv.Text = "          ";
-            // 
-            // ttEtik
-            // 
-            this.ttEtik.AutoSize = true;
-            this.ttEtik.Location = new System.Drawing.Point(839, 44);
-            this.ttEtik.MaximumSize = new System.Drawing.Size(100, 100);
-            this.ttEtik.Name = "ttEtik";
-            this.ttEtik.Size = new System.Drawing.Size(48, 18);
-            this.ttEtik.TabIndex = 45;
-            this.ttEtik.Text = "          ";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(780, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 18);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Etikete:";
-            // 
-            // tabelaPrikaza
+            // TabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -491,7 +491,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "tabelaPrikaza";
+            this.Name = "TabelaPrikaza";
             this.Text = "Tabela prikaza";
             this.Load += new System.EventHandler(this.tabelaPrikaza_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -505,7 +505,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button tblD;
         private System.Windows.Forms.Button tblI;
         private System.Windows.Forms.Button tblB;
@@ -547,6 +546,7 @@
         private System.Windows.Forms.Label ttJm;
         private System.Windows.Forms.Label ttFv;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.DataGridView dataGridView1;
 
     }
 }

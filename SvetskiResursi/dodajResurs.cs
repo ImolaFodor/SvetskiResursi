@@ -16,50 +16,60 @@ using System.Windows.Forms;
 
 namespace SvetskiResursi
 {
-    public partial class dodajResurs : Form
+    public partial class DodajResurs : Form
     {
         private OpenFileDialog ofd = new OpenFileDialog();
-        Resurs resur;
-
+        
+        private TabelaPrikaza tabelaPrikaza;
         private Regex rx_oz = null;
         private Regex rx_ime = null;
         private Regex rx_tip = null;
         private bool formIsValid = true;
+
+        Resurs resur;
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 
         Form1 form = null;
-        /*
-         * //za menjanje boje naslova
-        private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
+
+        public DodajResurs(Form1 form1, TabelaPrikaza tabela)
         {
-            GroupBox box = (GroupBox)sender;
-            p.Graphics.Clear(SystemColors.Control);
-            p.Graphics.DrawString(box.Text, box.Font, Brushes.Blue, 0, 0);
-        }
-        */
-        private void ucitajTip(List<tipResursa> tr)
-        {
-            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            InitializeComponent();
+
+            List<tipResursa> tr = new List<tipResursa>();
+            List<Etiketa> et = new List<Etiketa>();
+
+            // groupBox1.Paint += PaintBorderlessGroupBox;
+            form = form1;
+            ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
+
+            //za proveru upisa obaveznih polja
+            rx_oz = new Regex("^\\w+$");
+            rx_ime = new Regex("^\\w+$");
+            rx_tip = new Regex("^\\w+$");
+
+            errorRepeat.Add(oznaka, false);
+            errorRepeat.Add(ime, false);
+            errorRepeat.Add(comboTipResursa, false);
+
+            ucitajTip(tr);
+            ucitajEt(et);
+
+            foreach (tipResursa tip in tr)
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while(stream.Position != stream.Length)
-                    tr.Add((tipResursa)formatter.Deserialize(stream));
-                stream.Close();
+                comboTipResursa.Items.Add(tip.oznaka);
+
             }
+
+            foreach (Etiketa etiketa in et)
+            {
+                etik.Items.Add(etiketa.oznaka);
+
+            }
+
+            this.tabelaPrikaza = tabela;
         }
 
-        private void ucitajEt(List<Etiketa> et)
-        {
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
-            {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while (stream.Position != stream.Length)
-                    et.Add((Etiketa)formatter.Deserialize(stream));
-                stream.Close();
-            }
-        }
-
-        public dodajResurs(Form1 form1)
+        public DodajResurs(Form1 form1)
         {
             InitializeComponent();
             List<tipResursa> tr = new List<tipResursa>();
@@ -91,9 +101,31 @@ namespace SvetskiResursi
 
             foreach (Etiketa etiketa in et)
              {
-                 checkedListBox1.Items.Add(etiketa.oznaka);
+                 etik.Items.Add(etiketa.oznaka);
 
              }
+        }
+
+        private void ucitajTip(List<tipResursa> tr)
+        {
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while(stream.Position != stream.Length)
+                    tr.Add((tipResursa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
+        private void ucitajEt(List<Etiketa> et)
+        {
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+                stream.Close();
+            }
         }
 
         private void button1_MouseClick(object sender, MouseEventArgs e)
@@ -126,15 +158,17 @@ namespace SvetskiResursi
             return res;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void PotvrdiClick(object sender, EventArgs e)
         {
             Resurs res = new Resurs();
             resur = new Resurs();
             DialogObavestenja db = new DialogObavestenja();
             ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
             List<tipResursa> tr = new List<tipResursa>();
-            
+            TabelaPrikaza tbl = new TabelaPrikaza();
 
+            if (!TabelaPrikaza.pritusnutoIzmeni)
+            {
                 //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
                 res.oznaka = oznaka.Text;
                 res.ime = ime.Text;
@@ -151,15 +185,15 @@ namespace SvetskiResursi
                         res.ikonica = (Image)ikonica.BackgroundImage;
                 }
 
-                
+
                 res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
                 res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
                 res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
                 res.jedinica_mere = cbMera.Text;
-                res.cena = textBox3.Text;
-                res.datum_kao = dateTimePicker1.ToString().Split(' ')[2]; // "Datum";//datum
-                res.pojavljivanje = comboBox6.Text;
-                List<string> cekirani = checkedListBox1.CheckedItems.OfType<string>().ToList();
+                res.cena = cen.Text;
+                res.datum_kao = vreme.ToString().Split(' ')[2]; // "Datum";//datum
+                res.pojavljivanje = frPon.Text;
+                List<string> cekirani = etik.CheckedItems.OfType<string>().ToList();
                 res.oz_etiketa = cekirani;
 
 
@@ -173,7 +207,77 @@ namespace SvetskiResursi
                     this.Close();
                     SvetskiResursi.Form1.getInstance().Refresh();
                 }
-            
+            }
+            else
+            {
+                TabelaPrikaza.pritusnutoIzmeni = false;
+                List<Resurs> Lr = new List<Resurs>();
+
+                using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
+                {
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                    while (stream1.Position != stream1.Length)
+                    {
+                        Lr.Add(((Resurs)formatter.Deserialize(stream1)));
+
+                    }
+
+                    stream1.SetLength(0); //brise se postojeci sadrzaj u datoteci
+
+                    //sada u LISTI trazim zeljeni resurs i menjam ga.
+                    foreach (Resurs rs in Lr)
+                    {
+                        if (rs.oznaka.Equals(oznaka.Text))
+                        {
+                            try
+                            {
+                                rs.ime = ime.Text;
+                                rs.tipResursa = comboTipResursa.Text;
+                                rs.opis = opis.Text;
+                                rs.ikonica = ikonica.Image;
+                                rs.pojavljivanje = frPon.Text;
+                                rs.jedinica_mere = cbMera.Text;
+                                // rs.ikonica = (Image)ikonica.BackgroundImage; 
+                                rs.cena = cen.Text;
+                                res.datum_kao = vreme.ToString().Split(' ')[2];
+                                rs.obnovljivo = oznaceno(rs.obnovljivo, rbObn1, rbObn2);
+                                rs.eksploatacija = oznaceno(rs.eksploatacija, rbEkp1, rbEksp2);
+                                rs.strateska_vaznost = oznaceno(rs.strateska_vaznost, rbSV1, rbSV2);
+                                List<string> cekirani1 = etik.CheckedItems.OfType<string>().ToList();
+                                res.oz_etiketa = cekirani1;
+
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.Write("Greska");
+                            }
+                        }
+                    }
+
+                    if (tabelaPrikaza != null)
+                    {
+                        tabelaPrikaza.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                    }
+
+                    foreach (Resurs resurs in Lr)
+                    {
+                        TabelaPrikaza.upis(resurs, tabelaPrikaza.dataGridView1);
+                    }
+
+                    foreach (Resurs rs in Lr)
+                    {
+                        formatter.Serialize(stream1, rs);
+                    }
+
+                    stream1.Close();
+                }
+
+                tbl.ocisti_filter();
+                this.Close();
+            }
 
             form.RefreshList();
             
@@ -291,11 +395,11 @@ namespace SvetskiResursi
            
             if (et.ShowDialog() == DialogResult.OK)
             {
-                checkedListBox1.Items.Clear();
+                etik.Items.Clear();
                 ucitajEt(ek);
                 foreach (Etiketa etiketa in ek)
                 {
-                    checkedListBox1.Items.Add(etiketa.oznaka);
+                    etik.Items.Add(etiketa.oznaka);
 
                 }
             }

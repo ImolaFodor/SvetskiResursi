@@ -31,12 +31,18 @@ namespace SvetskiResursi
 
         public Form1()
         {
+            initialize();
+            instanca = this;
+        }
+
+        public void initialize()
+        {
             InitializeComponent();
-            
-            if(!File.Exists("Resursi.bin"))
+
+            if (!File.Exists("Resursi.bin"))
                 File.Create("Resursi.bin");
 
-            if(!File.Exists("Tipovi.bin"))
+            if (!File.Exists("Tipovi.bin"))
                 File.Create("Tipovi.bin");
 
             if (!File.Exists("Etikete.bin"))
@@ -55,7 +61,6 @@ namespace SvetskiResursi
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
         }
-
 
         public void Watermarks()
         {
@@ -210,14 +215,14 @@ namespace SvetskiResursi
 
         private void dodavanjeResursaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dodajResurs dlg3 = new dodajResurs(this);
+            DodajResurs dlg3 = new DodajResurs(this);
             dlg3.ShowDialog();
         }
 
 
         private void tabelaPrikazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabelaPrikaza tbl = new tabelaPrikaza();
+            TabelaPrikaza tbl = new TabelaPrikaza();
             
             tbl.ShowDialog();
             
@@ -225,8 +230,6 @@ namespace SvetskiResursi
 
         public static Form1 getInstance()
         {
-            if (instanca == null)
-                instanca = new Form1();
             return instanca;
         } 
 
@@ -235,6 +238,7 @@ namespace SvetskiResursi
 
             tr.Clear();
             r.Clear();
+            ListaSlika.Dispose();
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 var formatter = new BinaryFormatter();
