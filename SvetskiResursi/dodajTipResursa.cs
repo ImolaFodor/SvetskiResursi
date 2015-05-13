@@ -22,7 +22,6 @@ namespace SvetskiResursi
         private bool formIsValid = true;
         private bool vecPostoji = false;
 
-       // Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
 
         public dodajTipResursa(tabelaTipova tb)
         {
@@ -38,6 +37,18 @@ namespace SvetskiResursi
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
+        }
+
+        private void iscitajTipResurs(List<tipResursa> Lr)
+        {
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+
+                while (stream.Position != stream.Length)
+                    Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+                stream.Close();
+            }
         }
 
         private void izborSlike_Click(object sender, EventArgs e)
@@ -113,7 +124,6 @@ namespace SvetskiResursi
                 tipRes.ikonica = (Image)ikonica.BackgroundImage;
 
                 //provera da li su uneta obavezna polja
-               // formIsValid = true;
                 this.ValidateChildren();
                 if (formIsValid)
                 {
@@ -149,7 +159,7 @@ namespace SvetskiResursi
                         {
                                 tr.ime = ime_tip.Text;
                                 tr.opis = opis_tip.Text;
-                                tr.ikonica = ikonica.Image;
+                                tr.ikonica = ikonica.BackgroundImage;
                         }
                     }
 
@@ -175,31 +185,22 @@ namespace SvetskiResursi
 
         private void oznaka_tip_TextChanged(object sender, EventArgs e)
         {
-            tipResursa tip = new tipResursa();
+            List<tipResursa> tri = new List<tipResursa>();
 
             obavOz.Text = "";
             formIsValid = true;
             oznaka_tip.Text = Regex.Replace(oznaka_tip.Text, @"\s+", ""); //da se izbace razmaci
 
-            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
-            {
+            iscitajTipResurs(tri);
 
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while (stream.Position != stream.Length)
-                {
-                    tip = (tipResursa)formatter.Deserialize(stream);
-
-                    if (tip.oznaka != null)
-                        if (tip.oznaka.Equals(oznaka_tip.Text) && oznaka_tip.Enabled == true)
+               foreach(tipResursa tip in tri)
+                   if (tip.oznaka.Equals(oznaka_tip.Text) && oznaka_tip.Enabled == true)
                         {
                             obavOz.Text = "Oznaka vec postoji, unesite novu!";
                             obavOz.ForeColor = Color.Red;
                             formIsValid = false;
                             vecPostoji = true;
                         }
-                }
-                stream.Close();
-            }
         }
 
         private void ime_tip_TextChanged(object sender, EventArgs e)

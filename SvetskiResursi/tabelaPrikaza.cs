@@ -15,9 +15,6 @@ namespace SvetskiResursi
     public partial class TabelaPrikaza : Form
     {
         public string etikete;
-        List<Resurs> r = new List<Resurs>();
-        
-
         public static bool pritusnutoIzmeni = false;
         
 
@@ -29,15 +26,10 @@ namespace SvetskiResursi
 
         private void prikazUtabeli()
         {
+            List<Resurs> r = new List<Resurs>();
+
             //Ucitavanje resursa iz fajla.
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-            {
-                var formatter = new BinaryFormatter();
-                stream.Position = 0;
-                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    r.Add((Resurs)formatter.Deserialize(stream));
-                stream.Close();
-            }
+            iscitajResurs(r);
 
             foreach (Resurs resurs in r)
             {
@@ -63,17 +55,15 @@ namespace SvetskiResursi
                 cbFilter.Text = "";
         }
 
-        private void iscitavanje(List<Resurs> Lr){
+        private void iscitajResurs(List<Resurs> Lr){
 
              using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var formatter = new BinaryFormatter();
 
                 while (stream.Position != stream.Length)
-                {
                     Lr.Add(((Resurs)formatter.Deserialize(stream)));
 
-                }
                 stream.Close();
             }
         }
@@ -91,7 +81,7 @@ namespace SvetskiResursi
         // ispis selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            Resurs tr = new Resurs();
+            List<Resurs> rss = new List<Resurs>();
 
             if (!dataGridView1.AreAllCellsSelected(true))
             {
@@ -116,35 +106,29 @@ namespace SvetskiResursi
                 {
                     string TabOz = row.Cells[0].Value.ToString();
 
-                    using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-                    {
-                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        while (stream.Position != stream.Length)
-                        {
-                            tr = ((Resurs)formatter.Deserialize(stream));
-                            if (tr.oznaka.Equals(TabOz))
-                            {
-                                ttOz.Text = tr.oznaka;
-                                ttIm.Text = tr.ime;
-                                ttTip.Text = tr.tipResursa;
-                                ttOp.Text = tr.opis;
-                                ttObn.Text = tr.obnovljivo;
-                                ttStv.Text = tr.strateska_vaznost;
-                                ttEkspl.Text = tr.eksploatacija;
-                                ttFv.Text = tr.pojavljivanje;
-                                ttCen.Text = tr.cena;
-                                ttJm.Text = tr.jedinica_mere;
-                                ttEtik.Text = string.Join(",", tr.oz_etiketa.ToArray());
-                                tabIm.Image = tr.ikonica;
-                                ttDatum.Text = tr.datum_kao;
+                    iscitajResurs(rss);
 
-                            }
+                    foreach(Resurs tr in rss)
+                       if (tr.oznaka.Equals(TabOz))
+                          {
+                            ttOz.Text = tr.oznaka;
+                            ttIm.Text = tr.ime;
+                            ttTip.Text = tr.tipResursa;
+                            ttOp.Text = tr.opis;
+                            ttObn.Text = tr.obnovljivo;
+                            ttStv.Text = tr.strateska_vaznost;
+                            ttEkspl.Text = tr.eksploatacija;
+                            ttFv.Text = tr.pojavljivanje;
+                            ttCen.Text = tr.cena;
+                            ttJm.Text = tr.jedinica_mere;
+                            ttEtik.Text = string.Join(",", tr.oz_etiketa.ToArray());
+                            tabIm.Image = tr.ikonica;
+                            ttDatum.Text = tr.datum_kao;
 
-                        }
-                        stream.Close();
-                    }
-                }
-            }
+                         }
+
+               }
+          }
 
         }
 
@@ -163,7 +147,7 @@ namespace SvetskiResursi
 
             
                 //Ucitavanje resursa iz fajla.
-                iscitavanje(r2);
+                iscitajResurs(r2);
 
                 this.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
                 foreach (Resurs resurs in r2)
@@ -190,7 +174,7 @@ namespace SvetskiResursi
                 {
                     string TabOz = row.Cells[0].Value.ToString();
 
-                    iscitavanje(tri);
+                    iscitajResurs(tri);
 
                     foreach (Resurs tr in tri)
                     {
@@ -283,7 +267,7 @@ namespace SvetskiResursi
         {
              List<Resurs> Lr = new List<Resurs>();
 
-             iscitavanje(Lr);
+             iscitajResurs(Lr);
 
              dataGridView1.ClearSelection();
 
@@ -312,6 +296,7 @@ namespace SvetskiResursi
 
         public void OsveziTabelu()
         {
+            List<Resurs> r = new List<Resurs>();
 
             dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach (Resurs resurs in r)
@@ -320,18 +305,13 @@ namespace SvetskiResursi
             }
         }
 
-        //izmena slike
-        private void tabIm_Click(object sender, EventArgs e)
-        {
-          
-        }
 
         //Filtriranje
         private void cbFilter_TextChanged(object sender, EventArgs e)
         {
             List<Resurs> Lr = new List<Resurs>();
 
-            iscitavanje(Lr); //napravila gore funkciju
+            iscitajResurs(Lr); //napravila gore funkciju
 
             dataGridView1.ClearSelection();
             dataGridView1.Rows.Clear();
@@ -362,11 +342,6 @@ namespace SvetskiResursi
                     }
         }
 
-        //Da kad izadjem iz polja ne ostane nista upisano
-        private void cbFilter_Leave(object sender, EventArgs e)
-        {
-            //cbFilter.Text = "";
-        }
 
         private void ttOp_MouseHover(object sender, EventArgs e)
         {

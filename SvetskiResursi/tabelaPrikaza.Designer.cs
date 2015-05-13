@@ -188,7 +188,6 @@
             this.tabIm.Size = new System.Drawing.Size(113, 108);
             this.tabIm.TabIndex = 4;
             this.tabIm.TabStop = false;
-            this.tabIm.Click += new System.EventHandler(this.tabIm_Click);
             // 
             // tabOz
             // 
@@ -473,7 +472,6 @@
             this.cbFilter.Size = new System.Drawing.Size(105, 26);
             this.cbFilter.TabIndex = 33;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
-            this.cbFilter.Leave += new System.EventHandler(this.cbFilter_Leave);
             // 
             // TabelaPrikaza
             // 

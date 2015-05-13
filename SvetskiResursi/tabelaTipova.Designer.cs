@@ -120,7 +120,6 @@
             this.imeDT.Size = new System.Drawing.Size(48, 18);
             this.imeDT.TabIndex = 9;
             this.imeDT.Text = "          ";
-            this.imeDT.Click += new System.EventHandler(this.label1_Click);
             // 
             // ozDT
             // 
@@ -182,7 +181,6 @@
             this.imDT.Size = new System.Drawing.Size(105, 104);
             this.imDT.TabIndex = 0;
             this.imDT.TabStop = false;
-            this.imDT.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Brisi
             // 

@@ -25,14 +25,7 @@ namespace SvetskiResursi
             List<tipResursa> tp = new List<tipResursa>();
 
             //Ucitavanje resursa iz fajla.
-            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
-            {
-                var formatter = new BinaryFormatter();
-                stream.Position = 0;
-                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    tp.Add((tipResursa)formatter.Deserialize(stream));
-                stream.Close();
-            }
+            iscitajTipResurs(tp);
 
             foreach (tipResursa tip in tp)
             {
@@ -51,17 +44,14 @@ namespace SvetskiResursi
                 cbFilter.Text = "";
         }
 
-        private void iscitavanje(List<tipResursa> Lr)
+        private void iscitajTipResurs(List<tipResursa> Lr)
         {
             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var formatter = new BinaryFormatter();
 
                 while (stream.Position != stream.Length)
-                {
                     Lr.Add(((tipResursa)formatter.Deserialize(stream)));
-
-                }
                 stream.Close();
             }
         }
@@ -70,12 +60,6 @@ namespace SvetskiResursi
         {
 
             dgv.Rows.Add(tip.oznaka, tip.ime, tip.ikonica, tip.opis);
-
-        }
-
-        //izmena slike
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -126,7 +110,7 @@ namespace SvetskiResursi
         //Prikaz selektovanog reda
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            tipResursa tr = new tipResursa();
+            List<tipResursa> tri = new List<tipResursa>();
 
             if (!dataGridView1.AreAllCellsSelected(true))
             {
@@ -142,12 +126,9 @@ namespace SvetskiResursi
                 {
                     string TabOz = row.Cells[0].Value.ToString();
 
-                    using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
-                    {
-                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        while (stream.Position != stream.Length)
-                        {
-                            tr = ((tipResursa)formatter.Deserialize(stream));
+                    iscitajTipResurs(tri);
+
+                         foreach(tipResursa tr in tri)
                             if (tr.oznaka.Equals(TabOz))
                             {
                                 ozDT.Text = tr.oznaka;
@@ -155,14 +136,11 @@ namespace SvetskiResursi
                                 imDT.Image = tr.ikonica;
                                 opDT.Text = tr.opis;
 
-                            }
-
-                        }
-                        stream.Close();
+                            }                        
                     }
                 }
             }
-        }
+        
 
         //Dodavanje novog tipa
         private void Dodaj_Click(object sender, EventArgs e)
@@ -173,7 +151,7 @@ namespace SvetskiResursi
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
-            iscitavanje(tp2);
+            iscitajTipResurs(tp2);
 
             this.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach (tipResursa tip in tp2)
@@ -189,7 +167,7 @@ namespace SvetskiResursi
         private void Izmeni_Click(object sender, EventArgs e)
         {
             pritisnutoIzmeni = true;
-            tipResursa tr = new tipResursa();
+            List<tipResursa> tri = new List<tipResursa>();
 
             dodajTipResursa dtr = new dodajTipResursa(this);
             dtr.oznaka_tip.Enabled = false;
@@ -200,26 +178,18 @@ namespace SvetskiResursi
                 {
                     string TabOz = row.Cells[0].Value.ToString();
 
-                    using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
-                    {
-                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        while (stream.Position != stream.Length)
-                        {
-                            tr = ((tipResursa)formatter.Deserialize(stream));
-                            if (tr.oznaka.Equals(TabOz))
-                            {
-                                break;
-                            }
-                        }
-                        stream.Close();
+                        iscitajTipResurs(tri);
 
-                        dtr.oznaka_tip.Text = tr.oznaka;
-                        dtr.ime_tip.Text = tr.ime;
-                        dtr.opis_tip.Text = tr.opis;
-                        dtr.ikonica.Image = tr.ikonica;
+                        foreach(tipResursa tr in tri)
+                        if (tr.oznaka.Equals(TabOz))
+                        {
+                            dtr.oznaka_tip.Text = tr.oznaka;
+                            dtr.ime_tip.Text = tr.ime;
+                            dtr.opis_tip.Text = tr.opis;
+                            dtr.ikonica.BackgroundImage = tr.ikonica;
+                        }
                     }
                 }
-            }
             dtr.ShowDialog();
         }
 
@@ -228,7 +198,7 @@ namespace SvetskiResursi
         {
             List<tipResursa> Lr = new List<tipResursa>();
 
-            iscitavanje(Lr);
+            iscitajTipResurs(Lr);
 
             dataGridView1.ClearSelection();
 
@@ -248,7 +218,7 @@ namespace SvetskiResursi
         {
             List<tipResursa> Lr = new List<tipResursa>();
 
-            iscitavanje(Lr); //napravila gore funkciju
+            iscitajTipResurs(Lr); //napravila gore funkciju
 
             dataGridView1.ClearSelection();
             dataGridView1.Rows.Clear();
@@ -284,11 +254,6 @@ namespace SvetskiResursi
                 dataGridView1.ClearSelection();
 
             ocisti_filter();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void opDT_MouseHover(object sender, EventArgs e)

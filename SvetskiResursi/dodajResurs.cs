@@ -39,8 +39,8 @@ namespace SvetskiResursi
             form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
-            ucitajTip(tr);
-            ucitajEt(et);
+            iscitajTipResursa(tr);
+            iscitajEtikete(et);
 
             foreach (tipResursa tip in tr)
             {
@@ -68,8 +68,8 @@ namespace SvetskiResursi
             form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
-            ucitajTip(tr);
-            ucitajEt(et);
+            iscitajTipResursa(tr);
+            iscitajEtikete(et);
            
             foreach (tipResursa tip in tr)
              {
@@ -84,24 +84,35 @@ namespace SvetskiResursi
              }
         }
 
-        private void ucitajTip(List<tipResursa> tr)
+        private void iscitajTipResursa(List<tipResursa> tr)
         {
             using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var formatter = new BinaryFormatter();
                 while(stream.Position != stream.Length)
                     tr.Add((tipResursa)formatter.Deserialize(stream));
                 stream.Close();
             }
         }
 
-        private void ucitajEt(List<Etiketa> et)
+        private void iscitajEtikete(List<Etiketa> et)
         {
             using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var formatter = new BinaryFormatter();
                 while (stream.Position != stream.Length)
                     et.Add((Etiketa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
+        private void iscitajResurs(List<Resurs> rs)
+        {
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    rs.Add((Resurs)formatter.Deserialize(stream));
                 stream.Close();
             }
         }
@@ -172,7 +183,7 @@ namespace SvetskiResursi
 
                 if (comboTipResursa.Text.Equals(""))
                 {
-                    obavTip.Text = "Tip je obavezna!";
+                    obavTip.Text = "Tip je obavezan!";
                     obavTip.ForeColor = Color.Red;
                     formIsValid = false;
                 }
@@ -191,8 +202,17 @@ namespace SvetskiResursi
                 res.ime = ime.Text;
                 res.opis = opis.Text;
                 res.tipResursa = comboTipResursa.Text;
+                res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
+                res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
+                res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
+                res.jedinica_mere = cbMera.Text;
+                res.cena = cen.Text;
+                res.datum_kao = vreme.ToString().Split(' ')[2]; 
+                res.pojavljivanje = frPon.Text;
+                List<string> cekirani = etik.CheckedItems.OfType<string>().ToList();
+                res.oz_etiketa = cekirani;
 
-                ucitajTip(tr);
+                iscitajTipResursa(tr);
 
                 //ukoliko nismo uneli sliku resursku, iskoristicemo sliku iz tipa resursa
                 foreach (tipResursa tip in tr)
@@ -207,19 +227,7 @@ namespace SvetskiResursi
                 }
 
 
-                res.obnovljivo = oznaceno(res.obnovljivo, rbObn1, rbObn2);
-                res.eksploatacija = oznaceno(res.eksploatacija, rbEkp1, rbEksp2);
-                res.strateska_vaznost = oznaceno(res.strateska_vaznost, rbSV1, rbSV2);
-                res.jedinica_mere = cbMera.Text;
-                res.cena = cen.Text;
-                res.datum_kao = vreme.ToString().Split(' ')[2]; // "Datum";//datum
-                res.pojavljivanje = frPon.Text;
-                List<string> cekirani = etik.CheckedItems.OfType<string>().ToList();
-                res.oz_etiketa = cekirani;
-
-
                 //provera da li su uneta obavezna polja
-               // formIsValid = true;
                 this.ValidateChildren();
                 if (formIsValid)
                 {
@@ -234,7 +242,7 @@ namespace SvetskiResursi
                 TabelaPrikaza.pritusnutoIzmeni = false;
                 List<Resurs> Lr = new List<Resurs>();
 
-                ucitajTip(tr);
+                iscitajTipResursa(tr);
 
                 using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
                 {
@@ -259,7 +267,6 @@ namespace SvetskiResursi
                                 rs.ikonica = ikonica.BackgroundImage;
                                 rs.pojavljivanje = frPon.Text;
                                 rs.jedinica_mere = cbMera.Text;
-                                // rs.ikonica = (Image)ikonica.BackgroundImage; 
                                 rs.cena = cen.Text;
                                 res.datum_kao = vreme.ToString().Split(' ')[2];
                                 rs.obnovljivo = oznaceno(rs.obnovljivo, rbObn1, rbObn2);
@@ -318,7 +325,7 @@ namespace SvetskiResursi
             if (trs.ShowDialog() == DialogResult.OK)
             {
                 comboTipResursa.Items.Clear();
-                ucitajTip(tp);
+                iscitajTipResursa(tp);
                 foreach (tipResursa tip in tp)
                 {
                     comboTipResursa.Items.Add(tip.oznaka);
@@ -336,7 +343,7 @@ namespace SvetskiResursi
             if (et.ShowDialog() == DialogResult.OK)
             {
                 etik.Items.Clear();
-                ucitajEt(ek);
+                iscitajEtikete(ek);
                 foreach (Etiketa etiketa in ek)
                 {
                     etik.Items.Add(etiketa.oznaka);
@@ -347,31 +354,22 @@ namespace SvetskiResursi
 
          private void oznaka_TextChanged(object sender, EventArgs e)
         {
-            Resurs rs = new Resurs();
+            List<Resurs> rss = new List<Resurs>();
             formIsValid = true;
             obavOZ.Text = "";
             oznaka.Text = Regex.Replace(oznaka.Text, @"\s+", ""); //da se izbace razmaci
 
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-            {
+           iscitajResurs(rss);
 
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while (stream.Position != stream.Length)
+           foreach(Resurs rs in rss)
+             if (rs.oznaka.Equals(oznaka.Text) && oznaka.Enabled == true)
                 {
-                    rs = (Resurs)formatter.Deserialize(stream);
-
-                    if (rs.oznaka != null)
-                        if (rs.oznaka.Equals(oznaka.Text) && oznaka.Enabled == true)
-                        {
-                            obavOZ.Text = "Oznaka vec postoji, unesite novu!";
-                            obavOZ.ForeColor = Color.Red;
-                            formIsValid = false;
-                            vecPostoji = true;
-                            // return;
-                        }
+                   obavOZ.Text = "Oznaka vec postoji, unesite novu!";
+                   obavOZ.ForeColor = Color.Red;
+                   formIsValid = false;
+                   vecPostoji = true;
+                          
                 }
-                stream.Close();
-            }
         }
 
         private void ime_TextChanged(object sender, EventArgs e)

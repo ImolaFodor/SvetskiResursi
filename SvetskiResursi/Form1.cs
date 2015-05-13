@@ -16,16 +16,16 @@ namespace SvetskiResursi
     public partial class Form1 : Form
     {
         List<Resurs> r = new List<Resurs>();
-        List<tipResursa> tr = new List<tipResursa>();
-        Dictionary<ListViewItem,string> lista_tipova = new Dictionary<ListViewItem,string>();
+        List<tipResursa> tr = new List<tipResursa>();    
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
         List<Simbol> s = new List<Simbol>();
         Dictionary<PictureBox,string> dPBr = new Dictionary<PictureBox,string>();
         Dictionary<PictureBox, string> dPBtr = new Dictionary<PictureBox, string>();
-        bool waterMarkActive=true;
-        public override bool AllowDrop { get; set; }
+        Dictionary<ListViewItem, string> lista_tipova = new Dictionary<ListViewItem, string>();   
         ImageList ListaSlika = new ImageList();
         ListViewItem selection;
+        bool waterMarkActive = true;
+        public override bool AllowDrop { get; set; }
         public static Form1 instanca = null;
 
 

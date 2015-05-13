@@ -53,7 +53,7 @@ namespace SvetskiResursi
             prikazUtabeli();
         }
 
-        private void iscitavanje(List<Etiketa> et2){
+        private void iscitajEtikete(List<Etiketa> et2){
 
             using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
             {
@@ -115,7 +115,7 @@ namespace SvetskiResursi
         private void Izmeni_Click(object sender, EventArgs e)
         {
             pritisnutoIzmena = true;
-            Etiketa et = new Etiketa();
+            List<Etiketa> etk = new List<Etiketa>();
 
             dodajEtiketu de = new dodajEtiketu(this);
             de.oznaka.Enabled = false;
@@ -126,26 +126,18 @@ namespace SvetskiResursi
                 {
                     string TabOz = row.Cells[0].Value.ToString();
 
-                    using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
-                    {
-                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                        while (stream.Position != stream.Length)
+                    iscitajEtikete(etk);
+
+                    foreach (Etiketa et in etk)
+                        if (et.oznaka.Equals(TabOz))
                         {
-                            et = ((Etiketa)formatter.Deserialize(stream));
-                            if (et.oznaka.Equals(TabOz))
-                            {
-                                break;
-                            }
+                            de.oznaka.Text = et.oznaka;
+                            de.opis.Text = et.opis;
+                            de.lBoja.BackColor = et.boja;
                         }
-                        stream.Close();
-                        de.oznaka.Text = et.oznaka;
-                        de.opis.Text = et.opis;
-                        de.lBoja.BackColor = et.boja;
-                    }
                 }
             }
             de.ShowDialog();
-           
         }
 
         //Dodavanje nove etikete
@@ -157,7 +149,7 @@ namespace SvetskiResursi
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
-            iscitavanje(et2);
+            iscitajEtikete(et2);
 
             dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
             foreach(Etiketa etiketa in et2)
@@ -228,7 +220,7 @@ namespace SvetskiResursi
         {
             List<Etiketa> et = new List<Etiketa>();
 
-           iscitavanje(et);
+           iscitajEtikete(et);
 
             dataGridView1.ClearSelection();
 
@@ -248,7 +240,7 @@ namespace SvetskiResursi
         {
             List<Etiketa> Lr = new List<Etiketa>();
 
-            iscitavanje(Lr); //napravila gore funkciju
+            iscitajEtikete(Lr); //napravila gore funkciju
 
             dataGridView1.ClearSelection();
             dataGridView1.Rows.Clear();
