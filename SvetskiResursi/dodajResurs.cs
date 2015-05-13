@@ -198,7 +198,10 @@ namespace SvetskiResursi
                 foreach (tipResursa tip in tr)
                 {
                     if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
+                    {
                         res.ikonica = tip.ikonica;
+                        break;
+                    }
                     else
                         res.ikonica = (Image)ikonica.BackgroundImage;
                 }
@@ -231,6 +234,8 @@ namespace SvetskiResursi
                 TabelaPrikaza.pritusnutoIzmeni = false;
                 List<Resurs> Lr = new List<Resurs>();
 
+                ucitajTip(tr);
+
                 using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
                 {
                     var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
@@ -251,7 +256,7 @@ namespace SvetskiResursi
                                 rs.ime = ime.Text;
                                 rs.tipResursa = comboTipResursa.Text;
                                 rs.opis = opis.Text;
-                                rs.ikonica = ikonica.Image;
+                                rs.ikonica = ikonica.BackgroundImage;
                                 rs.pojavljivanje = frPon.Text;
                                 rs.jedinica_mere = cbMera.Text;
                                 // rs.ikonica = (Image)ikonica.BackgroundImage; 
@@ -261,7 +266,18 @@ namespace SvetskiResursi
                                 rs.eksploatacija = oznaceno(rs.eksploatacija, rbEkp1, rbEksp2);
                                 rs.strateska_vaznost = oznaceno(rs.strateska_vaznost, rbSV1, rbSV2);
                                 List<string> cekirani1 = etik.CheckedItems.OfType<string>().ToList();
-                                res.oz_etiketa = cekirani1;
+                                rs.oz_etiketa = cekirani1;
+
+                                foreach (tipResursa tip in tr)
+                                {
+                                    if (ikonica.BackgroundImage == null && comboTipResursa.Text.Equals(tip.oznaka))
+                                    {
+                                        rs.ikonica = tip.ikonica;
+                                        break;
+                                    }
+                                    else
+                                        rs.ikonica = (Image)ikonica.BackgroundImage;
+                                }
 
                         }
                     }
