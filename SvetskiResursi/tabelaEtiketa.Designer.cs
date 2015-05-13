@@ -91,7 +91,6 @@
             this.detalji.TabIndex = 1;
             this.detalji.TabStop = false;
             this.detalji.Text = "Detalji";
-            this.detalji.Enter += new System.EventHandler(this.detalji_Enter);
             // 
             // op
             // 
@@ -102,7 +101,6 @@
             this.op.Size = new System.Drawing.Size(48, 18);
             this.op.TabIndex = 39;
             this.op.Text = "          ";
-            this.op.Click += new System.EventHandler(this.op_Click);
             this.op.MouseHover += new System.EventHandler(this.op_MouseHover);
             // 
             // boja

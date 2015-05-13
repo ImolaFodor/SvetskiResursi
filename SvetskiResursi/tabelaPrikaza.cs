@@ -199,40 +199,42 @@ namespace SvetskiResursi
                             if (tr.oznaka.Equals(TabOz))
                             {
 
-                                dr.oznaka.Text = tr.oznaka;
-                                dr.ime.Text = tr.ime;
-                                dr.comboTipResursa.Text = tr.tipResursa;
-                                dr.opis.Text = tr.opis;
-                                dr.frPon.Text = tr.pojavljivanje;
-                                dr.cen.Text = tr.cena;
-                                dr.cbMera.Text = tr.jedinica_mere;
-                                dr.ikonica.Image = tr.ikonica;
-                                dr.vreme.Text = tr.datum_kao;
-
-                                if (tr.eksploatacija.Equals("DA"))
-                                    dr.rbEkp1.Checked = true;
-                                else
-                                    dr.rbEksp2.Checked = false;
-
-                                if (tr.strateska_vaznost.Equals("DA"))
-                                    dr.rbSV1.Checked = true;
-                                else
-                                    dr.rbSV2.Checked = false;
-
-                                if (tr.obnovljivo.Equals("DA"))
-                                    dr.rbObn1.Checked = true;
-                                else
-                                    dr.rbObn2.Checked = false;
-
-                                for (int j = 0; j < dr.etik.Items.Count; j++)
-                                    for (int i = 0; i < tr.oz_etiketa.Count; i++)
-                                        if (dr.etik.Items[j].Equals(tr.oz_etiketa[i]))
-                                            dr.etik.SetItemChecked(i, true);
-
+                                break;
                             }
 
                         }
                         stream.Close();
+
+                        dr.oznaka.Text = tr.oznaka;
+                        dr.ime.Text = tr.ime;
+                        dr.comboTipResursa.Text = tr.tipResursa;
+                        dr.opis.Text = tr.opis;
+                        dr.frPon.Text = tr.pojavljivanje;
+                        dr.cen.Text = tr.cena;
+                        dr.cbMera.Text = tr.jedinica_mere;
+                        dr.ikonica.Image = tr.ikonica;
+                        dr.vreme.Text = tr.datum_kao;
+
+                        if (tr.eksploatacija.Equals("DA"))
+                            dr.rbEkp1.Checked = true;
+                        else
+                            dr.rbEksp2.Checked = false;
+
+                        if (tr.strateska_vaznost.Equals("DA"))
+                            dr.rbSV1.Checked = true;
+                        else
+                            dr.rbSV2.Checked = false;
+
+                        if (tr.obnovljivo.Equals("DA"))
+                            dr.rbObn1.Checked = true;
+                        else
+                            dr.rbObn2.Checked = false;
+
+                        for (int j = 0; j < dr.etik.Items.Count; j++)
+                            for (int i = 0; i < tr.oz_etiketa.Count; i++)
+                                if (dr.etik.Items[j].Equals(tr.oz_etiketa[i]))
+                                    dr.etik.SetItemChecked(i, true);
+
                     }
                 }
             }

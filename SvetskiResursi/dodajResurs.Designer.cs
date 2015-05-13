@@ -75,6 +75,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
             this.nEtik = new System.Windows.Forms.Button();
+            this.obavOZ = new System.Windows.Forms.Label();
+            this.obavIme = new System.Windows.Forms.Label();
+            this.obavTip = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
@@ -90,17 +93,17 @@
             // oznaka
             // 
             this.oznaka.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oznaka.Location = new System.Drawing.Point(172, 40);
+            this.oznaka.Location = new System.Drawing.Point(172, 31);
             this.oznaka.Margin = new System.Windows.Forms.Padding(4);
             this.oznaka.Name = "oznaka";
             this.oznaka.Size = new System.Drawing.Size(175, 23);
             this.oznaka.TabIndex = 0;
-            this.oznaka.Validating += new System.ComponentModel.CancelEventHandler(this.oznaka_Validating);
+            this.oznaka.TextChanged += new System.EventHandler(this.oznaka_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 40);
+            this.label1.Location = new System.Drawing.Point(7, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 18);
@@ -109,17 +112,17 @@
             // 
             // ime
             // 
-            this.ime.Location = new System.Drawing.Point(172, 81);
+            this.ime.Location = new System.Drawing.Point(172, 86);
             this.ime.Margin = new System.Windows.Forms.Padding(4);
             this.ime.Name = "ime";
             this.ime.Size = new System.Drawing.Size(175, 24);
             this.ime.TabIndex = 2;
-            this.ime.Validating += new System.ComponentModel.CancelEventHandler(this.ime_Validating);
+            this.ime.TextChanged += new System.EventHandler(this.ime_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 81);
+            this.label2.Location = new System.Drawing.Point(7, 86);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 18);
@@ -129,7 +132,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 118);
+            this.label3.Location = new System.Drawing.Point(7, 142);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 18);
@@ -139,19 +142,19 @@
             // comboTipResursa
             // 
             this.comboTipResursa.FormattingEnabled = true;
-            this.comboTipResursa.Location = new System.Drawing.Point(172, 118);
+            this.comboTipResursa.Location = new System.Drawing.Point(172, 142);
             this.comboTipResursa.Margin = new System.Windows.Forms.Padding(4);
             this.comboTipResursa.Name = "comboTipResursa";
             this.comboTipResursa.Size = new System.Drawing.Size(175, 26);
             this.comboTipResursa.TabIndex = 6;
-            this.comboTipResursa.Validating += new System.ComponentModel.CancelEventHandler(this.comboTipResursa_Validating);
+            this.comboTipResursa.TextChanged += new System.EventHandler(this.comboTipResursa_TextChanged);
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 163);
+            this.label4.Location = new System.Drawing.Point(7, 204);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 18);
@@ -162,7 +165,7 @@
             // 
             this.opis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.opis.Location = new System.Drawing.Point(172, 156);
+            this.opis.Location = new System.Drawing.Point(172, 204);
             this.opis.Margin = new System.Windows.Forms.Padding(4);
             this.opis.Name = "opis";
             this.opis.Size = new System.Drawing.Size(221, 78);
@@ -173,7 +176,7 @@
             // 
             this.ikonica.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ikonica.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ikonica.Location = new System.Drawing.Point(91, 45);
+            this.ikonica.Location = new System.Drawing.Point(91, 31);
             this.ikonica.Margin = new System.Windows.Forms.Padding(4);
             this.ikonica.Name = "ikonica";
             this.ikonica.Size = new System.Drawing.Size(155, 155);
@@ -185,7 +188,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 40);
+            this.label5.Location = new System.Drawing.Point(16, 31);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 18);
@@ -296,7 +299,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(132, 208);
+            this.button1.Location = new System.Drawing.Point(130, 204);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 32);
@@ -332,7 +335,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(721, 511);
+            this.button2.Location = new System.Drawing.Point(721, 521);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 32);
@@ -345,7 +348,7 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(884, 511);
+            this.button3.Location = new System.Drawing.Point(879, 521);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(124, 32);
@@ -373,7 +376,7 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(254, 40);
+            this.label14.Location = new System.Drawing.Point(254, 32);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 18);
@@ -384,7 +387,7 @@
             // 
             this.etik.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.etik.FormattingEnabled = true;
-            this.etik.Location = new System.Drawing.Point(327, 45);
+            this.etik.Location = new System.Drawing.Point(327, 32);
             this.etik.Margin = new System.Windows.Forms.Padding(4);
             this.etik.Name = "etik";
             this.etik.Size = new System.Drawing.Size(156, 156);
@@ -479,6 +482,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.obavTip);
+            this.groupBox1.Controls.Add(this.obavIme);
+            this.groupBox1.Controls.Add(this.obavOZ);
             this.groupBox1.Controls.Add(this.nTip);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.oznaka);
@@ -490,16 +496,15 @@
             this.groupBox1.Controls.Add(this.opis);
             this.groupBox1.Location = new System.Drawing.Point(16, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(474, 241);
+            this.groupBox1.Size = new System.Drawing.Size(474, 289);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // nTip
             // 
             this.nTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nTip.Location = new System.Drawing.Point(355, 116);
+            this.nTip.Location = new System.Drawing.Point(369, 138);
             this.nTip.Margin = new System.Windows.Forms.Padding(4);
             this.nTip.Name = "nTip";
             this.nTip.Size = new System.Drawing.Size(74, 32);
@@ -521,7 +526,7 @@
             this.groupBox2.Controls.Add(this.frPon);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.vreme);
-            this.groupBox2.Location = new System.Drawing.Point(12, 260);
+            this.groupBox2.Location = new System.Drawing.Point(16, 308);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1035, 196);
             this.groupBox2.TabIndex = 43;
@@ -568,7 +573,7 @@
             this.Vizualizacija.Controls.Add(this.etik);
             this.Vizualizacija.Location = new System.Drawing.Point(513, 13);
             this.Vizualizacija.Name = "Vizualizacija";
-            this.Vizualizacija.Size = new System.Drawing.Size(534, 241);
+            this.Vizualizacija.Size = new System.Drawing.Size(534, 289);
             this.Vizualizacija.TabIndex = 44;
             this.Vizualizacija.TabStop = false;
             this.Vizualizacija.Text = "Vizualizacija";
@@ -576,7 +581,7 @@
             // nEtik
             // 
             this.nEtik.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.nEtik.Location = new System.Drawing.Point(345, 209);
+            this.nEtik.Location = new System.Drawing.Point(345, 204);
             this.nEtik.Margin = new System.Windows.Forms.Padding(4);
             this.nEtik.Name = "nEtik";
             this.nEtik.Size = new System.Drawing.Size(124, 32);
@@ -584,6 +589,33 @@
             this.nEtik.Text = "Nova etiketa";
             this.nEtik.UseVisualStyleBackColor = true;
             this.nEtik.Click += new System.EventHandler(this.nEtik_Click);
+            // 
+            // obavOZ
+            // 
+            this.obavOZ.AutoSize = true;
+            this.obavOZ.Location = new System.Drawing.Point(169, 59);
+            this.obavOZ.Name = "obavOZ";
+            this.obavOZ.Size = new System.Drawing.Size(58, 18);
+            this.obavOZ.TabIndex = 35;
+            this.obavOZ.Text = "          ";
+            // 
+            // obavIme
+            // 
+            this.obavIme.AutoSize = true;
+            this.obavIme.Location = new System.Drawing.Point(169, 114);
+            this.obavIme.Name = "obavIme";
+            this.obavIme.Size = new System.Drawing.Size(58, 18);
+            this.obavIme.TabIndex = 36;
+            this.obavIme.Text = "          ";
+            // 
+            // obavTip
+            // 
+            this.obavTip.AutoSize = true;
+            this.obavTip.Location = new System.Drawing.Point(171, 172);
+            this.obavTip.Name = "obavTip";
+            this.obavTip.Size = new System.Drawing.Size(58, 18);
+            this.obavTip.TabIndex = 37;
+            this.obavTip.Text = "          ";
             // 
             // DodajResurs
             // 
@@ -671,6 +703,9 @@
         public System.Windows.Forms.RadioButton rbSV1;
         public System.Windows.Forms.RadioButton rbObn2;
         public System.Windows.Forms.RadioButton rbObn1;
+        public System.Windows.Forms.Label obavTip;
+        public System.Windows.Forms.Label obavIme;
+        public System.Windows.Forms.Label obavOZ;
     }
 }
 

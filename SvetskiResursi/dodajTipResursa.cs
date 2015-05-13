@@ -19,8 +19,6 @@ namespace SvetskiResursi
     {
         private tabelaTipova tbTipova;
         private OpenFileDialog ofd = new OpenFileDialog();
-        private Regex rx_oz = null;
-        private Regex rx_ime = null;
         private bool formIsValid = true;
         private bool vecPostoji = false;
 
@@ -33,23 +31,13 @@ namespace SvetskiResursi
 
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
-         /*   rx_oz = new Regex("^\\w+$");
-            rx_ime = new Regex("^\\w+$");
-
-            errorRepeat.Add(oznaka_tip, false);
-            errorRepeat.Add(ime_tip, false);*/
-        }
+         }
 
         public dodajTipResursa()
         {
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
-          /*  rx_oz = new Regex("^\\w+$");
-            rx_ime = new Regex("^\\w+$");
-
-            errorRepeat.Add(oznaka_tip, false);
-            errorRepeat.Add(ime_tip, false);*/
         }
 
         private void izborSlike_Click(object sender, EventArgs e)
@@ -80,7 +68,7 @@ namespace SvetskiResursi
                 tipResursa tipRes = new tipResursa();
 
                 //Provera da li su obavezna polja popunjena
-                if(!oznaka_tip.Text.Equals("") && formIsValid == false) //ukoliko postoji neka oznaka i forma nije validna
+                if(!oznaka_tip.Text.Equals("") && formIsValid == true) //ukoliko postoji neka oznaka i forma nije validna
                     vecPostoji = false;                                 //znaci da ta oznaka vec postoji
 
                 if (oznaka_tip.Text.Equals(""))
@@ -113,7 +101,7 @@ namespace SvetskiResursi
                     obavSl.Text = "";
                 }
 
-                if (!oznaka_tip.Text.Equals("") && vecPostoji && !ime_tip.Text.Equals("") && ikonica.BackgroundImage != null)
+                if (!oznaka_tip.Text.Equals("") && vecPostoji == false && !ime_tip.Text.Equals("") && ikonica.BackgroundImage != null)
                     formIsValid = true;
                 else
                     formIsValid = false;
@@ -159,17 +147,9 @@ namespace SvetskiResursi
                     {
                         if (tr.oznaka.Equals(oznaka_tip.Text))
                         {
-                            try
-                            {
                                 tr.ime = ime_tip.Text;
                                 tr.opis = opis_tip.Text;
                                 tr.ikonica = ikonica.Image;
-
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.Write("Greska");
-                            }
                         }
                     }
 
@@ -191,58 +171,6 @@ namespace SvetskiResursi
                 this.Close();
 
             }
-
-        }
-
-        private void oznaka_tip_Validating(object sender, CancelEventArgs e)
-        {
-          /*  tipResursa tip = new tipResursa();
-
-            if (rx_oz.Match(oznaka_tip.Text).Success)
-            {
-                errorProviderOz.SetError(oznaka_tip, ""); //Ovako se postavlja da se greška isključi
-                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
-            }
-            else
-            {
-                //Ovim se podešava da se ispisuje greška.
-                errorProviderOz.SetError(oznaka_tip, "Oznaka je obavezna");
-                formIsValid = false;
-                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
-                {
-                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
-                }
-                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
-            }*/
-
-
-           
-        }
-
-        private void ime_tip_Validating(object sender, CancelEventArgs e)
-        {
-            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
-     /*       if (rx_ime.Match(ime_tip.Text).Success)
-            {
-                errorProviderIm.SetError(ime_tip, ""); //Ovako se postavlja da se greška isključi
-                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
-            }
-            else
-            {
-                //Ovim se podešava da se ispisuje greška.
-                errorProviderIm.SetError(ime_tip, "Ime je obavezno");
-                formIsValid = false;
-                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
-                {
-                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
-                }
-                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
-            }*/
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void oznaka_tip_TextChanged(object sender, EventArgs e)
@@ -268,7 +196,6 @@ namespace SvetskiResursi
                             obavOz.ForeColor = Color.Red;
                             formIsValid = false;
                             vecPostoji = true;
-                           // return;
                         }
                 }
                 stream.Close();

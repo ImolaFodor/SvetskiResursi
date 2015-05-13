@@ -21,10 +21,8 @@ namespace SvetskiResursi
         private OpenFileDialog ofd = new OpenFileDialog();
         
         private TabelaPrikaza tabelaPrikaza;
-        private Regex rx_oz = null;
-        private Regex rx_ime = null;
-        private Regex rx_tip = null;
         private bool formIsValid = true;
+        private bool vecPostoji = false;
 
         Resurs resur;
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
@@ -38,18 +36,8 @@ namespace SvetskiResursi
             List<tipResursa> tr = new List<tipResursa>();
             List<Etiketa> et = new List<Etiketa>();
 
-            // groupBox1.Paint += PaintBorderlessGroupBox;
             form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
-
-            //za proveru upisa obaveznih polja
-            rx_oz = new Regex("^\\w+$");
-            rx_ime = new Regex("^\\w+$");
-            rx_tip = new Regex("^\\w+$");
-
-            errorRepeat.Add(oznaka, false);
-            errorRepeat.Add(ime, false);
-            errorRepeat.Add(comboTipResursa, false);
 
             ucitajTip(tr);
             ucitajEt(et);
@@ -80,17 +68,7 @@ namespace SvetskiResursi
             form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
-            //za proveru upisa obaveznih polja
-            rx_oz = new Regex("^\\w+$");
-            rx_ime = new Regex("^\\w+$");
-            rx_tip = new Regex("^\\w+$");
-
-            errorRepeat.Add(oznaka, false);
-            errorRepeat.Add(ime, false);
-            errorRepeat.Add(comboTipResursa, false);
-
             ucitajTip(tr);
-
             ucitajEt(et);
            
             foreach (tipResursa tip in tr)
@@ -169,6 +147,45 @@ namespace SvetskiResursi
 
             if (!TabelaPrikaza.pritusnutoIzmeni)
             {
+
+                //Provera da li su obavezna polja popunjena
+                if (!oznaka.Text.Equals("") && formIsValid == true) //ukoliko postoji neka oznaka i forma nije validna
+                    vecPostoji = false;                                 //znaci da ta oznaka vec postoji
+
+                if (oznaka.Text.Equals(""))
+                {
+                    obavOZ.Text = "Oznaka je obavezna!";
+                    obavOZ.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+
+                if (ime.Text.Equals(""))
+                {
+                    obavIme.Text = "Ime je obavezno!";
+                    obavIme.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else
+                {
+                    obavIme.Text = "";
+                }
+
+                if (comboTipResursa.Text.Equals(""))
+                {
+                    obavTip.Text = "Tip je obavezna!";
+                    obavTip.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else
+                {
+                    obavTip.Text = "";
+                }
+
+                if (!oznaka.Text.Equals("") && vecPostoji == false && !ime.Text.Equals("") && !comboTipResursa.Text.Equals(""))
+                    formIsValid = true;
+                else
+                    formIsValid = false;
+
                 //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
                 res.oznaka = oznaka.Text;
                 res.ime = ime.Text;
@@ -176,6 +193,7 @@ namespace SvetskiResursi
                 res.tipResursa = comboTipResursa.Text;
 
                 ucitajTip(tr);
+
                 //ukoliko nismo uneli sliku resursku, iskoristicemo sliku iz tipa resursa
                 foreach (tipResursa tip in tr)
                 {
@@ -198,7 +216,7 @@ namespace SvetskiResursi
 
 
                 //provera da li su uneta obavezna polja
-                formIsValid = true;
+               // formIsValid = true;
                 this.ValidateChildren();
                 if (formIsValid)
                 {
@@ -230,8 +248,6 @@ namespace SvetskiResursi
                     {
                         if (rs.oznaka.Equals(oznaka.Text))
                         {
-                            try
-                            {
                                 rs.ime = ime.Text;
                                 rs.tipResursa = comboTipResursa.Text;
                                 rs.opis = opis.Text;
@@ -247,13 +263,6 @@ namespace SvetskiResursi
                                 List<string> cekirani1 = etik.CheckedItems.OfType<string>().ToList();
                                 res.oz_etiketa = cekirani1;
 
-
-
-                            }
-                            catch (Exception ex)
-                            {
-                                Console.Write("Greska");
-                            }
                         }
                     }
 
@@ -283,92 +292,7 @@ namespace SvetskiResursi
             
 
         }
-
-        private void oznaka_Validating(object sender, CancelEventArgs e)
-        {
-            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
-            if (rx_oz.Match(oznaka.Text).Success)
-            {
-                errorProviderOz.SetError(oznaka, ""); //Ovako se postavlja da se greška isključi
-                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
-            }
-            else
-            {
-                //Ovim se podešava da se ispisuje greška.
-                errorProviderOz.SetError(oznaka, "Oznaka je obavezna");
-                formIsValid = false;
-                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
-                {
-                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
-                }
-                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
-            }
-
-            //provera da li vec postoji resurs sa odredjenom oznakom
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
-            {
-
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                while (stream.Position != stream.Length)
-                {
-                    resur = (Resurs)formatter.Deserialize(stream);
-
-                    if (resur.oznaka != null)
-                        if (resur.oznaka.Equals(oznaka.Text))
-                        {
-                            oznaka.Text = "OZNAKA VEC POSTOJI!";
-                            oznaka.ForeColor = Color.Red;
-                            return;
-                        }
-                }
-
-                stream.Close();
-            }
-
-        }
-
-        private void ime_Validating(object sender, CancelEventArgs e)
-        {
-            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
-            if (rx_oz.Match(ime.Text).Success)
-            {
-                errorProviderIm.SetError(ime, ""); //Ovako se postavlja da se greška isključi
-                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
-            }
-            else
-            {
-                //Ovim se podešava da se ispisuje greška.
-                errorProviderIm.SetError(ime, "Ime je obavezno");
-                formIsValid = false;
-                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
-                {
-                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
-                }
-                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
-            }
-        }
-
-        private void comboTipResursa_Validating(object sender, CancelEventArgs e)
-        {
-            //Ovo je događaj validiranja koji se okida kada polje _izgubi_ fokus. 
-            if (rx_oz.Match(comboTipResursa.Text).Success)
-            {
-                errorProviderTp.SetError(comboTipResursa, ""); //Ovako se postavlja da se greška isključi
-                errorRepeat[sender] = false; // Ovo resetuje brojanje ponavljanje greške
-            }
-            else
-            {
-                //Ovim se podešava da se ispisuje greška.
-                errorProviderTp.SetError(comboTipResursa, "Tip je obavezan");
-                formIsValid = false;
-                if (!errorRepeat[sender]) //Ovo je način da zabranimo korisnku da izađe iz kontrole prvi put, ali ne drugi put
-                {
-                    e.Cancel = true; //Prelazak iz kontrole je zabranjen
-                }
-                errorRepeat[sender] = !errorRepeat[sender]; //Promenimo stanje vođenja računa o preskakanju iz kontrole u kontrolu
-            }
-        }
-
+    
         private void nTip_Click(object sender, EventArgs e)
         {
             List<tipResursa> tp = new List<tipResursa>();
@@ -405,9 +329,43 @@ namespace SvetskiResursi
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+         private void oznaka_TextChanged(object sender, EventArgs e)
         {
-            
+            Resurs rs = new Resurs();
+            formIsValid = true;
+            obavOZ.Text = "";
+            oznaka.Text = Regex.Replace(oznaka.Text, @"\s+", ""); //da se izbace razmaci
+
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+
+                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                while (stream.Position != stream.Length)
+                {
+                    rs = (Resurs)formatter.Deserialize(stream);
+
+                    if (rs.oznaka != null)
+                        if (rs.oznaka.Equals(oznaka.Text) && oznaka.Enabled == true)
+                        {
+                            obavOZ.Text = "Oznaka vec postoji, unesite novu!";
+                            obavOZ.ForeColor = Color.Red;
+                            formIsValid = false;
+                            vecPostoji = true;
+                            // return;
+                        }
+                }
+                stream.Close();
+            }
+        }
+
+        private void ime_TextChanged(object sender, EventArgs e)
+        {
+            obavIme.Text = "";
+        }
+
+        private void comboTipResursa_TextChanged(object sender, EventArgs e)
+        {
+            obavTip.Text = "";
         }
     }
 }

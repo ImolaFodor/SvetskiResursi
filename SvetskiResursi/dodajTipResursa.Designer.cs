@@ -60,7 +60,6 @@
             this.oznaka_tip.Size = new System.Drawing.Size(164, 23);
             this.oznaka_tip.TabIndex = 0;
             this.oznaka_tip.TextChanged += new System.EventHandler(this.oznaka_tip_TextChanged);
-            this.oznaka_tip.Validating += new System.ComponentModel.CancelEventHandler(this.oznaka_tip_Validating);
             // 
             // label1
             // 
@@ -90,7 +89,6 @@
             this.ime_tip.Size = new System.Drawing.Size(164, 24);
             this.ime_tip.TabIndex = 3;
             this.ime_tip.TextChanged += new System.EventHandler(this.ime_tip_TextChanged);
-            this.ime_tip.Validating += new System.ComponentModel.CancelEventHandler(this.ime_tip_Validating);
             // 
             // label3
             // 
@@ -199,7 +197,6 @@
             this.obavOz.Size = new System.Drawing.Size(48, 16);
             this.obavOz.TabIndex = 12;
             this.obavOz.Text = "          ";
-            this.obavOz.Click += new System.EventHandler(this.label6_Click);
             // 
             // obavIm
             // 

@@ -109,7 +109,6 @@
             this.oznaka.Size = new System.Drawing.Size(164, 23);
             this.oznaka.TabIndex = 1;
             this.oznaka.TextChanged += new System.EventHandler(this.oznaka_TextChanged);
-            this.oznaka.Validating += new System.ComponentModel.CancelEventHandler(this.textBox1_Validating);
             // 
             // button1
             // 
