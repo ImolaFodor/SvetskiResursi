@@ -222,7 +222,7 @@ namespace SvetskiResursi
 
         private void tabelaPrikazaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TabelaPrikaza tbl = new TabelaPrikaza();
+            TabelaPrikaza tbl = new TabelaPrikaza(this);
             
             tbl.ShowDialog();
             
@@ -264,7 +264,7 @@ namespace SvetskiResursi
                 listView1.Columns.Add(header);
                 listView1.HeaderStyle = ColumnHeaderStyle.None;*/
                 ListViewItem tresurs = new ListViewItem();
-                tresurs.Text = tre.oznaka;
+                tresurs.Text ="Tip: "+tre.oznaka;
                 tresurs.Tag = tre;
                 listView1.Items.Add(tresurs);
                 
@@ -305,16 +305,17 @@ namespace SvetskiResursi
 
         public void pbMapa_Fill()
         {
+            List<Simbol> ls = new List<Simbol>();
             using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
             {
                 
                 var formatter = new BinaryFormatter();
                 while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    s.Add((Simbol)formatter.Deserialize(stream));
+                    ls.Add((Simbol)formatter.Deserialize(stream));
                 stream.Close();
             }
 
-                foreach(Simbol sim in s)
+                foreach(Simbol sim in ls)
                 {
                     PictureBox pb = new PictureBox();
                     pb.Parent = pbMape;
@@ -343,14 +344,15 @@ namespace SvetskiResursi
                                  "Opis:    " + sim.opis;
                     new ToolTip().SetToolTip(pb, detalji);
                 
-                    dPBr.Add(pb, sim.oznaka);
-                    dPBtr.Add(pb, sim.tipR);
+                   /* dPBr.Add(pb, sim.oznaka);
+                    dPBtr.Add(pb, sim.tipR);*/
                 }
         }
 
         private void RefreshButtonClick(object sender, EventArgs e)
         {
             RefreshList();
+            
         }
 
 

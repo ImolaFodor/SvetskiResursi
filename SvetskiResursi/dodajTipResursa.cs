@@ -178,10 +178,11 @@ namespace SvetskiResursi
                 }
 
                 tbtp.ocisti_filter();
-                form.RefreshList();
+                
                 this.Close();
 
             }
+            form.RefreshList();
         }
 
         private void oznaka_tip_TextChanged(object sender, EventArgs e)
