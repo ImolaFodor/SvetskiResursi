@@ -243,7 +243,7 @@
             this.MaximizeBox = false;
             this.Name = "dodajTipResursa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dodaj tip resursa";
+            this.Text = "Dodavanje tipa resursa";
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).EndInit();

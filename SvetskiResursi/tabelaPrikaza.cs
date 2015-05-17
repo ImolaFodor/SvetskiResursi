@@ -168,6 +168,7 @@ namespace SvetskiResursi
 
             DodajResurs dr = new DodajResurs(Form1.getInstance(), this);
             dr.oznaka.Enabled = false;
+            dr.Text = "Izmena resursa";
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {

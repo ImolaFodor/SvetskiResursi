@@ -171,6 +171,7 @@ namespace SvetskiResursi
 
             dodajTipResursa dtr = new dodajTipResursa(Form1.getInstance(),this);
             dtr.oznaka_tip.Enabled = false;
+            dtr.Text = "Izmena tipa resursa";
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {

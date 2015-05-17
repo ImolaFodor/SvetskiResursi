@@ -55,10 +55,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.oznaka,
             this.opis});
-            this.dataGridView1.Location = new System.Drawing.Point(80, 13);
+            this.dataGridView1.Enabled = false;
+            this.dataGridView1.Location = new System.Drawing.Point(97, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(238, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(243, 150);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -85,9 +86,10 @@
             this.detalji.Controls.Add(this.opE);
             this.detalji.Controls.Add(this.bojaE);
             this.detalji.Controls.Add(this.ozE);
+            this.detalji.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detalji.Location = new System.Drawing.Point(24, 235);
             this.detalji.Name = "detalji";
-            this.detalji.Size = new System.Drawing.Size(347, 100);
+            this.detalji.Size = new System.Drawing.Size(395, 100);
             this.detalji.TabIndex = 1;
             this.detalji.TabStop = false;
             this.detalji.Text = "Detalji";
@@ -95,10 +97,10 @@
             // op
             // 
             this.op.AutoSize = true;
-            this.op.Location = new System.Drawing.Point(237, 23);
+            this.op.Location = new System.Drawing.Point(253, 23);
             this.op.MaximumSize = new System.Drawing.Size(100, 100);
             this.op.Name = "op";
-            this.op.Size = new System.Drawing.Size(48, 18);
+            this.op.Size = new System.Drawing.Size(58, 18);
             this.op.TabIndex = 39;
             this.op.Text = "          ";
             this.op.MouseHover += new System.EventHandler(this.op_MouseHover);
@@ -108,7 +110,7 @@
             this.boja.AutoSize = true;
             this.boja.Location = new System.Drawing.Point(85, 63);
             this.boja.Name = "boja";
-            this.boja.Size = new System.Drawing.Size(68, 18);
+            this.boja.Size = new System.Drawing.Size(83, 18);
             this.boja.TabIndex = 38;
             this.boja.Text = "               ";
             // 
@@ -117,7 +119,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(118, -16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 18);
+            this.label1.Size = new System.Drawing.Size(70, 18);
             this.label1.TabIndex = 37;
             this.label1.Text = "\"          \"";
             // 
@@ -126,16 +128,16 @@
             this.oz.AutoSize = true;
             this.oz.Location = new System.Drawing.Point(85, 23);
             this.oz.Name = "oz";
-            this.oz.Size = new System.Drawing.Size(58, 18);
+            this.oz.Size = new System.Drawing.Size(78, 18);
             this.oz.TabIndex = 36;
-            this.oz.Text = "\"          \"";
+            this.oz.Text = "              ";
             // 
             // opE
             // 
             this.opE.AutoSize = true;
-            this.opE.Location = new System.Drawing.Point(188, 23);
+            this.opE.Location = new System.Drawing.Point(204, 23);
             this.opE.Name = "opE";
-            this.opE.Size = new System.Drawing.Size(43, 18);
+            this.opE.Size = new System.Drawing.Size(48, 18);
             this.opE.TabIndex = 7;
             this.opE.Text = "Opis:";
             // 
@@ -144,7 +146,7 @@
             this.bojaE.AutoSize = true;
             this.bojaE.Location = new System.Drawing.Point(15, 63);
             this.bojaE.Name = "bojaE";
-            this.bojaE.Size = new System.Drawing.Size(42, 18);
+            this.bojaE.Size = new System.Drawing.Size(47, 18);
             this.bojaE.TabIndex = 6;
             this.bojaE.Text = "Boja:";
             // 
@@ -153,52 +155,56 @@
             this.ozE.AutoSize = true;
             this.ozE.Location = new System.Drawing.Point(15, 23);
             this.ozE.Name = "ozE";
-            this.ozE.Size = new System.Drawing.Size(64, 18);
+            this.ozE.Size = new System.Drawing.Size(71, 18);
             this.ozE.TabIndex = 5;
             this.ozE.Text = "Oznaka:";
             // 
             // Brisi
             // 
-            this.Brisi.Location = new System.Drawing.Point(278, 183);
+            this.Brisi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Brisi.Location = new System.Drawing.Point(350, 183);
             this.Brisi.Margin = new System.Windows.Forms.Padding(4);
             this.Brisi.Name = "Brisi";
-            this.Brisi.Size = new System.Drawing.Size(93, 32);
+            this.Brisi.Size = new System.Drawing.Size(68, 32);
             this.Brisi.TabIndex = 3;
             this.Brisi.Text = "Brisi";
-            this.Brisi.UseVisualStyleBackColor = true;
+            this.Brisi.UseVisualStyleBackColor = false;
             this.Brisi.Click += new System.EventHandler(this.Brisi_Click);
             // 
             // Dodaj
             // 
-            this.Dodaj.Location = new System.Drawing.Point(185, 183);
+            this.Dodaj.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Dodaj.Location = new System.Drawing.Point(279, 183);
             this.Dodaj.Margin = new System.Windows.Forms.Padding(4);
             this.Dodaj.Name = "Dodaj";
-            this.Dodaj.Size = new System.Drawing.Size(85, 32);
+            this.Dodaj.Size = new System.Drawing.Size(61, 32);
             this.Dodaj.TabIndex = 4;
             this.Dodaj.Text = "Dodaj";
-            this.Dodaj.UseVisualStyleBackColor = true;
+            this.Dodaj.UseVisualStyleBackColor = false;
             this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 
             // otkazi
             // 
+            this.otkazi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.otkazi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.otkazi.Location = new System.Drawing.Point(259, 362);
+            this.otkazi.Location = new System.Drawing.Point(307, 363);
             this.otkazi.Margin = new System.Windows.Forms.Padding(4);
             this.otkazi.Name = "otkazi";
             this.otkazi.Size = new System.Drawing.Size(112, 32);
             this.otkazi.TabIndex = 5;
-            this.otkazi.Text = "Otkazi";
-            this.otkazi.UseVisualStyleBackColor = true;
+            this.otkazi.Text = "Izadji";
+            this.otkazi.UseVisualStyleBackColor = false;
             // 
             // Izmeni
             // 
-            this.Izmeni.Location = new System.Drawing.Point(129, 362);
+            this.Izmeni.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Izmeni.Location = new System.Drawing.Point(200, 183);
             this.Izmeni.Margin = new System.Windows.Forms.Padding(4);
             this.Izmeni.Name = "Izmeni";
-            this.Izmeni.Size = new System.Drawing.Size(112, 32);
+            this.Izmeni.Size = new System.Drawing.Size(71, 32);
             this.Izmeni.TabIndex = 6;
             this.Izmeni.Text = "Izmeni";
-            this.Izmeni.UseVisualStyleBackColor = true;
+            this.Izmeni.UseVisualStyleBackColor = false;
             this.Izmeni.Click += new System.EventHandler(this.Izmeni_Click);
             // 
             // trazi
@@ -225,7 +231,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 418);
+            this.ClientSize = new System.Drawing.Size(431, 418);
             this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.trazi);
             this.Controls.Add(this.Izmeni);
@@ -236,9 +242,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "tabelaEtiketa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "tabelaEtiketa";
+            this.Text = "Tabela prikaza etiketa";
             this.Load += new System.EventHandler(this.tabelaEtiketa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.detalji.ResumeLayout(false);

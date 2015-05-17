@@ -264,7 +264,7 @@ namespace SvetskiResursi
                 listView1.Columns.Add(header);
                 listView1.HeaderStyle = ColumnHeaderStyle.None;*/
                 ListViewItem tresurs = new ListViewItem();
-                tresurs.Text ="Tip: "+tre.oznaka;
+                tresurs.Text =tre.oznaka;
                 tresurs.Tag = tre;
                 listView1.Items.Add(tresurs);
                 
@@ -344,8 +344,8 @@ namespace SvetskiResursi
                                  "Opis:    " + sim.opis;
                     new ToolTip().SetToolTip(pb, detalji);
                 
-                   /* dPBr.Add(pb, sim.oznaka);
-                    dPBtr.Add(pb, sim.tipR);*/
+                    dPBr.Add(pb, sim.oznaka);
+                    dPBtr.Add(pb, sim.tipR);
                 }
         }
 
@@ -370,6 +370,10 @@ namespace SvetskiResursi
         private void Filtriranje_Click(object sender, EventArgs e)
         {
             string trazeni = textBox1.Text;
+
+             if (trazeni.Equals("")) {
+                RefreshList();
+            }
             for (int i = 0; i < listView1.Items.Count; i++)
             {
                 if (listView1.Items[i].Text.Equals(trazeni))
@@ -400,6 +404,8 @@ namespace SvetskiResursi
 
                 }
             }
+
+           
 
 
             }
@@ -448,6 +454,56 @@ namespace SvetskiResursi
         {
             tabelaEtiketa tbl = new tabelaEtiketa();
             tbl.ShowDialog();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void fOz_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Resurs> re= new List<Resurs>();
+                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    re.Add((Resurs)formatter.Deserialize(stream));
+                stream.Close();
+            }
+
+                for(int i=0; i<listView1.Items.Count; i++){
+                    if (listView1.Items[i].Selected)
+                    {
+                        foreach (Resurs r in re)
+                        {
+
+                            if (listView1.Items[i].Text == r.oznaka)
+                            {
+                                fOz.Text = r.oznaka;
+                                fIme.Text=r.ime;
+                                fTip.Text = r.tipResursa;
+                                prikazIkonice.BackgroundImage = r.ikonica;
+                                break;
+                            }
+                            else
+                            {
+                                fOz.Text = "";
+                                fIme.Text = "";
+                                fTip.Text = "";
+                                prikazIkonice.BackgroundImage = null;
+                            }
+                        }
+                    }
+
+                }
+                
+            
         }
        
     }

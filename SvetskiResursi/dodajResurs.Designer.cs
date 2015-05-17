@@ -68,6 +68,9 @@
             this.errorProviderIm = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderTp = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.obavTip = new System.Windows.Forms.Label();
+            this.obavIme = new System.Windows.Forms.Label();
+            this.obavOZ = new System.Windows.Forms.Label();
             this.nTip = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -75,9 +78,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
             this.nEtik = new System.Windows.Forms.Button();
-            this.obavOZ = new System.Windows.Forms.Label();
-            this.obavIme = new System.Windows.Forms.Label();
-            this.obavTip = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
@@ -501,6 +501,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Osnovni podaci";
             // 
+            // obavTip
+            // 
+            this.obavTip.AutoSize = true;
+            this.obavTip.Location = new System.Drawing.Point(171, 172);
+            this.obavTip.Name = "obavTip";
+            this.obavTip.Size = new System.Drawing.Size(58, 18);
+            this.obavTip.TabIndex = 37;
+            this.obavTip.Text = "          ";
+            // 
+            // obavIme
+            // 
+            this.obavIme.AutoSize = true;
+            this.obavIme.Location = new System.Drawing.Point(169, 114);
+            this.obavIme.Name = "obavIme";
+            this.obavIme.Size = new System.Drawing.Size(58, 18);
+            this.obavIme.TabIndex = 36;
+            this.obavIme.Text = "          ";
+            // 
+            // obavOZ
+            // 
+            this.obavOZ.AutoSize = true;
+            this.obavOZ.Location = new System.Drawing.Point(169, 59);
+            this.obavOZ.Name = "obavOZ";
+            this.obavOZ.Size = new System.Drawing.Size(58, 18);
+            this.obavOZ.TabIndex = 35;
+            this.obavOZ.Text = "          ";
+            // 
             // nTip
             // 
             this.nTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -590,33 +617,6 @@
             this.nEtik.UseVisualStyleBackColor = true;
             this.nEtik.Click += new System.EventHandler(this.nEtik_Click);
             // 
-            // obavOZ
-            // 
-            this.obavOZ.AutoSize = true;
-            this.obavOZ.Location = new System.Drawing.Point(169, 59);
-            this.obavOZ.Name = "obavOZ";
-            this.obavOZ.Size = new System.Drawing.Size(58, 18);
-            this.obavOZ.TabIndex = 35;
-            this.obavOZ.Text = "          ";
-            // 
-            // obavIme
-            // 
-            this.obavIme.AutoSize = true;
-            this.obavIme.Location = new System.Drawing.Point(169, 114);
-            this.obavIme.Name = "obavIme";
-            this.obavIme.Size = new System.Drawing.Size(58, 18);
-            this.obavIme.TabIndex = 36;
-            this.obavIme.Text = "          ";
-            // 
-            // obavTip
-            // 
-            this.obavTip.AutoSize = true;
-            this.obavTip.Location = new System.Drawing.Point(171, 172);
-            this.obavTip.Name = "obavTip";
-            this.obavTip.Size = new System.Drawing.Size(58, 18);
-            this.obavTip.TabIndex = 37;
-            this.obavTip.Text = "          ";
-            // 
             // DodajResurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -633,7 +633,7 @@
             this.MaximizeBox = false;
             this.Name = "DodajResurs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DODAVANJE RESURSA";
+            this.Text = "Dodavanje resursa";
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).EndInit();
