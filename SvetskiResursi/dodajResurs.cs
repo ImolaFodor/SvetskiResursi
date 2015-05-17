@@ -151,8 +151,7 @@ namespace SvetskiResursi
         {
             Resurs res = new Resurs();
             resur = new Resurs();
-            DialogObavestenja db = new DialogObavestenja();
-            ObavestenjeZaOznaku ozo = new ObavestenjeZaOznaku();
+           
             List<tipResursa> tr = new List<tipResursa>();
             TabelaPrikaza tbl = new TabelaPrikaza();
 

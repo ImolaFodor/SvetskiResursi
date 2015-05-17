@@ -64,7 +64,6 @@ namespace SvetskiResursi
             if (!tabelaEtiketa.pritisnutoIzmena)
             {
                 Etiketa et = new Etiketa();
-                DialogObavestenja db = new DialogObavestenja();
 
                 //Provera da li je uneta oznaka
                 if (oznaka.Text.Equals(""))
