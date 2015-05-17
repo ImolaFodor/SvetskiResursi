@@ -158,7 +158,7 @@
             // tblI
             // 
             this.tblI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblI.Location = new System.Drawing.Point(716, 460);
+            this.tblI.Location = new System.Drawing.Point(582, 236);
             this.tblI.Margin = new System.Windows.Forms.Padding(4);
             this.tblI.Name = "tblI";
             this.tblI.Size = new System.Drawing.Size(112, 32);
@@ -182,7 +182,7 @@
             // tabIm
             // 
             this.tabIm.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tabIm.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tabIm.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabIm.Location = new System.Drawing.Point(26, 40);
             this.tabIm.Name = "tabIm";
             this.tabIm.Size = new System.Drawing.Size(113, 108);
@@ -194,7 +194,7 @@
             this.tabOz.AutoSize = true;
             this.tabOz.Location = new System.Drawing.Point(165, 40);
             this.tabOz.Name = "tabOz";
-            this.tabOz.Size = new System.Drawing.Size(64, 18);
+            this.tabOz.Size = new System.Drawing.Size(71, 18);
             this.tabOz.TabIndex = 13;
             this.tabOz.Text = "Oznaka:";
             // 
@@ -203,7 +203,7 @@
             this.tbIme.AutoSize = true;
             this.tbIme.Location = new System.Drawing.Point(165, 82);
             this.tbIme.Name = "tbIme";
-            this.tbIme.Size = new System.Drawing.Size(36, 18);
+            this.tbIme.Size = new System.Drawing.Size(40, 18);
             this.tbIme.TabIndex = 14;
             this.tbIme.Text = "Ime:";
             // 
@@ -212,7 +212,7 @@
             this.tbTip.AutoSize = true;
             this.tbTip.Location = new System.Drawing.Point(165, 124);
             this.tbTip.Name = "tbTip";
-            this.tbTip.Size = new System.Drawing.Size(32, 18);
+            this.tbTip.Size = new System.Drawing.Size(36, 18);
             this.tbTip.TabIndex = 15;
             this.tbTip.Text = "Tip:";
             // 
@@ -221,7 +221,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(305, 43);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 18);
+            this.label4.Size = new System.Drawing.Size(48, 18);
             this.label4.TabIndex = 16;
             this.label4.Text = "Opis:";
             // 
@@ -230,7 +230,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(466, 44);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 18);
+            this.label5.Size = new System.Drawing.Size(55, 18);
             this.label5.TabIndex = 17;
             this.label5.Text = "Frekv.";
             // 
@@ -239,7 +239,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(466, 73);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 18);
+            this.label6.Size = new System.Drawing.Size(70, 18);
             this.label6.TabIndex = 18;
             this.label6.Text = "J. mere:";
             // 
@@ -248,7 +248,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(466, 103);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 18);
+            this.label7.Size = new System.Drawing.Size(52, 18);
             this.label7.TabIndex = 19;
             this.label7.Text = "Cena:";
             // 
@@ -257,7 +257,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(466, 135);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 18);
+            this.label8.Size = new System.Drawing.Size(62, 18);
             this.label8.TabIndex = 20;
             this.label8.Text = "Datum:";
             // 
@@ -266,7 +266,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(659, 43);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(49, 18);
+            this.label9.Size = new System.Drawing.Size(55, 18);
             this.label9.TabIndex = 21;
             this.label9.Text = "Ekspl.";
             // 
@@ -275,7 +275,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(659, 82);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 18);
+            this.label10.Size = new System.Drawing.Size(62, 18);
             this.label10.TabIndex = 22;
             this.label10.Text = "Obnov.";
             // 
@@ -284,7 +284,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(659, 124);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 18);
+            this.label11.Size = new System.Drawing.Size(65, 18);
             this.label11.TabIndex = 23;
             this.label11.Text = "St. vaz.";
             // 
@@ -296,7 +296,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 32);
             this.button1.TabIndex = 28;
-            this.button1.Text = "Otkazi";
+            this.button1.Text = "Izadji";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -327,6 +327,7 @@
             this.gbDet.Controls.Add(this.label7);
             this.gbDet.Controls.Add(this.label6);
             this.gbDet.Controls.Add(this.label5);
+            this.gbDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDet.Location = new System.Drawing.Point(14, 275);
             this.gbDet.Name = "gbDet";
             this.gbDet.Size = new System.Drawing.Size(946, 165);
@@ -339,7 +340,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(780, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 18);
+            this.label1.Size = new System.Drawing.Size(65, 18);
             this.label1.TabIndex = 46;
             this.label1.Text = "Etikete:";
             // 
@@ -349,7 +350,7 @@
             this.ttEtik.Location = new System.Drawing.Point(839, 44);
             this.ttEtik.MaximumSize = new System.Drawing.Size(100, 100);
             this.ttEtik.Name = "ttEtik";
-            this.ttEtik.Size = new System.Drawing.Size(48, 18);
+            this.ttEtik.Size = new System.Drawing.Size(58, 18);
             this.ttEtik.TabIndex = 45;
             this.ttEtik.Text = "          ";
             // 
@@ -358,7 +359,7 @@
             this.ttStv.AutoSize = true;
             this.ttStv.Location = new System.Drawing.Point(714, 124);
             this.ttStv.Name = "ttStv";
-            this.ttStv.Size = new System.Drawing.Size(48, 18);
+            this.ttStv.Size = new System.Drawing.Size(58, 18);
             this.ttStv.TabIndex = 44;
             this.ttStv.Text = "          ";
             // 
@@ -367,7 +368,7 @@
             this.ttObn.AutoSize = true;
             this.ttObn.Location = new System.Drawing.Point(714, 82);
             this.ttObn.Name = "ttObn";
-            this.ttObn.Size = new System.Drawing.Size(48, 18);
+            this.ttObn.Size = new System.Drawing.Size(58, 18);
             this.ttObn.TabIndex = 43;
             this.ttObn.Text = "          ";
             // 
@@ -376,7 +377,7 @@
             this.ttEkspl.AutoSize = true;
             this.ttEkspl.Location = new System.Drawing.Point(714, 43);
             this.ttEkspl.Name = "ttEkspl";
-            this.ttEkspl.Size = new System.Drawing.Size(48, 18);
+            this.ttEkspl.Size = new System.Drawing.Size(58, 18);
             this.ttEkspl.TabIndex = 42;
             this.ttEkspl.Text = "          ";
             // 
@@ -386,7 +387,7 @@
             this.ttDatum.Cursor = System.Windows.Forms.Cursors.Default;
             this.ttDatum.Location = new System.Drawing.Point(537, 135);
             this.ttDatum.Name = "ttDatum";
-            this.ttDatum.Size = new System.Drawing.Size(48, 18);
+            this.ttDatum.Size = new System.Drawing.Size(58, 18);
             this.ttDatum.TabIndex = 41;
             this.ttDatum.Text = "          ";
             // 
@@ -395,7 +396,7 @@
             this.ttCen.AutoSize = true;
             this.ttCen.Location = new System.Drawing.Point(537, 103);
             this.ttCen.Name = "ttCen";
-            this.ttCen.Size = new System.Drawing.Size(48, 18);
+            this.ttCen.Size = new System.Drawing.Size(58, 18);
             this.ttCen.TabIndex = 40;
             this.ttCen.Text = "          ";
             // 
@@ -404,7 +405,7 @@
             this.ttJm.AutoSize = true;
             this.ttJm.Location = new System.Drawing.Point(537, 73);
             this.ttJm.Name = "ttJm";
-            this.ttJm.Size = new System.Drawing.Size(48, 18);
+            this.ttJm.Size = new System.Drawing.Size(58, 18);
             this.ttJm.TabIndex = 39;
             this.ttJm.Text = "          ";
             // 
@@ -413,7 +414,7 @@
             this.ttFv.AutoSize = true;
             this.ttFv.Location = new System.Drawing.Point(537, 43);
             this.ttFv.Name = "ttFv";
-            this.ttFv.Size = new System.Drawing.Size(48, 18);
+            this.ttFv.Size = new System.Drawing.Size(58, 18);
             this.ttFv.TabIndex = 38;
             this.ttFv.Text = "          ";
             // 
@@ -423,7 +424,7 @@
             this.ttOp.Location = new System.Drawing.Point(354, 43);
             this.ttOp.MaximumSize = new System.Drawing.Size(100, 100);
             this.ttOp.Name = "ttOp";
-            this.ttOp.Size = new System.Drawing.Size(48, 18);
+            this.ttOp.Size = new System.Drawing.Size(58, 18);
             this.ttOp.TabIndex = 37;
             this.ttOp.Text = "          ";
             this.ttOp.MouseHover += new System.EventHandler(this.ttOp_MouseHover);
@@ -433,7 +434,7 @@
             this.ttTip.AutoSize = true;
             this.ttTip.Location = new System.Drawing.Point(235, 124);
             this.ttTip.Name = "ttTip";
-            this.ttTip.Size = new System.Drawing.Size(48, 18);
+            this.ttTip.Size = new System.Drawing.Size(58, 18);
             this.ttTip.TabIndex = 36;
             this.ttTip.Text = "          ";
             // 
@@ -442,7 +443,7 @@
             this.ttIm.AutoSize = true;
             this.ttIm.Location = new System.Drawing.Point(235, 82);
             this.ttIm.Name = "ttIm";
-            this.ttIm.Size = new System.Drawing.Size(48, 18);
+            this.ttIm.Size = new System.Drawing.Size(58, 18);
             this.ttIm.TabIndex = 35;
             this.ttIm.Text = "          ";
             // 
@@ -451,7 +452,7 @@
             this.ttOz.AutoSize = true;
             this.ttOz.Location = new System.Drawing.Point(235, 40);
             this.ttOz.Name = "ttOz";
-            this.ttOz.Size = new System.Drawing.Size(48, 18);
+            this.ttOz.Size = new System.Drawing.Size(58, 18);
             this.ttOz.TabIndex = 34;
             this.ttOz.Text = "          ";
             // 
@@ -490,7 +491,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TabelaPrikaza";
-            this.Text = "Tabela prikaza";
+            this.Text = "Tabela prikaza resursa";
             this.Load += new System.EventHandler(this.tabelaPrikaza_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).EndInit();

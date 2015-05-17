@@ -147,7 +147,7 @@ namespace SvetskiResursi
         {
             List<tipResursa> tp2 = new List<tipResursa>();
 
-            dodajTipResursa dr = new dodajTipResursa(this);
+            dodajTipResursa dr = new dodajTipResursa(Form1.getInstance(),this);
             dr.ShowDialog();
 
             //Ucitavanje resursa iz fajla.
@@ -169,8 +169,9 @@ namespace SvetskiResursi
             pritisnutoIzmeni = true;
             List<tipResursa> tri = new List<tipResursa>();
 
-            dodajTipResursa dtr = new dodajTipResursa(this);
+            dodajTipResursa dtr = new dodajTipResursa(Form1.getInstance(),this);
             dtr.oznaka_tip.Enabled = false;
+            dtr.Text = "Izmena tipa resursa";
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {

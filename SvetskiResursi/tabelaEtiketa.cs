@@ -119,6 +119,7 @@ namespace SvetskiResursi
 
             dodajEtiketu de = new dodajEtiketu(this);
             de.oznaka.Enabled = false;
+            de.Text = "Izmena etikete";
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {

@@ -199,7 +199,7 @@
             this.MaximizeBox = false;
             this.Name = "dodajEtiketu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dodaj etiketu";
+            this.Text = "Dodavanje etikete";
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

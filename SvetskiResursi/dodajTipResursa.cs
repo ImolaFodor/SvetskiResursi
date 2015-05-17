@@ -21,13 +21,13 @@ namespace SvetskiResursi
         private OpenFileDialog ofd = new OpenFileDialog();
         private bool formIsValid = true;
         private bool vecPostoji = false;
+        Form1 form = null;
 
-
-        public dodajTipResursa(tabelaTipova tb)
+        public dodajTipResursa(Form1 form1, tabelaTipova tb)
         {
             InitializeComponent();
             this.tbTipova = tb;
-
+            form = form1;
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 
          }
@@ -178,9 +178,11 @@ namespace SvetskiResursi
                 }
 
                 tbtp.ocisti_filter();
+                
                 this.Close();
 
             }
+            form.RefreshList();
         }
 
         private void oznaka_tip_TextChanged(object sender, EventArgs e)

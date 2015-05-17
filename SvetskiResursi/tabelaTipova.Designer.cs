@@ -60,6 +60,7 @@
             this.Ime,
             this.Slika,
             this.Opis});
+            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(33, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
@@ -102,11 +103,12 @@
             this.detalji.Controls.Add(this.imeD);
             this.detalji.Controls.Add(this.ozD);
             this.detalji.Controls.Add(this.imDT);
+            this.detalji.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detalji.Location = new System.Drawing.Point(13, 249);
             this.detalji.Margin = new System.Windows.Forms.Padding(4);
             this.detalji.Name = "detalji";
             this.detalji.Padding = new System.Windows.Forms.Padding(4);
-            this.detalji.Size = new System.Drawing.Size(478, 136);
+            this.detalji.Size = new System.Drawing.Size(458, 136);
             this.detalji.TabIndex = 1;
             this.detalji.TabStop = false;
             this.detalji.Text = "Detalji";
@@ -114,20 +116,20 @@
             // imeDT
             // 
             this.imeDT.AutoSize = true;
-            this.imeDT.Location = new System.Drawing.Point(370, 75);
+            this.imeDT.Location = new System.Drawing.Point(355, 75);
             this.imeDT.MaximumSize = new System.Drawing.Size(100, 100);
             this.imeDT.Name = "imeDT";
-            this.imeDT.Size = new System.Drawing.Size(48, 18);
+            this.imeDT.Size = new System.Drawing.Size(58, 18);
             this.imeDT.TabIndex = 9;
             this.imeDT.Text = "          ";
             // 
             // ozDT
             // 
             this.ozDT.AutoSize = true;
-            this.ozDT.Location = new System.Drawing.Point(370, 24);
+            this.ozDT.Location = new System.Drawing.Point(355, 21);
             this.ozDT.MaximumSize = new System.Drawing.Size(100, 100);
             this.ozDT.Name = "ozDT";
-            this.ozDT.Size = new System.Drawing.Size(48, 18);
+            this.ozDT.Size = new System.Drawing.Size(58, 18);
             this.ozDT.TabIndex = 8;
             this.ozDT.Text = "          ";
             // 
@@ -137,7 +139,7 @@
             this.opDT.Location = new System.Drawing.Point(195, 21);
             this.opDT.MaximumSize = new System.Drawing.Size(100, 100);
             this.opDT.Name = "opDT";
-            this.opDT.Size = new System.Drawing.Size(48, 18);
+            this.opDT.Size = new System.Drawing.Size(58, 18);
             this.opDT.TabIndex = 7;
             this.opDT.Text = "          ";
             this.opDT.MouseHover += new System.EventHandler(this.opDT_MouseHover);
@@ -148,27 +150,27 @@
             this.label3.Location = new System.Drawing.Point(145, 21);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 18);
+            this.label3.Size = new System.Drawing.Size(48, 18);
             this.label3.TabIndex = 6;
             this.label3.Text = "Opis:";
             // 
             // imeD
             // 
             this.imeD.AutoSize = true;
-            this.imeD.Location = new System.Drawing.Point(302, 75);
+            this.imeD.Location = new System.Drawing.Point(284, 75);
             this.imeD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.imeD.Name = "imeD";
-            this.imeD.Size = new System.Drawing.Size(36, 18);
+            this.imeD.Size = new System.Drawing.Size(40, 18);
             this.imeD.TabIndex = 5;
             this.imeD.Text = "Ime:";
             // 
             // ozD
             // 
             this.ozD.AutoSize = true;
-            this.ozD.Location = new System.Drawing.Point(301, 21);
+            this.ozD.Location = new System.Drawing.Point(284, 21);
             this.ozD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ozD.Name = "ozD";
-            this.ozD.Size = new System.Drawing.Size(64, 18);
+            this.ozD.Size = new System.Drawing.Size(71, 18);
             this.ozD.TabIndex = 4;
             this.ozD.Text = "Oznaka:";
             // 
@@ -184,46 +186,50 @@
             // 
             // Brisi
             // 
-            this.Brisi.Location = new System.Drawing.Point(358, 197);
+            this.Brisi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Brisi.Location = new System.Drawing.Point(396, 197);
             this.Brisi.Margin = new System.Windows.Forms.Padding(4);
             this.Brisi.Name = "Brisi";
-            this.Brisi.Size = new System.Drawing.Size(112, 32);
+            this.Brisi.Size = new System.Drawing.Size(74, 32);
             this.Brisi.TabIndex = 2;
             this.Brisi.Text = "Brisi";
-            this.Brisi.UseVisualStyleBackColor = true;
+            this.Brisi.UseVisualStyleBackColor = false;
             this.Brisi.Click += new System.EventHandler(this.Brisi_Click);
             // 
             // Dodaj
             // 
-            this.Dodaj.Location = new System.Drawing.Point(239, 197);
+            this.Dodaj.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Dodaj.Location = new System.Drawing.Point(315, 197);
             this.Dodaj.Margin = new System.Windows.Forms.Padding(4);
             this.Dodaj.Name = "Dodaj";
-            this.Dodaj.Size = new System.Drawing.Size(112, 32);
+            this.Dodaj.Size = new System.Drawing.Size(63, 32);
             this.Dodaj.TabIndex = 3;
             this.Dodaj.Text = "Dodaj";
-            this.Dodaj.UseVisualStyleBackColor = true;
+            this.Dodaj.UseVisualStyleBackColor = false;
             this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 
             // otkazi
             // 
+            this.otkazi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.otkazi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.otkazi.Location = new System.Drawing.Point(359, 409);
             this.otkazi.Margin = new System.Windows.Forms.Padding(4);
             this.otkazi.Name = "otkazi";
             this.otkazi.Size = new System.Drawing.Size(112, 32);
             this.otkazi.TabIndex = 4;
-            this.otkazi.Text = "Otkazi";
-            this.otkazi.UseVisualStyleBackColor = true;
+            this.otkazi.Text = "Izadji";
+            this.otkazi.UseVisualStyleBackColor = false;
             // 
             // Izmeni
             // 
-            this.Izmeni.Location = new System.Drawing.Point(239, 409);
+            this.Izmeni.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Izmeni.Location = new System.Drawing.Point(232, 197);
             this.Izmeni.Margin = new System.Windows.Forms.Padding(4);
             this.Izmeni.Name = "Izmeni";
-            this.Izmeni.Size = new System.Drawing.Size(112, 32);
+            this.Izmeni.Size = new System.Drawing.Size(65, 32);
             this.Izmeni.TabIndex = 5;
             this.Izmeni.Text = "Izmeni";
-            this.Izmeni.UseVisualStyleBackColor = true;
+            this.Izmeni.UseVisualStyleBackColor = false;
             this.Izmeni.Click += new System.EventHandler(this.Izmeni_Click);
             // 
             // trazi
@@ -264,7 +270,7 @@
             this.MaximizeBox = false;
             this.Name = "tabelaTipova";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "tabelaTipova";
+            this.Text = "Tabela prikaza tipova";
             this.Load += new System.EventHandler(this.tabelaTipova_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.detalji.ResumeLayout(false);

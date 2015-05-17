@@ -16,11 +16,12 @@ namespace SvetskiResursi
     {
         public string etikete;
         public static bool pritusnutoIzmeni = false;
-        
+        Form1 form = null;
 
-        public TabelaPrikaza()   
+        public TabelaPrikaza(Form1 form1)   
         {
             InitializeComponent();
+            form = form1;
             
         }
 
@@ -167,6 +168,7 @@ namespace SvetskiResursi
 
             DodajResurs dr = new DodajResurs(Form1.getInstance(), this);
             dr.oznaka.Enabled = false;
+            dr.Text = "Izmena resursa";
 
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
@@ -259,7 +261,34 @@ namespace SvetskiResursi
                 stream.Close();
             }
 
+            List<Simbol> ls = new List<Simbol>();
+            using (Stream stream1 = File.Open("Simboli.bin", FileMode.Open))
+            {
+                var formatter1 = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                while (stream1.Position != stream1.Length)
+                {
+                    ls.Add(((Simbol)formatter1.Deserialize(stream1)));
+
+                }
+
+                stream1.SetLength(0);
+
+                //sada u LISTI trazim zeljeni resurs i brise ga.
+                foreach (Simbol s in ls)
+                {
+                    if (s.oznaka.Equals(ttOz.Text))
+                    {
+                        ls.Remove(s);
+                        break;
+                    }
+                }
+
+                stream1.Close();
+            }
+
             ocisti_filter();
+            form.pbMapa_Fill();
         }
 
         //Pretraga
