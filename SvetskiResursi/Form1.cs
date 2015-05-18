@@ -132,7 +132,7 @@ namespace SvetskiResursi
             PictureBox pb = new PictureBox();
             pb.Parent = pbMape;
 
-            Point po = PointToClient(new Point(e.X - 450, e.Y - 75));
+            Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
             pb.Location = po;
 
             ListViewItem dragitem = selection;
