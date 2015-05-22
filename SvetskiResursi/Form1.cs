@@ -21,6 +21,7 @@ namespace SvetskiResursi
         List<Simbol> s = new List<Simbol>();
         Dictionary<PictureBox,string> dPBr = new Dictionary<PictureBox,string>();
         Dictionary<PictureBox, string> dPBtr = new Dictionary<PictureBox, string>();
+        Dictionary<PictureBox, string> dPBi = new Dictionary<PictureBox, string>();
         Dictionary<ListViewItem, string> lista_tipova = new Dictionary<ListViewItem, string>();   
         ImageList ListaSlika = new ImageList();
         ListViewItem selection;
@@ -119,7 +120,7 @@ namespace SvetskiResursi
         private void listView1_MouseDown(object sender, MouseEventArgs e)
         {
             selection = listView1.GetItemAt(e.X, e.Y);
-            if(selection != null)
+            if(selection != null && selection.ImageIndex!=-1)
             {
                 Bitmap img = (Bitmap)ListaSlika.Images[selection.ImageIndex];
                 listView1.DoDragDrop(img, DragDropEffects.Copy);
@@ -225,7 +226,7 @@ namespace SvetskiResursi
             TabelaPrikaza tbl = new TabelaPrikaza(this);
             
             tbl.ShowDialog();
-            
+            this.pbMapa_Fill();
         }
 
         public static Form1 getInstance()
@@ -289,7 +290,7 @@ namespace SvetskiResursi
                     {
                         listView1.View = View.List;
                         ListViewItem resurs = new ListViewItem();
-                        resurs.Text = re.oznaka;
+                        resurs.Text = re.ime;
                         resurs.ImageIndex =i;
                         resurs.Tag = re;
                         listView1.Items.Add(resurs);
@@ -346,6 +347,7 @@ namespace SvetskiResursi
                 
                     dPBr.Add(pb, sim.oznaka);
                     dPBtr.Add(pb, sim.tipR);
+                    dPBi.Add(pb, sim.ime);
                 }
         }
 
@@ -403,9 +405,22 @@ namespace SvetskiResursi
                     }
 
                 }
+               
             }
 
-           
+            if (textBox1.Text == "")
+            {
+                this.waterMarkActive = true;
+                this.textBox2.LostFocus += (source, ee) =>
+                {
+                    if (!this.waterMarkActive && string.IsNullOrEmpty(this.textBox1.Text))
+                    {
+                        this.waterMarkActive = true;
+                        this.textBox1.Text = "Unesite tip ili resurs...";
+                        this.textBox1.ForeColor = Color.Gray;
+                    }
+                };
+            }
 
 
             }
@@ -434,7 +449,19 @@ namespace SvetskiResursi
                 }
 
             }
-
+            if (textBox2.Text == "")
+            {
+                this.waterMarkActive = true;
+                this.textBox2.LostFocus += (source, ee) =>
+                {
+                    if (!this.waterMarkActive && string.IsNullOrEmpty(this.textBox2.Text))
+                    {
+                        this.waterMarkActive = true;
+                        this.textBox2.Text = "Unesite tip ili resurs...";
+                        this.textBox2.ForeColor = Color.Gray;
+                    }
+                };
+            }
 
         }
 
@@ -447,6 +474,7 @@ namespace SvetskiResursi
         {
             tabelaTipova tbl = new tabelaTipova();
             tbl.ShowDialog();
+            this.RefreshList();
 
         }
 
@@ -483,7 +511,7 @@ namespace SvetskiResursi
                         foreach (Resurs r in re)
                         {
 
-                            if (listView1.Items[i].Text == r.oznaka)
+                            if (listView1.Items[i].Text == r.ime)
                             {
                                 fOz.Text = r.oznaka;
                                 fIme.Text=r.ime;
@@ -499,11 +527,27 @@ namespace SvetskiResursi
                                 prikazIkonice.BackgroundImage = null;
                             }
                         }
+
+                        foreach (KeyValuePair<PictureBox, string> spb in dPBi)
+                        {
+                            spb.Key.BorderStyle = BorderStyle.None;
+                            if (spb.Value == listView1.Items[i].Text)
+                            {
+                                spb.Key.BorderStyle = BorderStyle.Fixed3D;
+
+                            }
+
+                        }
                     }
 
                 }
                 
             
+        }
+
+        private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm");
         }
        
     }

@@ -36,7 +36,7 @@ namespace SvetskiResursi
             {
                 etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
-                dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+                dataGridView1.Rows.Add(new object[] {resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis,
                     resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete});
 
             }
@@ -73,7 +73,7 @@ namespace SvetskiResursi
         {
             String etikete = string.Join(",", resurs.oz_etiketa.ToArray());
 
-            dgw.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis, resurs.ikonica,
+            dgw.Rows.Add(resurs.oznaka, resurs.ime, resurs.tipResursa, resurs.opis,
                 resurs.jedinica_mere, resurs.cena, resurs.datum_kao, etikete);
 
         }

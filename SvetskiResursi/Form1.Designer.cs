@@ -42,8 +42,8 @@ namespace SvetskiResursi
             this.tabelaPrikazaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaTipovaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,9 +53,10 @@ namespace SvetskiResursi
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Detalji = new System.Windows.Forms.GroupBox();
-            this.fOz = new System.Windows.Forms.Label();
-            this.fIme = new System.Windows.Forms.Label();
             this.fTip = new System.Windows.Forms.Label();
+            this.fIme = new System.Windows.Forms.Label();
+            this.fOz = new System.Windows.Forms.Label();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -69,7 +70,7 @@ namespace SvetskiResursi
             this.pbMape.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbMape.Location = new System.Drawing.Point(0, 3);
             this.pbMape.Name = "pbMape";
-            this.pbMape.Size = new System.Drawing.Size(2799, 2072);
+            this.pbMape.Size = new System.Drawing.Size(1799, 1072);
             this.pbMape.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMape.TabIndex = 1;
             this.pbMape.TabStop = false;
@@ -141,13 +142,6 @@ namespace SvetskiResursi
             this.tabelaEtiketaToolStripMenuItem.Text = "Tabela etiketa";
             this.tabelaEtiketaToolStripMenuItem.Click += new System.EventHandler(this.tabelaEtiketaToolStripMenuItem_Click);
             // 
-            // pomocToolStripMenuItem
-            // 
-            this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
-            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(100, 36);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,6 +154,14 @@ namespace SvetskiResursi
             this.menuStrip1.Size = new System.Drawing.Size(1354, 40);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // pomocToolStripMenuItem
+            // 
+            this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
+            this.pomocToolStripMenuItem.Size = new System.Drawing.Size(100, 36);
+            this.pomocToolStripMenuItem.Text = "Pomoc";
+            this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -258,16 +260,15 @@ namespace SvetskiResursi
             this.Detalji.TabStop = false;
             this.Detalji.Text = "Detalji";
             // 
-            // fOz
+            // fTip
             // 
-            this.fOz.AutoSize = true;
-            this.fOz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fOz.Location = new System.Drawing.Point(98, 31);
-            this.fOz.Name = "fOz";
-            this.fOz.Size = new System.Drawing.Size(64, 18);
-            this.fOz.TabIndex = 9;
-            this.fOz.Text = "              ";
-            this.fOz.Click += new System.EventHandler(this.fOz_Click);
+            this.fTip.AutoSize = true;
+            this.fTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fTip.Location = new System.Drawing.Point(98, 86);
+            this.fTip.Name = "fTip";
+            this.fTip.Size = new System.Drawing.Size(72, 18);
+            this.fTip.TabIndex = 11;
+            this.fTip.Text = "                ";
             // 
             // fIme
             // 
@@ -279,15 +280,21 @@ namespace SvetskiResursi
             this.fIme.TabIndex = 10;
             this.fIme.Text = "             ";
             // 
-            // fTip
+            // fOz
             // 
-            this.fTip.AutoSize = true;
-            this.fTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fTip.Location = new System.Drawing.Point(98, 86);
-            this.fTip.Name = "fTip";
-            this.fTip.Size = new System.Drawing.Size(72, 18);
-            this.fTip.TabIndex = 11;
-            this.fTip.Text = "                ";
+            this.fOz.AutoSize = true;
+            this.fOz.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fOz.Location = new System.Drawing.Point(98, 31);
+            this.fOz.Name = "fOz";
+            this.fOz.Size = new System.Drawing.Size(64, 18);
+            this.fOz.TabIndex = 9;
+            this.fOz.Text = "              ";
+            this.fOz.Click += new System.EventHandler(this.fOz_Click);
+            // 
+            // helpProvider1
+            // 
+            this.helpProvider1.HelpNamespace = "C:\\Users\\Imola\\Source\\Repos\\SvetskiResursi3\\SvetskiResursi\\Resources\\Help project" +
+    "s\\SR.chm";
             // 
             // Form1
             // 
@@ -301,6 +308,7 @@ namespace SvetskiResursi
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -325,7 +333,6 @@ namespace SvetskiResursi
         private System.Windows.Forms.ToolStripMenuItem dodavanjeTipaResursaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretragaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -342,6 +349,8 @@ namespace SvetskiResursi
         public System.Windows.Forms.Label fTip;
         public System.Windows.Forms.Label fIme;
         public System.Windows.Forms.Label fOz;
+        private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
+        private System.Windows.Forms.HelpProvider helpProvider1;
         
     }
 }

@@ -153,7 +153,11 @@ namespace SvetskiResursi
             resur = new Resurs();
            
             List<tipResursa> tr = new List<tipResursa>();
-            TabelaPrikaza tbl = new TabelaPrikaza();
+            TabelaPrikaza tbl = new TabelaPrikaza(form
+                
+                
+                
+ );
 
             if (!TabelaPrikaza.pritusnutoIzmeni)
             {

@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slika = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detalji = new System.Windows.Forms.GroupBox();
             this.imeDT = new System.Windows.Forms.Label();
             this.ozDT = new System.Windows.Forms.Label();
@@ -47,6 +43,9 @@
             this.Izmeni = new System.Windows.Forms.Button();
             this.trazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.detalji.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imDT)).BeginInit();
@@ -58,41 +57,13 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Oznaka,
             this.Ime,
-            this.Slika,
             this.Opis});
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 13);
+            this.dataGridView1.Location = new System.Drawing.Point(81, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 165);
+            this.dataGridView1.Size = new System.Drawing.Size(345, 165);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // Oznaka
-            // 
-            this.Oznaka.Frozen = true;
-            this.Oznaka.HeaderText = "Oznaka";
-            this.Oznaka.Name = "Oznaka";
-            // 
-            // Ime
-            // 
-            this.Ime.Frozen = true;
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            // 
-            // Slika
-            // 
-            this.Slika.Frozen = true;
-            this.Slika.HeaderText = "Slika";
-            this.Slika.Name = "Slika";
-            // 
-            // Opis
-            // 
-            this.Opis.Frozen = true;
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // detalji
             // 
@@ -251,6 +222,26 @@
             this.cbFilter.TabIndex = 34;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
+            // Oznaka
+            // 
+            this.Oznaka.Frozen = true;
+            this.Oznaka.HeaderText = "Oznaka";
+            this.Oznaka.Name = "Oznaka";
+            // 
+            // Ime
+            // 
+            this.Ime.Frozen = true;
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            // 
+            // Opis
+            // 
+            this.Opis.Frozen = true;
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // tabelaTipova
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -283,10 +274,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn Oznaka;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
-        private System.Windows.Forms.DataGridViewImageColumn Slika;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
         private System.Windows.Forms.GroupBox detalji;
         private System.Windows.Forms.Button Brisi;
         private System.Windows.Forms.Button Dodaj;
@@ -302,5 +289,8 @@
         public System.Windows.Forms.Label opDT;
         public System.Windows.Forms.Label ozDT;
         public System.Windows.Forms.Label imeDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Oznaka;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opis;
     }
 }

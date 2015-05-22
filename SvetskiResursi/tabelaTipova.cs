@@ -59,7 +59,7 @@ namespace SvetskiResursi
         public static void upis(tipResursa tip, DataGridView dgv)
         {
 
-            dgv.Rows.Add(tip.oznaka, tip.ime, tip.ikonica, tip.opis);
+            dgv.Rows.Add(tip.oznaka, tip.ime, tip.opis);
 
         }
 

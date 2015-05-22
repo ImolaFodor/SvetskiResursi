@@ -55,7 +55,6 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.oznaka,
             this.opis});
-            this.dataGridView1.Enabled = false;
             this.dataGridView1.Location = new System.Drawing.Point(97, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
