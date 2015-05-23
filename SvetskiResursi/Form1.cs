@@ -547,11 +547,31 @@ namespace SvetskiResursi
 
         private void pomocToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm");
+            
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
+
+        }
+
+        private void onlineHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm");
+        }
+
+        private void tutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tut1 prvi = new Tut1();
+            var main = this.Location;
+            prvi.Location = new Point((main.X + 100), main.Y+60);
+            if (prvi.ShowDialog() == DialogResult.OK)
+            {
+                Tut2 drugi = new Tut2();
+                drugi.Location = new Point((main.X + 190), main.Y + 60);
+                drugi.ShowDialog();
+
+            }
 
         }
        

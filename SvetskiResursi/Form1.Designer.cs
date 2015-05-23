@@ -35,6 +35,7 @@ namespace SvetskiResursi
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pbMape = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.resursiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeTipaResursaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,8 @@ namespace SvetskiResursi
             this.fIme = new System.Windows.Forms.Label();
             this.fOz = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.onlineHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -79,6 +81,12 @@ namespace SvetskiResursi
             this.pbMape.TabStop = false;
             this.pbMape.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             this.pbMape.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragEnter);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // resursiToolStripMenuItem
             // 
@@ -160,6 +168,9 @@ namespace SvetskiResursi
             // 
             // pomocToolStripMenuItem
             // 
+            this.pomocToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.onlineHelpToolStripMenuItem,
+            this.tutToolStripMenuItem});
             this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
             this.pomocToolStripMenuItem.Size = new System.Drawing.Size(100, 36);
@@ -299,11 +310,19 @@ namespace SvetskiResursi
             this.helpProvider1.HelpNamespace = "C:\\Users\\Imola\\Source\\Repos\\SvetskiResursi3\\SvetskiResursi\\Resources\\Help project" +
     "s\\SR.chm";
             // 
-            // contextMenuStrip1
+            // onlineHelpToolStripMenuItem
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.onlineHelpToolStripMenuItem.Name = "onlineHelpToolStripMenuItem";
+            this.onlineHelpToolStripMenuItem.Size = new System.Drawing.Size(241, 36);
+            this.onlineHelpToolStripMenuItem.Text = "Onlajn pomoć";
+            this.onlineHelpToolStripMenuItem.Click += new System.EventHandler(this.onlineHelpToolStripMenuItem_Click);
+            // 
+            // tutToolStripMenuItem
+            // 
+            this.tutToolStripMenuItem.Name = "tutToolStripMenuItem";
+            this.tutToolStripMenuItem.Size = new System.Drawing.Size(241, 36);
+            this.tutToolStripMenuItem.Text = "Tutorijal";
+            this.tutToolStripMenuItem.Click += new System.EventHandler(this.tutToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -361,6 +380,8 @@ namespace SvetskiResursi
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.HelpProvider helpProvider1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem onlineHelpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tutToolStripMenuItem;
         
     }
 }
