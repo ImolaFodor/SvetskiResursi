@@ -166,46 +166,52 @@ namespace SvetskiResursi
         //Brisanje etikete
         private void Brisi_Click(object sender, EventArgs e)
         {
-            List<Etiketa> ee = new List<Etiketa>();
-
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            UpitBrisanje bris = new UpitBrisanje();
+            if (bris.ShowDialog() == DialogResult.OK)
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                List<Etiketa> ee = new List<Etiketa>();
 
-                while (stream.Position != stream.Length)
+                using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
                 {
-                    ee.Add(((Etiketa)formatter.Deserialize(stream)));
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-                }
-
-                stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
-
-                //sada u LISTI trazim zeljenu etiketu i brisemo.
-                foreach (Etiketa etiketa in ee)
-                {
-                    if (etiketa.oznaka.Equals(oz.Text))
+                    while (stream.Position != stream.Length)
                     {
-                        ee.Remove(etiketa);
-                        break;
+                        ee.Add(((Etiketa)formatter.Deserialize(stream)));
+
                     }
+
+                    stream.SetLength(0); //valjda ce ovo izbrisati sve iz datoteke :O
+
+                    //sada u LISTI trazim zeljenu etiketu i brisemo.
+                    foreach (Etiketa etiketa in ee)
+                    {
+                        if (etiketa.oznaka.Equals(oz.Text))
+                        {
+                            ee.Remove(etiketa);
+                            break;
+                        }
+                    }
+
+                    dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+
+                    foreach (Etiketa etiketa in ee)
+                    {
+                        upis(etiketa, dataGridView1);
+                    }
+
+                    foreach (Etiketa tr in ee)
+                    {
+                        formatter.Serialize(stream, tr); //Ponovni upis u datoteku
+                    }
+
+                    stream.Close();
                 }
 
-                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-
-                foreach (Etiketa etiketa in ee)
-                {
-                    upis(etiketa,dataGridView1);
-                }
-
-                foreach (Etiketa tr in ee)
-                {
-                    formatter.Serialize(stream, tr); //Ponovni upis u datoteku
-                }
-
-                stream.Close();
+                ocisti_filter();
             }
-
-            ocisti_filter();
+            else
+                bris.Close();
         }
 
         //Menjanje boje

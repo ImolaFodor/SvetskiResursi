@@ -549,6 +549,11 @@ namespace SvetskiResursi
         {
             Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm");
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
        
     }
 }

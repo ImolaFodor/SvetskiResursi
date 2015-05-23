@@ -223,72 +223,79 @@ namespace SvetskiResursi
         //Brisanje resursa
         private void tblB_Click(object sender, EventArgs e)
         {
-            List<Resurs> Lr = new List<Resurs>();
-
-            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            UpitBrisanje bris = new UpitBrisanje();
+            if (bris.ShowDialog() == DialogResult.OK)
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                List<Resurs> Lr = new List<Resurs>();
 
-                while (stream.Position != stream.Length)
+                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
                 {
-                    Lr.Add(((Resurs)formatter.Deserialize(stream)));
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-                }
-
-                stream.SetLength(0);
-
-                //sada u LISTI trazim zeljeni resurs i brise ga.
-                foreach (Resurs tr in Lr)
-                {
-                    if (tr.oznaka.Equals(ttOz.Text))
+                    while (stream.Position != stream.Length)
                     {
-                        Lr.Remove(tr);
-                        break;
+                        Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
                     }
-                }
 
-                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-                foreach (Resurs resurs in Lr)
-                {
-                    upis(resurs,dataGridView1);
-                }
+                    stream.SetLength(0);
 
-                foreach (Resurs tr in Lr)
-                {
-                    formatter.Serialize(stream, tr); 
-                }
-
-                stream.Close();
-            }
-
-            List<Simbol> ls = new List<Simbol>();
-            using (Stream stream1 = File.Open("Simboli.bin", FileMode.Open))
-            {
-                var formatter1 = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                while (stream1.Position != stream1.Length)
-                {
-                    ls.Add(((Simbol)formatter1.Deserialize(stream1)));
-
-                }
-
-                stream1.SetLength(0);
-
-                //sada u LISTI trazim zeljeni resurs i brise ga.
-                foreach (Simbol s in ls)
-                {
-                    if (s.oznaka.Equals(ttOz.Text))
+                    //sada u LISTI trazim zeljeni resurs i brise ga.
+                    foreach (Resurs tr in Lr)
                     {
-                        ls.Remove(s);
-                        break;
+                        if (tr.oznaka.Equals(ttOz.Text))
+                        {
+                            Lr.Remove(tr);
+                            break;
+                        }
                     }
+
+                    dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                    foreach (Resurs resurs in Lr)
+                    {
+                        upis(resurs, dataGridView1);
+                    }
+
+                    foreach (Resurs tr in Lr)
+                    {
+                        formatter.Serialize(stream, tr);
+                    }
+
+                    stream.Close();
                 }
 
-                stream1.Close();
-            }
+                List<Simbol> ls = new List<Simbol>();
+                using (Stream stream1 = File.Open("Simboli.bin", FileMode.Open))
+                {
+                    var formatter1 = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-            ocisti_filter();
-            form.pbMapa_Fill();
+                    while (stream1.Position != stream1.Length)
+                    {
+                        ls.Add(((Simbol)formatter1.Deserialize(stream1)));
+
+                    }
+
+                    stream1.SetLength(0);
+
+                    //sada u LISTI trazim zeljeni resurs i brise ga.
+                    foreach (Simbol s in ls)
+                    {
+                        if (s.oznaka.Equals(ttOz.Text))
+                        {
+                            ls.Remove(s);
+                            break;
+                        }
+                    }
+
+                    stream1.Close();
+                }
+
+                ocisti_filter();
+                form.pbMapa_Fill();
+            }
+            else //if(bris.ShowDialog()== DialogResult.Cancel)
+                bris.Close();
+
         }
 
         //Pretraga

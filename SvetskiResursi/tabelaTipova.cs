@@ -66,45 +66,51 @@ namespace SvetskiResursi
         //Brisanje tipa
         private void Brisi_Click(object sender, EventArgs e)
         {
-            List<tipResursa> Lr = new List<tipResursa>();
-
-            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            UpitBrisanje bris = new UpitBrisanje();
+            if (bris.ShowDialog() == DialogResult.OK)
             {
-                var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                List<tipResursa> Lr = new List<tipResursa>();
 
-                while (stream.Position != stream.Length)
+                using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
                 {
-                    Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-                }
-
-                stream.SetLength(0);
-
-                //sada u LISTI trazim zeljeni tip i brisemo ga.
-                foreach (tipResursa tip in Lr)
-                {
-                    if (tip.oznaka.Equals(ozDT.Text))
+                    while (stream.Position != stream.Length)
                     {
-                        Lr.Remove(tip);
-                        break;
+                        Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+
                     }
+
+                    stream.SetLength(0);
+
+                    //sada u LISTI trazim zeljeni tip i brisemo ga.
+                    foreach (tipResursa tip in Lr)
+                    {
+                        if (tip.oznaka.Equals(ozDT.Text))
+                        {
+                            Lr.Remove(tip);
+                            break;
+                        }
+                    }
+
+                    dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                    foreach (tipResursa tip in Lr)
+                    {
+                        upis(tip, dataGridView1);
+                    }
+
+                    foreach (tipResursa tp in Lr)
+                    {
+                        formatter.Serialize(stream, tp);
+                    }
+
+                    stream.Close();
                 }
 
-                dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-                foreach (tipResursa tip in Lr)
-                {
-                    upis(tip, dataGridView1);
-                }
-
-                foreach (tipResursa tp in Lr)
-                {
-                    formatter.Serialize(stream, tp);
-                }
-
-                stream.Close();
+                ocisti_filter();
             }
-
-            ocisti_filter();
+            else
+                bris.Close();
         }
 
         //Prikaz selektovanog reda

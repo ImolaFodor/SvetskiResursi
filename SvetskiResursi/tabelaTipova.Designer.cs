@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detalji = new System.Windows.Forms.GroupBox();
             this.imeDT = new System.Windows.Forms.Label();
             this.ozDT = new System.Windows.Forms.Label();
@@ -43,9 +46,6 @@
             this.Izmeni = new System.Windows.Forms.Button();
             this.trazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.detalji.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imDT)).BeginInit();
@@ -64,6 +64,26 @@
             this.dataGridView1.Size = new System.Drawing.Size(345, 165);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Oznaka
+            // 
+            this.Oznaka.Frozen = true;
+            this.Oznaka.HeaderText = "Oznaka";
+            this.Oznaka.Name = "Oznaka";
+            // 
+            // Ime
+            // 
+            this.Ime.Frozen = true;
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            // 
+            // Opis
+            // 
+            this.Opis.Frozen = true;
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // detalji
             // 
@@ -221,26 +241,6 @@
             this.cbFilter.Size = new System.Drawing.Size(82, 26);
             this.cbFilter.TabIndex = 34;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
-            // 
-            // Oznaka
-            // 
-            this.Oznaka.Frozen = true;
-            this.Oznaka.HeaderText = "Oznaka";
-            this.Oznaka.Name = "Oznaka";
-            // 
-            // Ime
-            // 
-            this.Ime.Frozen = true;
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            // 
-            // Opis
-            // 
-            this.Opis.Frozen = true;
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // tabelaTipova
             // 

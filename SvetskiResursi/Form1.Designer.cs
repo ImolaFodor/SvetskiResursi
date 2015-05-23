@@ -32,6 +32,7 @@ namespace SvetskiResursi
 
          private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pbMape = new System.Windows.Forms.PictureBox();
             this.resursiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +58,7 @@ namespace SvetskiResursi
             this.fIme = new System.Windows.Forms.Label();
             this.fOz = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -68,6 +70,7 @@ namespace SvetskiResursi
             // 
             this.pbMape.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMape.BackgroundImage")));
             this.pbMape.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbMape.ContextMenuStrip = this.contextMenuStrip1;
             this.pbMape.Location = new System.Drawing.Point(0, 3);
             this.pbMape.Name = "pbMape";
             this.pbMape.Size = new System.Drawing.Size(1799, 1072);
@@ -296,6 +299,12 @@ namespace SvetskiResursi
             this.helpProvider1.HelpNamespace = "C:\\Users\\Imola\\Source\\Repos\\SvetskiResursi3\\SvetskiResursi\\Resources\\Help project" +
     "s\\SR.chm";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +360,7 @@ namespace SvetskiResursi
         public System.Windows.Forms.Label fOz;
         private System.Windows.Forms.ToolStripMenuItem pomocToolStripMenuItem;
         private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         
     }
 }
