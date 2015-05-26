@@ -226,6 +226,9 @@ namespace SvetskiResursi
             TabelaPrikaza tbl = new TabelaPrikaza(this);
             
             tbl.ShowDialog();
+            dPBi.Clear();
+            dPBr.Clear();
+            dPBtr.Clear();
             this.pbMapa_Fill();
         }
 
@@ -305,7 +308,7 @@ namespace SvetskiResursi
         }
 
         public void pbMapa_Fill()
-        {
+        {  
             List<Simbol> ls = new List<Simbol>();
             using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
             {
@@ -439,7 +442,7 @@ namespace SvetskiResursi
                 }
             }
 
-            foreach (KeyValuePair<PictureBox, string> spb in dPBr)
+            foreach (KeyValuePair<PictureBox, string> spb in dPBi)
             {
                 spb.Key.BorderStyle = BorderStyle.None;
                 if (spb.Value == trazeni)
@@ -535,7 +538,8 @@ namespace SvetskiResursi
                             {
                                 spb.Key.BorderStyle = BorderStyle.Fixed3D;
 
-                            }
+                            }else
+                                spb.Key.BorderStyle = BorderStyle.None;
 
                         }
                     }
@@ -557,7 +561,7 @@ namespace SvetskiResursi
 
         private void onlineHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm");
+            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm", HelpNavigator.Topic, "O aplikaciji.htm");
         }
 
         private void tutToolStripMenuItem_Click(object sender, EventArgs e)

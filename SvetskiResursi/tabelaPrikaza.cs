@@ -280,11 +280,16 @@ namespace SvetskiResursi
                     //sada u LISTI trazim zeljeni resurs i brise ga.
                     foreach (Simbol s in ls)
                     {
-                        if (s.oznaka.Equals(ttOz.Text))
+                        if (s.ime.Equals(ttIm.Text))
                         {
                             ls.Remove(s);
                             break;
                         }
+                    }
+
+                    foreach (Simbol s in ls)
+                    {
+                        formatter1.Serialize(stream1, s);
                     }
 
                     stream1.Close();
