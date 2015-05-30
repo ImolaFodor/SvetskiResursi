@@ -29,14 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblD = new System.Windows.Forms.Button();
             this.tblI = new System.Windows.Forms.Button();
             this.tblB = new System.Windows.Forms.Button();
@@ -69,9 +61,21 @@
             this.ttOz = new System.Windows.Forms.Label();
             this.tbTrazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.gbPretrage = new System.Windows.Forms.GroupBox();
+            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
+            this.gbPretrage.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -87,59 +91,19 @@
             this.Cena,
             this.datum,
             this.Etiketa});
-            this.dataGridView1.Location = new System.Drawing.Point(58, 13);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(853, 215);
+            this.dataGridView1.Size = new System.Drawing.Size(984, 215);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // Oznaka
-            // 
-            this.Oznaka.HeaderText = "Oznaka";
-            this.Oznaka.Name = "Oznaka";
-            // 
-            // ime
-            // 
-            this.ime.HeaderText = "Ime";
-            this.ime.Name = "ime";
-            // 
-            // tip
-            // 
-            this.tip.HeaderText = "Tip";
-            this.tip.Name = "tip";
-            // 
-            // opis
-            // 
-            this.opis.HeaderText = "Opis";
-            this.opis.Name = "opis";
-            // 
-            // jednica_mere
-            // 
-            this.jednica_mere.HeaderText = "Jedinica mere";
-            this.jednica_mere.Name = "jednica_mere";
-            // 
-            // Cena
-            // 
-            this.Cena.HeaderText = "Cena";
-            this.Cena.Name = "Cena";
-            // 
-            // datum
-            // 
-            this.datum.HeaderText = "Datum";
-            this.datum.Name = "datum";
-            // 
-            // Etiketa
-            // 
-            this.Etiketa.HeaderText = "Etiketa";
-            this.Etiketa.Name = "Etiketa";
             // 
             // tblD
             // 
             this.tblD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblD.Location = new System.Drawing.Point(716, 236);
+            this.tblD.Location = new System.Drawing.Point(1013, 124);
             this.tblD.Margin = new System.Windows.Forms.Padding(4);
             this.tblD.Name = "tblD";
             this.tblD.Size = new System.Drawing.Size(112, 32);
@@ -151,7 +115,7 @@
             // tblI
             // 
             this.tblI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblI.Location = new System.Drawing.Point(582, 236);
+            this.tblI.Location = new System.Drawing.Point(1013, 54);
             this.tblI.Margin = new System.Windows.Forms.Padding(4);
             this.tblI.Name = "tblI";
             this.tblI.Size = new System.Drawing.Size(112, 32);
@@ -163,7 +127,7 @@
             // tblB
             // 
             this.tblB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblB.Location = new System.Drawing.Point(847, 236);
+            this.tblB.Location = new System.Drawing.Point(1013, 196);
             this.tblB.Margin = new System.Windows.Forms.Padding(4);
             this.tblB.Name = "tblB";
             this.tblB.Size = new System.Drawing.Size(112, 32);
@@ -284,7 +248,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(847, 477);
+            this.button1.Location = new System.Drawing.Point(1013, 450);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 32);
@@ -321,9 +285,9 @@
             this.gbDet.Controls.Add(this.label6);
             this.gbDet.Controls.Add(this.label5);
             this.gbDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDet.Location = new System.Drawing.Point(29, 305);
+            this.gbDet.Location = new System.Drawing.Point(193, 253);
             this.gbDet.Name = "gbDet";
-            this.gbDet.Size = new System.Drawing.Size(946, 165);
+            this.gbDet.Size = new System.Drawing.Size(932, 165);
             this.gbDet.TabIndex = 29;
             this.gbDet.TabStop = false;
             this.gbDet.Text = "Detalji";
@@ -340,7 +304,7 @@
             // ttEtik
             // 
             this.ttEtik.AutoSize = true;
-            this.ttEtik.Location = new System.Drawing.Point(839, 44);
+            this.ttEtik.Location = new System.Drawing.Point(851, 44);
             this.ttEtik.MaximumSize = new System.Drawing.Size(100, 100);
             this.ttEtik.Name = "ttEtik";
             this.ttEtik.Size = new System.Drawing.Size(58, 18);
@@ -451,7 +415,7 @@
             // 
             // tbTrazi
             // 
-            this.tbTrazi.Location = new System.Drawing.Point(20, 275);
+            this.tbTrazi.Location = new System.Drawing.Point(6, 23);
             this.tbTrazi.Name = "tbTrazi";
             this.tbTrazi.Size = new System.Drawing.Size(100, 24);
             this.tbTrazi.TabIndex = 31;
@@ -461,19 +425,102 @@
             // cbFilter
             // 
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(168, 273);
+            this.cbFilter.Location = new System.Drawing.Point(8, 127);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(105, 26);
             this.cbFilter.TabIndex = 33;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
+            // gbPretrage
+            // 
+            this.gbPretrage.Controls.Add(this.radioButton2);
+            this.gbPretrage.Controls.Add(this.radioButton1);
+            this.gbPretrage.Controls.Add(this.tbTrazi);
+            this.gbPretrage.Controls.Add(this.cbFilter);
+            this.gbPretrage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbPretrage.Location = new System.Drawing.Point(12, 253);
+            this.gbPretrage.Name = "gbPretrage";
+            this.gbPretrage.Size = new System.Drawing.Size(175, 165);
+            this.gbPretrage.TabIndex = 34;
+            this.gbPretrage.TabStop = false;
+            this.gbPretrage.Text = "Pretrage";
+            // 
+            // Oznaka
+            // 
+            this.Oznaka.HeaderText = "Oznaka";
+            this.Oznaka.Name = "Oznaka";
+            this.Oznaka.Width = 115;
+            // 
+            // ime
+            // 
+            this.ime.HeaderText = "Ime";
+            this.ime.Name = "ime";
+            this.ime.Width = 115;
+            // 
+            // tip
+            // 
+            this.tip.HeaderText = "Tip";
+            this.tip.Name = "tip";
+            this.tip.Width = 115;
+            // 
+            // opis
+            // 
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.Width = 130;
+            // 
+            // jednica_mere
+            // 
+            this.jednica_mere.HeaderText = "Jedinica mere";
+            this.jednica_mere.Name = "jednica_mere";
+            this.jednica_mere.Width = 115;
+            // 
+            // Cena
+            // 
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
+            this.Cena.Width = 115;
+            // 
+            // datum
+            // 
+            this.datum.HeaderText = "Datum";
+            this.datum.Name = "datum";
+            this.datum.Width = 115;
+            // 
+            // Etiketa
+            // 
+            this.Etiketa.HeaderText = "Etiketa";
+            this.Etiketa.Name = "Etiketa";
+            this.Etiketa.Width = 115;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 69);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(97, 22);
+            this.radioButton1.TabIndex = 36;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Po Imenu";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(6, 97);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(84, 22);
+            this.radioButton2.TabIndex = 37;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Po Tipu";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // TabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 513);
-            this.Controls.Add(this.cbFilter);
-            this.Controls.Add(this.tbTrazi);
+            this.ClientSize = new System.Drawing.Size(1140, 495);
+            this.Controls.Add(this.gbPretrage);
             this.Controls.Add(this.gbDet);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tblB);
@@ -491,8 +538,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).EndInit();
             this.gbDet.ResumeLayout(false);
             this.gbDet.PerformLayout();
+            this.gbPretrage.ResumeLayout(false);
+            this.gbPretrage.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -531,6 +579,7 @@
         private System.Windows.Forms.Label ttFv;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.GroupBox gbPretrage;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oznaka;
         private System.Windows.Forms.DataGridViewTextBoxColumn ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn tip;
@@ -539,6 +588,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etiketa;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
 
     }
 }
