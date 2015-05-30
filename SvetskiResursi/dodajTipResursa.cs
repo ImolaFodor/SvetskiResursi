@@ -182,7 +182,7 @@ namespace SvetskiResursi
                 this.Close();
 
             }
-            form.RefreshList();
+            //form.RefreshList();
         }
 
         private void oznaka_tip_TextChanged(object sender, EventArgs e)

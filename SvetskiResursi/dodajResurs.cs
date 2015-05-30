@@ -138,11 +138,16 @@ namespace SvetskiResursi
         //Metod za dodelu vrednosti radiobutton-a u promenjivu
         public String oznaceno(String res, RadioButton rb1, RadioButton rb2)
         {
-            bool oz = rb1.Checked;
-            if (oz)
+            bool oz1 = rb1.Checked;
+            bool oz2 = rb2.Checked;
+
+            if (oz1)
                 res = rb1.Text;
             else
-                res = rb2.Text;
+                if (oz2)
+                    res = rb2.Text;
+            else
+                res = " ";
 
             return res;
         }
@@ -383,6 +388,16 @@ namespace SvetskiResursi
         private void comboTipResursa_TextChanged(object sender, EventArgs e)
         {
             obavTip.Text = "";
+        }
+
+        private void cbMera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboTipResursa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

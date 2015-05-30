@@ -39,6 +39,7 @@ namespace SvetskiResursi
         public void initialize()
         {
             InitializeComponent();
+            List<tipResursa> trr = new List<tipResursa>();
 
             if (!File.Exists("Resursi.bin"))
                 File.Create("Resursi.bin");
@@ -58,6 +59,13 @@ namespace SvetskiResursi
                 pbMapa_Fill();
             }
 
+            iscitajTipResursa(trr);
+            foreach (tipResursa tip in trr)
+            {
+                filtriranjeTip.Items.Add(tip.oznaka);
+
+            }
+
             Watermarks();
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
@@ -65,29 +73,7 @@ namespace SvetskiResursi
 
         public void Watermarks()
         {
-            this.waterMarkActive = true;
-            this.textBox1.ForeColor = Color.Gray;
-            this.textBox1.Text = "Unesite oznaku tipa...";
-
-            this.textBox1.GotFocus += (source, e) =>
-            {
-                if (this.waterMarkActive)
-                {
-                    this.waterMarkActive = false;
-                    this.textBox1.Text = "";
-                    this.textBox1.ForeColor = Color.Black;
-                }
-            };
-
-            this.textBox1.LostFocus += (source, e) =>
-            {
-                if (!this.waterMarkActive && string.IsNullOrEmpty(this.textBox1.Text))
-                {
-                    this.waterMarkActive = true;
-                    this.textBox1.Text = "Unesite oznaku tipa...";
-                    this.textBox1.ForeColor = Color.Gray;
-                }
-            };
+            
 
 
             this.waterMarkActive = true;
@@ -206,6 +192,15 @@ namespace SvetskiResursi
         {
             dodajTipResursa dlg1 = new dodajTipResursa();
             dlg1.ShowDialog();
+            filtriranjeTip.Items.Clear();
+            List<tipResursa> trr = new List<tipResursa>();
+            iscitajTipResursa(trr);
+            foreach (tipResursa tip in trr)
+            {
+                filtriranjeTip.Items.Add(tip.oznaka);
+
+            }
+            RefreshList();
         }
 
         private void dodavanjeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -375,62 +370,6 @@ namespace SvetskiResursi
             listView1_Fill();
         }
 
-        private void Filtriranje_Click(object sender, EventArgs e)
-        {
-            string trazeni = textBox1.Text;
-
-             if (trazeni.Equals("")) {
-                RefreshList();
-            }
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                if (listView1.Items[i].Text.Equals(trazeni))
-                {
-                    listView1.Items.Clear();
-                    foreach (KeyValuePair<ListViewItem,string> slvi in lista_tipova)
-                    {
-
-                        if (slvi.Value==trazeni)
-                        {
-                            ListViewItem lvi = new ListViewItem();
-                            lvi.Text = slvi.Key.Text;
-                            lvi.ImageIndex = slvi.Key.ImageIndex;
-                            lvi.Tag = slvi.Key;
-                            listView1.Items.Add(lvi);
-                        }
-                    }
-
-                    foreach (KeyValuePair<PictureBox, string> spb in dPBtr)
-                    {
-                        spb.Key.BorderStyle = BorderStyle.None;
-                        if (spb.Value == trazeni)
-                        {
-                            spb.Key.BorderStyle = BorderStyle.Fixed3D; 
-                        }
-
-                    }
-
-                }
-               
-            }
-
-            if (textBox1.Text == "")
-            {
-                this.waterMarkActive = true;
-                this.textBox2.LostFocus += (source, ee) =>
-                {
-                    if (!this.waterMarkActive && string.IsNullOrEmpty(this.textBox1.Text))
-                    {
-                        this.waterMarkActive = true;
-                        this.textBox1.Text = "Unesite tip ili resurs...";
-                        this.textBox1.ForeColor = Color.Gray;
-                    }
-                };
-            }
-
-
-            }
-
         private void trazenje_TextChanged(object sender, EventArgs e)
         {
             listView1.SelectedItems.Clear();
@@ -488,6 +427,14 @@ namespace SvetskiResursi
             tabelaTipova tbl = new tabelaTipova();
             tbl.ShowDialog();
             this.RefreshList();
+            filtriranjeTip.Items.Clear();
+            List<tipResursa> trr = new List<tipResursa>();
+            iscitajTipResursa(trr);
+            foreach (tipResursa tip in trr)
+            {
+                filtriranjeTip.Items.Add(tip.oznaka);
+
+            }
 
         }
 
@@ -587,6 +534,66 @@ namespace SvetskiResursi
 
             }
 
+        }
+
+        private void iscitajTipResursa(List<tipResursa> tr)
+        {
+            using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    tr.Add((tipResursa)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
+        private void filtriranjeTip_TextChanged(object sender, EventArgs e)
+        {
+            if (filtriranjeTip.Text.Equals(""))
+            {
+                RefreshList();
+            }
+
+            string trazeni = filtriranjeTip.Text;
+
+
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                if (listView1.Items[i].Text.Equals(trazeni))
+                {
+                    listView1.Items.Clear();
+                    foreach (KeyValuePair<ListViewItem, string> slvi in lista_tipova)
+                    {
+
+                        if (slvi.Value == trazeni)
+                        {
+                            ListViewItem lvi = new ListViewItem();
+                            lvi.Text = slvi.Key.Text;
+                            lvi.ImageIndex = slvi.Key.ImageIndex;
+                            lvi.Tag = slvi.Key;
+                            listView1.Items.Add(lvi);
+                        }
+                    }
+
+                    foreach (KeyValuePair<PictureBox, string> spb in dPBtr)
+                    {
+                        spb.Key.BorderStyle = BorderStyle.None;
+                        if (spb.Value == trazeni)
+                        {
+                            spb.Key.BorderStyle = BorderStyle.Fixed3D;
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        private void filtriranjeTip_MouseClick(object sender, MouseEventArgs e)
+        {
+            RefreshList();
         }
        
     }

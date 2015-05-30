@@ -53,7 +53,6 @@ namespace SvetskiResursi
             this.label3 = new System.Windows.Forms.Label();
             this.prikazIkonice = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Detalji = new System.Windows.Forms.GroupBox();
@@ -61,6 +60,7 @@ namespace SvetskiResursi
             this.fIme = new System.Windows.Forms.Label();
             this.fOz = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.filtriranjeTip = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -245,14 +245,6 @@ namespace SvetskiResursi
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDown);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(19, 378);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(113, 20);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.TextChanged += new System.EventHandler(this.Filtriranje_Click);
-            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(19, 420);
@@ -324,15 +316,25 @@ namespace SvetskiResursi
             this.helpProvider1.HelpNamespace = "C:\\Users\\Imola\\Source\\Repos\\SvetskiResursi3\\SvetskiResursi\\Resources\\Help project" +
     "s\\SR.chm";
             // 
+            // filtriranjeTip
+            // 
+            this.filtriranjeTip.FormattingEnabled = true;
+            this.filtriranjeTip.Location = new System.Drawing.Point(19, 377);
+            this.filtriranjeTip.Name = "filtriranjeTip";
+            this.filtriranjeTip.Size = new System.Drawing.Size(121, 21);
+            this.filtriranjeTip.TabIndex = 21;
+            this.filtriranjeTip.TextChanged += new System.EventHandler(this.filtriranjeTip_TextChanged);
+            this.filtriranjeTip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.filtriranjeTip_MouseClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 700);
+            this.Controls.Add(this.filtriranjeTip);
             this.Controls.Add(this.Detalji);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -368,7 +370,6 @@ namespace SvetskiResursi
         private System.Windows.Forms.PictureBox prikazIkonice;
         private System.Windows.Forms.ToolStripMenuItem tabelaPrikazaToolStripMenuItem;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ToolStripMenuItem tabelaTipovaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabelaEtiketaToolStripMenuItem;
@@ -382,6 +383,7 @@ namespace SvetskiResursi
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem onlineHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tutToolStripMenuItem;
+        private System.Windows.Forms.ComboBox filtriranjeTip;
         
     }
 }

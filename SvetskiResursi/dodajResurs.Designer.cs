@@ -148,6 +148,7 @@
             this.comboTipResursa.Name = "comboTipResursa";
             this.comboTipResursa.Size = new System.Drawing.Size(175, 26);
             this.comboTipResursa.TabIndex = 6;
+            this.comboTipResursa.SelectedIndexChanged += new System.EventHandler(this.comboTipResursa_SelectedIndexChanged);
             this.comboTipResursa.TextChanged += new System.EventHandler(this.comboTipResursa_TextChanged);
             // 
             // label4
@@ -278,6 +279,7 @@
             this.cbMera.Name = "cbMera";
             this.cbMera.Size = new System.Drawing.Size(164, 26);
             this.cbMera.TabIndex = 21;
+            this.cbMera.SelectedIndexChanged += new System.EventHandler(this.cbMera_SelectedIndexChanged);
             // 
             // cen
             // 

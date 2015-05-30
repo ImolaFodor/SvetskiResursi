@@ -195,22 +195,22 @@ namespace SvetskiResursi
                             if (tr.eksploatacija.Equals("DA"))
                                 dr.rbEkp1.Checked = true;
                             else
-                                dr.rbEksp2.Checked = false;
+                                dr.rbEksp2.Checked = true;
 
                             if (tr.strateska_vaznost.Equals("DA"))
                                 dr.rbSV1.Checked = true;
                             else
-                                dr.rbSV2.Checked = false;
+                                dr.rbSV2.Checked = true;
 
                             if (tr.obnovljivo.Equals("DA"))
                                 dr.rbObn1.Checked = true;
                             else
-                                dr.rbObn2.Checked = false;
+                                dr.rbObn2.Checked = true;
 
                             for (int j = 0; j < dr.etik.Items.Count; j++)
                                 for (int i = 0; i < tr.oz_etiketa.Count; i++)
                                     if (dr.etik.Items[j].Equals(tr.oz_etiketa[i]))
-                                        dr.etik.SetItemChecked(i, true);
+                                        dr.etik.SetItemChecked(j, true);
                         }
                     }
 
