@@ -319,7 +319,7 @@ namespace SvetskiResursi
                 this.Close();
             }
 
-            form.RefreshList();
+            //form.RefreshList();
             
 
         }

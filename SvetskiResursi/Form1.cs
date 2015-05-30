@@ -213,6 +213,7 @@ namespace SvetskiResursi
         {
             DodajResurs dlg3 = new DodajResurs(this);
             dlg3.ShowDialog();
+            RefreshList();
         }
 
 
@@ -595,6 +596,18 @@ namespace SvetskiResursi
         {
             RefreshList();
         }
+
+        private void textBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            RefreshList();
+        }
+
+     
        
     }
 }
