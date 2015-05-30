@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblD = new System.Windows.Forms.Button();
             this.tblI = new System.Windows.Forms.Button();
             this.tblB = new System.Windows.Forms.Button();
@@ -61,14 +69,6 @@
             this.ttOz = new System.Windows.Forms.Label();
             this.tbTrazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
-            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -95,6 +95,46 @@
             this.dataGridView1.Size = new System.Drawing.Size(853, 215);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Oznaka
+            // 
+            this.Oznaka.HeaderText = "Oznaka";
+            this.Oznaka.Name = "Oznaka";
+            // 
+            // ime
+            // 
+            this.ime.HeaderText = "Ime";
+            this.ime.Name = "ime";
+            // 
+            // tip
+            // 
+            this.tip.HeaderText = "Tip";
+            this.tip.Name = "tip";
+            // 
+            // opis
+            // 
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            // 
+            // jednica_mere
+            // 
+            this.jednica_mere.HeaderText = "Jedinica mere";
+            this.jednica_mere.Name = "jednica_mere";
+            // 
+            // Cena
+            // 
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
+            // 
+            // datum
+            // 
+            this.datum.HeaderText = "Datum";
+            this.datum.Name = "datum";
+            // 
+            // Etiketa
+            // 
+            this.Etiketa.HeaderText = "Etiketa";
+            this.Etiketa.Name = "Etiketa";
             // 
             // tblD
             // 
@@ -244,7 +284,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(847, 460);
+            this.button1.Location = new System.Drawing.Point(847, 477);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 32);
@@ -281,7 +321,7 @@
             this.gbDet.Controls.Add(this.label6);
             this.gbDet.Controls.Add(this.label5);
             this.gbDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDet.Location = new System.Drawing.Point(14, 275);
+            this.gbDet.Location = new System.Drawing.Point(29, 305);
             this.gbDet.Name = "gbDet";
             this.gbDet.Size = new System.Drawing.Size(946, 165);
             this.gbDet.TabIndex = 29;
@@ -411,7 +451,7 @@
             // 
             // tbTrazi
             // 
-            this.tbTrazi.Location = new System.Drawing.Point(20, 240);
+            this.tbTrazi.Location = new System.Drawing.Point(20, 275);
             this.tbTrazi.Name = "tbTrazi";
             this.tbTrazi.Size = new System.Drawing.Size(100, 24);
             this.tbTrazi.TabIndex = 31;
@@ -421,57 +461,17 @@
             // cbFilter
             // 
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(142, 240);
+            this.cbFilter.Location = new System.Drawing.Point(168, 273);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(105, 26);
             this.cbFilter.TabIndex = 33;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
-            // Oznaka
-            // 
-            this.Oznaka.HeaderText = "Oznaka";
-            this.Oznaka.Name = "Oznaka";
-            // 
-            // ime
-            // 
-            this.ime.HeaderText = "Ime";
-            this.ime.Name = "ime";
-            // 
-            // tip
-            // 
-            this.tip.HeaderText = "Tip";
-            this.tip.Name = "tip";
-            // 
-            // opis
-            // 
-            this.opis.HeaderText = "Opis";
-            this.opis.Name = "opis";
-            // 
-            // jednica_mere
-            // 
-            this.jednica_mere.HeaderText = "Jedinica mere";
-            this.jednica_mere.Name = "jednica_mere";
-            // 
-            // Cena
-            // 
-            this.Cena.HeaderText = "Cena";
-            this.Cena.Name = "Cena";
-            // 
-            // datum
-            // 
-            this.datum.HeaderText = "Datum";
-            this.datum.Name = "datum";
-            // 
-            // Etiketa
-            // 
-            this.Etiketa.HeaderText = "Etiketa";
-            this.Etiketa.Name = "Etiketa";
-            // 
             // TabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 494);
+            this.ClientSize = new System.Drawing.Size(972, 513);
             this.Controls.Add(this.cbFilter);
             this.Controls.Add(this.tbTrazi);
             this.Controls.Add(this.gbDet);
@@ -484,6 +484,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TabelaPrikaza";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabela prikaza resursa";
             this.Load += new System.EventHandler(this.tabelaPrikaza_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

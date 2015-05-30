@@ -141,6 +141,7 @@
             // 
             // comboTipResursa
             // 
+            this.comboTipResursa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipResursa.FormattingEnabled = true;
             this.comboTipResursa.Location = new System.Drawing.Point(172, 142);
             this.comboTipResursa.Margin = new System.Windows.Forms.Padding(4);
@@ -265,6 +266,7 @@
             // 
             this.cbMera.AccessibleName = "";
             this.cbMera.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbMera.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMera.FormattingEnabled = true;
             this.cbMera.Items.AddRange(new object[] {
             "Merica",
@@ -290,10 +292,11 @@
             // vreme
             // 
             this.vreme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.vreme.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.vreme.Location = new System.Drawing.Point(279, 151);
             this.vreme.Margin = new System.Windows.Forms.Padding(4);
             this.vreme.Name = "vreme";
-            this.vreme.Size = new System.Drawing.Size(269, 24);
+            this.vreme.Size = new System.Drawing.Size(164, 24);
             this.vreme.TabIndex = 23;
             // 
             // button1
@@ -320,6 +323,7 @@
             // 
             // frPon
             // 
+            this.frPon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.frPon.FormattingEnabled = true;
             this.frPon.Items.AddRange(new object[] {
             "Redak",

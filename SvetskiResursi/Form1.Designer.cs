@@ -46,6 +46,8 @@ namespace SvetskiResursi
             this.tabelaEtiketaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pomocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.onlineHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@ namespace SvetskiResursi
             this.fIme = new System.Windows.Forms.Label();
             this.fOz = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.onlineHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
@@ -73,9 +73,9 @@ namespace SvetskiResursi
             this.pbMape.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMape.BackgroundImage")));
             this.pbMape.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbMape.ContextMenuStrip = this.contextMenuStrip1;
-            this.pbMape.Location = new System.Drawing.Point(0, 3);
+            this.pbMape.Location = new System.Drawing.Point(0, 0);
             this.pbMape.Name = "pbMape";
-            this.pbMape.Size = new System.Drawing.Size(1799, 1072);
+            this.pbMape.Size = new System.Drawing.Size(1799, 1075);
             this.pbMape.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMape.TabIndex = 1;
             this.pbMape.TabStop = false;
@@ -177,6 +177,20 @@ namespace SvetskiResursi
             this.pomocToolStripMenuItem.Text = "Pomoc";
             this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
             // 
+            // onlineHelpToolStripMenuItem
+            // 
+            this.onlineHelpToolStripMenuItem.Name = "onlineHelpToolStripMenuItem";
+            this.onlineHelpToolStripMenuItem.Size = new System.Drawing.Size(241, 36);
+            this.onlineHelpToolStripMenuItem.Text = "Onlajn pomoć";
+            this.onlineHelpToolStripMenuItem.Click += new System.EventHandler(this.onlineHelpToolStripMenuItem_Click);
+            // 
+            // tutToolStripMenuItem
+            // 
+            this.tutToolStripMenuItem.Name = "tutToolStripMenuItem";
+            this.tutToolStripMenuItem.Size = new System.Drawing.Size(241, 36);
+            this.tutToolStripMenuItem.Text = "Tutorijal";
+            this.tutToolStripMenuItem.Click += new System.EventHandler(this.tutToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -251,9 +265,9 @@ namespace SvetskiResursi
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pbMape);
-            this.panel1.Location = new System.Drawing.Point(258, 35);
+            this.panel1.Location = new System.Drawing.Point(258, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1096, 700);
+            this.panel1.Size = new System.Drawing.Size(1096, 654);
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -267,7 +281,7 @@ namespace SvetskiResursi
             this.Detalji.Controls.Add(this.label2);
             this.Detalji.Controls.Add(this.prikazIkonice);
             this.Detalji.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Detalji.Location = new System.Drawing.Point(19, 476);
+            this.Detalji.Location = new System.Drawing.Point(19, 452);
             this.Detalji.Name = "Detalji";
             this.Detalji.Size = new System.Drawing.Size(218, 236);
             this.Detalji.TabIndex = 20;
@@ -310,25 +324,11 @@ namespace SvetskiResursi
             this.helpProvider1.HelpNamespace = "C:\\Users\\Imola\\Source\\Repos\\SvetskiResursi3\\SvetskiResursi\\Resources\\Help project" +
     "s\\SR.chm";
             // 
-            // onlineHelpToolStripMenuItem
-            // 
-            this.onlineHelpToolStripMenuItem.Name = "onlineHelpToolStripMenuItem";
-            this.onlineHelpToolStripMenuItem.Size = new System.Drawing.Size(241, 36);
-            this.onlineHelpToolStripMenuItem.Text = "Onlajn pomoć";
-            this.onlineHelpToolStripMenuItem.Click += new System.EventHandler(this.onlineHelpToolStripMenuItem_Click);
-            // 
-            // tutToolStripMenuItem
-            // 
-            this.tutToolStripMenuItem.Name = "tutToolStripMenuItem";
-            this.tutToolStripMenuItem.Size = new System.Drawing.Size(241, 36);
-            this.tutToolStripMenuItem.Text = "Tutorijal";
-            this.tutToolStripMenuItem.Click += new System.EventHandler(this.tutToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 733);
+            this.ClientSize = new System.Drawing.Size(1354, 700);
             this.Controls.Add(this.Detalji);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox2);

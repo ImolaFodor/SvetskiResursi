@@ -308,7 +308,10 @@ namespace SvetskiResursi
         }
 
         public void pbMapa_Fill()
-        {  
+        {
+            dPBi.Clear();
+            dPBr.Clear();
+            dPBtr.Clear();
             List<Simbol> ls = new List<Simbol>();
             using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
             {
@@ -432,6 +435,13 @@ namespace SvetskiResursi
         {
             listView1.SelectedItems.Clear();
             string trazeni = textBox2.Text;
+            if (trazeni.Equals("")) {
+                fOz.Text = "";
+                fIme.Text = "";
+                fTip.Text = "";
+                prikazIkonice.BackgroundImage = null;
+            }
+
             for (int i = 0; i < listView1.Items.Count; i++)
             {
                 listView1.Items[i].Selected = false;
