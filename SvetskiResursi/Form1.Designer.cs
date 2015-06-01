@@ -61,11 +61,14 @@ namespace SvetskiResursi
             this.fOz = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.filtriranjeTip = new System.Windows.Forms.ComboBox();
+            this.brisiSimbol = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.izbrišiSimbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
             this.panel1.SuspendLayout();
             this.Detalji.SuspendLayout();
+            this.brisiSimbol.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbMape
@@ -81,6 +84,7 @@ namespace SvetskiResursi
             this.pbMape.TabStop = false;
             this.pbMape.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             this.pbMape.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragEnter);
+            this.pbMape.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbMape_MouseClick);
             // 
             // contextMenuStrip1
             // 
@@ -328,6 +332,19 @@ namespace SvetskiResursi
             this.filtriranjeTip.TextChanged += new System.EventHandler(this.filtriranjeTip_TextChanged);
             this.filtriranjeTip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.filtriranjeTip_MouseClick);
             // 
+            // brisiSimbol
+            // 
+            this.brisiSimbol.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.izbrišiSimbolToolStripMenuItem});
+            this.brisiSimbol.Name = "brisiSimbol";
+            this.brisiSimbol.Size = new System.Drawing.Size(144, 26);
+            // 
+            // izbrišiSimbolToolStripMenuItem
+            // 
+            this.izbrišiSimbolToolStripMenuItem.Name = "izbrišiSimbolToolStripMenuItem";
+            this.izbrišiSimbolToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.izbrišiSimbolToolStripMenuItem.Text = "Izbriši simbol";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,6 +369,7 @@ namespace SvetskiResursi
             this.panel1.ResumeLayout(false);
             this.Detalji.ResumeLayout(false);
             this.Detalji.PerformLayout();
+            this.brisiSimbol.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,6 +404,8 @@ namespace SvetskiResursi
         private System.Windows.Forms.ToolStripMenuItem onlineHelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tutToolStripMenuItem;
         private System.Windows.Forms.ComboBox filtriranjeTip;
+        private System.Windows.Forms.ContextMenuStrip brisiSimbol;
+        private System.Windows.Forms.ToolStripMenuItem izbrišiSimbolToolStripMenuItem;
         
     }
 }

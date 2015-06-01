@@ -614,11 +614,13 @@ namespace SvetskiResursi
                 }
 
             }
+            
 
         }
 
         private void filtriranjeTip_MouseClick(object sender, MouseEventArgs e)
         {
+            filtrirano = false;
             RefreshList();
         }
 
@@ -631,6 +633,18 @@ namespace SvetskiResursi
         {
             RefreshList();
         }
+
+        private void pbMape_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                //Show za kontekstni meni radi bilo gde na ekranu. Stoga, pretvaramo naše koordinate
+                //koje su u koordinatnom  sistemu  kontrole u koordinatni sistem prozora
+                //brisiSimbol.Show(this.PointToScreen(e.Location));
+            }
+        }
+
+        
 
      
        
