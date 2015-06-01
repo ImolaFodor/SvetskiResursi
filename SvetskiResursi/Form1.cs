@@ -28,6 +28,7 @@ namespace SvetskiResursi
         bool waterMarkActive = true;
         public override bool AllowDrop { get; set; }
         public static Form1 instanca = null;
+        bool filtrirano = false;
 
 
         public Form1()
@@ -116,52 +117,75 @@ namespace SvetskiResursi
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
         {
-            PictureBox pb = new PictureBox();
-            pb.Parent = pbMape;
-
-            Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
-            pb.Location = po;
-
-            ListViewItem dragitem = selection;
-            pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
-            pb.Tag = dragitem;
-
-            pb.BackgroundImageLayout = ImageLayout.Stretch;
-            pb.Height = pb.Width = 45;
-            pb.BringToFront();
-
-            Simbol simbol = new Simbol();
-            simbol.lokacija = pb.Location;
-            simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
-     
-            ListViewItem lvi = (ListViewItem)pb.Tag;
-            Resurs r = (Resurs)lvi.Tag;
-            simbol.oznaka = r.oznaka;
-            simbol.ime = r.ime;
-            simbol.opis = r.opis;
-            simbol.tipR = r.tipResursa;
-            String etikete = string.Join(",", r.oz_etiketa.ToArray());
-            simbol.etiketa = etikete;
-            simbol.datum = r.datum_kao;
-            
-
-            String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
-                               "Naziv:   " + r.ime + Environment.NewLine +
-                             "Tip:      " + r.tipResursa + Environment.NewLine +
-                             "Datum otkrivanja:   " + r.datum_kao.ToString() + Environment.NewLine +
-                             "Tagovi:   " + etikete + Environment.NewLine +
-                             "Opis:    " + r.opis;
-
-            new ToolTip().SetToolTip(pb, detalji);
-
-            dPBr.Add(pb, r.oznaka);
-            dPBtr.Add(pb, r.tipResursa);
-
-            using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+            if (filtrirano==false)
             {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(stream, simbol);
-                stream.Close();
+                PictureBox pb = new PictureBox();
+                pb.Parent = pbMape;
+
+                Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
+                pb.Location = po;
+
+                ListViewItem dragitem = selection;
+                pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
+                pb.Tag = dragitem;
+
+                pb.BackgroundImageLayout = ImageLayout.Stretch;
+                pb.Height = pb.Width = 45;
+                pb.BringToFront();
+
+                Simbol simbol = new Simbol();
+                simbol.lokacija = pb.Location;
+                simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
+
+                ListViewItem lvi = (ListViewItem)pb.Tag;
+                Resurs r = (Resurs)lvi.Tag;
+                simbol.oznaka = r.oznaka;
+                simbol.ime = r.ime;
+                simbol.opis = r.opis;
+                simbol.tipR = r.tipResursa;
+                String etikete = string.Join(",", r.oz_etiketa.ToArray());
+                simbol.etiketa = etikete;
+                simbol.datum = r.datum_kao;
+
+
+                String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
+                                   "Naziv:   " + r.ime + Environment.NewLine +
+                                 "Tip:      " + r.tipResursa + Environment.NewLine +
+                                 "Datum otkrivanja:   " + r.datum_kao.ToString() + Environment.NewLine +
+                                 "Tagovi:   " + etikete + Environment.NewLine +
+                                 "Opis:    " + r.opis;
+
+                new ToolTip().SetToolTip(pb, detalji);
+
+                dPBr.Add(pb, r.oznaka);
+                dPBtr.Add(pb, r.tipResursa);
+
+                using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+                {
+                    var formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, simbol);
+                    stream.Close();
+                }
+            }
+            else
+            {
+                PictureBox pb = new PictureBox();
+                pb.Parent = pbMape;
+
+                Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
+                pb.Location = po;
+
+                ListViewItem dragitem = selection;
+                pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
+                pb.Tag = dragitem;
+
+                pb.BackgroundImageLayout = ImageLayout.Stretch;
+                pb.Height = pb.Width = 45;
+                pb.BringToFront();
+
+                Simbol simbol = new Simbol();
+                simbol.lokacija = pb.Location;
+                simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
             }
 
             }
@@ -550,6 +574,7 @@ namespace SvetskiResursi
 
         private void filtriranjeTip_TextChanged(object sender, EventArgs e)
         {
+            filtrirano = true;
             if (filtriranjeTip.Text.Equals(""))
             {
                 RefreshList();
