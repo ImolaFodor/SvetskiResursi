@@ -227,6 +227,36 @@ namespace SvetskiResursi
             if (bris.ShowDialog() == DialogResult.OK)
             {
                 List<Resurs> Lr = new List<Resurs>();
+                List<Simbol> ls = new List<Simbol>();
+                using (Stream stream1 = File.Open("Simboli.bin", FileMode.Open))
+                {
+                    var formatter1 = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                    while (stream1.Position != stream1.Length)
+                    {
+                        ls.Add(((Simbol)formatter1.Deserialize(stream1)));
+
+                    }
+
+                    stream1.SetLength(0);
+
+                    //sada u LISTI trazim zeljeni resurs i brise ga.
+                    foreach (Simbol s in ls)
+                    {
+                        if (s.oznaka.Equals(ttOz.Text))
+                        {
+                            ls.Remove(s);
+                            break;
+                        }
+                    }
+
+                    foreach (Simbol s in ls)
+                    {
+                        formatter1.Serialize(stream1, s);
+                    }
+
+                    stream1.Close();
+                }
 
                 using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
                 {
@@ -264,39 +294,11 @@ namespace SvetskiResursi
                     stream.Close();
                 }
 
-                List<Simbol> ls = new List<Simbol>();
-                using (Stream stream1 = File.Open("Simboli.bin", FileMode.Open))
-                {
-                    var formatter1 = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-                    while (stream1.Position != stream1.Length)
-                    {
-                        ls.Add(((Simbol)formatter1.Deserialize(stream1)));
-
-                    }
-
-                    stream1.SetLength(0);
-
-                    //sada u LISTI trazim zeljeni resurs i brise ga.
-                    foreach (Simbol s in ls)
-                    {
-                        if (s.ime.Equals(ttIm.Text))
-                        {
-                            ls.Remove(s);
-                            break;
-                        }
-                    }
-
-                    foreach (Simbol s in ls)
-                    {
-                        formatter1.Serialize(stream1, s);
-                    }
-
-                    stream1.Close();
-                }
+                
 
                 ocisti_filter();
-                form.pbMapa_Fill();
+                //form.pbMapa_Fill();
+            
             }
             else //if(bris.ShowDialog()== DialogResult.Cancel)
                 bris.Close();

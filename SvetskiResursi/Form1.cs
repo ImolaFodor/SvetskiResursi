@@ -132,6 +132,7 @@ namespace SvetskiResursi
                 pb.BackgroundImageLayout = ImageLayout.Stretch;
                 pb.Height = pb.Width = 45;
                 pb.BringToFront();
+                
 
                 Simbol simbol = new Simbol();
                 simbol.lokacija = pb.Location;
@@ -159,13 +160,15 @@ namespace SvetskiResursi
 
                 dPBr.Add(pb, r.oznaka);
                 dPBtr.Add(pb, r.tipResursa);
+                dPBi.Add(pb, r.ime);
 
-                using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+                using (Stream stream1 = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
                 {
-                    var formatter = new BinaryFormatter();
-                    formatter.Serialize(stream, simbol);
-                    stream.Close();
+                    var formatter1 = new BinaryFormatter();
+                    formatter1.Serialize(stream1, simbol);
+                    stream1.Close();
                 }
+                AddContextMenuAndItems(pb);
             }
             else
             {
@@ -186,6 +189,13 @@ namespace SvetskiResursi
                 Simbol simbol = new Simbol();
                 simbol.lokacija = pb.Location;
                 simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
+                using (Stream stream1 = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+                {
+                    var formatter1 = new BinaryFormatter();
+                    formatter1.Serialize(stream1, simbol);
+                    stream1.Close();
+                }
+
             }
 
             }
@@ -246,9 +256,6 @@ namespace SvetskiResursi
             TabelaPrikaza tbl = new TabelaPrikaza(this);
             
             tbl.ShowDialog();
-            dPBi.Clear();
-            dPBr.Clear();
-            dPBtr.Clear();
             this.pbMapa_Fill();
         }
 
@@ -572,6 +579,28 @@ namespace SvetskiResursi
             }
         }
 
+        private void iscitajSimbol(List<Simbol> s)
+        {
+            using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    s.Add((Simbol)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
+        private void iscitajResurs(List<Resurs> r)
+        {
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    r.Add((Resurs)formatter.Deserialize(stream));
+                stream.Close();
+            }
+        }
+
         private void filtriranjeTip_TextChanged(object sender, EventArgs e)
         {
             filtrirano = true;
@@ -644,9 +673,54 @@ namespace SvetskiResursi
             }
         }
 
-        
+        PictureBox glob_pb;
 
-     
+        public void AddContextMenuAndItems(PictureBox pb)
+        {
+            glob_pb = pb;
+            ContextMenu mnuContextMenu = new ContextMenu();
+            pb.ContextMenu = mnuContextMenu;
+            MenuItem mnuItem = new MenuItem();
+            mnuItem.Text = "Izbriši";
+            mnuContextMenu.MenuItems.Add(mnuItem);
+            mnuItem.Click += new System.EventHandler(this.mnuItem_Click);
+            
+        }
+
+        private void mnuItem_Click(object sender, System.EventArgs e)
+        {
+            List<Simbol> lss = new List<Simbol>();
+            //iscitajSimbol(ls);
+            using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    lss.Add((Simbol)formatter.Deserialize(stream));
+                stream.Close();
+            }
+                
+                foreach (Simbol s in lss) { 
+                    foreach(KeyValuePair<PictureBox, string> pbs in dPBr){
+                        if (glob_pb == pbs.Key) 
+                            lss.Remove(s);
+                        break;
+                    }
+
+
+                }
+
+                foreach (Simbol s in lss)
+                {
+                    using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+                    {
+                        var formatter = new BinaryFormatter();
+                        formatter.Serialize(stream, s);
+                        stream.Close();
+                    }
+                }
+
+                
+            }           
+        }
        
     }
-}
