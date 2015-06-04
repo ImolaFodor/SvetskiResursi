@@ -18,10 +18,10 @@ namespace SvetskiResursi
         List<Resurs> r = new List<Resurs>();
         List<tipResursa> tr = new List<tipResursa>();    
         List<ListViewItem> lista_resursa = new List<ListViewItem>();
-        List<Simbol> s = new List<Simbol>();
         Dictionary<PictureBox,string> dPBr = new Dictionary<PictureBox,string>();
         Dictionary<PictureBox, string> dPBtr = new Dictionary<PictureBox, string>();
         Dictionary<PictureBox, string> dPBi = new Dictionary<PictureBox, string>();
+        Dictionary<PictureBox, Point> dPBl = new Dictionary<PictureBox, Point>();
         Dictionary<ListViewItem, string> lista_tipova = new Dictionary<ListViewItem, string>();   
         ImageList ListaSlika = new ImageList();
         ListViewItem selection;
@@ -29,7 +29,8 @@ namespace SvetskiResursi
         public override bool AllowDrop { get; set; }
         public static Form1 instanca = null;
         bool filtrirano = false;
-
+        List<PictureBox> glob_pb = new List<PictureBox>();
+        PictureBox selektovano;
 
         public Form1()
         {
@@ -50,9 +51,6 @@ namespace SvetskiResursi
 
             if (!File.Exists("Etikete.bin"))
                 File.Create("Etikete.bin");
-
-            if (!File.Exists("Simboli.bin"))
-                File.Create("Simboli.bin");
 
             if (!File.Equals("Resursi.bin", null) && !File.Equals("Tipovi.bin", null) && !File.Equals("Etikete.bin", null))
             {
@@ -117,8 +115,6 @@ namespace SvetskiResursi
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
         {
-            if (filtrirano==false)
-            {
                 PictureBox pb = new PictureBox();
                 pb.Parent = pbMape;
 
@@ -134,69 +130,51 @@ namespace SvetskiResursi
                 pb.BringToFront();
                 
 
-                Simbol simbol = new Simbol();
-                simbol.lokacija = pb.Location;
-                simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
-
-                ListViewItem lvi = (ListViewItem)pb.Tag;
-                Resurs r = (Resurs)lvi.Tag;
-                simbol.oznaka = r.oznaka;
-                simbol.ime = r.ime;
-                simbol.opis = r.opis;
-                simbol.tipR = r.tipResursa;
-                String etikete = string.Join(",", r.oz_etiketa.ToArray());
-                simbol.etiketa = etikete;
-                simbol.datum = r.datum_kao;
-
-
-                String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
-                                   "Naziv:   " + r.ime + Environment.NewLine +
-                                 "Tip:      " + r.tipResursa + Environment.NewLine +
-                                 "Datum otkrivanja:   " + r.datum_kao.ToString() + Environment.NewLine +
-                                 "Tagovi:   " + etikete + Environment.NewLine +
-                                 "Opis:    " + r.opis;
-
-                new ToolTip().SetToolTip(pb, detalji);
-
-                dPBr.Add(pb, r.oznaka);
-                dPBtr.Add(pb, r.tipResursa);
-                dPBi.Add(pb, r.ime);
-
-                using (Stream stream1 = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+                List<Resurs> Lr = new List<Resurs>();
+                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
                 {
-                    var formatter1 = new BinaryFormatter();
-                    formatter1.Serialize(stream1, simbol);
-                    stream1.Close();
+                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+
+                    while (stream.Position != stream.Length)
+                    {
+                        Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
+
+                    }
+
+                    stream.SetLength(0);
+
+                    foreach (Resurs r in Lr)
+                    {
+                        if (r.ime.Equals(dragitem.Text))
+                        {
+                            r.lokacija = pb.Location;
+                            String etikete = string.Join(",", r.oz_etiketa.ToArray());
+                            String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
+                                       "Naziv:   " + r.ime + Environment.NewLine +
+                                     "Tip:      " + r.tipResursa + Environment.NewLine +
+                                     "Datum otkrivanja:   " + r.datum_kao.ToString() + Environment.NewLine +
+                                     "Tagovi:   " + etikete + Environment.NewLine +
+                                     "Opis:    " + r.opis;
+
+                            new ToolTip().SetToolTip(pb, detalji);
+
+                            dPBr.Add(pb, r.oznaka);
+                            dPBtr.Add(pb, r.tipResursa);
+                            dPBi.Add(pb, r.ime);
+                            
+                            break;
+                        }
+                    }
+
+                    AddContextMenuAndItems(pb);
+                    glob_pb.Add(pb);
+                    foreach (Resurs tr in Lr)
+                    {
+                        formatter.Serialize(stream, tr);
+                    }
+                    stream.Close();
                 }
-                AddContextMenuAndItems(pb);
-            }
-            else
-            {
-                PictureBox pb = new PictureBox();
-                pb.Parent = pbMape;
-
-                Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
-                pb.Location = po;
-
-                ListViewItem dragitem = selection;
-                pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
-                pb.Tag = dragitem;
-
-                pb.BackgroundImageLayout = ImageLayout.Stretch;
-                pb.Height = pb.Width = 45;
-                pb.BringToFront();
-
-                Simbol simbol = new Simbol();
-                simbol.lokacija = pb.Location;
-                simbol.slika = (Bitmap)ListaSlika.Images[selection.ImageIndex];
-                using (Stream stream1 = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
-                {
-                    var formatter1 = new BinaryFormatter();
-                    formatter1.Serialize(stream1, simbol);
-                    stream1.Close();
-                }
-
-            }
 
             }
            
@@ -339,48 +317,56 @@ namespace SvetskiResursi
             dPBi.Clear();
             dPBr.Clear();
             dPBtr.Clear();
-            List<Simbol> ls = new List<Simbol>();
-            using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
+            glob_pb.Clear();
+            List<Resurs> ls = new List<Resurs>();
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 
                 var formatter = new BinaryFormatter();
                 while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    ls.Add((Simbol)formatter.Deserialize(stream));
+                    ls.Add((Resurs)formatter.Deserialize(stream));
                 stream.Close();
             }
 
-                foreach(Simbol sim in ls)
+                foreach(Resurs sim in ls)
                 {
+                    
+
                     PictureBox pb = new PictureBox();
                     pb.Parent = pbMape;
 
                     Point po = sim.lokacija;
                     pb.Location = po;
-
-                    pb.BackgroundImage = sim.slika;
+                    AddContextMenuAndItems(pb);
+                    pb.BackgroundImage = sim.ikonica;
                     pb.BackgroundImageLayout = ImageLayout.Stretch;
                     pb.Height = pb.Width = 45;
 
+                    Point nije_na_mapi=new Point{X=-100, Y=-100};
+                    if (sim.lokacija != nije_na_mapi)
+                        glob_pb.Add(pb);
+
                     string etikete=" ";
-                    if (sim.etiketa != null)
-                    {
-                        etikete = string.Join(",", sim.etiketa.ToArray());
-                    }
+                    /*if (sim.oz_etiketa != null)
+                    {*/
+                        etikete = string.Join(",", sim.oz_etiketa.ToArray());
+                    /*}
                     else
                     {
-                        sim.etiketa = " ";
-                    }
+                        sim.oz_etiketa = " ";
+                    }*/
                     String detalji = "Oznaka: " + sim.oznaka + Environment.NewLine +
                                    "Naziv:   " + sim.ime + Environment.NewLine +
-                                 "Tip:      " + sim.tipR + Environment.NewLine +
-                                 "Datum otkrivanja:   " + sim.datum + Environment.NewLine+
+                                 "Tip:      " + sim.tipResursa + Environment.NewLine +
+                                 "Datum otkrivanja:   " + sim.datum_kao + Environment.NewLine+
                                  "Tagovi:   " + etikete + Environment.NewLine +
                                  "Opis:    " + sim.opis;
                     new ToolTip().SetToolTip(pb, detalji);
                 
                     dPBr.Add(pb, sim.oznaka);
-                    dPBtr.Add(pb, sim.tipR);
+                    dPBtr.Add(pb, sim.tipResursa);
                     dPBi.Add(pb, sim.ime);
+                    dPBl.Add(pb, sim.lokacija);
                 }
         }
 
@@ -579,16 +565,6 @@ namespace SvetskiResursi
             }
         }
 
-        private void iscitajSimbol(List<Simbol> s)
-        {
-            using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
-            {
-                var formatter = new BinaryFormatter();
-                while (stream.Position != stream.Length)
-                    s.Add((Simbol)formatter.Deserialize(stream));
-                stream.Close();
-            }
-        }
 
         private void iscitajResurs(List<Resurs> r)
         {
@@ -603,6 +579,7 @@ namespace SvetskiResursi
 
         private void filtriranjeTip_TextChanged(object sender, EventArgs e)
         {
+
             filtrirano = true;
             if (filtriranjeTip.Text.Equals(""))
             {
@@ -617,6 +594,10 @@ namespace SvetskiResursi
                 if (listView1.Items[i].Text.Equals(trazeni))
                 {
                     listView1.Items.Clear();
+                    fOz.Text = "";
+                    fIme.Text = "";
+                    fTip.Text = "";
+                    prikazIkonice.BackgroundImage = null;
                     foreach (KeyValuePair<ListViewItem, string> slvi in lista_tipova)
                     {
 
@@ -673,54 +654,68 @@ namespace SvetskiResursi
             }
         }
 
-        PictureBox glob_pb;
+      
 
         public void AddContextMenuAndItems(PictureBox pb)
         {
-            glob_pb = pb;
             ContextMenu mnuContextMenu = new ContextMenu();
             pb.ContextMenu = mnuContextMenu;
             MenuItem mnuItem = new MenuItem();
             mnuItem.Text = "Izbriši";
             mnuContextMenu.MenuItems.Add(mnuItem);
             mnuItem.Click += new System.EventHandler(this.mnuItem_Click);
-            
+           
         }
 
         private void mnuItem_Click(object sender, System.EventArgs e)
         {
-            List<Simbol> lss = new List<Simbol>();
-            //iscitajSimbol(ls);
-            using (Stream stream = File.Open("Simboli.bin", FileMode.Open))
+            Point cursorPos = this.PointToClient(Cursor.Position);
+            
+            List<Resurs> lss = new List<Resurs>();
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 var formatter = new BinaryFormatter();
                 while (stream.Position != stream.Length)
-                    lss.Add((Simbol)formatter.Deserialize(stream));
-                stream.Close();
-            }
-                
-                foreach (Simbol s in lss) { 
-                    foreach(KeyValuePair<PictureBox, string> pbs in dPBr){
-                        if (glob_pb == pbs.Key) 
-                            lss.Remove(s);
-                        break;
-                    }
+                    lss.Add((Resurs)formatter.Deserialize(stream));
 
+                stream.SetLength(0);
 
-                }
-
-                foreach (Simbol s in lss)
+                foreach (Resurs s in lss)
                 {
-                    using (Stream stream = new FileStream("Simboli.bin", FileMode.Append, FileAccess.Write, FileShare.None))
+                    foreach (PictureBox pb in glob_pb)
                     {
-                        var formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, s);
-                        stream.Close();
+                        Rectangle rec = new Rectangle(pb.Location.X+279, pb.Location.Y+54, 80, 80);
+                        if (rec.Contains(cursorPos))
+                        {
+                            s.lokacija = new Point { X = -100, Y = -100 };
+                            pb.Location = new Point { X = -100, Y = -100 };
+                        }
                     }
+
                 }
 
+                foreach (Resurs tr in lss)
+                {
+                    formatter.Serialize(stream, tr);
+                }
+                stream.Close();
+
                 
-            }           
-        }
-       
-    }
+                
+               
+            }        
+      }
+
+        /*private void pbMape_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point pt = new Point(e.X, e.Y);
+            selektovano =(PictureBox) pbMape.GetChildAtPoint(pt);
+            if (selection != null)
+            {
+                Bitmap img = (Bitmap)selektovano.BackgroundImage;
+                pbMape.DoDragDrop(img, DragDropEffects.Copy);
+            }
+        }   */
+        
+   }      
+}

@@ -62,7 +62,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Simbol.cs" />
     <Compile Include="Etiketa.cs" />
     <Compile Include="Resurs.cs" />
     <Compile Include="tabelaEtiketa.cs">

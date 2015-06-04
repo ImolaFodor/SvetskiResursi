@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Drawing;
 
 namespace SvetskiResursi
 {
@@ -37,11 +38,14 @@ namespace SvetskiResursi
 
         public List<string> oz_etiketa { get; set; }
 
+        public Point lokacija { get; set; }
+
         public Resurs() {
             ime = " ";
             oznaka = " ";
             tipResursa = " ";
             opis = " ";
+            lokacija = new Point { X = -100, Y = -100 };
            // oz_etiketa = "nema tagova";
 
         

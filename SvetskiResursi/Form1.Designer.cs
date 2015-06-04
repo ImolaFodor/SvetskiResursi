@@ -85,6 +85,7 @@ namespace SvetskiResursi
             this.pbMape.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             this.pbMape.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragEnter);
             this.pbMape.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbMape_MouseClick);
+           // this.pbMape.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbMape_MouseDown);
             // 
             // contextMenuStrip1
             // 
