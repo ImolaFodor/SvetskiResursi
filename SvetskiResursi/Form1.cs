@@ -128,6 +128,7 @@ namespace SvetskiResursi
                 pb.BackgroundImageLayout = ImageLayout.Stretch;
                 pb.Height = pb.Width = 45;
                 pb.BringToFront();
+                pb.MouseDown += new MouseEventHandler(pb_Click);
                 
 
                 List<Resurs> Lr = new List<Resurs>();
@@ -341,6 +342,7 @@ namespace SvetskiResursi
                     pb.BackgroundImage = sim.ikonica;
                     pb.BackgroundImageLayout = ImageLayout.Stretch;
                     pb.Height = pb.Width = 45;
+                    pb.MouseDown += new MouseEventHandler(pb_Click); 
 
                     Point nije_na_mapi=new Point{X=-100, Y=-100};
                     if (sim.lokacija != nije_na_mapi)
@@ -644,15 +646,7 @@ namespace SvetskiResursi
             RefreshList();
         }
 
-        private void pbMape_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                //Show za kontekstni meni radi bilo gde na ekranu. Stoga, pretvaramo naše koordinate
-                //koje su u koordinatnom  sistemu  kontrole u koordinatni sistem prozora
-                //brisiSimbol.Show(this.PointToScreen(e.Location));
-            }
-        }
+       
 
       
 
@@ -705,6 +699,45 @@ namespace SvetskiResursi
                
             }        
       }
+
+       /* private void pbMape_MouseClick(object sender, MouseEventArgs e)
+        {
+            Point cursorPos = this.PointToClient(Cursor.Position);
+            
+                for (int i = 0; i < listView1.Items.Count; i++)
+                {
+                    foreach (PictureBox pb in glob_pb)
+                    {
+                        Rectangle rec = new Rectangle(pb.Location.X + 279, pb.Location.Y + 54, 80, 80);
+                        if (rec.Contains(cursorPos))
+                        {
+                            listView1.Items[i].Selected = true;
+                        }
+                    }
+                }
+            
+        }*/
+
+        private void pb_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].Selected = false;
+            }
+            Point cursorPos = this.PointToClient(Cursor.Position);
+
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                foreach (KeyValuePair<PictureBox, string> pb in dPBi)
+                {
+                    Rectangle rec = new Rectangle(pb.Key.Location.X + 279, pb.Key.Location.Y + 54, 80, 80);
+                    if (rec.Contains(cursorPos) && pb.Value==listView1.Items[i].Text)
+                    {
+                        listView1.Items[i].Selected = true;
+                    }
+                }
+            }
+        }
 
         /*private void pbMape_MouseDown(object sender, MouseEventArgs e)
         {
