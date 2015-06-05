@@ -122,7 +122,7 @@ namespace SvetskiResursi
                 pb.Location = po;
 
                 ListViewItem dragitem = selection;
-                pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
+                //pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
                 pb.Tag = dragitem;
 
                 pb.BackgroundImageLayout = ImageLayout.Stretch;
@@ -147,6 +147,12 @@ namespace SvetskiResursi
 
                     foreach (Resurs r in Lr)
                     {
+                        for (int i = 0; i < listView1.Items.Count; i++)
+                        {
+                            if (r.ime == listView1.Items[i].Text)
+                                pb.BackgroundImage = r.ikonica;
+                        }
+
                         if (r.ime.Equals(dragitem.Text))
                         {
                             r.lokacija = pb.Location;
@@ -477,13 +483,14 @@ namespace SvetskiResursi
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<Resurs> re= new List<Resurs>();
-                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+                /*using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 var formatter = new BinaryFormatter();
                 while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
                     re.Add((Resurs)formatter.Deserialize(stream));
                 stream.Close();
-            }
+            }*/
+            iscitajResurs(re);
 
                 for(int i=0; i<listView1.Items.Count; i++){
                     if (listView1.Items[i].Selected)
@@ -501,6 +508,11 @@ namespace SvetskiResursi
                             }
                             else
                             {
+
+                                foreach (KeyValuePair<PictureBox, string> spb in dPBtr)
+                                {
+                                    spb.Key.BorderStyle = BorderStyle.None;
+                                }
                                 fOz.Text = "";
                                 fIme.Text = "";
                                 fTip.Text = "";
