@@ -23,6 +23,7 @@ namespace SvetskiResursi
         private TabelaPrikaza tabelaPrikaza;
         private bool formIsValid = true;
         private bool vecPostoji = false;
+        private bool cenaOk = true;
         private int i = 0;
 
         Resurs resur;
@@ -159,11 +160,7 @@ namespace SvetskiResursi
             resur = new Resurs();
            
             List<tipResursa> tr = new List<tipResursa>();
-            TabelaPrikaza tbl = new TabelaPrikaza(form
-                
-                
-                
- );
+            TabelaPrikaza tbl = new TabelaPrikaza(form);
 
             if (!TabelaPrikaza.pritusnutoIzmeni)
             {
@@ -201,12 +198,13 @@ namespace SvetskiResursi
                     obavTip.Text = "";
                 }
 
-                if (!oznaka.Text.Equals("") && vecPostoji == false && !ime.Text.Equals("") && !comboTipResursa.Text.Equals(""))
+                if (!oznaka.Text.Equals("") && vecPostoji == false && !ime.Text.Equals("") && !comboTipResursa.Text.Equals("") && cenaOk)
                     formIsValid = true;
                 else
                     formIsValid = false;
 
-                //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali, ide dalja provera
+                //kad se klikne ok, prvo se u promenjive smestaju sve unete vrednosti, a ako neka obavezna vred. fali,
+                //ide dalja provera
                 res.oznaka = oznaka.Text;
                 res.ime = ime.Text;
                 res.opis = opis.Text;
@@ -248,11 +246,41 @@ namespace SvetskiResursi
             }
             else
             {
-                TabelaPrikaza.pritusnutoIzmeni = false;
+                
                 List<Resurs> Lr = new List<Resurs>();
 
                 iscitajTipResursa(tr);
+ 
+                if (ime.Text.Equals(""))
+                {
+                    obavIme.Text = "Ime je obavezno!";
+                    obavIme.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else
+                {
+                    obavIme.Text = "";
+                }
 
+                if (comboTipResursa.Text.Equals(""))
+                {
+                    obavTip.Text = "Tip je obavezan!";
+                    obavTip.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else
+                {
+                    obavTip.Text = "";
+                }
+
+                if (!ime.Text.Equals("") && !comboTipResursa.Text.Equals("") && cenaOk)
+                    formIsValid = true;
+                else
+                    formIsValid = false;
+
+                if (formIsValid)
+                {
+                    TabelaPrikaza.pritusnutoIzmeni = false;
                 using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
                 {
                     var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
@@ -317,12 +345,10 @@ namespace SvetskiResursi
                 }
 
                 tbl.ocisti_filter();
+                
                 this.Close();
+                }
             }
-
-            //form.RefreshList();
-            
-
         }
     
         private void nTip_Click(object sender, EventArgs e)
@@ -403,13 +429,27 @@ namespace SvetskiResursi
 
         private void cen_TextChanged(object sender, EventArgs e)
         {
-          /*  ++i;
-            Regex rx_cena = new Regex(@"^\d$");
-            if (!rx_cena.IsMatch(cen.Text, i) && cen.Text != "")
+            decimal d;
+            if (!decimal.TryParse(cen.Text, out d))
             {
+                //Error
                 lbValCene.Text = "Cena samo u brojevima!";
                 lbValCene.ForeColor = Color.Red;
-            }*/
+                cenaOk = false;
+            }
+            else
+            {
+                lbValCene.Text = "";
+                cenaOk = true;
+            }
+
+            if (cen.Text.Equals(""))
+            {
+                lbValCene.Text = "";
+                cenaOk = true;
+            }
+
+            
         }
     }
 }
