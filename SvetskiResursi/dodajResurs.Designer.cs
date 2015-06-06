@@ -78,6 +78,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
             this.nEtik = new System.Windows.Forms.Button();
+            this.lbValCene = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
@@ -256,7 +257,7 @@
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(114, 157);
+            this.label11.Location = new System.Drawing.Point(114, 175);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(140, 18);
@@ -290,12 +291,13 @@
             this.cen.Size = new System.Drawing.Size(164, 24);
             this.cen.TabIndex = 22;
             this.cena.SetToolTip(this.cen, "U dolarima");
+            this.cen.TextChanged += new System.EventHandler(this.cen_TextChanged);
             // 
             // vreme
             // 
             this.vreme.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.vreme.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.vreme.Location = new System.Drawing.Point(279, 151);
+            this.vreme.Location = new System.Drawing.Point(279, 172);
             this.vreme.Margin = new System.Windows.Forms.Padding(4);
             this.vreme.Name = "vreme";
             this.vreme.Size = new System.Drawing.Size(164, 24);
@@ -316,7 +318,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(114, 114);
+            this.label12.Location = new System.Drawing.Point(114, 133);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(97, 36);
@@ -331,7 +333,7 @@
             "Redak",
             "Cest",
             "Univerzalan"});
-            this.frPon.Location = new System.Drawing.Point(279, 114);
+            this.frPon.Location = new System.Drawing.Point(279, 135);
             this.frPon.Margin = new System.Windows.Forms.Padding(4);
             this.frPon.Name = "frPon";
             this.frPon.Size = new System.Drawing.Size(164, 26);
@@ -548,6 +550,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lbValCene);
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.panel1);
@@ -622,6 +625,15 @@
             this.nEtik.Text = "Nova etiketa";
             this.nEtik.UseVisualStyleBackColor = true;
             this.nEtik.Click += new System.EventHandler(this.nEtik_Click);
+            // 
+            // lbValCene
+            // 
+            this.lbValCene.AutoSize = true;
+            this.lbValCene.Location = new System.Drawing.Point(276, 110);
+            this.lbValCene.Name = "lbValCene";
+            this.lbValCene.Size = new System.Drawing.Size(58, 18);
+            this.lbValCene.TabIndex = 45;
+            this.lbValCene.Text = "          ";
             // 
             // DodajResurs
             // 
@@ -712,6 +724,7 @@
         public System.Windows.Forms.Label obavTip;
         public System.Windows.Forms.Label obavIme;
         public System.Windows.Forms.Label obavOZ;
+        private System.Windows.Forms.Label lbValCene;
     }
 }
 

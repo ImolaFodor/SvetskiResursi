@@ -329,30 +329,59 @@ namespace SvetskiResursi
             dataGridView1.ClearSelection();
             dataGridView1.Rows.Clear();
 
-            for (int i = 0; i < Lr.Count(); i++)
-                if (Lr.ElementAt(i).oznaka.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).oznaka.Equals(cbFilter.Text)) // ||
-                   // Lr.ElementAt(i).ime.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).ime.Equals(cbFilter.Text))
-                {
-
-                    upis(Lr.ElementAt(i),dataGridView1);
-                   
-                    if(!cbFilter.Items.Contains(Lr.ElementAt(i).oznaka))
-                        cbFilter.Items.Add(Lr.ElementAt(i).oznaka);
-                    dataGridView1.Rows[0].Selected = true;
-                    dataGridView1.CurrentCell = dataGridView1[0, 0];
-                   
-                }
-                else
-                    if (cbFilter.Text.Equals(""))
+            if (rbIme.Checked)
+            {
+                for (int i = 0; i < Lr.Count(); i++)
+                    if (Lr.ElementAt(i).ime.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).ime.Equals(cbFilter.Text))
                     {
-                        dataGridView1.Rows.Clear();
-                        
-                        foreach (Resurs resurs in Lr)
-                        {
-                            upis(resurs,dataGridView1);
-                            cbFilter.Items.Remove(resurs.oznaka);
-                        }
+
+                        upis(Lr.ElementAt(i), dataGridView1);
+
+                        if (!cbFilter.Items.Contains(Lr.ElementAt(i).ime))
+                            cbFilter.Items.Add(Lr.ElementAt(i).ime);
+                        dataGridView1.Rows[0].Selected = true;
+                        dataGridView1.CurrentCell = dataGridView1[0, 0];
+
                     }
+                    else
+                        if (cbFilter.Text.Equals(""))
+                        {
+                            dataGridView1.Rows.Clear();
+
+                            foreach (Resurs resurs in Lr)
+                            {
+                                upis(resurs, dataGridView1);
+                                cbFilter.Items.Remove(resurs.ime);
+                            }
+                        }
+            }
+            else if (rbTip.Checked)
+            {
+                for (int i = 0; i < Lr.Count(); i++)
+                    if (Lr.ElementAt(i).tipResursa.Substring(0, 1).Equals(cbFilter.Text) || Lr.ElementAt(i).tipResursa.Equals(cbFilter.Text))
+                    {
+
+                        upis(Lr.ElementAt(i), dataGridView1);
+
+                        if (!cbFilter.Items.Contains(Lr.ElementAt(i).tipResursa))
+                            cbFilter.Items.Add(Lr.ElementAt(i).tipResursa);
+                        dataGridView1.Rows[0].Selected = true;
+                        dataGridView1.CurrentCell = dataGridView1[0, 0];
+
+                    }
+                    else
+                        if (cbFilter.Text.Equals(""))
+                        {
+                            dataGridView1.Rows.Clear();
+
+                            foreach (Resurs resurs in Lr)
+                            {
+                                upis(resurs, dataGridView1);
+                                cbFilter.Items.Remove(resurs.tipResursa);
+                            }
+                        }
+            }
+                        
         }
 
 
@@ -360,6 +389,16 @@ namespace SvetskiResursi
         {
             ToolTip tp = new ToolTip();
             tp.SetToolTip(ttOp, ttOp.Text);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         }

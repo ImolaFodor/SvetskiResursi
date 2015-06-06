@@ -62,6 +62,8 @@
             this.tbTrazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.gbPretrage = new System.Windows.Forms.GroupBox();
+            this.rbTip = new System.Windows.Forms.RadioButton();
+            this.rbIme = new System.Windows.Forms.RadioButton();
             this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,8 +72,6 @@
             this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -96,14 +96,15 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(984, 215);
+            this.dataGridView1.Size = new System.Drawing.Size(997, 215);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // tblD
             // 
             this.tblD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblD.Location = new System.Drawing.Point(1013, 124);
+            this.tblD.Location = new System.Drawing.Point(1037, 78);
             this.tblD.Margin = new System.Windows.Forms.Padding(4);
             this.tblD.Name = "tblD";
             this.tblD.Size = new System.Drawing.Size(112, 32);
@@ -115,7 +116,7 @@
             // tblI
             // 
             this.tblI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblI.Location = new System.Drawing.Point(1013, 54);
+            this.tblI.Location = new System.Drawing.Point(1037, 23);
             this.tblI.Margin = new System.Windows.Forms.Padding(4);
             this.tblI.Name = "tblI";
             this.tblI.Size = new System.Drawing.Size(112, 32);
@@ -127,7 +128,7 @@
             // tblB
             // 
             this.tblB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblB.Location = new System.Drawing.Point(1013, 196);
+            this.tblB.Location = new System.Drawing.Point(1037, 135);
             this.tblB.Margin = new System.Windows.Forms.Padding(4);
             this.tblB.Name = "tblB";
             this.tblB.Size = new System.Drawing.Size(112, 32);
@@ -140,9 +141,9 @@
             // 
             this.tabIm.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tabIm.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tabIm.Location = new System.Drawing.Point(26, 40);
+            this.tabIm.Location = new System.Drawing.Point(19, 27);
             this.tabIm.Name = "tabIm";
-            this.tabIm.Size = new System.Drawing.Size(113, 108);
+            this.tabIm.Size = new System.Drawing.Size(125, 118);
             this.tabIm.TabIndex = 4;
             this.tabIm.TabStop = false;
             // 
@@ -248,7 +249,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(1013, 450);
+            this.button1.Location = new System.Drawing.Point(1037, 442);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 32);
@@ -259,6 +260,8 @@
             // 
             // gbDet
             // 
+            this.gbDet.BackColor = System.Drawing.Color.DarkKhaki;
+            this.gbDet.Controls.Add(this.tabIm);
             this.gbDet.Controls.Add(this.label1);
             this.gbDet.Controls.Add(this.ttEtik);
             this.gbDet.Controls.Add(this.ttStv);
@@ -272,7 +275,6 @@
             this.gbDet.Controls.Add(this.ttTip);
             this.gbDet.Controls.Add(this.ttIm);
             this.gbDet.Controls.Add(this.ttOz);
-            this.gbDet.Controls.Add(this.tabIm);
             this.gbDet.Controls.Add(this.tabOz);
             this.gbDet.Controls.Add(this.tbIme);
             this.gbDet.Controls.Add(this.label11);
@@ -285,7 +287,7 @@
             this.gbDet.Controls.Add(this.label6);
             this.gbDet.Controls.Add(this.label5);
             this.gbDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbDet.Location = new System.Drawing.Point(193, 253);
+            this.gbDet.Location = new System.Drawing.Point(227, 253);
             this.gbDet.Name = "gbDet";
             this.gbDet.Size = new System.Drawing.Size(932, 165);
             this.gbDet.TabIndex = 29;
@@ -415,9 +417,9 @@
             // 
             // tbTrazi
             // 
-            this.tbTrazi.Location = new System.Drawing.Point(6, 23);
+            this.tbTrazi.Location = new System.Drawing.Point(28, 34);
             this.tbTrazi.Name = "tbTrazi";
-            this.tbTrazi.Size = new System.Drawing.Size(100, 24);
+            this.tbTrazi.Size = new System.Drawing.Size(105, 24);
             this.tbTrazi.TabIndex = 31;
             this.tbTrazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbTrazi_MouseClick);
             this.tbTrazi.TextChanged += new System.EventHandler(this.tbTrazi_TextChanged);
@@ -425,43 +427,69 @@
             // cbFilter
             // 
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(8, 127);
+            this.cbFilter.Location = new System.Drawing.Point(28, 116);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(105, 26);
             this.cbFilter.TabIndex = 33;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
             // gbPretrage
             // 
-            this.gbPretrage.Controls.Add(this.radioButton2);
-            this.gbPretrage.Controls.Add(this.radioButton1);
+            this.gbPretrage.BackColor = System.Drawing.Color.DarkKhaki;
+            this.gbPretrage.Controls.Add(this.rbTip);
+            this.gbPretrage.Controls.Add(this.rbIme);
             this.gbPretrage.Controls.Add(this.tbTrazi);
             this.gbPretrage.Controls.Add(this.cbFilter);
             this.gbPretrage.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbPretrage.Location = new System.Drawing.Point(12, 253);
             this.gbPretrage.Name = "gbPretrage";
-            this.gbPretrage.Size = new System.Drawing.Size(175, 165);
+            this.gbPretrage.Size = new System.Drawing.Size(209, 165);
             this.gbPretrage.TabIndex = 34;
             this.gbPretrage.TabStop = false;
             this.gbPretrage.Text = "Pretrage";
+            // 
+            // rbTip
+            // 
+            this.rbTip.AutoSize = true;
+            this.rbTip.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTip.Location = new System.Drawing.Point(6, 81);
+            this.rbTip.Name = "rbTip";
+            this.rbTip.Size = new System.Drawing.Size(84, 22);
+            this.rbTip.TabIndex = 37;
+            this.rbTip.TabStop = true;
+            this.rbTip.Text = "Po Tipu";
+            this.rbTip.UseVisualStyleBackColor = true;
+            // 
+            // rbIme
+            // 
+            this.rbIme.AutoSize = true;
+            this.rbIme.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbIme.Location = new System.Drawing.Point(106, 80);
+            this.rbIme.Name = "rbIme";
+            this.rbIme.Size = new System.Drawing.Size(97, 22);
+            this.rbIme.TabIndex = 36;
+            this.rbIme.TabStop = true;
+            this.rbIme.Text = "Po Imenu";
+            this.rbIme.UseVisualStyleBackColor = true;
             // 
             // Oznaka
             // 
             this.Oznaka.HeaderText = "Oznaka";
             this.Oznaka.Name = "Oznaka";
-            this.Oznaka.Width = 115;
+            this.Oznaka.Width = 118;
             // 
             // ime
             // 
             this.ime.HeaderText = "Ime";
             this.ime.Name = "ime";
-            this.ime.Width = 115;
+            this.ime.Width = 118;
             // 
             // tip
             // 
             this.tip.HeaderText = "Tip";
             this.tip.Name = "tip";
-            this.tip.Width = 115;
+            this.tip.Width = 118;
             // 
             // opis
             // 
@@ -473,53 +501,31 @@
             // 
             this.jednica_mere.HeaderText = "Jedinica mere";
             this.jednica_mere.Name = "jednica_mere";
-            this.jednica_mere.Width = 115;
+            this.jednica_mere.Width = 118;
             // 
             // Cena
             // 
             this.Cena.HeaderText = "Cena";
             this.Cena.Name = "Cena";
-            this.Cena.Width = 115;
+            this.Cena.Width = 118;
             // 
             // datum
             // 
             this.datum.HeaderText = "Datum";
             this.datum.Name = "datum";
-            this.datum.Width = 115;
+            this.datum.Width = 118;
             // 
             // Etiketa
             // 
             this.Etiketa.HeaderText = "Etiketa";
             this.Etiketa.Name = "Etiketa";
-            this.Etiketa.Width = 115;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 69);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(97, 22);
-            this.radioButton1.TabIndex = 36;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Po Imenu";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 97);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(84, 22);
-            this.radioButton2.TabIndex = 37;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Po Tipu";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Etiketa.Width = 118;
             // 
             // TabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 495);
+            this.ClientSize = new System.Drawing.Size(1165, 487);
             this.Controls.Add(this.gbPretrage);
             this.Controls.Add(this.gbDet);
             this.Controls.Add(this.button1);
@@ -580,6 +586,8 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox gbPretrage;
+        private System.Windows.Forms.RadioButton rbTip;
+        private System.Windows.Forms.RadioButton rbIme;
         private System.Windows.Forms.DataGridViewTextBoxColumn Oznaka;
         private System.Windows.Forms.DataGridViewTextBoxColumn ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn tip;
@@ -588,8 +596,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etiketa;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
 
     }
 }

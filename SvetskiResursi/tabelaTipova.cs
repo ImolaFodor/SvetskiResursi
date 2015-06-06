@@ -56,6 +56,20 @@ namespace SvetskiResursi
             }
         }
 
+        private void iscitajResurs(List<Resurs> Lr)
+        {
+
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+
+                while (stream.Position != stream.Length)
+                    Lr.Add(((Resurs)formatter.Deserialize(stream)));
+
+                stream.Close();
+            }
+        }
+
         public static void upis(tipResursa tip, DataGridView dgv)
         {
 
@@ -67,6 +81,8 @@ namespace SvetskiResursi
         private void Brisi_Click(object sender, EventArgs e)
         {
             UpitBrisanje bris = new UpitBrisanje();
+            List<Resurs> res = new List<Resurs>();
+
             if (bris.ShowDialog() == DialogResult.OK)
             {
                 List<tipResursa> Lr = new List<tipResursa>();
@@ -88,6 +104,31 @@ namespace SvetskiResursi
                     {
                         if (tip.oznaka.Equals(ozDT.Text))
                         {
+                            using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
+                            {
+                                var formatter1 = new BinaryFormatter();
+
+                                while (stream1.Position != stream1.Length)
+                                    res.Add(((Resurs)formatter1.Deserialize(stream1)));
+
+                                stream1.SetLength(0);
+
+                                for (int i = 0; i < res.Count; i++)
+                                {
+                                    if (res[i].tipResursa.Equals(tip.oznaka))
+                                    {
+                                        res.Remove(res[i]);
+                                        i = -1;
+                                    }
+                                }
+
+                                    foreach (Resurs r in res)
+                                        formatter1.Serialize(stream1, r);
+
+                                stream1.Close();
+                            }
+                           
+
                             Lr.Remove(tip);
                             break;
                         }
@@ -267,6 +308,11 @@ namespace SvetskiResursi
         {
             ToolTip tp = new ToolTip();
             tp.SetToolTip(opDT, opDT.Text);
+
+        }
+
+        private void imDT_Click(object sender, EventArgs e)
+        {
 
         }
     }

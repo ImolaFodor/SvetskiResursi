@@ -23,6 +23,7 @@ namespace SvetskiResursi
         private TabelaPrikaza tabelaPrikaza;
         private bool formIsValid = true;
         private bool vecPostoji = false;
+        private int i = 0;
 
         Resurs resur;
         Dictionary<object, bool> errorRepeat = new Dictionary<object, bool>();
@@ -398,6 +399,17 @@ namespace SvetskiResursi
         private void comboTipResursa_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cen_TextChanged(object sender, EventArgs e)
+        {
+          /*  ++i;
+            Regex rx_cena = new Regex(@"^\d$");
+            if (!rx_cena.IsMatch(cen.Text, i) && cen.Text != "")
+            {
+                lbValCene.Text = "Cena samo u brojevima!";
+                lbValCene.ForeColor = Color.Red;
+            }*/
         }
     }
 }
