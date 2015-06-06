@@ -138,53 +138,81 @@ namespace SvetskiResursi
             }
             else
             {
-                tabelaTipova.pritisnutoIzmeni = false;
-
                 List<tipResursa> Lr = new List<tipResursa>();
 
-                using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
+                if (ime_tip.Text.Equals(""))
                 {
-                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    obavIm.Text = "Ime je obavezno!";
+                    obavIm.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else
+                {
+                    obavIm.Text = "";
+                }
 
-                    while (stream.Position != stream.Length)
+                if (ikonica.BackgroundImage == null)
+                {
+                    obavSl.Text = "Slika je obavezna!";
+                    obavSl.ForeColor = Color.Red;
+                    formIsValid = false;
+                }
+                else
+                {
+                    obavSl.Text = "";
+                }
+
+                if (!ime_tip.Text.Equals("") && ikonica.BackgroundImage != null)
+                    formIsValid = true;
+                else
+                    formIsValid = false;
+
+                if (formIsValid)
+                {
+                    tabelaTipova.pritisnutoIzmeni = false;
+                    using (Stream stream = File.Open("Tipovi.bin", FileMode.Open))
                     {
-                        Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+                        var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-                    }
-
-                    stream.SetLength(0);
-
-                    //sada u LISTI trazim zeljeni tip i menjam ga.
-                    foreach (tipResursa tr in Lr)
-                    {
-                        if (tr.oznaka.Equals(oznaka_tip.Text))
+                        while (stream.Position != stream.Length)
                         {
+                            Lr.Add(((tipResursa)formatter.Deserialize(stream)));
+
+                        }
+
+                        stream.SetLength(0);
+
+                        //sada u LISTI trazim zeljeni tip i menjam ga.
+                        foreach (tipResursa tr in Lr)
+                        {
+                            if (tr.oznaka.Equals(oznaka_tip.Text))
+                            {
                                 tr.ime = ime_tip.Text;
                                 tr.opis = opis_tip.Text;
                                 tr.ikonica = ikonica.BackgroundImage;
+                            }
                         }
+
+                        tbTipova.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
+                        foreach (tipResursa tip in Lr)
+                        {
+                            tabelaTipova.upis(tip, tbTipova.dataGridView1);
+                        }
+
+                        foreach (tipResursa tip in Lr)
+                        {
+                            formatter.Serialize(stream, tip);
+                        }
+
+                        stream.Close();
                     }
 
-                    tbTipova.dataGridView1.Rows.Clear(); //brisanje prethodnog sadrzaja, zbog novog upisa
-                    foreach (tipResursa tip in Lr)
-                    {
-                        tabelaTipova.upis(tip, tbTipova.dataGridView1);
-                    }
+                    tbtp.ocisti_filter();
 
-                    foreach (tipResursa tip in Lr)
-                    {
-                        formatter.Serialize(stream, tip);
-                    }
-
-                    stream.Close();
+                    this.Close();
                 }
-
-                tbtp.ocisti_filter();
-                
-                this.Close();
-
             }
-            //form.RefreshList();
+            
         }
 
         private void oznaka_tip_TextChanged(object sender, EventArgs e)

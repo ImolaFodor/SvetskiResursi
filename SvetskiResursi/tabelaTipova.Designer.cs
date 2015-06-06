@@ -114,26 +114,26 @@
             // 
             this.imeDT.AutoSize = true;
             this.imeDT.Location = new System.Drawing.Point(197, 66);
-            this.imeDT.MaximumSize = new System.Drawing.Size(100, 100);
+            this.imeDT.MaximumSize = new System.Drawing.Size(70, 100);
             this.imeDT.Name = "imeDT";
-            this.imeDT.Size = new System.Drawing.Size(58, 18);
+            this.imeDT.Size = new System.Drawing.Size(48, 18);
             this.imeDT.TabIndex = 9;
-            this.imeDT.Text = "          ";
+            this.imeDT.Text = "        ";
             // 
             // ozDT
             // 
             this.ozDT.AutoSize = true;
-            this.ozDT.Location = new System.Drawing.Point(319, 21);
-            this.ozDT.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ozDT.Location = new System.Drawing.Point(197, 21);
+            this.ozDT.MaximumSize = new System.Drawing.Size(50, 100);
             this.ozDT.Name = "ozDT";
-            this.ozDT.Size = new System.Drawing.Size(58, 18);
+            this.ozDT.Size = new System.Drawing.Size(38, 18);
             this.ozDT.TabIndex = 8;
-            this.ozDT.Text = "          ";
+            this.ozDT.Text = "      ";
             // 
             // opDT
             // 
             this.opDT.AutoSize = true;
-            this.opDT.Location = new System.Drawing.Point(197, 21);
+            this.opDT.Location = new System.Drawing.Point(319, 21);
             this.opDT.MaximumSize = new System.Drawing.Size(100, 100);
             this.opDT.Name = "opDT";
             this.opDT.Size = new System.Drawing.Size(58, 18);
