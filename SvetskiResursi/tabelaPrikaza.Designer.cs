@@ -28,7 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TabelaPrikaza));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblD = new System.Windows.Forms.Button();
             this.tblI = new System.Windows.Forms.Button();
             this.tblB = new System.Windows.Forms.Button();
@@ -64,14 +73,6 @@
             this.gbPretrage = new System.Windows.Forms.GroupBox();
             this.rbTip = new System.Windows.Forms.RadioButton();
             this.rbIme = new System.Windows.Forms.RadioButton();
-            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jednica_mere = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Etiketa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -100,6 +101,54 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Oznaka
+            // 
+            this.Oznaka.HeaderText = "Oznaka";
+            this.Oznaka.Name = "Oznaka";
+            this.Oznaka.Width = 118;
+            // 
+            // ime
+            // 
+            this.ime.HeaderText = "Ime";
+            this.ime.Name = "ime";
+            this.ime.Width = 118;
+            // 
+            // tip
+            // 
+            this.tip.HeaderText = "Tip";
+            this.tip.Name = "tip";
+            this.tip.Width = 118;
+            // 
+            // opis
+            // 
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.Width = 130;
+            // 
+            // jednica_mere
+            // 
+            this.jednica_mere.HeaderText = "Jedinica mere";
+            this.jednica_mere.Name = "jednica_mere";
+            this.jednica_mere.Width = 118;
+            // 
+            // Cena
+            // 
+            this.Cena.HeaderText = "Cena";
+            this.Cena.Name = "Cena";
+            this.Cena.Width = 118;
+            // 
+            // datum
+            // 
+            this.datum.HeaderText = "Datum";
+            this.datum.Name = "datum";
+            this.datum.Width = 118;
+            // 
+            // Etiketa
+            // 
+            this.Etiketa.HeaderText = "Etiketa";
+            this.Etiketa.Name = "Etiketa";
+            this.Etiketa.Width = 118;
             // 
             // tblD
             // 
@@ -473,54 +522,6 @@
             this.rbIme.Text = "Po Imenu";
             this.rbIme.UseVisualStyleBackColor = true;
             // 
-            // Oznaka
-            // 
-            this.Oznaka.HeaderText = "Oznaka";
-            this.Oznaka.Name = "Oznaka";
-            this.Oznaka.Width = 118;
-            // 
-            // ime
-            // 
-            this.ime.HeaderText = "Ime";
-            this.ime.Name = "ime";
-            this.ime.Width = 118;
-            // 
-            // tip
-            // 
-            this.tip.HeaderText = "Tip";
-            this.tip.Name = "tip";
-            this.tip.Width = 118;
-            // 
-            // opis
-            // 
-            this.opis.HeaderText = "Opis";
-            this.opis.Name = "opis";
-            this.opis.Width = 130;
-            // 
-            // jednica_mere
-            // 
-            this.jednica_mere.HeaderText = "Jedinica mere";
-            this.jednica_mere.Name = "jednica_mere";
-            this.jednica_mere.Width = 118;
-            // 
-            // Cena
-            // 
-            this.Cena.HeaderText = "Cena";
-            this.Cena.Name = "Cena";
-            this.Cena.Width = 118;
-            // 
-            // datum
-            // 
-            this.datum.HeaderText = "Datum";
-            this.datum.Name = "datum";
-            this.datum.Width = 118;
-            // 
-            // Etiketa
-            // 
-            this.Etiketa.HeaderText = "Etiketa";
-            this.Etiketa.Name = "Etiketa";
-            this.Etiketa.Width = 118;
-            // 
             // TabelaPrikaza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -534,6 +535,7 @@
             this.Controls.Add(this.tblD);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TabelaPrikaza";

@@ -63,12 +63,15 @@ namespace SvetskiResursi
             this.filtriranjeTip = new System.Windows.Forms.ComboBox();
             this.brisiSimbol = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.izbrišiSimbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbMape)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prikazIkonice)).BeginInit();
             this.panel1.SuspendLayout();
             this.Detalji.SuspendLayout();
             this.brisiSimbol.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbMape
@@ -76,16 +79,14 @@ namespace SvetskiResursi
             this.pbMape.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pbMape.BackgroundImage")));
             this.pbMape.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbMape.ContextMenuStrip = this.contextMenuStrip1;
-            this.pbMape.Location = new System.Drawing.Point(0, 0);
+            this.pbMape.Location = new System.Drawing.Point(0, 11);
             this.pbMape.Name = "pbMape";
-            this.pbMape.Size = new System.Drawing.Size(1799, 1075);
+            this.pbMape.Size = new System.Drawing.Size(1799, 1064);
             this.pbMape.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbMape.TabIndex = 1;
             this.pbMape.TabStop = false;
-            //this.pbMape.Click += new System.EventHandler(this.pbMape_Click);
             this.pbMape.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             this.pbMape.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragEnter);
-           // this.pbMape.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbMape_MouseClick);
             // 
             // contextMenuStrip1
             // 
@@ -160,6 +161,7 @@ namespace SvetskiResursi
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resursiToolStripMenuItem,
@@ -253,9 +255,9 @@ namespace SvetskiResursi
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(19, 420);
+            this.textBox2.Location = new System.Drawing.Point(9, 23);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(113, 20);
+            this.textBox2.Size = new System.Drawing.Size(190, 24);
             this.textBox2.TabIndex = 15;
             this.textBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
             this.textBox2.TextChanged += new System.EventHandler(this.trazenje_TextChanged);
@@ -326,9 +328,9 @@ namespace SvetskiResursi
             // filtriranjeTip
             // 
             this.filtriranjeTip.FormattingEnabled = true;
-            this.filtriranjeTip.Location = new System.Drawing.Point(19, 377);
+            this.filtriranjeTip.Location = new System.Drawing.Point(90, 53);
             this.filtriranjeTip.Name = "filtriranjeTip";
-            this.filtriranjeTip.Size = new System.Drawing.Size(121, 21);
+            this.filtriranjeTip.Size = new System.Drawing.Size(109, 26);
             this.filtriranjeTip.TabIndex = 21;
             this.filtriranjeTip.TextChanged += new System.EventHandler(this.filtriranjeTip_TextChanged);
             this.filtriranjeTip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.filtriranjeTip_MouseClick);
@@ -346,15 +348,37 @@ namespace SvetskiResursi
             this.izbrišiSimbolToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.izbrišiSimbolToolStripMenuItem.Text = "Izbriši simbol";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(6, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 18);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Filtriranje";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.filtriranjeTip);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(19, 363);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(218, 83);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Pretrage";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1354, 700);
-            this.Controls.Add(this.filtriranjeTip);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Detalji);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -371,6 +395,8 @@ namespace SvetskiResursi
             this.Detalji.ResumeLayout(false);
             this.Detalji.PerformLayout();
             this.brisiSimbol.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,6 +433,8 @@ namespace SvetskiResursi
         private System.Windows.Forms.ComboBox filtriranjeTip;
         private System.Windows.Forms.ContextMenuStrip brisiSimbol;
         private System.Windows.Forms.ToolStripMenuItem izbrišiSimbolToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox1;
         
     }
 }

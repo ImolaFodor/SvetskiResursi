@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DodajResurs));
             this.oznaka = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ime = new System.Windows.Forms.TextBox();
@@ -73,12 +74,12 @@
             this.obavOZ = new System.Windows.Forms.Label();
             this.nTip = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lbValCene = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Vizualizacija = new System.Windows.Forms.GroupBox();
             this.nEtik = new System.Windows.Forms.Button();
-            this.lbValCene = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ikonica)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderOz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderIm)).BeginInit();
@@ -168,7 +169,7 @@
             // 
             this.opis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.opis.Location = new System.Drawing.Point(172, 204);
+            this.opis.Location = new System.Drawing.Point(172, 201);
             this.opis.Margin = new System.Windows.Forms.Padding(4);
             this.opis.Name = "opis";
             this.opis.Size = new System.Drawing.Size(221, 78);
@@ -564,10 +565,19 @@
             this.groupBox2.Controls.Add(this.vreme);
             this.groupBox2.Location = new System.Drawing.Point(16, 308);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1035, 196);
+            this.groupBox2.Size = new System.Drawing.Size(1035, 206);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalji";
+            // 
+            // lbValCene
+            // 
+            this.lbValCene.AutoSize = true;
+            this.lbValCene.Location = new System.Drawing.Point(276, 110);
+            this.lbValCene.Name = "lbValCene";
+            this.lbValCene.Size = new System.Drawing.Size(58, 18);
+            this.lbValCene.TabIndex = 45;
+            this.lbValCene.Text = "          ";
             // 
             // panel3
             // 
@@ -626,15 +636,6 @@
             this.nEtik.UseVisualStyleBackColor = true;
             this.nEtik.Click += new System.EventHandler(this.nEtik_Click);
             // 
-            // lbValCene
-            // 
-            this.lbValCene.AutoSize = true;
-            this.lbValCene.Location = new System.Drawing.Point(276, 110);
-            this.lbValCene.Name = "lbValCene";
-            this.lbValCene.Size = new System.Drawing.Size(58, 18);
-            this.lbValCene.TabIndex = 45;
-            this.lbValCene.Text = "          ";
-            // 
             // DodajResurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -647,6 +648,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "DodajResurs";

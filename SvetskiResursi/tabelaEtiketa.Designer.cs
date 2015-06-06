@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tabelaEtiketa));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detalji = new System.Windows.Forms.GroupBox();
             this.op = new System.Windows.Forms.Label();
             this.boja = new System.Windows.Forms.Label();
@@ -44,8 +47,6 @@
             this.trazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.detalji.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,6 +64,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(293, 150);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // oznaka
+            // 
+            this.oznaka.Frozen = true;
+            this.oznaka.HeaderText = "Oznaka";
+            this.oznaka.Name = "oznaka";
+            this.oznaka.Width = 125;
+            // 
+            // opis
+            // 
+            this.opis.Frozen = true;
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.opis.Width = 130;
             // 
             // detalji
             // 
@@ -226,22 +243,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pretrage";
             // 
-            // oznaka
-            // 
-            this.oznaka.Frozen = true;
-            this.oznaka.HeaderText = "Oznaka";
-            this.oznaka.Name = "oznaka";
-            this.oznaka.Width = 125;
-            // 
-            // opis
-            // 
-            this.opis.Frozen = true;
-            this.opis.HeaderText = "Opis";
-            this.opis.Name = "opis";
-            this.opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.opis.Width = 130;
-            // 
             // tabelaEtiketa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -255,6 +256,7 @@
             this.Controls.Add(this.detalji);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "tabelaEtiketa";

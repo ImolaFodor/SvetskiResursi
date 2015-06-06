@@ -32,6 +32,7 @@ namespace SvetskiResursi
 
         public DodajResurs(Form1 form1, TabelaPrikaza tabela)
         {
+            
             InitializeComponent();
 
             List<tipResursa> tr = new List<tipResursa>();
@@ -60,7 +61,13 @@ namespace SvetskiResursi
 
         public DodajResurs(Form1 form1)
         {
+
+
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
+            groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            groupBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            Vizualizacija.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             List<tipResursa> tr = new List<tipResursa>();
             List<Etiketa> et = new List<Etiketa>();
         

@@ -17,7 +17,10 @@ namespace SvetskiResursi
 
         public tabelaTipova()
         {
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
+            pretr.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
         }
 
         private void prikazUtabeli()

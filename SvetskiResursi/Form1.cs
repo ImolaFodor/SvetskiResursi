@@ -10,6 +10,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
+//using System.Windows.Media;
 
 namespace SvetskiResursi
 {
@@ -29,16 +30,24 @@ namespace SvetskiResursi
         public override bool AllowDrop { get; set; }
         public static Form1 instanca = null;
         List<PictureBox> glob_pb = new List<PictureBox>();
-        PictureBox selektovano;
 
         public Form1()
         {
+
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             initialize();
+            menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            Detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             instanca = this;
         }
 
         public void initialize()
         {
+            
             InitializeComponent();
             List<tipResursa> trr = new List<tipResursa>();
 
@@ -114,6 +123,8 @@ namespace SvetskiResursi
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
         {
+            List<Resurs> ri = new List<Resurs>();
+            iscitajResurs(ri);
             List<Etiketa> et = new List<Etiketa>();
             using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
             {
@@ -122,6 +133,20 @@ namespace SvetskiResursi
                     et.Add((Etiketa)formatter.Deserialize(stream));
                 stream.Close();
             }
+
+            /*foreach (Resurs r in ri)
+            {
+                foreach (Etiketa eti in et)
+                {
+                    for (int i = 0; i < r.oz_etiketa.Count; i++)
+                    {
+
+                        if (r.oz_etiketa.ElementAt(i) == eti.oznaka)
+                            pa.BackColor = eti.boja;
+                    }
+                }
+            }*/
+            
                 Panel pa = new Panel();
                 PictureBox pb = new PictureBox();
                 //pb.Parent = pbMape;

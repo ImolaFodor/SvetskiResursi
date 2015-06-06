@@ -25,6 +25,7 @@ namespace SvetskiResursi
 
         public dodajTipResursa(Form1 form1, tabelaTipova tb)
         {
+            
             InitializeComponent();
             this.tbTipova = tb;
             form = form1;
@@ -34,6 +35,7 @@ namespace SvetskiResursi
 
         public dodajTipResursa()
         {
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 

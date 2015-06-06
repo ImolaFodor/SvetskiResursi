@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tabelaTipova));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detalji = new System.Windows.Forms.GroupBox();
             this.imeDT = new System.Windows.Forms.Label();
             this.ozDT = new System.Windows.Forms.Label();
@@ -44,9 +48,6 @@
             this.trazi = new System.Windows.Forms.TextBox();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.pretr = new System.Windows.Forms.GroupBox();
-            this.Oznaka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.detalji.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imDT)).BeginInit();
@@ -66,6 +67,29 @@
             this.dataGridView1.Size = new System.Drawing.Size(378, 165);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // Oznaka
+            // 
+            this.Oznaka.Frozen = true;
+            this.Oznaka.HeaderText = "Oznaka";
+            this.Oznaka.Name = "Oznaka";
+            this.Oznaka.Width = 110;
+            // 
+            // Ime
+            // 
+            this.Ime.Frozen = true;
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.Width = 115;
+            // 
+            // Opis
+            // 
+            this.Opis.Frozen = true;
+            this.Opis.HeaderText = "Opis";
+            this.Opis.Name = "Opis";
+            this.Opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Opis.Width = 120;
             // 
             // detalji
             // 
@@ -237,29 +261,6 @@
             this.pretr.TabStop = false;
             this.pretr.Text = "Pretrage";
             // 
-            // Oznaka
-            // 
-            this.Oznaka.Frozen = true;
-            this.Oznaka.HeaderText = "Oznaka";
-            this.Oznaka.Name = "Oznaka";
-            this.Oznaka.Width = 110;
-            // 
-            // Ime
-            // 
-            this.Ime.Frozen = true;
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.Width = 115;
-            // 
-            // Opis
-            // 
-            this.Opis.Frozen = true;
-            this.Opis.HeaderText = "Opis";
-            this.Opis.Name = "Opis";
-            this.Opis.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Opis.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Opis.Width = 120;
-            // 
             // tabelaTipova
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -274,6 +275,7 @@
             this.Controls.Add(this.detalji);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "tabelaTipova";

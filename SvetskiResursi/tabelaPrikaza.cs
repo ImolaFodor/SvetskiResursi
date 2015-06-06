@@ -20,7 +20,10 @@ namespace SvetskiResursi
 
         public TabelaPrikaza(Form1 form1)   
         {
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
+            gbPretrage.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            gbDet.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             form = form1;
             
         }

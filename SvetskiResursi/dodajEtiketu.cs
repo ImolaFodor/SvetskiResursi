@@ -21,6 +21,7 @@ namespace SvetskiResursi
 
         public dodajEtiketu(tabelaEtiketa ebet)
         {
+            
             InitializeComponent();
             tbEtiketa = ebet;
 
@@ -28,6 +29,7 @@ namespace SvetskiResursi
 
         public dodajEtiketu()
         {
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
         }
 
