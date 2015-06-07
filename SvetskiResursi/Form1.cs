@@ -233,13 +233,14 @@ namespace SvetskiResursi
                         }
                     }
 
-                    AddContextMenuAndItems(pb);
+                    
                     glob_pb.Add(pb);
                     foreach (Resurs tr in Lr)
                     {
                         formatter1.Serialize(stream1, tr);
                     }
                     stream1.Close();
+                    AddContextMenuAndItemsDD(pb);
                 }
               
             }
@@ -809,7 +810,9 @@ namespace SvetskiResursi
                             Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
                             if (rec.Contains(cursorPos))
                             {
-                                pa[0].Location = new Point { X = -100, Y = -100 };
+                                for (int i = 0; i < pa.Count; i++)
+                                    pa[i].Location = new Point { X = -100, Y = -100 };
+                                
                                 s.lokacija = new Point { X = -100, Y = -100 };
                                 break;
                             }
@@ -858,15 +861,12 @@ namespace SvetskiResursi
                 {
                     foreach (List<Panel> pa in glob_paneli)
                     {
-                        
-                        if (pa[0].Location == s.lokacija)
-                        {
                             Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
                             if (rec.Contains(cursorPos))
                             {
-                                pa[0].Location = new Point { X = -100, Y = -100 };
-                                s.lokacija = new Point { X = -100, Y = -100 };
-                                break;
+                                for (int i = 0; i < pa.Count; i++ )
+                                    pa[i].Location = new Point { X = -100, Y = -100 };
+                                    s.lokacija = new Point { X = -100, Y = -100 };
                             }
                         }
                         
@@ -874,7 +874,7 @@ namespace SvetskiResursi
 
 
 
-                }
+                
 
                 foreach (Resurs tr in lss)
                 {
