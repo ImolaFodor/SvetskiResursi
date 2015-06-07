@@ -177,8 +177,11 @@ namespace SvetskiResursi
                                         pb.Height = pb.Width = 63;
                                     else if (pa.Count == 2)
                                         pb.Height = pb.Width = 56;
-                                    else
+                                    else if (pa.Count == 3)
                                         pb.Height = pb.Width = 50;
+                                    else
+                                        pb.Height = pb.Width = 40;
+
                                     pb.MouseDown += new MouseEventHandler(pb_Click);
                                     pa[pa.Count - 1].Controls.Add(pb);
                                 }
@@ -443,8 +446,10 @@ namespace SvetskiResursi
                                     pb.Height = pb.Width = 63;
                                 else if(pa.Count==2)
                                     pb.Height = pb.Width = 56;
-                                else
-                                    pb.Height = pb.Width = 50;
+                                else if (pa.Count == 3)
+                                        pb.Height = pb.Width = 50;
+                                    else
+                                        pb.Height = pb.Width = 40;
 
                                 pb.MouseDown += new MouseEventHandler(pb_ClickDD);
                                 pa[pa.Count-1].Controls.Add(pb);
