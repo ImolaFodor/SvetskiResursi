@@ -21,16 +21,73 @@ namespace SvetskiResursi
 
         public dodajEtiketu(tabelaEtiketa ebet)
         {
+            List<Etiketa> et = new List<Etiketa>();
+            Etiketa etik = new Etiketa();
             
             InitializeComponent();
             tbEtiketa = ebet;
 
+      /*      using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+
+                stream.SetLength(0);
+
+                etik.oznaka = "default";
+                etik.boja = Color.White;
+                etik.opis = "";
+
+
+                if (!et.Contains(etik))
+                    et.Add(etik);
+
+                foreach (Etiketa etiketa in et)
+                {
+                    formatter.Serialize(stream, etiketa);
+
+                }
+
+                stream.Close();
+
+            }*/
           }
 
         public dodajEtiketu()
         {
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            List<Etiketa> et = new List<Etiketa>();
+            Etiketa etik = new Etiketa();
+            //this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
+
+         /*   using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+
+                stream.SetLength(0);
+
+                etik.oznaka = "default";
+                etik.boja = Color.White;
+                etik.opis = "";
+
+
+                if (!et.Contains(etik))
+                    et.Add(etik);
+
+                foreach (Etiketa etiketa in et)
+                {
+                    formatter.Serialize(stream, etiketa);
+
+                }
+ 
+                stream.Close();
+
+            }*/
         }
 
         private void izborBoje(object sender, EventArgs e)

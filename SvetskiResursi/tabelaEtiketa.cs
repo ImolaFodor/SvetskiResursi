@@ -17,10 +17,12 @@ namespace SvetskiResursi
 
         public tabelaEtiketa()
         {
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
             groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            //dataGridView1.GridColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            dataGridView1.BorderStyle = BorderStyle.None;
         }
 
         private void prikazUtabeli()

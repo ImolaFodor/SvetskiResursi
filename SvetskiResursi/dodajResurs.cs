@@ -35,7 +35,9 @@ namespace SvetskiResursi
         {
             
             InitializeComponent();
-
+            groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            groupBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            Vizualizacija.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             List<tipResursa> tr = new List<tipResursa>();
             List<Etiketa> et = new List<Etiketa>();
 
@@ -57,14 +59,19 @@ namespace SvetskiResursi
 
             }
 
+            //da default bude odmah cekiran
+            for (int i = 0; i < etik.Items.Count; i++)
+                if (etik.Items[i].Equals("default"))
+                {
+                    etik.SetItemChecked(i, true);
+                }
+
             this.tabelaPrikaza = tabela;
         }
 
         public DodajResurs(Form1 form1)
         {
-
-
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
             groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             groupBox2.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
@@ -91,6 +98,13 @@ namespace SvetskiResursi
                  etik.Items.Add(etiketa.oznaka);
 
              }
+
+            //da default bude odmah cekiran
+            for (int i = 0; i < etik.Items.Count; i++)
+                if (etik.Items[i].Equals("default"))
+                {
+                    etik.SetItemChecked(i, true);
+                }
         }
 
         private void iscitajTipResursa(List<tipResursa> tr)
@@ -224,7 +238,7 @@ namespace SvetskiResursi
                 res.datum_kao = vreme.ToString().Split(' ')[2]; 
                 res.pojavljivanje = frPon.Text;
                 List<string> cekirani = etik.CheckedItems.OfType<string>().ToList();
-                res.oz_etiketa = cekirani;
+                res.oz_etiketa = cekirani;             
 
                 iscitajTipResursa(tr);
 

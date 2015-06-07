@@ -35,7 +35,7 @@ namespace SvetskiResursi
 
         public dodajTipResursa()
         {
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+           // this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
             ofd.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
 

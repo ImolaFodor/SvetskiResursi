@@ -34,14 +34,15 @@ namespace SvetskiResursi
         public Form1()
         {
 
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+           // this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             initialize();
-            menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+           // menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             Detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
-            resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
-            pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
-            pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+           
+           // pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+           // pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             instanca = this;
         }
 
@@ -50,6 +51,9 @@ namespace SvetskiResursi
             
             InitializeComponent();
             List<tipResursa> trr = new List<tipResursa>();
+            List<Etiketa> et = new List<Etiketa>();
+            Etiketa etik = new Etiketa();
+            
 
             if (!File.Exists("Resursi.bin"))
                 File.Create("Resursi.bin");
@@ -76,6 +80,44 @@ namespace SvetskiResursi
             Watermarks();
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
+
+            //dodavanje default etikete
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+
+                stream.SetLength(0);
+                bool pst = false;
+
+                etik.oznaka = "default";
+                etik.boja = Color.White;
+                etik.opis = "";
+
+                foreach (Etiketa etiketa in et)
+                {
+                    if (etiketa.oznaka.Equals(etik.oznaka))
+                        pst = true;
+                    else
+                        pst = false;
+        
+                }
+
+                if (pst == false)
+                    et.Add(etik);
+                    
+
+                foreach (Etiketa etiketa in et)
+                {
+                    formatter.Serialize(stream, etiketa);
+
+                }
+
+                stream.Close();
+
+            }
         }
 
         public void Watermarks()

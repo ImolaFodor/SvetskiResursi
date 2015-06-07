@@ -92,12 +92,12 @@
             this.Cena,
             this.datum,
             this.Etiketa});
-            this.dataGridView1.Location = new System.Drawing.Point(7, 13);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 13);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(997, 215);
+            this.dataGridView1.Size = new System.Drawing.Size(987, 215);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
@@ -124,7 +124,7 @@
             // 
             this.opis.HeaderText = "Opis";
             this.opis.Name = "opis";
-            this.opis.Width = 130;
+            this.opis.Width = 125;
             // 
             // jednica_mere
             // 
@@ -153,7 +153,7 @@
             // tblD
             // 
             this.tblD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblD.Location = new System.Drawing.Point(1037, 78);
+            this.tblD.Location = new System.Drawing.Point(1024, 78);
             this.tblD.Margin = new System.Windows.Forms.Padding(4);
             this.tblD.Name = "tblD";
             this.tblD.Size = new System.Drawing.Size(112, 32);
@@ -165,7 +165,7 @@
             // tblI
             // 
             this.tblI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblI.Location = new System.Drawing.Point(1037, 23);
+            this.tblI.Location = new System.Drawing.Point(1024, 24);
             this.tblI.Margin = new System.Windows.Forms.Padding(4);
             this.tblI.Name = "tblI";
             this.tblI.Size = new System.Drawing.Size(112, 32);
@@ -177,7 +177,7 @@
             // tblB
             // 
             this.tblB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.tblB.Location = new System.Drawing.Point(1037, 135);
+            this.tblB.Location = new System.Drawing.Point(1024, 135);
             this.tblB.Margin = new System.Windows.Forms.Padding(4);
             this.tblB.Name = "tblB";
             this.tblB.Size = new System.Drawing.Size(112, 32);
@@ -298,7 +298,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(1037, 442);
+            this.button1.Location = new System.Drawing.Point(1024, 442);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 32);
@@ -309,7 +309,7 @@
             // 
             // gbDet
             // 
-            this.gbDet.BackColor = System.Drawing.Color.DarkKhaki;
+            this.gbDet.BackColor = System.Drawing.SystemColors.Control;
             this.gbDet.Controls.Add(this.tabIm);
             this.gbDet.Controls.Add(this.label1);
             this.gbDet.Controls.Add(this.ttEtik);
@@ -338,7 +338,7 @@
             this.gbDet.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDet.Location = new System.Drawing.Point(227, 253);
             this.gbDet.Name = "gbDet";
-            this.gbDet.Size = new System.Drawing.Size(932, 165);
+            this.gbDet.Size = new System.Drawing.Size(926, 165);
             this.gbDet.TabIndex = 29;
             this.gbDet.TabStop = false;
             this.gbDet.Text = "Detalji";
@@ -356,9 +356,9 @@
             // 
             this.ttEtik.AutoSize = true;
             this.ttEtik.Location = new System.Drawing.Point(851, 44);
-            this.ttEtik.MaximumSize = new System.Drawing.Size(100, 100);
+            this.ttEtik.MaximumSize = new System.Drawing.Size(50, 100);
             this.ttEtik.Name = "ttEtik";
-            this.ttEtik.Size = new System.Drawing.Size(58, 18);
+            this.ttEtik.Size = new System.Drawing.Size(48, 36);
             this.ttEtik.TabIndex = 45;
             this.ttEtik.Text = "          ";
             // 
@@ -485,7 +485,7 @@
             // 
             // gbPretrage
             // 
-            this.gbPretrage.BackColor = System.Drawing.Color.DarkKhaki;
+            this.gbPretrage.BackColor = System.Drawing.SystemColors.Control;
             this.gbPretrage.Controls.Add(this.rbTip);
             this.gbPretrage.Controls.Add(this.rbIme);
             this.gbPretrage.Controls.Add(this.tbTrazi);

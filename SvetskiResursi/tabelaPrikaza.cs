@@ -20,10 +20,11 @@ namespace SvetskiResursi
 
         public TabelaPrikaza(Form1 form1)   
         {
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             InitializeComponent();
             gbPretrage.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             gbDet.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            dataGridView1.BorderStyle = BorderStyle.None;
             form = form1;
             
         }
@@ -147,6 +148,12 @@ namespace SvetskiResursi
         {
             List<Resurs> r2 = new List<Resurs>();
             DodajResurs dr = new DodajResurs(Form1.getInstance(),this);
+
+            for(int i = 0; i< dr.etik.Items.Count; i++)
+                if(dr.etik.Items[i].Equals("default")){
+                    dr.etik.SetItemChecked(i, true);
+            }
+
             dr.ShowDialog();
 
             
