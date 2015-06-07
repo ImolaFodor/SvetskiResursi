@@ -40,6 +40,7 @@ namespace SvetskiResursi
             initialize();
             //menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             Detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
+            listView1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             //resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             //pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
