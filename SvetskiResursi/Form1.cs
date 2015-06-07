@@ -147,7 +147,7 @@ namespace SvetskiResursi
             ListViewItem dragitem = selection;
             PictureBox pb = new PictureBox();
             List<Panel> pa = new List<Panel>();
-            int k = 60;
+            int k = 70;
 
 
             foreach (Resurs r in ri)
@@ -164,7 +164,7 @@ namespace SvetskiResursi
                                 p.Parent = pbMape;
                                 p.Location = po;
                                 p.Height = p.Width = k;
-                                k -= 5;
+                                k -= 7;
                                 p.BringToFront();
                                 p.BackColor = et[i].boja;
                                 pa.Add(p);
@@ -173,7 +173,12 @@ namespace SvetskiResursi
                                 {
                                     pb.Tag = dragitem;
                                     pb.BackgroundImageLayout = ImageLayout.Stretch;
-                                    pb.Height = pb.Width = 50;
+                                    if (pa.Count == 1)
+                                        pb.Height = pb.Width = 63;
+                                    else if (pa.Count == 2)
+                                        pb.Height = pb.Width = 56;
+                                    else
+                                        pb.Height = pb.Width = 50;
                                     pb.MouseDown += new MouseEventHandler(pb_Click);
                                     pa[pa.Count - 1].Controls.Add(pb);
                                 }
@@ -410,7 +415,7 @@ namespace SvetskiResursi
                     ListViewItem dragitem = selection;
                     PictureBox pb = new PictureBox();
                     List<Panel> pa = new List<Panel>();
-                    int k = 60;
+                    int k = 70;
 
                     for (int i = 0; i < et.Count; i++)
                     {
@@ -422,7 +427,7 @@ namespace SvetskiResursi
                             p.Parent = pbMape;
                             p.Location = sim.lokacija;
                             p.Height = p.Width = k;
-                            k -= 5;
+                            k -= 7;
                             p.BringToFront();
                             p.BackColor = et[i].boja;
                             pa.Add(p);
@@ -433,9 +438,15 @@ namespace SvetskiResursi
                                 //pb.Location = sim.lokacija;
                                 pb.BackgroundImageLayout = ImageLayout.Stretch;
                                 pb.BackgroundImage = sim.ikonica;
-                                pb.Height = pb.Width = 50;
+                                if (pa.Count == 1)
+                                    pb.Height = pb.Width = 63;
+                                else if(pa.Count==2)
+                                    pb.Height = pb.Width = 56;
+                                else
+                                    pb.Height = pb.Width = 50;
+
                                 pb.MouseDown += new MouseEventHandler(pb_ClickDD);
-                                pa[pa.Count - 1].Controls.Add(pb);
+                                pa[pa.Count-1].Controls.Add(pb);
                             }
                         }
                     }
