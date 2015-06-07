@@ -45,6 +45,7 @@ namespace SvetskiResursi
             //pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             //pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             instanca = this;
+           
         }
 
         public void initialize()
@@ -78,6 +79,11 @@ namespace SvetskiResursi
             Watermarks();
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
+
+            Tut1 prvi = new Tut1();
+            var main = this.Location;
+            prvi.Location = new Point((main.X + 100), main.Y + 60);
+            
         }
 
         public void Watermarks()
@@ -634,7 +640,7 @@ namespace SvetskiResursi
 
         private void onlineHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm", HelpNavigator.Topic, "O aplikaciji.htm");
+            Help.ShowHelp(this, "..\\..\\Resources\\Help projects\\SR.chm", HelpNavigator.Topic, "Prevlacenje resursa na mapu.htm");
         }
 
         private void tutToolStripMenuItem_Click(object sender, EventArgs e)
