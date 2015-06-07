@@ -36,14 +36,14 @@ namespace SvetskiResursi
         public Form1()
         {
 
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             initialize();
-            menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             Detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
-            resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
-            pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
-            pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            //pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             instanca = this;
         }
 
