@@ -1,0 +1,10 @@
+body {background-color: #E6E68A}
+h2 {font-family:ariel;color:#7A7F01}
+p.justify {font-family:ariel;text-align:justify;font-size:11pt;color:black;margin-left:10px}
+p.right {font-family:ariel;text-align:right;font-size:11pt;color:black;margin-right:10px}
+hr {color:red}
+img { float: center;
+		border: 1px solid #7A7F01;
+		margin-left: 10 px;
+		width: 500px;
+		height: 550px}

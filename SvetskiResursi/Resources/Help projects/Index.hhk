@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Precision Helper 2.0.1">
+<!-- Sitemap 1.0 -->
+</HEAD>
+<BODY>
+    <OBJECT type="text/site properties">
+      <param name="FrameName" value="right">
+    </OBJECT>
+    <UL>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="resurs">
+          <param name="Name" value="resurs">
+          <param name="Local" value="Dodavanje resursa.htm">
+          <param name="Name" value="Izmena">
+          <param name="Local" value="Izmena resursa.htm">
+          <param name="Name" value="Resursi">
+          <param name="Local" value="Tabelarni prikaz.htm">
+          <param name="Name" value="Prikaz na mapi">
+          <param name="Local" value="Prikaz na mapi.htm">
+          <param name="Name" value="Pretraga i filtriranje">
+          <param name="Local" value="Pretraga i filtriranje.htm">
+          <param name="Name" value="Prevlacenje na mapu">
+          <param name="Local" value="Prevlacenje resursa na mapu.htm">
+          <param name="Name" value="Pretraga i filtriranje">
+          <param name="Local" value="Pretraga i filtriranje na mapi.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="tip">
+          <param name="Name" value="tip">
+          <param name="Local" value="Dodavanje resursa.htm">
+          <param name="Name" value="Dodavanje">
+          <param name="Local" value="Dodavanje.htm">
+          <param name="Name" value="Izmena">
+          <param name="Local" value="Izmena.htm">
+          <param name="Name" value="Brisanje">
+          <param name="Local" value="Brisanje.htm">
+          <param name="Name" value="Tipovi">
+          <param name="Local" value="Tipovi.htm">
+          <param name="Name" value="Pretraga i filtriranje">
+          <param name="Local" value="Pretraga i filtriranje.htm">
+          <param name="Name" value="Pretraga i filtriranje">
+          <param name="Local" value="Pretraga i filtriranje na mapi.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="etiketa">
+          <param name="Name" value="etiketa">
+          <param name="Local" value="Dodavanje resursa.htm">
+          <param name="Name" value="Dodavanje">
+          <param name="Local" value="Dodavanje etikete.htm">
+          <param name="Name" value="Izmena">
+          <param name="Local" value="Izmena etikete.htm">
+          <param name="Name" value="Brisanje">
+          <param name="Local" value="Brisanje etikete.htm">
+          <param name="Name" value="Etikete">
+          <param name="Local" value="Etikete.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="dodavanje">
+          <param name="Name" value="dodavanje">
+          <param name="Local" value="Dodavanje resursa.htm">
+          <param name="Name" value="Dodavanje">
+          <param name="Local" value="Dodavanje.htm">
+          <param name="Name" value="Dodavanje">
+          <param name="Local" value="Dodavanje etikete.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="izmena">
+          <param name="Name" value="izmena">
+          <param name="Local" value="Izmena resursa.htm">
+          <param name="Name" value="Izmena">
+          <param name="Local" value="Izmena.htm">
+          <param name="Name" value="Izmena">
+          <param name="Local" value="Izmena etikete.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="brisanje">
+          <param name="Name" value="brisanje">
+          <param name="Local" value="Brisanje resursa.htm">
+          <param name="Name" value="Brisanje">
+          <param name="Local" value="Brisanje.htm">
+          <param name="Name" value="Brisanje">
+          <param name="Local" value="Brisanje etikete.htm">
+          <param name="Name" value="Prevlacenje na mapu">
+          <param name="Local" value="Prevlacenje resursa na mapu.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="pretraga">
+          <param name="Name" value="pretraga">
+          <param name="Local" value="Pretraga i filtriranje.htm">
+          <param name="Name" value="Pretraga i filtriranje">
+          <param name="Local" value="Pretraga i filtriranje na mapi.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="filtriranje">
+          <param name="Name" value="filtriranje">
+          <param name="Local" value="Pretraga i filtriranje.htm">
+          <param name="Name" value="Pretraga i filtriranje">
+          <param name="Local" value="Pretraga i filtriranje na mapi.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="mapa">
+          <param name="Name" value="mapa">
+          <param name="Local" value="Prevlacenje resursa na mapu.htm">
+          <param name="Name" value="Prikaz na mapi">
+          <param name="Local" value="Prikaz na mapi.htm">
+        </OBJECT>
+        <LI><OBJECT type="text/sitemap">
+          <param name="Name" value="prevlacenje">
+          <param name="Local" value="Prevlacenje resursa na mapu.htm">
+        </OBJECT>
+    </UL>
+</BODY>
+</HTML>
