@@ -149,7 +149,7 @@ namespace SvetskiResursi
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                    SvetskiResursi.Form1.getInstance().Refresh();
+                    //SvetskiResursi.Form1.getInstance().Refresh();
                 }
             }
             else

@@ -133,6 +133,12 @@
     <Compile Include="Tut4.Designer.cs">
       <DependentUpon>Tut4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tut5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tut5.Designer.cs">
+      <DependentUpon>Tut5.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpitBrisanje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tut2.resx">
       <DependentUpon>Tut2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tut3.resx">
+      <DependentUpon>Tut3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tut4.resx">
+      <DependentUpon>Tut4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tut5.resx">
+      <DependentUpon>Tut5.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpitBrisanje.resx">
       <DependentUpon>UpitBrisanje.cs</DependentUpon>

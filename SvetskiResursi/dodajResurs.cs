@@ -262,7 +262,7 @@ namespace SvetskiResursi
                     SvetskiResursi.Resursi.getInstance().Dodaj(res);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                    SvetskiResursi.Form1.getInstance().Refresh();
+                    //SvetskiResursi.Form1.getInstance().Refresh();
                 }
             }
             else

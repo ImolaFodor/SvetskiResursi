@@ -178,18 +178,18 @@ namespace SvetskiResursi
                 }
                 glob_paneli.Add(pa);
                 List<Resurs> Lr = new List<Resurs>();
-                using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+                using (Stream stream1 = File.Open("Resursi.bin", FileMode.Open))
                 {
-                    var formatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    var formatter1 = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
 
-                    while (stream.Position != stream.Length)
+                    while (stream1.Position != stream1.Length)
                     {
-                        Lr.Add(((Resurs)formatter.Deserialize(stream)));
+                        Lr.Add(((Resurs)formatter1.Deserialize(stream1)));
 
 
                     }
 
-                    stream.SetLength(0);
+                    stream1.SetLength(0);
 
                     foreach (Resurs r in Lr)
                     {
@@ -225,9 +225,9 @@ namespace SvetskiResursi
                     glob_pb.Add(pb);
                     foreach (Resurs tr in Lr)
                     {
-                        formatter.Serialize(stream, tr);
+                        formatter1.Serialize(stream1, tr);
                     }
-                    stream.Close();
+                    stream1.Close();
                 }
               
             }
@@ -645,7 +645,22 @@ namespace SvetskiResursi
             {
                 Tut2 drugi = new Tut2();
                 drugi.Location = new Point((main.X + 190), main.Y + 60);
-                drugi.ShowDialog();
+                if (drugi.ShowDialog() == DialogResult.OK)
+                {
+                    Tut3 treci = new Tut3();
+                    treci.Location = new Point((main.X + 290), main.Y + 60);
+                    if (treci.ShowDialog() == DialogResult.OK)
+                    {
+                        Tut4 cetvrti = new Tut4();
+                        cetvrti.Location = new Point((main.X + 242), main.Y + 388);
+                        if (cetvrti.ShowDialog() == DialogResult.OK)
+                        {
+                            Tut5 peti = new Tut5();
+                            peti.Location = new Point((main.X + 842), main.Y + 438);
+                            peti.ShowDialog();
+                        }
+                    }
+                }
 
             }
 
