@@ -375,6 +375,7 @@ namespace SvetskiResursi
             dPBtr.Clear();
             glob_pb.Clear();
             glob_paneli.Clear();
+            dPs.Clear();
             
             List<Resurs> ls = new List<Resurs>();
             Point nije_na_mapi=new Point{X=-100, Y=-100};
@@ -839,10 +840,10 @@ namespace SvetskiResursi
                 {
                     foreach (List<Panel> pa in glob_paneli)
                     {
-                        Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
+                        
                         if (pa[0].Location == s.lokacija)
                         {
-
+                            Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
                             if (rec.Contains(cursorPos))
                             {
                                 pa[0].Location = new Point { X = -100, Y = -100 };
