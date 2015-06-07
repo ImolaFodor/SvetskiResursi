@@ -22,6 +22,7 @@ namespace SvetskiResursi
         Dictionary<PictureBox,string> dPBr = new Dictionary<PictureBox,string>();
         Dictionary<PictureBox, string> dPBtr = new Dictionary<PictureBox, string>();
         Dictionary<PictureBox, string> dPBi = new Dictionary<PictureBox, string>();
+        Dictionary<Point, string> dPs = new Dictionary<Point, string>();
         Dictionary<PictureBox, Point> dPBl = new Dictionary<PictureBox, Point>();
         Dictionary<ListViewItem, string> lista_tipova = new Dictionary<ListViewItem, string>();   
         ImageList ListaSlika = new ImageList();
@@ -30,19 +31,19 @@ namespace SvetskiResursi
         public override bool AllowDrop { get; set; }
         public static Form1 instanca = null;
         List<PictureBox> glob_pb = new List<PictureBox>();
+        List<List<Panel>> glob_paneli = new List<List<Panel>>();
 
         public Form1()
         {
 
-           // this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             initialize();
-           // menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            menuStrip1.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             Detalji.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
             groupBox1.BackColor = System.Drawing.ColorTranslator.FromHtml("#E6E68A");
-            //resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
-           
-           // pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
-           // pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            resursiToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            pretragaToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
+            pomocToolStripMenuItem.BackColor = System.Drawing.ColorTranslator.FromHtml("#7A7F01");
             instanca = this;
         }
 
@@ -51,9 +52,6 @@ namespace SvetskiResursi
             
             InitializeComponent();
             List<tipResursa> trr = new List<tipResursa>();
-            List<Etiketa> et = new List<Etiketa>();
-            Etiketa etik = new Etiketa();
-            
 
             if (!File.Exists("Resursi.bin"))
                 File.Create("Resursi.bin");
@@ -80,44 +78,6 @@ namespace SvetskiResursi
             Watermarks();
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
-
-            //dodavanje default etikete
-            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
-            {
-                var formatter = new BinaryFormatter();
-                stream.Position = 0;
-                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
-                    et.Add((Etiketa)formatter.Deserialize(stream));
-
-                stream.SetLength(0);
-                bool pst = false;
-
-                etik.oznaka = "default";
-                etik.boja = Color.White;
-                etik.opis = "";
-
-                foreach (Etiketa etiketa in et)
-                {
-                    if (etiketa.oznaka.Equals(etik.oznaka))
-                        pst = true;
-                    else
-                        pst = false;
-        
-                }
-
-                if (pst == false)
-                    et.Add(etik);
-                    
-
-                foreach (Etiketa etiketa in et)
-                {
-                    formatter.Serialize(stream, etiketa);
-
-                }
-
-                stream.Close();
-
-            }
         }
 
         public void Watermarks()
@@ -165,6 +125,8 @@ namespace SvetskiResursi
 
         private void pictureBox1_DragDrop(object sender, DragEventArgs e)
         {
+            //pa.Clear();
+            Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
             List<Resurs> ri = new List<Resurs>();
             iscitajResurs(ri);
             List<Etiketa> et = new List<Etiketa>();
@@ -175,42 +137,46 @@ namespace SvetskiResursi
                     et.Add((Etiketa)formatter.Deserialize(stream));
                 stream.Close();
             }
+            ListViewItem dragitem = selection;
+            PictureBox pb = new PictureBox();
+            List<Panel> pa = new List<Panel>();
+            int k = 60;
 
-            /*foreach (Resurs r in ri)
+
+            foreach (Resurs r in ri)
             {
-                foreach (Etiketa eti in et)
-                {
-                    for (int i = 0; i < r.oz_etiketa.Count; i++)
+                    if (dragitem.Text == r.ime)
                     {
+                        for (int i = 0; i < et.Count; i++)
+                        {
+                            if (r.oz_etiketa.Contains(et[i].oznaka))
+                            {
 
-                        if (r.oz_etiketa.ElementAt(i) == eti.oznaka)
-                            pa.BackColor = eti.boja;
+                                Panel p = new Panel();
+                                p.Tag = dragitem.Text;
+                                p.Parent = pbMape;
+                                p.Location = po;
+                                p.Height = p.Width = k;
+                                k -= 5;
+                                p.BringToFront();
+                                p.BackColor = et[i].boja;
+                                pa.Add(p);
+
+                                if (pa.Count == r.oz_etiketa.Count)
+                                {
+                                    pb.Tag = dragitem;
+                                    pb.BackgroundImageLayout = ImageLayout.Stretch;
+                                    pb.Height = pb.Width = 50;
+                                    pb.MouseDown += new MouseEventHandler(pb_Click);
+                                    pa[pa.Count - 1].Controls.Add(pb);
+                                }
+                            }
+                        }
                     }
+                    
+                
                 }
-            }*/
-            
-                Panel pa = new Panel();
-                PictureBox pb = new PictureBox();
-                //pb.Parent = pbMape;
-                pa.Parent = pbMape;
-                pa.Controls.Add(pb);
-                
-
-                Point po = PointToClient(new Point(e.X - 300, e.Y - 75));
-                //pb.Location = po;
-                pa.Location = po;
-
-                ListViewItem dragitem = selection;
-                //pb.BackgroundImage = ListaSlika.Images[dragitem.ImageIndex];
-                pb.Tag = dragitem;
-
-                pb.BackgroundImageLayout = ImageLayout.Stretch;
-                pb.Height = pb.Width = 45;
-                pa.Height = pa.Width = 60;
-                pa.BringToFront();
-                pb.MouseDown += new MouseEventHandler(pb_Click);
-                
-
+                glob_paneli.Add(pa);
                 List<Resurs> Lr = new List<Resurs>();
                 using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
                 {
@@ -227,14 +193,6 @@ namespace SvetskiResursi
 
                     foreach (Resurs r in Lr)
                     {
-                        foreach (Etiketa eti in et) {
-                            for (int i = 0; i < r.oz_etiketa.Count; i++)
-                            {
-                                if (r.oz_etiketa.ElementAt(i) == eti.oznaka)
-                                    pa.BackColor = eti.boja;
-                            }
-                }
-
                         for (int i = 0; i < listView1.Items.Count; i++)
                         {
                             if (r.ime == listView1.Items[i].Text)
@@ -243,7 +201,8 @@ namespace SvetskiResursi
 
                         if (r.ime.Equals(dragitem.Text))
                         {
-                            r.lokacija = pa.Location;
+                            r.lokacija = glob_paneli[glob_paneli.Count - 1][pa.Count - 1].Location;
+                            
                             String etikete = string.Join(",", r.oz_etiketa.ToArray());
                             String detalji = "Oznaka: " + r.oznaka + Environment.NewLine +
                                        "Naziv:   " + r.ime + Environment.NewLine +
@@ -257,7 +216,7 @@ namespace SvetskiResursi
                             dPBr.Add(pb, r.oznaka);
                             dPBtr.Add(pb, r.tipResursa);
                             dPBi.Add(pb, r.ime);
-                            
+
                             break;
                         }
                     }
@@ -270,7 +229,7 @@ namespace SvetskiResursi
                     }
                     stream.Close();
                 }
-
+              
             }
            
 
@@ -415,7 +374,10 @@ namespace SvetskiResursi
             dPBr.Clear();
             dPBtr.Clear();
             glob_pb.Clear();
+            glob_paneli.Clear();
+            
             List<Resurs> ls = new List<Resurs>();
+            Point nije_na_mapi=new Point{X=-100, Y=-100};
             using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
             {
                 
@@ -425,29 +387,56 @@ namespace SvetskiResursi
                 stream.Close();
             }
 
-                foreach(Resurs sim in ls)
+            foreach (Resurs sim in ls)
+            {   
+                if (sim.lokacija != nije_na_mapi)
                 {
-                    
-
+                    List<Etiketa> et = new List<Etiketa>();
+                    using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+                    {
+                        var formatter = new BinaryFormatter();
+                        while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                            et.Add((Etiketa)formatter.Deserialize(stream));
+                        stream.Close();
+                    }
+                    ListViewItem dragitem = selection;
                     PictureBox pb = new PictureBox();
-                    pb.Parent = pbMape;
+                    List<Panel> pa = new List<Panel>();
+                    int k = 60;
 
-                    Point po = sim.lokacija;
-                    pb.Location = po;
-                    AddContextMenuAndItems(pb);
-                    pb.BackgroundImage = sim.ikonica;
-                    pb.BackgroundImageLayout = ImageLayout.Stretch;
-                    pb.Height = pb.Width = 45;
-                    pb.MouseDown += new MouseEventHandler(pb_Click); 
+                    for (int i = 0; i < et.Count; i++)
+                    {
+                        if (sim.oz_etiketa.Contains(et[i].oznaka))
+                        {
 
-                    Point nije_na_mapi=new Point{X=-100, Y=-100};
-                    if (sim.lokacija != nije_na_mapi)
-                        glob_pb.Add(pb);
+                            Panel p = new Panel();
+                            p.Tag = sim.ime;
+                            p.Parent = pbMape;
+                            p.Location = sim.lokacija;
+                            p.Height = p.Width = k;
+                            k -= 5;
+                            p.BringToFront();
+                            p.BackColor = et[i].boja;
+                            pa.Add(p);
+                            //glob_paneli.Add(pa);
+                            if (pa.Count == sim.oz_etiketa.Count)
+                            {
+                                pb.Tag = dragitem;
+                                //pb.Location = sim.lokacija;
+                                pb.BackgroundImageLayout = ImageLayout.Stretch;
+                                pb.BackgroundImage = sim.ikonica;
+                                pb.Height = pb.Width = 50;
+                                pb.MouseDown += new MouseEventHandler(pb_ClickDD);
+                                pa[pa.Count - 1].Controls.Add(pb);
+                            }
+                        }
+                    }
+                    glob_paneli.Add(pa);
 
-                    string etikete=" ";
+                    string etikete = " ";
                     /*if (sim.oz_etiketa != null)
                     {*/
-                        etikete = string.Join(",", sim.oz_etiketa.ToArray());
+                    etikete = string.Join(",", sim.oz_etiketa.ToArray());
                     /*}
                     else
                     {
@@ -456,17 +445,21 @@ namespace SvetskiResursi
                     String detalji = "Oznaka: " + sim.oznaka + Environment.NewLine +
                                    "Naziv:   " + sim.ime + Environment.NewLine +
                                  "Tip:      " + sim.tipResursa + Environment.NewLine +
-                                 "Datum otkrivanja:   " + sim.datum_kao + Environment.NewLine+
+                                 "Datum otkrivanja:   " + sim.datum_kao + Environment.NewLine +
                                  "Tagovi:   " + etikete + Environment.NewLine +
                                  "Opis:    " + sim.opis;
                     new ToolTip().SetToolTip(pb, detalji);
-                
+                    AddContextMenuAndItems(pb);
                     dPBr.Add(pb, sim.oznaka);
                     dPBtr.Add(pb, sim.tipResursa);
                     dPBi.Add(pb, sim.ime);
                     dPBl.Add(pb, sim.lokacija);
+                    dPs.Add(sim.lokacija, sim.ime);
                 }
-        }
+            }
+            
+          }
+        
 
         private void RefreshButtonClick(object sender, EventArgs e)
         {
@@ -775,15 +768,21 @@ namespace SvetskiResursi
 
                 foreach (Resurs s in lss)
                 {
-                    foreach (PictureBox pb in glob_pb)
+                    foreach (List<Panel> pa in glob_paneli)
                     {
-                        Rectangle rec = new Rectangle(pb.Location.X+279, pb.Location.Y+54, 80, 80);
-                        if (rec.Contains(cursorPos))
+                        if (s.lokacija == pa[0].Location)
                         {
-                            s.lokacija = new Point { X = -100, Y = -100 };
-                            pb.Location = new Point { X = -100, Y = -100 };
+                            Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
+                            if (rec.Contains(cursorPos))
+                            {
+                                pa[0].Location = new Point { X = -100, Y = -100 };
+                                s.lokacija = new Point { X = -100, Y = -100 };
+                                break;
+                            }
                         }
                     }
+                       
+                    
 
                 }
 
@@ -796,6 +795,62 @@ namespace SvetskiResursi
             }        
       }
 
+
+        public void AddContextMenuAndItemsDD(PictureBox pb)
+        {
+            ContextMenu mnuContextMenu = new ContextMenu();
+            pb.ContextMenu = mnuContextMenu;
+            MenuItem mnuItem = new MenuItem();
+            mnuItem.Text = "Izbriši";
+            mnuContextMenu.MenuItems.Add(mnuItem);
+            mnuItem.Click += new System.EventHandler(this.mnuItem_ClickDD);
+
+        }
+
+        private void mnuItem_ClickDD(object sender, System.EventArgs e)
+        {
+            Point cursorPos = this.PointToClient(Cursor.Position);
+
+            List<Resurs> lss = new List<Resurs>();
+            using (Stream stream = File.Open("Resursi.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                while (stream.Position != stream.Length)
+                    lss.Add((Resurs)formatter.Deserialize(stream));
+
+                stream.SetLength(0);
+
+                foreach (Resurs s in lss)
+                {
+                    foreach (List<Panel> pa in glob_paneli)
+                    {
+                        Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
+                        if (pa[0].Location == s.lokacija)
+                        {
+
+                            if (rec.Contains(cursorPos))
+                            {
+                                pa[0].Location = new Point { X = -100, Y = -100 };
+                                s.lokacija = new Point { X = -100, Y = -100 };
+                                break;
+                            }
+                        }
+                        
+                    }
+
+
+
+                }
+
+                foreach (Resurs tr in lss)
+                {
+                    formatter.Serialize(stream, tr);
+                }
+                stream.Close();
+
+            }
+        }
+
         private void pb_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < listView1.Items.Count; i++)
@@ -806,10 +861,35 @@ namespace SvetskiResursi
 
             for (int i = 0; i < listView1.Items.Count; i++)
             {
-                foreach (KeyValuePair<PictureBox, string> pb in dPBi)
+                foreach (List<Panel> pa in glob_paneli)
                 {
-                    Rectangle rec = new Rectangle(pb.Key.Location.X + 279, pb.Key.Location.Y + 54, 80, 80);
-                    if (rec.Contains(cursorPos) && pb.Value==listView1.Items[i].Text)
+                    Rectangle rec = new Rectangle(pa[0].Location.X + 279, pa[0].Location.Y + 54, 80, 80);
+                    foreach (Panel p in pa)
+                    {
+                            if (rec.Contains(cursorPos) && p.Tag == listView1.Items[i].Text)
+                            {
+                                listView1.Items[i].Selected = true;
+                            }
+                        
+                    }
+                }
+            }
+        }
+
+        private void pb_ClickDD(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].Selected = false;
+            }
+            Point cursorPos = this.PointToClient(Cursor.Position);
+
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                foreach (KeyValuePair<Point, string> Ps in dPs)
+                {
+                    Rectangle rec = new Rectangle(Ps.Key.X + 279, Ps.Key.Y + 54, 80, 80);
+                    if (rec.Contains(cursorPos) && Ps.Value == listView1.Items[i].Text)
                     {
                         listView1.Items[i].Selected = true;
                     }
