@@ -95,10 +95,15 @@ namespace SvetskiResursi
                 foreach (Etiketa etiketa in et)
                 {
                     if (etiketa.oznaka.Equals(etik.oznaka))
+                    {
                         pst = true;
+                        break;
+                    }
                     else
+                    {
                         pst = false;
 
+                    }
                 }
 
                 if (pst == false)
