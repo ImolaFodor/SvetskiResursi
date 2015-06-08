@@ -190,8 +190,14 @@ namespace SvetskiResursi
                                 p.Tag = dragitem.Text;
                                 p.Parent = pbMape;
                                 p.Location = po;
-                                p.Height = p.Width = k;
-                                k -= 7;
+                                if(r.oz_etiketa.Count==1)
+                                    p.Height = p.Width = 63;
+                                else{
+                                    p.Height = p.Width = k;
+                                    k -= 7;
+                                }
+                                
+                                
                                 p.BringToFront();
                                 p.BackColor = et[i].boja;
                                 pa.Add(p);
@@ -441,8 +447,13 @@ namespace SvetskiResursi
                             p.Tag = sim.ime;
                             p.Parent = pbMape;
                             p.Location = sim.lokacija;
-                            p.Height = p.Width = k;
-                            k -= 7;
+                            if (sim.oz_etiketa.Count == 1)
+                                p.Height = p.Width = 63;
+                            else
+                            {
+                                p.Height = p.Width = k;
+                                k -= 7;
+                            }
                             p.BringToFront();
                             p.BackColor = et[i].boja;
                             pa.Add(p);
