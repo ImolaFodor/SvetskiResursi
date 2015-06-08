@@ -411,6 +411,13 @@ namespace SvetskiResursi
 
         }
 
+        private void tbTrazi_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(this.tbTrazi, "Unesite celu oznaku tipa");
+        
+        }
+
         }
     }
 

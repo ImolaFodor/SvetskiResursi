@@ -73,6 +73,8 @@
             this.gbPretrage = new System.Windows.Forms.GroupBox();
             this.rbTip = new System.Windows.Forms.RadioButton();
             this.rbIme = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabIm)).BeginInit();
             this.gbDet.SuspendLayout();
@@ -473,17 +475,18 @@
             // 
             // tbTrazi
             // 
-            this.tbTrazi.Location = new System.Drawing.Point(28, 34);
+            this.tbTrazi.Location = new System.Drawing.Point(89, 34);
             this.tbTrazi.Name = "tbTrazi";
             this.tbTrazi.Size = new System.Drawing.Size(105, 24);
             this.tbTrazi.TabIndex = 4;
             this.tbTrazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbTrazi_MouseClick);
             this.tbTrazi.TextChanged += new System.EventHandler(this.tbTrazi_TextChanged);
+            this.tbTrazi.MouseHover += new System.EventHandler(this.tbTrazi_MouseHover);
             // 
             // cbFilter
             // 
             this.cbFilter.FormattingEnabled = true;
-            this.cbFilter.Location = new System.Drawing.Point(28, 116);
+            this.cbFilter.Location = new System.Drawing.Point(89, 116);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(105, 26);
             this.cbFilter.TabIndex = 7;
@@ -494,6 +497,8 @@
             // 
             this.gbPretrage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gbPretrage.BackColor = System.Drawing.SystemColors.Control;
+            this.gbPretrage.Controls.Add(this.label3);
+            this.gbPretrage.Controls.Add(this.label2);
             this.gbPretrage.Controls.Add(this.rbTip);
             this.gbPretrage.Controls.Add(this.rbIme);
             this.gbPretrage.Controls.Add(this.tbTrazi);
@@ -529,6 +534,24 @@
             this.rbIme.TabStop = true;
             this.rbIme.Text = "Po Imenu";
             this.rbIme.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 18);
+            this.label2.TabIndex = 47;
+            this.label2.Text = "Pretraga:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 119);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 18);
+            this.label3.TabIndex = 48;
+            this.label3.Text = "Filtriranje:";
             // 
             // TabelaPrikaza
             // 
@@ -608,6 +631,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Etiketa;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
 
     }
 }

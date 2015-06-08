@@ -302,5 +302,19 @@ namespace SvetskiResursi
             ToolTip tt = new ToolTip();
             tt.SetToolTip(op, op.Text);
         }
+
+        private void trazi_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(this.trazi, "Unesite celu oznaku tipa");
+        
+        }
+
+        private void cbFilter_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tp = new ToolTip();
+            tp.SetToolTip(this.cbFilter, "Unesite oznaku tipa");
+        
+        }
     }
 }
