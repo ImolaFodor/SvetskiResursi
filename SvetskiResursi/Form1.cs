@@ -193,16 +193,19 @@ namespace SvetskiResursi
 
                                 Panel p = new Panel();
                                 p.Tag = dragitem.Text;
-                                p.Parent = pbMape;
-                                p.Location = po;
+                                p.Parent = panel1;
+                                if (panel1.Location.X > 1800)
+                                    p.Location = new Point(po.X+400, po.Y + 300);
+                                else
+                                    p.Location = po;
                                 if(r.oz_etiketa.Count==1)
                                     p.Height = p.Width = 63;
                                 else{
                                     p.Height = p.Width = k;
                                     k -= 7;
                                 }
-                                
-                                
+
+                                //p.Parent = pbMape;
                                 p.BringToFront();
                                 p.BackColor = et[i].boja;
                                 pa.Add(p);
@@ -212,11 +215,11 @@ namespace SvetskiResursi
                                     pb.Tag = dragitem;
                                     pb.BackgroundImageLayout = ImageLayout.Stretch;
                                     if (pa.Count == 1)
-                                        pb.Height = pb.Width = 63;
+                                        pb.Height = pb.Width = 57;
                                     else if (pa.Count == 2)
-                                        pb.Height = pb.Width = 56;
+                                        pb.Height = pb.Width = 52;
                                     else if (pa.Count == 3)
-                                        pb.Height = pb.Width = 50;
+                                        pb.Height = pb.Width = 47;
                                     else
                                         pb.Height = pb.Width = 40;
 
@@ -281,6 +284,7 @@ namespace SvetskiResursi
                         formatter1.Serialize(stream1, tr);
                     }
                     stream1.Close();
+                    
                     AddContextMenuAndItemsDD(pb);
                 }
               
@@ -450,7 +454,7 @@ namespace SvetskiResursi
 
                             Panel p = new Panel();
                             p.Tag = sim.ime;
-                            p.Parent = pbMape;
+                            p.Parent = panel1;
                             p.Location = sim.lokacija;
                             if (sim.oz_etiketa.Count == 1)
                                 p.Height = p.Width = 63;
@@ -468,11 +472,11 @@ namespace SvetskiResursi
                                 pb.BackgroundImageLayout = ImageLayout.Stretch;
                                 pb.BackgroundImage = sim.ikonica;
                                 if (pa.Count == 1)
-                                    pb.Height = pb.Width = 63;
+                                    pb.Height = pb.Width = 57;
                                 else if(pa.Count==2)
-                                    pb.Height = pb.Width = 56;
+                                    pb.Height = pb.Width = 52;
                                 else if (pa.Count == 3)
-                                        pb.Height = pb.Width = 50;
+                                        pb.Height = pb.Width = 47;
                                     else
                                         pb.Height = pb.Width = 40;
 
@@ -546,11 +550,16 @@ namespace SvetskiResursi
             foreach (KeyValuePair<PictureBox, string> spb in dPBi)
             {
                 spb.Key.BorderStyle = BorderStyle.None;
-                if (spb.Value == trazeni)
-                {
-                    spb.Key.BorderStyle = BorderStyle.Fixed3D;
 
-                }
+                    if (spb.Value == trazeni)
+                    {
+                        spb.Key.BorderStyle = BorderStyle.Fixed3D;
+                    }
+                    else
+                    {
+                        spb.Key.BorderStyle = BorderStyle.None;
+                    }
+                
 
             }
             if (textBox2.Text == "")
@@ -642,12 +651,19 @@ namespace SvetskiResursi
                         foreach (KeyValuePair<PictureBox, string> spb in dPBi)
                         {
                             spb.Key.BorderStyle = BorderStyle.None;
-                            if (spb.Value == listView1.Items[i].Text)
-                            {
-                                spb.Key.BorderStyle = BorderStyle.Fixed3D;
+                            
 
-                            }else
-                                spb.Key.BorderStyle = BorderStyle.None;
+                                if (spb.Value == listView1.Items[i].Text)
+                                {
+                                    spb.Key.BorderStyle = BorderStyle.Fixed3D;
+                                    
+                                }
+                                else
+                                {
+                                    spb.Key.BorderStyle = BorderStyle.None;
+                                }
+                            
+                                
 
                         }
                     }
@@ -760,10 +776,19 @@ namespace SvetskiResursi
                     foreach (KeyValuePair<PictureBox, string> spb in dPBtr)
                     {
                         spb.Key.BorderStyle = BorderStyle.None;
-                        if (spb.Value == trazeni)
-                        {
-                            spb.Key.BorderStyle = BorderStyle.Fixed3D;
-                        }
+                        
+                            
+                                if (spb.Value == trazeni)
+                                {
+                                    
+                                        spb.Key.BorderStyle = BorderStyle.Fixed3D;
+                                       
+                                }
+                                else
+                                {
+                                    spb.Key.BorderStyle = BorderStyle.None;
+                                }
+                      
 
                     }
 

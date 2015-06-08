@@ -181,7 +181,7 @@ namespace SvetskiResursi
             this.pomocToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pomocToolStripMenuItem.Name = "pomocToolStripMenuItem";
             this.pomocToolStripMenuItem.Size = new System.Drawing.Size(100, 36);
-            this.pomocToolStripMenuItem.Text = "Pomoc";
+            this.pomocToolStripMenuItem.Text = "Pomoć";
             this.pomocToolStripMenuItem.Click += new System.EventHandler(this.pomocToolStripMenuItem_Click);
             // 
             // onlineHelpToolStripMenuItem
@@ -266,9 +266,9 @@ namespace SvetskiResursi
             // 
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.pbMape);
-            this.panel1.Location = new System.Drawing.Point(258, 43);
+            this.panel1.Location = new System.Drawing.Point(270, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1096, 654);
+            this.panel1.Size = new System.Drawing.Size(1084, 645);
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
