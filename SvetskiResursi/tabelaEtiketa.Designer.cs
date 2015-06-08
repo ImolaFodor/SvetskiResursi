@@ -170,6 +170,8 @@
             this.Brisi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Brisi.Location = new System.Drawing.Point(327, 131);
             this.Brisi.Margin = new System.Windows.Forms.Padding(4);
+            this.Brisi.MaximumSize = new System.Drawing.Size(111, 32);
+            this.Brisi.MinimumSize = new System.Drawing.Size(100, 23);
             this.Brisi.Name = "Brisi";
             this.Brisi.Size = new System.Drawing.Size(111, 32);
             this.Brisi.TabIndex = 3;
@@ -265,6 +267,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(477, 395);
+            this.MinimumSize = new System.Drawing.Size(450, 381);
             this.Name = "tabelaEtiketa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabela prikaza etiketa";

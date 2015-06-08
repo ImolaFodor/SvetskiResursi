@@ -284,6 +284,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(562, 444);
+            this.MinimumSize = new System.Drawing.Size(540, 425);
             this.Name = "tabelaTipova";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabela prikaza tipova";
