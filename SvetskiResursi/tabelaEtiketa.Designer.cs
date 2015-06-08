@@ -173,7 +173,7 @@
             this.Brisi.Name = "Brisi";
             this.Brisi.Size = new System.Drawing.Size(111, 32);
             this.Brisi.TabIndex = 3;
-            this.Brisi.Text = "Brisi";
+            this.Brisi.Text = "Briši";
             this.Brisi.UseVisualStyleBackColor = false;
             this.Brisi.Click += new System.EventHandler(this.Brisi_Click);
             // 

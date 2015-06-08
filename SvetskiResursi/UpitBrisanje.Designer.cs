@@ -67,7 +67,7 @@
             this.button2.Location = new System.Drawing.Point(371, 72);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 0;
             this.button2.Text = "Otkaži";
             this.button2.UseVisualStyleBackColor = false;
             // 
@@ -80,6 +80,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "UpitBrisanje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Brisanje";

@@ -547,7 +547,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1181, 526);
-            this.MinimumSize = new System.Drawing.Size(1181, 526);
+            this.MinimumSize = new System.Drawing.Size(1160, 500);
             this.Name = "TabelaPrikaza";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabela prikaza resursa";

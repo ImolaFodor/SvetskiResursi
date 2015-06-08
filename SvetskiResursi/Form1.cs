@@ -47,6 +47,9 @@ namespace SvetskiResursi
             
             InitializeComponent();
             List<tipResursa> trr = new List<tipResursa>();
+            List<Etiketa> et = new List<Etiketa>();
+            Etiketa etik = new Etiketa();
+            
 
             if (!File.Exists("Resursi.bin"))
                 File.Create("Resursi.bin");
@@ -74,6 +77,43 @@ namespace SvetskiResursi
             listView1.MouseDown += listView1_MouseDown;
             pbMape.AllowDrop = true;
 
+            //dodavanje default etikete
+            using (Stream stream = File.Open("Etikete.bin", FileMode.Open))
+            {
+                var formatter = new BinaryFormatter();
+                stream.Position = 0;
+                while (stream.Position != stream.Length)//potrebno proci od pocetka do kraja fajla!!!
+                    et.Add((Etiketa)formatter.Deserialize(stream));
+
+                stream.SetLength(0);
+                bool pst = false;
+
+                etik.oznaka = "default";
+                etik.boja = Color.White;
+                etik.opis = "";
+
+                foreach (Etiketa etiketa in et)
+                {
+                    if (etiketa.oznaka.Equals(etik.oznaka))
+                        pst = true;
+                    else
+                        pst = false;
+
+                }
+
+                if (pst == false)
+                    et.Add(etik);
+
+
+                foreach (Etiketa etiketa in et)
+                {
+                    formatter.Serialize(stream, etiketa);
+
+                }
+
+                stream.Close();
+
+            }
             
         }
 
