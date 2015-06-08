@@ -48,9 +48,9 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 14);
+            this.label1.Location = new System.Drawing.Point(2, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 18);
@@ -61,7 +61,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 70);
+            this.label2.Location = new System.Drawing.Point(4, 66);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 18);
@@ -72,7 +72,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 122);
+            this.label3.Location = new System.Drawing.Point(4, 118);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 18);
@@ -83,7 +83,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(4, 362);
+            this.label4.Location = new System.Drawing.Point(4, 357);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(227, 18);
@@ -93,32 +93,33 @@
             // opis
             // 
             this.opis.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.opis.Location = new System.Drawing.Point(117, 122);
+            this.opis.Location = new System.Drawing.Point(117, 118);
             this.opis.Margin = new System.Windows.Forms.Padding(4);
             this.opis.Name = "opis";
             this.opis.Size = new System.Drawing.Size(297, 131);
-            this.opis.TabIndex = 6;
+            this.opis.TabIndex = 3;
             this.opis.Text = "";
             // 
             // oznaka
             // 
             this.oznaka.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.oznaka.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oznaka.Location = new System.Drawing.Point(117, 14);
+            this.oznaka.Location = new System.Drawing.Point(115, 10);
             this.oznaka.Margin = new System.Windows.Forms.Padding(4);
             this.oznaka.Name = "oznaka";
             this.oznaka.Size = new System.Drawing.Size(164, 23);
             this.oznaka.TabIndex = 1;
+            this.oznaka.Tag = "";
             this.oznaka.TextChanged += new System.EventHandler(this.oznaka_TextChanged);
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.Location = new System.Drawing.Point(117, 70);
+            this.button1.Location = new System.Drawing.Point(117, 66);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 32);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Biraj boju";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.izborBoje);
@@ -127,11 +128,11 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(198, 311);
+            this.button2.Location = new System.Drawing.Point(204, 270);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 32);
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 4;
             this.button2.Text = "U redu";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.potvrdi_Click);
@@ -140,11 +141,11 @@
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(297, 311);
+            this.button3.Location = new System.Drawing.Point(302, 270);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(92, 32);
-            this.button3.TabIndex = 8;
+            this.button3.TabIndex = 0;
             this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -155,7 +156,7 @@
             this.lBoja.AutoSize = true;
             this.lBoja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lBoja.ForeColor = System.Drawing.SystemColors.Control;
-            this.lBoja.Location = new System.Drawing.Point(320, 70);
+            this.lBoja.Location = new System.Drawing.Point(320, 66);
             this.lBoja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lBoja.Name = "lBoja";
             this.lBoja.Size = new System.Drawing.Size(55, 15);
@@ -172,7 +173,7 @@
             this.obavE.AutoSize = true;
             this.obavE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.obavE.ForeColor = System.Drawing.SystemColors.Control;
-            this.obavE.Location = new System.Drawing.Point(114, 41);
+            this.obavE.Location = new System.Drawing.Point(114, 37);
             this.obavE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.obavE.Name = "obavE";
             this.obavE.Size = new System.Drawing.Size(56, 16);
@@ -183,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 393);
+            this.ClientSize = new System.Drawing.Size(429, 384);
             this.Controls.Add(this.obavE);
             this.Controls.Add(this.lBoja);
             this.Controls.Add(this.button3);

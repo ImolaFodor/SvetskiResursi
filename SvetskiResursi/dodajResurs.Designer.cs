@@ -99,7 +99,7 @@
             this.oznaka.Margin = new System.Windows.Forms.Padding(4);
             this.oznaka.Name = "oznaka";
             this.oznaka.Size = new System.Drawing.Size(175, 23);
-            this.oznaka.TabIndex = 0;
+            this.oznaka.TabIndex = 1;
             this.oznaka.TextChanged += new System.EventHandler(this.oznaka_TextChanged);
             // 
             // label1
@@ -128,7 +128,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 18);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Ime*:";
             // 
             // label3
@@ -138,7 +138,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 18);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 3;
             this.label3.Text = "Tip resursa*:";
             // 
             // comboTipResursa
@@ -149,7 +149,7 @@
             this.comboTipResursa.Margin = new System.Windows.Forms.Padding(4);
             this.comboTipResursa.Name = "comboTipResursa";
             this.comboTipResursa.Size = new System.Drawing.Size(175, 26);
-            this.comboTipResursa.TabIndex = 6;
+            this.comboTipResursa.TabIndex = 3;
             this.comboTipResursa.SelectedIndexChanged += new System.EventHandler(this.comboTipResursa_SelectedIndexChanged);
             this.comboTipResursa.TextChanged += new System.EventHandler(this.comboTipResursa_TextChanged);
             // 
@@ -162,7 +162,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 18);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 4;
             this.label4.Text = "Opis:";
             // 
             // opis
@@ -173,7 +173,7 @@
             this.opis.Margin = new System.Windows.Forms.Padding(4);
             this.opis.Name = "opis";
             this.opis.Size = new System.Drawing.Size(221, 78);
-            this.opis.TabIndex = 9;
+            this.opis.TabIndex = 4;
             this.opis.Text = "";
             // 
             // ikonica
@@ -196,7 +196,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 18);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 5;
             this.label5.Text = "Ikonica:";
             // 
             // label6
@@ -280,7 +280,7 @@
             this.cbMera.Margin = new System.Windows.Forms.Padding(4);
             this.cbMera.Name = "cbMera";
             this.cbMera.Size = new System.Drawing.Size(164, 26);
-            this.cbMera.TabIndex = 21;
+            this.cbMera.TabIndex = 7;
             this.cbMera.SelectedIndexChanged += new System.EventHandler(this.cbMera_SelectedIndexChanged);
             // 
             // cen
@@ -290,7 +290,7 @@
             this.cen.Margin = new System.Windows.Forms.Padding(4);
             this.cen.Name = "cen";
             this.cen.Size = new System.Drawing.Size(164, 24);
-            this.cen.TabIndex = 22;
+            this.cen.TabIndex = 8;
             this.cena.SetToolTip(this.cen, "U dolarima");
             this.cen.TextChanged += new System.EventHandler(this.cen_TextChanged);
             // 
@@ -302,7 +302,7 @@
             this.vreme.Margin = new System.Windows.Forms.Padding(4);
             this.vreme.Name = "vreme";
             this.vreme.Size = new System.Drawing.Size(164, 24);
-            this.vreme.TabIndex = 23;
+            this.vreme.TabIndex = 10;
             // 
             // button1
             // 
@@ -311,7 +311,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 32);
-            this.button1.TabIndex = 24;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Izaberi";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
@@ -338,7 +338,7 @@
             this.frPon.Margin = new System.Windows.Forms.Padding(4);
             this.frPon.Name = "frPon";
             this.frPon.Size = new System.Drawing.Size(164, 26);
-            this.frPon.TabIndex = 26;
+            this.frPon.TabIndex = 9;
             // 
             // button2
             // 
@@ -348,7 +348,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(124, 32);
-            this.button2.TabIndex = 27;
+            this.button2.TabIndex = 14;
             this.button2.Text = "Potvrdi";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.PotvrdiClick);
@@ -361,7 +361,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(124, 32);
-            this.button3.TabIndex = 28;
+            this.button3.TabIndex = 0;
             this.button3.Text = "Otkaži";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -389,7 +389,7 @@
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 18);
-            this.label14.TabIndex = 31;
+            this.label14.TabIndex = 6;
             this.label14.Text = "Etiketa:";
             // 
             // etik
@@ -400,7 +400,7 @@
             this.etik.Margin = new System.Windows.Forms.Padding(4);
             this.etik.Name = "etik";
             this.etik.Size = new System.Drawing.Size(156, 156);
-            this.etik.TabIndex = 33;
+            this.etik.TabIndex = 6;
             // 
             // rbEkp1
             // 
@@ -544,13 +544,15 @@
             this.nTip.Margin = new System.Windows.Forms.Padding(4);
             this.nTip.Name = "nTip";
             this.nTip.Size = new System.Drawing.Size(74, 32);
-            this.nTip.TabIndex = 34;
+            this.nTip.TabIndex = 15;
             this.nTip.Text = "Novi tip";
             this.nTip.UseVisualStyleBackColor = true;
             this.nTip.Click += new System.EventHandler(this.nTip_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.lbValCene);
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.panel2);
@@ -587,7 +589,7 @@
             this.panel3.Location = new System.Drawing.Point(592, 135);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(337, 61);
-            this.panel3.TabIndex = 44;
+            this.panel3.TabIndex = 13;
             // 
             // panel2
             // 
@@ -597,7 +599,7 @@
             this.panel2.Location = new System.Drawing.Point(592, 91);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(337, 38);
-            this.panel2.TabIndex = 43;
+            this.panel2.TabIndex = 12;
             // 
             // panel1
             // 
@@ -607,10 +609,11 @@
             this.panel1.Location = new System.Drawing.Point(592, 39);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(337, 45);
-            this.panel1.TabIndex = 42;
+            this.panel1.TabIndex = 11;
             // 
             // Vizualizacija
             // 
+            this.Vizualizacija.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Vizualizacija.Controls.Add(this.nEtik);
             this.Vizualizacija.Controls.Add(this.label5);
             this.Vizualizacija.Controls.Add(this.ikonica);
@@ -631,7 +634,7 @@
             this.nEtik.Margin = new System.Windows.Forms.Padding(4);
             this.nEtik.Name = "nEtik";
             this.nEtik.Size = new System.Drawing.Size(124, 32);
-            this.nEtik.TabIndex = 34;
+            this.nEtik.TabIndex = 16;
             this.nEtik.Text = "Nova etiketa";
             this.nEtik.UseVisualStyleBackColor = true;
             this.nEtik.Click += new System.EventHandler(this.nEtik_Click);

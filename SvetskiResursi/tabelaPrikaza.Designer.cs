@@ -81,7 +81,6 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Oznaka,
@@ -98,7 +97,7 @@
             this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.Size = new System.Drawing.Size(987, 215);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -152,30 +151,33 @@
             // 
             // tblD
             // 
+            this.tblD.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tblD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tblD.Location = new System.Drawing.Point(1024, 78);
             this.tblD.Margin = new System.Windows.Forms.Padding(4);
             this.tblD.Name = "tblD";
             this.tblD.Size = new System.Drawing.Size(112, 32);
-            this.tblD.TabIndex = 1;
+            this.tblD.TabIndex = 2;
             this.tblD.Text = "Dodaj";
             this.tblD.UseVisualStyleBackColor = false;
             this.tblD.Click += new System.EventHandler(this.tblD_Click);
             // 
             // tblI
             // 
+            this.tblI.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tblI.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tblI.Location = new System.Drawing.Point(1024, 24);
             this.tblI.Margin = new System.Windows.Forms.Padding(4);
             this.tblI.Name = "tblI";
             this.tblI.Size = new System.Drawing.Size(112, 32);
-            this.tblI.TabIndex = 2;
+            this.tblI.TabIndex = 1;
             this.tblI.Text = "Izmeni";
             this.tblI.UseVisualStyleBackColor = false;
             this.tblI.Click += new System.EventHandler(this.tblI_Click);
             // 
             // tblB
             // 
+            this.tblB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tblB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tblB.Location = new System.Drawing.Point(1024, 135);
             this.tblB.Margin = new System.Windows.Forms.Padding(4);
@@ -297,18 +299,20 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Location = new System.Drawing.Point(1024, 442);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 32);
-            this.button1.TabIndex = 28;
+            this.button1.TabIndex = 0;
             this.button1.Text = "Izadji";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // gbDet
             // 
+            this.gbDet.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.gbDet.BackColor = System.Drawing.SystemColors.Control;
             this.gbDet.Controls.Add(this.tabIm);
             this.gbDet.Controls.Add(this.label1);
@@ -339,7 +343,7 @@
             this.gbDet.Location = new System.Drawing.Point(227, 253);
             this.gbDet.Name = "gbDet";
             this.gbDet.Size = new System.Drawing.Size(926, 165);
-            this.gbDet.TabIndex = 29;
+            this.gbDet.TabIndex = 7;
             this.gbDet.TabStop = false;
             this.gbDet.Text = "Detalji";
             // 
@@ -401,6 +405,7 @@
             // 
             // ttCen
             // 
+            this.ttCen.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ttCen.AutoSize = true;
             this.ttCen.Location = new System.Drawing.Point(537, 103);
             this.ttCen.Name = "ttCen";
@@ -419,10 +424,12 @@
             // 
             // ttFv
             // 
+            this.ttFv.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ttFv.AutoSize = true;
             this.ttFv.Location = new System.Drawing.Point(537, 43);
+            this.ttFv.MinimumSize = new System.Drawing.Size(50, 50);
             this.ttFv.Name = "ttFv";
-            this.ttFv.Size = new System.Drawing.Size(58, 18);
+            this.ttFv.Size = new System.Drawing.Size(58, 50);
             this.ttFv.TabIndex = 38;
             this.ttFv.Text = "          ";
             // 
@@ -469,7 +476,7 @@
             this.tbTrazi.Location = new System.Drawing.Point(28, 34);
             this.tbTrazi.Name = "tbTrazi";
             this.tbTrazi.Size = new System.Drawing.Size(105, 24);
-            this.tbTrazi.TabIndex = 31;
+            this.tbTrazi.TabIndex = 4;
             this.tbTrazi.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tbTrazi_MouseClick);
             this.tbTrazi.TextChanged += new System.EventHandler(this.tbTrazi_TextChanged);
             // 
@@ -479,12 +486,13 @@
             this.cbFilter.Location = new System.Drawing.Point(28, 116);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(105, 26);
-            this.cbFilter.TabIndex = 33;
+            this.cbFilter.TabIndex = 7;
             this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
             // gbPretrage
             // 
+            this.gbPretrage.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gbPretrage.BackColor = System.Drawing.SystemColors.Control;
             this.gbPretrage.Controls.Add(this.rbTip);
             this.gbPretrage.Controls.Add(this.rbIme);
@@ -505,7 +513,7 @@
             this.rbTip.Location = new System.Drawing.Point(6, 81);
             this.rbTip.Name = "rbTip";
             this.rbTip.Size = new System.Drawing.Size(84, 22);
-            this.rbTip.TabIndex = 37;
+            this.rbTip.TabIndex = 5;
             this.rbTip.TabStop = true;
             this.rbTip.Text = "Po Tipu";
             this.rbTip.UseVisualStyleBackColor = true;
@@ -517,7 +525,7 @@
             this.rbIme.Location = new System.Drawing.Point(106, 80);
             this.rbIme.Name = "rbIme";
             this.rbIme.Size = new System.Drawing.Size(97, 22);
-            this.rbIme.TabIndex = 36;
+            this.rbIme.TabIndex = 6;
             this.rbIme.TabStop = true;
             this.rbIme.Text = "Po Imenu";
             this.rbIme.UseVisualStyleBackColor = true;
@@ -538,6 +546,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1181, 526);
+            this.MinimumSize = new System.Drawing.Size(1181, 526);
             this.Name = "TabelaPrikaza";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabela prikaza resursa";

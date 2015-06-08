@@ -65,7 +65,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(378, 165);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 1;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // Oznaka
@@ -93,6 +93,7 @@
             // 
             // detalji
             // 
+            this.detalji.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.detalji.Controls.Add(this.imeDT);
             this.detalji.Controls.Add(this.ozDT);
             this.detalji.Controls.Add(this.opDT);
@@ -184,48 +185,52 @@
             // 
             // Brisi
             // 
+            this.Brisi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Brisi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Brisi.Location = new System.Drawing.Point(412, 130);
             this.Brisi.Margin = new System.Windows.Forms.Padding(4);
             this.Brisi.Name = "Brisi";
             this.Brisi.Size = new System.Drawing.Size(112, 32);
-            this.Brisi.TabIndex = 2;
-            this.Brisi.Text = "Brisi";
+            this.Brisi.TabIndex = 3;
+            this.Brisi.Text = "Briši";
             this.Brisi.UseVisualStyleBackColor = false;
             this.Brisi.Click += new System.EventHandler(this.Brisi_Click);
             // 
             // Dodaj
             // 
+            this.Dodaj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Dodaj.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Dodaj.Location = new System.Drawing.Point(412, 76);
             this.Dodaj.Margin = new System.Windows.Forms.Padding(4);
             this.Dodaj.Name = "Dodaj";
             this.Dodaj.Size = new System.Drawing.Size(112, 32);
-            this.Dodaj.TabIndex = 3;
+            this.Dodaj.TabIndex = 2;
             this.Dodaj.Text = "Dodaj";
             this.Dodaj.UseVisualStyleBackColor = false;
             this.Dodaj.Click += new System.EventHandler(this.Dodaj_Click);
             // 
             // otkazi
             // 
+            this.otkazi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.otkazi.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.otkazi.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.otkazi.Location = new System.Drawing.Point(412, 361);
             this.otkazi.Margin = new System.Windows.Forms.Padding(4);
             this.otkazi.Name = "otkazi";
             this.otkazi.Size = new System.Drawing.Size(112, 32);
-            this.otkazi.TabIndex = 4;
+            this.otkazi.TabIndex = 0;
             this.otkazi.Text = "Izadji";
             this.otkazi.UseVisualStyleBackColor = false;
             // 
             // Izmeni
             // 
+            this.Izmeni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Izmeni.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Izmeni.Location = new System.Drawing.Point(412, 23);
             this.Izmeni.Margin = new System.Windows.Forms.Padding(4);
             this.Izmeni.Name = "Izmeni";
             this.Izmeni.Size = new System.Drawing.Size(112, 32);
-            this.Izmeni.TabIndex = 5;
+            this.Izmeni.TabIndex = 1;
             this.Izmeni.Text = "Izmeni";
             this.Izmeni.UseVisualStyleBackColor = false;
             this.Izmeni.Click += new System.EventHandler(this.Izmeni_Click);
@@ -236,7 +241,7 @@
             this.trazi.Margin = new System.Windows.Forms.Padding(4);
             this.trazi.Name = "trazi";
             this.trazi.Size = new System.Drawing.Size(82, 24);
-            this.trazi.TabIndex = 6;
+            this.trazi.TabIndex = 4;
             this.trazi.Click += new System.EventHandler(this.trazi_Click);
             this.trazi.TextChanged += new System.EventHandler(this.trazi_TextChanged);
             // 
@@ -246,11 +251,12 @@
             this.cbFilter.Location = new System.Drawing.Point(7, 87);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(82, 26);
-            this.cbFilter.TabIndex = 34;
+            this.cbFilter.TabIndex = 5;
             this.cbFilter.TextChanged += new System.EventHandler(this.cbFilter_TextChanged);
             // 
             // pretr
             // 
+            this.pretr.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pretr.Controls.Add(this.trazi);
             this.pretr.Controls.Add(this.cbFilter);
             this.pretr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
